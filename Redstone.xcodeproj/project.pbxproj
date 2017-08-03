@@ -6,20 +6,151 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
+		8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */; };
+		8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8DF5EB0A1F336F8C003CC2B4 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		8DF5EB0B1F336F8C003CC2B4 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone.plist; sourceTree = "<group>"; };
+		8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_Core.xm; sourceTree = "<group>"; };
+		8DF5EB131F33BAB7003CC2B4 /* RSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSCore.h; sourceTree = "<group>"; };
+		8DF5EB141F33BAB7003CC2B4 /* RSCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCore.m; sourceTree = "<group>"; };
+		8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF5EB311F33BB24003CC2B4 /* Redstone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redstone.h; sourceTree = "<group>"; };
+		8DF5EB331F33BC81003CC2B4 /* SBUIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
+		8DF5EB3C1F33C51A003CC2B4 /* RSHomeScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenController.h; sourceTree = "<group>"; };
+		8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSHomeScreenController.m; sourceTree = "<group>"; };
+		8DF5EB3F1F33CC43003CC2B4 /* RSHomeScreenScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenScrollView.h; sourceTree = "<group>"; };
+		8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSHomeScreenScrollView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DF5EB161F33BAD8003CC2B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		8D4474881F2F2E9500DA9CEF = {
 			isa = PBXGroup;
 			children = (
+				8DF5EB091F336F8C003CC2B4 /* Redstone */,
+				8DF5EB1A1F33BAD8003CC2B4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		8DF5EB091F336F8C003CC2B4 /* Redstone */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5EB0A1F336F8C003CC2B4 /* control */,
+				8DF5EB0B1F336F8C003CC2B4 /* Makefile */,
+				8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */,
+				8DF5EB311F33BB24003CC2B4 /* Redstone.h */,
+				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
+				8DF5EB321F33BC5E003CC2B4 /* headers */,
+				8DF5EB121F33BAA1003CC2B4 /* Core */,
+				8DF5EB3B1F33C502003CC2B4 /* HomeScreen */,
+			);
+			path = Redstone;
+			sourceTree = "<group>";
+		};
+		8DF5EB121F33BAA1003CC2B4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5EB131F33BAB7003CC2B4 /* RSCore.h */,
+				8DF5EB141F33BAB7003CC2B4 /* RSCore.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8DF5EB1A1F33BAD8003CC2B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5EB331F33BC81003CC2B4 /* SBUIController.h */,
+			);
+			path = headers;
+			sourceTree = "<group>";
+		};
+		8DF5EB3B1F33C502003CC2B4 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5EB3C1F33C51A003CC2B4 /* RSHomeScreenController.h */,
+				8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */,
+				8DF5EB3F1F33CC43003CC2B4 /* RSHomeScreenScrollView.h */,
+				8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		8DF5EB0E1F337073003CC2B4 /* Install */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = do;
+			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
+			dependencies = (
+			);
+			name = Install;
+			passBuildSettingsInEnvironment = 1;
+			productName = Install;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		8DF5EB181F33BAD8003CC2B4 /* hiddenapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DF5EB2D1F33BAD8003CC2B4 /* Build configuration list for PBXNativeTarget "hiddenapp" */;
+			buildPhases = (
+				8DF5EB151F33BAD8003CC2B4 /* Sources */,
+				8DF5EB161F33BAD8003CC2B4 /* Frameworks */,
+				8DF5EB171F33BAD8003CC2B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hiddenapp;
+			productName = hiddenapp;
+			productReference = 8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8D4474891F2F2E9500DA9CEF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
+				TargetAttributes = {
+					8DF5EB0E1F337073003CC2B4 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					8DF5EB181F33BAD8003CC2B4 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = 8D44748C1F2F2E9500DA9CEF /* Build configuration list for PBXProject "Redstone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -27,14 +158,41 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8D4474881F2F2E9500DA9CEF;
+			productRefGroup = 8DF5EB1A1F33BAD8003CC2B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				8DF5EB0E1F337073003CC2B4 /* Install */,
+				8DF5EB181F33BAD8003CC2B4 /* hiddenapp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DF5EB171F33BAD8003CC2B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DF5EB151F33BAD8003CC2B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
+				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
+				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		8D44748D1F2F2E9500DA9CEF /* Debug */ = {
@@ -49,6 +207,242 @@
 			};
 			name = Release;
 		};
+		8DF5EB101F337073003CC2B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				TARGET = "iphone:latest";
+				THEOS = /opt/theos/;
+			};
+			name = Debug;
+		};
+		8DF5EB111F337073003CC2B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				TARGET = "iphone:latest";
+				THEOS = /opt/theos/;
+			};
+			name = Release;
+		};
+		8DF5EB2E1F33BAD8003CC2B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = hiddenapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.hiddenapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Redstone/Core/hiddenapp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DF5EB2F1F33BAD8003CC2B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = hiddenapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ml.festival.hiddenapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Redstone/Core/hiddenapp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -57,6 +451,24 @@
 			buildConfigurations = (
 				8D44748D1F2F2E9500DA9CEF /* Debug */,
 				8D44748E1F2F2E9500DA9CEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF5EB101F337073003CC2B4 /* Debug */,
+				8DF5EB111F337073003CC2B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DF5EB2D1F33BAD8003CC2B4 /* Build configuration list for PBXNativeTarget "hiddenapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF5EB2E1F33BAD8003CC2B4 /* Debug */,
+				8DF5EB2F1F33BAD8003CC2B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
