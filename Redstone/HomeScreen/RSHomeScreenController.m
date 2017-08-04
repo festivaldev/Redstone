@@ -7,7 +7,6 @@
 		self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		
 		wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-		[wallpaperView setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
 		[self.view addSubview:wallpaperView];
 		
 		homeScreenScrollView = [[RSHomeScreenScrollView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];

@@ -11,6 +11,7 @@
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
 		8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
+		8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEE1CF1F3529D000AD4827 /* RSTile.m */; };
 		8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF31F345BCB00F9A884 /* RSAppListController.m */; };
 		8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF61F345D4800F9A884 /* RSPreferences.m */; };
 		8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
@@ -21,11 +22,18 @@
 /* Begin PBXFileReference section */
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
-		8DB0B6DF1F34623C002E3CCF /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB0B6DF1F34623C002E3CCF /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = hiddenapp.app; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/hiddenapp.app"; sourceTree = "<absolute>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
 		8DB0B6EC1F346515002E3CCF /* RSMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSMetrics.m; sourceTree = "<group>"; };
+		8DBEE1CE1F3529D000AD4827 /* RSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSTile.h; path = Redstone/StartScreen/RSTile.h; sourceTree = SOURCE_ROOT; };
+		8DBEE1CF1F3529D000AD4827 /* RSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSTile.m; path = Redstone/StartScreen/RSTile.m; sourceTree = SOURCE_ROOT; };
+		8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLeafIcon.h; sourceTree = "<group>"; };
+		8DBEE1D41F352B7800AD4827 /* SBUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
+		8DBEE1D51F352B8000AD4827 /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
+		8DBEE1D61F352BDC00AD4827 /* SBIconController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconController.h; sourceTree = "<group>"; };
+		8DBEE1D71F352C1600AD4827 /* SBIconModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconModel.h; sourceTree = "<group>"; };
 		8DC70CF21F345BCB00F9A884 /* RSAppListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
@@ -37,7 +45,6 @@
 		8DF5EB131F33BAB7003CC2B4 /* RSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSCore.h; sourceTree = "<group>"; };
 		8DF5EB141F33BAB7003CC2B4 /* RSCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCore.m; sourceTree = "<group>"; };
 		8DF5EB311F33BB24003CC2B4 /* Redstone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redstone.h; sourceTree = "<group>"; };
-		8DF5EB331F33BC81003CC2B4 /* SBUIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
 		8DF5EB3C1F33C51A003CC2B4 /* RSHomeScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenController.h; sourceTree = "<group>"; };
 		8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSHomeScreenController.m; sourceTree = "<group>"; };
 		8DF5EB3F1F33CC43003CC2B4 /* RSHomeScreenScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenScrollView.h; sourceTree = "<group>"; };
@@ -60,6 +67,8 @@
 			children = (
 				8D3771691F3456FA008056D1 /* RSStartScreenController.h */,
 				8D37716A1F3456FA008056D1 /* RSStartScreenController.m */,
+				8DBEE1CE1F3529D000AD4827 /* RSTile.h */,
+				8DBEE1CF1F3529D000AD4827 /* RSTile.m */,
 			);
 			path = StartScreen;
 			sourceTree = "<group>";
@@ -68,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				8DF5EB091F336F8C003CC2B4 /* Redstone */,
-				8DB0B6DF1F34623C002E3CCF /* hiddenapp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +88,17 @@
 			);
 			name = Layout;
 			path = Layout/var/mobile/Library/FESTIVAL/Redstone;
+			sourceTree = "<group>";
+		};
+		8DBEE1D21F352B7800AD4827 /* SpringBoard */ = {
+			isa = PBXGroup;
+			children = (
+				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
+				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
+				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
+				8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */,
+			);
+			path = SpringBoard;
 			sourceTree = "<group>";
 		};
 		8DC70CF11F345BB700F9A884 /* AppList */ = {
@@ -125,7 +144,8 @@
 		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				8DF5EB331F33BC81003CC2B4 /* SBUIController.h */,
+				8DBEE1D51F352B8000AD4827 /* SpringBoard.h */,
+				8DBEE1D21F352B7800AD4827 /* SpringBoard */,
 			);
 			path = headers;
 			sourceTree = "<group>";
@@ -146,7 +166,7 @@
 /* Begin PBXLegacyTarget section */
 		8DF5EB0E1F337073003CC2B4 /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = package;
+			buildArgumentsString = do;
 			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
@@ -237,6 +257,7 @@
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

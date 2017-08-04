@@ -17,7 +17,7 @@ Redstone_FILES += Core/RSCore.m Core/RSPreferences.m Core/RSMetrics.m
 Redstone_FILES += HomeScreen/RSHomeScreenController.m HomeScreen/RSHomeScreenScrollView.m
 
 # Start Screen
-Redstone_FILES += StartScreen/RSStartScreenController.m
+Redstone_FILES += StartScreen/RSStartScreenController.m StartScreen/RSTile.m
 
 # App List
 Redstone_FILES += AppList/RSAppListController.m

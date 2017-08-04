@@ -25,18 +25,56 @@
 	CGFloat sizeForPosition = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
 	
 	for (int i=0; i<tileLayout.count; i++) {
-		CGSize tileSize = [RSMetrics tileDimensionsForSize:[[tileLayout objectAtIndex:i][@"size"] intValue]];
-		CGRect tileFrame = CGRectMake(sizeForPosition * [[tileLayout objectAtIndex:i][@"column"] intValue],
-									  sizeForPosition * [[tileLayout objectAtIndex:i][@"row"] intValue],
-									  tileSize.width,
-									  tileSize.height);
+		SBLeafIcon* icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
 		
-		UIView* tile = [[UIView alloc] initWithFrame:tileFrame];
-		[tile setBackgroundColor:[UIColor greenColor]];
-		[self.view addSubview:tile];
+		if (icon && [icon applicationBundleID] && ![[icon applicationBundleID] isEqualToString:@""]) {
+			CGSize tileSize = [RSMetrics tileDimensionsForSize:[[tileLayout objectAtIndex:i][@"size"] intValue]];
+			CGRect tileFrame = CGRectMake(sizeForPosition * [[tileLayout objectAtIndex:i][@"column"] intValue],
+										  sizeForPosition * [[tileLayout objectAtIndex:i][@"row"] intValue],
+										  tileSize.width,
+										  tileSize.height);
+			
+			RSTile* tile = [[RSTile alloc] initWithFrame:tileFrame
+													size:[[tileLayout objectAtIndex:i][@"size"] intValue]
+										bundleIdentifier:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
+			[tile setBackgroundColor:[UIColor greenColor]];
+			
+			[pinnedTiles addObject:tile];
+			[pinnedIdentifiers addObject:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
+			[self.view addSubview:tile];
+		}
 	}
+	
+	[self updateStartScreenContentSize];
 }
 
 - (void)saveTiles {}
+
+- (void)updateStartScreenContentSize {
+	if (pinnedTiles.count < 1) {
+		[self.view setContentSize:CGSizeMake(self.view.bounds.size.width, 0)];
+		return;
+	}
+	
+	RSTile* lastTile = [pinnedTiles objectAtIndex:0];
+	for (RSTile* tile in pinnedTiles) {
+		CGRect lastTileFrame = lastTile.frame;
+		CGRect currentTileFrame = tile.frame;
+		
+		if (currentTileFrame.origin.y > lastTileFrame.origin.y || (currentTileFrame.origin.y == lastTileFrame.origin.y && currentTileFrame.size.height > lastTileFrame.size.height)) {
+			lastTile = tile;
+		}
+	}
+	
+	CGSize contentSize = CGSizeMake(self.view.bounds.size.width, lastTile.frame.origin.y + lastTile.frame.size.height);
+	
+	if (contentSize.height > screenHeight) {
+		[UIView animateWithDuration:.1 animations:^{
+			[self.view setContentSize:contentSize];
+		}];
+	} else {
+		[self.view setContentSize:contentSize];
+	}
+}
 
 @end

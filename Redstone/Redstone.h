@@ -5,7 +5,8 @@
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
 #import <objc/runtime.h>
-#import "headers/SBUIController.h"
+
+#import "headers/SpringBoard.h"
 
 #pragma mark Core
 #import "Core/RSCore.h"
@@ -18,6 +19,7 @@
 
 #pragma mark Start Screen
 #import "StartScreen/RSStartScreenController.h"
+#import "StartScreen/RSTile.h"
 
 #pragma mark App List
 #import "AppList/RSAppListController.h"
