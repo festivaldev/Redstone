@@ -1,6 +1,7 @@
 #import "Redstone.h"
 
 RSCore* redstone;
+RSPreferences* preferences;
 
 %group core
 
@@ -17,5 +18,9 @@ RSCore* redstone;
 %end // %group core
 
 %ctor {
-	%init(core);
+	preferences = [RSPreferences new];
+	
+	if ([[preferences objectForKey:@"enabled"] boolValue]) {
+		%init(core);
+	}
 }

@@ -2,8 +2,10 @@
 
 @implementation RSCore
 
+static RSCore* sharedInstance;
+
 + (id)sharedInstance {
-	return nil;
+	return sharedInstance;
 }
 
 + (void)hideAllExcept:(id)objectToShow {
@@ -22,7 +24,7 @@
 
 + (void)showAllExcept:(id)objectToHide {
 	for (UIView* view in [[[objc_getClass("SBUIController") sharedInstance] window] subviews]) {
-			[view setHidden:(view == objectToHide)];
+		[view setHidden:(view == objectToHide)];
 	}
 	
 	if (objectToHide) {
@@ -32,12 +34,16 @@
 
 - (id)initWithWindow:(UIWindow*)window {
 	if (self = [super init]) {
+		sharedInstance = self;
+		
 		_window = window;
 		
-		homeScreenController = [RSHomeScreenController new];
-		[_window addSubview:homeScreenController.view];
+		if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
+			homeScreenController = [RSHomeScreenController new];
+			[_window addSubview:homeScreenController.view];
 		
-		[[self class] hideAllExcept:homeScreenController.view];
+			[[self class] hideAllExcept:homeScreenController.view];
+		}
 	}
 	
 	return self;

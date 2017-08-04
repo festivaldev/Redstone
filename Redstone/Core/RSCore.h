@@ -8,6 +8,9 @@
 	RSHomeScreenController* homeScreenController;
 }
 
++ (id)sharedInstance;
++ (void)hideAllExcept:(id)objectToShow;
++ (void)showAllExcept:(id)objectToHide;
 - (id)initWithWindow:(UIWindow*)window;
 
 @end

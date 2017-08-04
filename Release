@@ -1,0 +1,8 @@
+Origin: Redstone Insider Program
+Label: Redstone Insider
+Suite: stable
+Version: 1.0
+Codename: redstone
+Architectures: iphoneos-arm
+Components: main
+Description: Probably daily builds of Redstone
