@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
+		8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF31F345BCB00F9A884 /* RSAppListController.m */; };
 		8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
 		8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */; };
 		8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
+		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
+		8DC70CF01F345A9B00F9A884 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = hiddenapp.app; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/hiddenapp.app"; sourceTree = "<absolute>"; };
+		8DC70CF21F345BCB00F9A884 /* RSAppListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
+		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DF5EB0A1F336F8C003CC2B4 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
 		8DF5EB0B1F336F8C003CC2B4 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone.plist; sourceTree = "<group>"; };
 		8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_Core.xm; sourceTree = "<group>"; };
 		8DF5EB131F33BAB7003CC2B4 /* RSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSCore.h; sourceTree = "<group>"; };
 		8DF5EB141F33BAB7003CC2B4 /* RSCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCore.m; sourceTree = "<group>"; };
-		8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF5EB311F33BB24003CC2B4 /* Redstone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Redstone.h; sourceTree = "<group>"; };
 		8DF5EB331F33BC81003CC2B4 /* SBUIController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
 		8DF5EB3C1F33C51A003CC2B4 /* RSHomeScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenController.h; sourceTree = "<group>"; };
@@ -39,12 +45,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D3771681F3456CC008056D1 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8D3771691F3456FA008056D1 /* RSStartScreenController.h */,
+				8D37716A1F3456FA008056D1 /* RSStartScreenController.m */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
 		8D4474881F2F2E9500DA9CEF = {
 			isa = PBXGroup;
 			children = (
 				8DF5EB091F336F8C003CC2B4 /* Redstone */,
-				8DF5EB1A1F33BAD8003CC2B4 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		8DC70CF11F345BB700F9A884 /* AppList */ = {
+			isa = PBXGroup;
+			children = (
+				8DC70CF21F345BCB00F9A884 /* RSAppListController.h */,
+				8DC70CF31F345BCB00F9A884 /* RSAppListController.m */,
+			);
+			path = AppList;
 			sourceTree = "<group>";
 		};
 		8DF5EB091F336F8C003CC2B4 /* Redstone */ = {
@@ -58,6 +81,8 @@
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DF5EB121F33BAA1003CC2B4 /* Core */,
 				8DF5EB3B1F33C502003CC2B4 /* HomeScreen */,
+				8D3771681F3456CC008056D1 /* StartScreen */,
+				8DC70CF11F345BB700F9A884 /* AppList */,
 			);
 			path = Redstone;
 			sourceTree = "<group>";
@@ -69,14 +94,6 @@
 				8DF5EB141F33BAB7003CC2B4 /* RSCore.m */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		8DF5EB1A1F33BAD8003CC2B4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
@@ -132,7 +149,7 @@
 			);
 			name = hiddenapp;
 			productName = hiddenapp;
-			productReference = 8DF5EB191F33BAD8003CC2B4 /* hiddenapp.app */;
+			productReference = 8DC70CF01F345A9B00F9A884 /* hiddenapp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -161,7 +178,7 @@
 				Base,
 			);
 			mainGroup = 8D4474881F2F2E9500DA9CEF;
-			productRefGroup = 8DF5EB1A1F33BAD8003CC2B4 /* Products */;
+			productRefGroup = 8D4474881F2F2E9500DA9CEF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -189,6 +206,8 @@
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
+				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

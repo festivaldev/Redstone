@@ -16,6 +16,12 @@ Redstone_FILES += Core/RSCore.m
 # Home Screen
 Redstone_FILES += HomeScreen/RSHomeScreenController.m HomeScreen/RSHomeScreenScrollView.m
 
+# Start Screen
+Redstone_FILES += StartScreen/RSStartScreenController.m
+
+# App List
+Redstone_FILES += AppList/RSAppListController.m
+
 include $(THEOS)/makefiles/tweak.mk
 
 after-install::

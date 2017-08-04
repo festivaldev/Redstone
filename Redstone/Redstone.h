@@ -10,3 +10,9 @@
 #pragma mark Home Screen
 #import "HomeScreen/RSHomeScreenController.h"
 #import "HomeScreen/RSHomeScreenScrollView.h"
+
+#pragma mark Start Screen
+#import "StartScreen/RSStartScreenController.h"
+
+#pragma mark App List
+#import "AppList/RSAppListController.h"

@@ -1,12 +1,15 @@
 #import <UIKit/UIKit.h>
 
-@class RSHomeScreenScrollView;
+@class RSHomeScreenScrollView, RSStartScreenController, RSAppListController;
 
 @interface RSHomeScreenController : NSObject {
 	UIView* wallpaperView;
 	RSHomeScreenScrollView* homeScreenScrollView;
+	
+	RSStartScreenController* startScreenController;
+	RSAppListController* appListController;
 }
 
-@property (nonatomic, retain) UIView* view;
+@property (nonatomic, strong) UIView* view;
 
 @end
