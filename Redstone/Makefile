@@ -10,6 +10,9 @@ TWEAK_NAME = Redstone
 Redstone_CFLAGS = -fobjc-arc
 Redstone_FILES = Redstone_Core.xm
 
+# Libraries
+Redstone_FILES += Libraries/CAKeyframeAnimation+AHEasing.m Libraries/easing.c Libraries/UIFont+WDCustomLoader.m Libraries/UIImageAverageColorAddition.m Libraries/UIView+Easing.m
+
 # Core
 Redstone_FILES += Core/RSCore.m Core/RSPreferences.m Core/RSMetrics.m
 
@@ -17,7 +20,7 @@ Redstone_FILES += Core/RSCore.m Core/RSPreferences.m Core/RSMetrics.m
 Redstone_FILES += HomeScreen/RSHomeScreenController.m HomeScreen/RSHomeScreenScrollView.m
 
 # Start Screen
-Redstone_FILES += StartScreen/RSStartScreenController.m StartScreen/RSTile.m
+Redstone_FILES += StartScreen/RSStartScreenController.m StartScreen/RSStartScreenScrollView.m StartScreen/RSTile.m
 
 # App List
 Redstone_FILES += AppList/RSAppListController.m

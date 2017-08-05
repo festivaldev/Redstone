@@ -49,4 +49,8 @@ static RSCore* sharedInstance;
 	return self;
 }
 
+- (RSHomeScreenController*)homeScreenController {
+	return homeScreenController;
+}
+
 @end

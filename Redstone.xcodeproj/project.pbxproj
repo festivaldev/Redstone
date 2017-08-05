@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
+		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
+		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
+		8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E931F359E1500BFFB39 /* UIImageAverageColorAddition.m */; };
+		8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E951F359E1500BFFB39 /* UIView+Easing.m */; };
+		8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */; };
 		8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
@@ -20,9 +26,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
+		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
+		8D259E8E1F359E1500BFFB39 /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
+		8D259E8F1F359E1500BFFB39 /* easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easing.h; sourceTree = "<group>"; };
+		8D259E901F359E1500BFFB39 /* UIFont+WDCustomLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+WDCustomLoader.h"; sourceTree = "<group>"; };
+		8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+WDCustomLoader.m"; sourceTree = "<group>"; };
+		8D259E921F359E1500BFFB39 /* UIImageAverageColorAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAverageColorAddition.h; sourceTree = "<group>"; };
+		8D259E931F359E1500BFFB39 /* UIImageAverageColorAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAverageColorAddition.m; sourceTree = "<group>"; };
+		8D259E941F359E1500BFFB39 /* UIView+Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Easing.h"; sourceTree = "<group>"; };
+		8D259E951F359E1500BFFB39 /* UIView+Easing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Easing.m"; sourceTree = "<group>"; };
+		8D259E9B1F35A51300BFFB39 /* RSStartScreenScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStartScreenScrollView.h; sourceTree = "<group>"; };
+		8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenScrollView.m; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
-		8DB0B6DF1F34623C002E3CCF /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = hiddenapp.app; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/hiddenapp.app"; sourceTree = "<absolute>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -62,11 +80,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D259E8B1F359E1500BFFB39 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */,
+				8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */,
+				8D259E8E1F359E1500BFFB39 /* easing.c */,
+				8D259E8F1F359E1500BFFB39 /* easing.h */,
+				8D259E901F359E1500BFFB39 /* UIFont+WDCustomLoader.h */,
+				8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */,
+				8D259E921F359E1500BFFB39 /* UIImageAverageColorAddition.h */,
+				8D259E931F359E1500BFFB39 /* UIImageAverageColorAddition.m */,
+				8D259E941F359E1500BFFB39 /* UIView+Easing.h */,
+				8D259E951F359E1500BFFB39 /* UIView+Easing.m */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		8D3771681F3456CC008056D1 /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
 				8D3771691F3456FA008056D1 /* RSStartScreenController.h */,
 				8D37716A1F3456FA008056D1 /* RSStartScreenController.m */,
+				8D259E9B1F35A51300BFFB39 /* RSStartScreenScrollView.h */,
+				8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */,
 				8DBEE1CE1F3529D000AD4827 /* RSTile.h */,
 				8DBEE1CF1F3529D000AD4827 /* RSTile.m */,
 			);
@@ -77,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8DF5EB091F336F8C003CC2B4 /* Redstone */,
+				8D259E8A1F35302C00BFFB39 /* hiddenapp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +158,7 @@
 				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DB0B6E41F346326002E3CCF /* Layout */,
+				8D259E8B1F359E1500BFFB39 /* Libraries */,
 				8DF5EB121F33BAA1003CC2B4 /* Core */,
 				8DF5EB3B1F33C502003CC2B4 /* HomeScreen */,
 				8D3771681F3456CC008056D1 /* StartScreen */,
@@ -195,7 +234,7 @@
 			);
 			name = hiddenapp;
 			productName = hiddenapp;
-			productReference = 8DB0B6DF1F34623C002E3CCF /* hiddenapp.app */;
+			productReference = 8D259E8A1F35302C00BFFB39 /* hiddenapp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -253,12 +292,18 @@
 			files = (
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
+				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
+				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
+				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
+				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
+				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,4 +28,8 @@
 	[RSCore showAllExcept:self.view];
 }
 
+- (RSStartScreenController*)startScreenController {
+	return startScreenController;
+}
+
 @end

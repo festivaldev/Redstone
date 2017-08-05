@@ -4,9 +4,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		self.view = [[UIScrollView alloc] initWithFrame:CGRectMake(4, 0, screenWidth-8, screenHeight)];
-		[self.view setContentInset:UIEdgeInsetsMake(24, 0, 70, 0)];
-		[self.view setContentOffset:CGPointMake(0, -24)];
+		self.view = [[RSStartScreenScrollView alloc] initWithFrame:CGRectMake(4, 0, screenWidth-8, screenHeight)];
 		
 		pinnedTiles = [NSMutableArray new];
 		pinnedIdentifiers = [NSMutableArray new];
@@ -74,6 +72,43 @@
 		}];
 	} else {
 		[self.view setContentSize:contentSize];
+	}
+}
+
+#pragma mark Editing Mode
+
+- (void)setIsEditing:(BOOL)isEditing {
+	if (!_isEditing && isEditing) {
+		AudioServicesPlaySystemSound(1520);
+	}
+	
+	_isEditing = isEditing;
+	
+	if (isEditing) {
+		[UIView animateWithDuration:.2 animations:^{
+			[self.view setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+			
+			[self.view setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+		} completion:^(BOOL finished) {
+			[self.view removeEasingFunctionForKeyPath:@"frame"];
+		}];
+	} else {
+		[self setSelectedTile:nil];
+		
+		[UIView animateWithDuration:.2 animations:^{
+			[self.view setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+			
+			[self.view setTransform:CGAffineTransformIdentity];
+		} completion:^(BOOL finished) {
+			[self.view removeEasingFunctionForKeyPath:@"frame"];
+		}];
+	}
+}
+
+- (void)setSelectedTile:(RSTile*)selectedTile {
+	_selectedTile = selectedTile;
+	for (RSTile* tile in pinnedTiles) {
+		[tile setIsSelectedTile:(tile == selectedTile)];
 	}
 }
 

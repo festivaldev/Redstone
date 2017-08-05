@@ -8,6 +8,13 @@
 
 #import "headers/SpringBoard.h"
 
+#pragma mark Libraries
+#import "Libraries/CAKeyframeAnimation+AHEasing.h"
+#import "Libraries/easing.h"
+#import "Libraries/UIFont+WDCustomLoader.h"
+#import "Libraries/UIImageAverageColorAddition.h"
+#import "Libraries/UIView+Easing.h"
+
 #pragma mark Core
 #import "Core/RSCore.h"
 #import "Core/RSPreferences.h"
@@ -19,6 +26,7 @@
 
 #pragma mark Start Screen
 #import "StartScreen/RSStartScreenController.h"
+#import "StartScreen/RSStartScreenScrollView.h"
 #import "StartScreen/RSTile.h"
 
 #pragma mark App List

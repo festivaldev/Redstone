@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIView* view;
 
+- (RSStartScreenController*)startScreenController;
+
 @end

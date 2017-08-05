@@ -13,4 +13,6 @@
 + (void)showAllExcept:(id)objectToHide;
 - (id)initWithWindow:(UIWindow*)window;
 
+- (RSHomeScreenController*)homeScreenController;
+
 @end
