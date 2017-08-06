@@ -6,5 +6,6 @@
 - (id)applicationBundleID;
 - (id)badgeNumberOrString;
 - (BOOL)isUninstallSupported;
+- (id)displayName;
 
 @end

@@ -3,8 +3,14 @@
 @class SBLeafIcon;
 
 @interface RSTile : UIView {
-	UITapGestureRecognizer* tapGestureRecognizer;
+	UILabel* tileLabel;
+
+	BOOL panEnabled;
+	CGPoint centerOffset;
+	
 	UILongPressGestureRecognizer* longPressGestureRecognizer;
+	UIPanGestureRecognizer* panGestureRecognizer;
+	UITapGestureRecognizer* tapGestureRecognizer;
 }
 
 @property (nonatomic, assign) int size;

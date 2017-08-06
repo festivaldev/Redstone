@@ -39,6 +39,8 @@
 		8D259E951F359E1500BFFB39 /* UIView+Easing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Easing.m"; sourceTree = "<group>"; };
 		8D259E9B1F35A51300BFFB39 /* RSStartScreenScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStartScreenScrollView.h; sourceTree = "<group>"; };
 		8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenScrollView.m; sourceTree = "<group>"; };
+		8D259E9F1F3700C400BFFB39 /* segmdl2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segmdl2.ttf; sourceTree = "<group>"; };
+		8D259EA01F3700C400BFFB39 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
@@ -97,6 +99,15 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
+		8D259E9E1F3700A200BFFB39 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8D259E9F1F3700C400BFFB39 /* segmdl2.ttf */,
+				8D259EA01F3700C400BFFB39 /* segoeui.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		8D3771681F3456CC008056D1 /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +132,7 @@
 		8DB0B6E41F346326002E3CCF /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				8D259E9E1F3700A200BFFB39 /* Fonts */,
 				8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */,
 				8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */,
 			);
