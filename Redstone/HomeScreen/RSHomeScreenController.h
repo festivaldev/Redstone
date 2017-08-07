@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UIView* view;
 
 - (RSStartScreenController*)startScreenController;
+- (void)setScrollEnabled:(BOOL)scrollEnabled;
 
 @end

@@ -17,5 +17,6 @@
 
 - (void)setIsEditing:(BOOL)isEditing;
 - (void)setSelectedTile:(RSTile*)selectedTile;
+- (void)snapTile:(RSTile*)tile withTouchPosition:(CGPoint)touchPosition;
 
 @end

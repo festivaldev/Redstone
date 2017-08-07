@@ -6,6 +6,7 @@
 	if (self = [super initWithFrame:frame]) {
 		self.size = size;
 		self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:bundleIdentifier];
+		self.originalCenter = self.center;
 		
 		tileLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, frame.size.height-28, frame.size.width-16, 20)];
 		[tileLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
@@ -19,16 +20,33 @@
 		}
 		
 		longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed:)];
+		[longPressGestureRecognizer setMinimumPressDuration:0.5];
+		[longPressGestureRecognizer setCancelsTouchesInView:NO];
+		[longPressGestureRecognizer setDelaysTouchesBegan:NO];
 		[self addGestureRecognizer:longPressGestureRecognizer];
 		
 		panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panMoved:)];
+		[panGestureRecognizer setDelegate:self];
+		[panGestureRecognizer setCancelsTouchesInView:NO];
+		[panGestureRecognizer setDelaysTouchesBegan:NO];
 		[self addGestureRecognizer:panGestureRecognizer];
 		
 		tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+		[tapGestureRecognizer setCancelsTouchesInView:NO];
+		[tapGestureRecognizer setDelaysTouchesBegan:NO];
+		[tapGestureRecognizer requireGestureRecognizerToFail:panGestureRecognizer];
+		[tapGestureRecognizer requireGestureRecognizerToFail:longPressGestureRecognizer];
 		[self addGestureRecognizer:tapGestureRecognizer];
 	}
 	
 	return self;
+}
+
+- (CGRect)basePosition {
+	return CGRectMake(self.center.x - (self.bounds.size.width/2),
+					  self.center.y - (self.bounds.size.height/2),
+					  self.bounds.size.width,
+					  self.bounds.size.height);
 }
 
 #pragma mark Gesture Recognizers
@@ -43,6 +61,9 @@
 	if (![[[[RSCore sharedInstance] homeScreenController] startScreenController] isEditing]) {
 		[longPressGestureRecognizer setEnabled:NO];
 		
+		[tapGestureRecognizer setEnabled:NO];
+		[tapGestureRecognizer setEnabled:YES];
+		
 		[[[[RSCore sharedInstance] homeScreenController] startScreenController] setIsEditing:YES];
 		[[[[RSCore sharedInstance] homeScreenController] startScreenController] setSelectedTile:self];
 	}
@@ -52,7 +73,7 @@
 	CGPoint touchLocation = [sender locationInView:self.superview];
 	
 	if (sender.state == UIGestureRecognizerStateBegan) {
-		// Set selected tile or not?
+		[[[[RSCore sharedInstance] homeScreenController] startScreenController] setSelectedTile:self];
 		
 		CGPoint relativePosition = [self.superview convertPoint:self.center toView:self.superview];
 		centerOffset = CGPointMake(relativePosition.x - touchLocation.x, relativePosition.y - touchLocation.y);
@@ -60,6 +81,12 @@
 	
 	if (sender.state == UIGestureRecognizerStateChanged && panEnabled) {
 		self.center = CGPointMake(touchLocation.x + centerOffset.x, touchLocation.y + centerOffset.y);
+	}
+	
+	if (sender.state == UIGestureRecognizerStateEnded && panEnabled) {
+		centerOffset = CGPointZero;
+		
+		[[[[RSCore sharedInstance] homeScreenController] startScreenController] snapTile:self withTouchPosition:self.center];
 	}
 }
 
@@ -83,6 +110,9 @@
 		
 		if (isSelectedTile) {
 			panEnabled = YES;
+
+			[[RSCore.sharedInstance homeScreenController].startScreenController.view.panGestureRecognizer setEnabled:NO];
+			[[RSCore.sharedInstance homeScreenController].startScreenController.view.panGestureRecognizer setEnabled:YES];
 			
 			[self.superview bringSubviewToFront:self];
 			[self setAlpha:1.0];

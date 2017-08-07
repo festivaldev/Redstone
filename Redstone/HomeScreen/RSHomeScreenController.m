@@ -17,19 +17,16 @@
 		
 		appListController = [RSAppListController new];
 		[homeScreenScrollView addSubview:appListController.view];
-		
-		UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(test)];
-		[self.view addGestureRecognizer:longPressGesture];
 	}
 	return self;
 }
 
-- (void)test {
-	[RSCore showAllExcept:self.view];
-}
-
 - (RSStartScreenController*)startScreenController {
 	return startScreenController;
+}
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled {
+	[homeScreenScrollView setScrollEnabled:scrollEnabled];
 }
 
 @end
