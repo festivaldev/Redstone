@@ -31,7 +31,6 @@ after-install::
 	install.exec "killall -9 SpringBoard"
 
 after-package::
-	@cd $(PROJECT_DIR)
 	@rm -rf $(PROJECT_DIR)/Packages $(PROJECT_DIR)/Packages.bz2
-	@dpkg-scanpackages -m . /dev/null > $(PROJECT_DIR)/Packages
-	@bzip2 $(PROJECT_DIR)/Packages
+	@cd $(PROJECT_DIR) && dpkg-scanpackages -m . /dev/null > $(PROJECT_DIR)/Packages
+	@bzip2 -k $(PROJECT_DIR)/Packages
