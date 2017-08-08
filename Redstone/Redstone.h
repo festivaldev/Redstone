@@ -29,6 +29,8 @@
 #import "StartScreen/RSStartScreenController.h"
 #import "StartScreen/RSStartScreenScrollView.h"
 #import "StartScreen/RSTile.h"
+#import "StartScreen/RSTileButton.h"
+#import "StartScreen/RSTileInfo.h"
 
 #pragma mark App List
 #import "AppList/RSAppListController.h"

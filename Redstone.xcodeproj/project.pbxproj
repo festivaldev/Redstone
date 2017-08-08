@@ -14,6 +14,8 @@
 		8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E951F359E1500BFFB39 /* UIView+Easing.m */; };
 		8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */; };
 		8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
+		8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251A71F39B94F0007298A /* RSTileButton.m */; };
+		8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251AA1F39B95D0007298A /* RSTileInfo.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
 		8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
@@ -39,10 +41,14 @@
 		8D259E951F359E1500BFFB39 /* UIView+Easing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Easing.m"; sourceTree = "<group>"; };
 		8D259E9B1F35A51300BFFB39 /* RSStartScreenScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStartScreenScrollView.h; sourceTree = "<group>"; };
 		8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenScrollView.m; sourceTree = "<group>"; };
-		8D259E9F1F3700C400BFFB39 /* segmdl2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segmdl2.ttf; sourceTree = "<group>"; };
 		8D259EA01F3700C400BFFB39 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
+		8D6251A51F39B5920007298A /* segmdl2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segmdl2.ttf; sourceTree = "<group>"; };
+		8D6251A61F39B94F0007298A /* RSTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileButton.h; sourceTree = "<group>"; };
+		8D6251A71F39B94F0007298A /* RSTileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileButton.m; sourceTree = "<group>"; };
+		8D6251A91F39B95D0007298A /* RSTileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileInfo.h; sourceTree = "<group>"; };
+		8D6251AA1F39B95D0007298A /* RSTileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileInfo.m; sourceTree = "<group>"; };
 		8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_HomeScreen.xm; sourceTree = "<group>"; };
 		8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMainDisplaySceneLayoutViewController.h; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
@@ -104,7 +110,7 @@
 		8D259E9E1F3700A200BFFB39 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				8D259E9F1F3700C400BFFB39 /* segmdl2.ttf */,
+				8D6251A51F39B5920007298A /* segmdl2.ttf */,
 				8D259EA01F3700C400BFFB39 /* segoeui.ttf */,
 			);
 			path = Fonts;
@@ -119,6 +125,10 @@
 				8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */,
 				8DBEE1CE1F3529D000AD4827 /* RSTile.h */,
 				8DBEE1CF1F3529D000AD4827 /* RSTile.m */,
+				8D6251A61F39B94F0007298A /* RSTileButton.h */,
+				8D6251A71F39B94F0007298A /* RSTileButton.m */,
+				8D6251A91F39B95D0007298A /* RSTileInfo.h */,
+				8D6251AA1F39B95D0007298A /* RSTileInfo.m */,
 			);
 			path = StartScreen;
 			sourceTree = "<group>";
@@ -312,6 +322,7 @@
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
 				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,
+				8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
 				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
@@ -319,6 +330,7 @@
 				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
+				8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */,
 				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

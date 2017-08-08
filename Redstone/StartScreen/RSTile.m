@@ -53,6 +53,13 @@
 		[unpinButton setHidden:YES];
 		[self addSubview:unpinButton];
 		
+		UILabel* unpinButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+		[unpinButtonLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:14]];
+		[unpinButtonLabel setText:@"\uE77A"];
+		[unpinButtonLabel setTextColor:[UIColor blackColor]];
+		[unpinButtonLabel setTextAlignment:NSTextAlignmentCenter];
+		[unpinButton addSubview:unpinButtonLabel];
+		
 		unpinGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unpin)];
 		[unpinButton addGestureRecognizer:unpinGestureRecognizer];
 		
@@ -63,6 +70,13 @@
 		[resizeButton setTransform:CGAffineTransformMakeRotation(deg2rad([self scaleButtonRotationForCurrentSize]))];
 		[resizeButton setHidden:YES];
 		[self addSubview:resizeButton];
+		
+		UILabel* resizeButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+		[resizeButtonLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:14]];
+		[resizeButtonLabel setText:@"\uE7EA"];
+		[resizeButtonLabel setTextColor:[UIColor blackColor]];
+		[resizeButtonLabel setTextAlignment:NSTextAlignmentCenter];
+		[resizeButton addSubview:resizeButtonLabel];
 		
 		resizeGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setNextSize)];
 		[resizeButton addGestureRecognizer:resizeGestureRecognizer];
