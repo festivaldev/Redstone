@@ -18,5 +18,9 @@
 - (void)setIsEditing:(BOOL)isEditing;
 - (void)setSelectedTile:(RSTile*)selectedTile;
 - (void)snapTile:(RSTile*)tile withTouchPosition:(CGPoint)touchPosition;
+- (void)moveAffectedTilesForTile:(RSTile *)movedTile;
+- (void)eliminateEmptyRows;
+- (void)applyPendingFrameUpdates;
+- (NSMutableArray*)sortPinnedTiles;
 
 @end

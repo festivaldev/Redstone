@@ -35,14 +35,13 @@
 			RSTile* tile = [[RSTile alloc] initWithFrame:tileFrame
 													size:[[tileLayout objectAtIndex:i][@"size"] intValue]
 										bundleIdentifier:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
-			[tile setBackgroundColor:[UIColor greenColor]];
 			
 			[pinnedTiles addObject:tile];
 			[pinnedIdentifiers addObject:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
 			[self.view addSubview:tile];
 		}
 	}
-	
+	 
 	[self updateStartScreenContentSize];
 }
 
@@ -115,7 +114,7 @@
 
 - (void)snapTile:(RSTile*)tile withTouchPosition:(CGPoint)touchPosition {
 	CGFloat step = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
-	CGFloat maxPositionX = self.view.bounds.size.width - tile.bounds.size.width;
+	CGFloat maxPositionX = self.view.bounds.size.width - tile.basePosition.size.width;
 	CGFloat maxPositionY = self.view.contentSize.height + [RSMetrics tileBorderSpacing];
 	
 	CGPoint newCenter = CGPointMake(MIN(MAX(step * roundf(tile.basePosition.origin.x / step), 0), maxPositionX) + tile.basePosition.size.width/2,

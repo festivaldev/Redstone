@@ -11,6 +11,11 @@
 	UILongPressGestureRecognizer* longPressGestureRecognizer;
 	UIPanGestureRecognizer* panGestureRecognizer;
 	UITapGestureRecognizer* tapGestureRecognizer;
+	
+	UIView* unpinButton;
+	UIView* resizeButton;
+	UITapGestureRecognizer* unpinGestureRecognizer;
+	UITapGestureRecognizer* resizeGestureRecognizer;
 }
 
 @property (nonatomic, assign) int size;

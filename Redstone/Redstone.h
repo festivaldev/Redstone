@@ -3,6 +3,7 @@
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
+#define deg2rad(angle) ((angle) / 180.0 * M_PI)
 
 #import <objc/runtime.h>
 

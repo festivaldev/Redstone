@@ -8,7 +8,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Redstone
 Redstone_CFLAGS = -fobjc-arc
-Redstone_FILES = Redstone_Core.xm
+Redstone_FILES = Redstone_Core.xm Redstone_HomeScreen.xm
 
 # Libraries
 Redstone_FILES += Libraries/CAKeyframeAnimation+AHEasing.m Libraries/easing.c Libraries/UIFont+WDCustomLoader.m Libraries/UIImageAverageColorAddition.m Libraries/UIView+Easing.m

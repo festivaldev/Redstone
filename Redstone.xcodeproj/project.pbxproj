@@ -43,6 +43,8 @@
 		8D259EA01F3700C400BFFB39 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
+		8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_HomeScreen.xm; sourceTree = "<group>"; };
+		8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMainDisplaySceneLayoutViewController.h; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
 				8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */,
+				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
 			);
 			path = SpringBoard;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */,
 				8DF5EB311F33BB24003CC2B4 /* Redstone.h */,
 				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
+				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DB0B6E41F346326002E3CCF /* Layout */,
 				8D259E8B1F359E1500BFFB39 /* Libraries */,
@@ -217,7 +221,7 @@
 /* Begin PBXLegacyTarget section */
 		8DF5EB0E1F337073003CC2B4 /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = package;
+			buildArgumentsString = do;
 			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
