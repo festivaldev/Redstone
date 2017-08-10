@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class SBLeafIcon;
+@class SBLeafIcon, RSTileInfo, RSTileButton;
 
 @interface RSTile : UIView <UIGestureRecognizerDelegate> {
 	UILabel* tileLabel;
@@ -12,14 +12,13 @@
 	UIPanGestureRecognizer* panGestureRecognizer;
 	UITapGestureRecognizer* tapGestureRecognizer;
 	
-	UIView* unpinButton;
-	UIView* resizeButton;
-	UITapGestureRecognizer* unpinGestureRecognizer;
-	UITapGestureRecognizer* resizeGestureRecognizer;
+	RSTileButton* unpinButton;
+	RSTileButton* resizeButton;
 }
 
 @property (nonatomic, assign) int size;
 @property (nonatomic, strong) SBLeafIcon* icon;
+@property (nonatomic, strong) RSTileInfo* tileInfo;
 @property (nonatomic, assign) BOOL isSelectedTile;
 
 @property (nonatomic, assign) CGPoint originalCenter;

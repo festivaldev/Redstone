@@ -2,6 +2,9 @@
 
 %group homescreen
 
+UIView* mainDisplaySceneLayoutView;
+BOOL switcherIsOpen;
+
 %hook SpringBoard
 
 - (long long) homeScreenRotationStyle {
@@ -30,6 +33,12 @@
 
 %hook SBMainDisplaySceneLayoutViewController
 
+- (void)loadView {
+	%orig;
+	
+	mainDisplaySceneLayoutView = self.view;
+}
+
 - (void)viewDidLoad {
 	%orig;
 	
@@ -39,10 +48,36 @@
 - (void)viewDidLayoutSubviews {
 	%orig;
 	
-	[self.view setUserInteractionEnabled:NO];
+	if (switcherIsOpen) {
+		[self.view setUserInteractionEnabled:YES];
+	} else {
+		[self.view setUserInteractionEnabled:NO];
+	}
 }
 
 %end // %hook SBMainDisplaySceneLayoutViewController
+
+%hook SBDeckSwitcherViewController
+
+- (void)viewWillAppear:(BOOL)arg1 {
+	%log;
+	
+	switcherIsOpen = YES;
+	[mainDisplaySceneLayoutView setUserInteractionEnabled:YES];
+	
+	%orig;
+}
+
+- (void)viewWillDisappear:(BOOL)arg1 {
+	%log;
+	
+	switcherIsOpen = NO;
+	[mainDisplaySceneLayoutView setUserInteractionEnabled:NO];
+	
+	%orig;
+}
+
+%end // %hook SBDeckSwitcherViewController
 
 %end // %group homescreen
 

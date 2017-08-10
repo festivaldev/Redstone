@@ -6,6 +6,7 @@
 	if (self = [super initWithFrame:frame]) {
 		self.size = size;
 		self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:bundleIdentifier];
+		self.tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:bundleIdentifier];
 		self.originalCenter = self.center;
 		
 		[self setBackgroundColor:[UIColor colorWithRed:0.0 green:0.47 blue:0.84 alpha:0.8]];
@@ -19,7 +20,7 @@
 		[tileLabel setText:[self.icon displayName]];
 		[self addSubview:tileLabel];
 		
-		if (self.size < 2) {
+		if (self.size < 2 || self.tileInfo.tileHidesLabel || [[self.tileInfo.labelHiddenForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
 			[tileLabel setHidden:YES];
 		}
 		
@@ -46,40 +47,18 @@
 		
 		// Editing Mode Buttons
 		
-		unpinButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+		unpinButton = [[RSTileButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30) title:@"\uE77A" target:self action:@selector(unpin)];
 		[unpinButton setCenter:CGPointMake(frame.size.width, 0)];
-		[unpinButton setBackgroundColor:[UIColor whiteColor]];
-		[unpinButton.layer setCornerRadius:15];
 		[unpinButton setHidden:YES];
 		[self addSubview:unpinButton];
 		
-		UILabel* unpinButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-		[unpinButtonLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:14]];
-		[unpinButtonLabel setText:@"\uE77A"];
-		[unpinButtonLabel setTextColor:[UIColor blackColor]];
-		[unpinButtonLabel setTextAlignment:NSTextAlignmentCenter];
-		[unpinButton addSubview:unpinButtonLabel];
-		
-		unpinGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unpin)];
-		[unpinButton addGestureRecognizer:unpinGestureRecognizer];
-		
-		resizeButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+		resizeButton = [[RSTileButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30) title:@"\uE7EA" target:self action:@selector(setNextSize)];
 		[resizeButton setCenter:CGPointMake(frame.size.width, frame.size.height)];
-		[resizeButton setBackgroundColor:[UIColor whiteColor]];
-		[resizeButton.layer setCornerRadius:15];
-		[resizeButton setTransform:CGAffineTransformMakeRotation(deg2rad([self scaleButtonRotationForCurrentSize]))];
 		[resizeButton setHidden:YES];
-		[self addSubview:resizeButton];
 		
-		UILabel* resizeButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-		[resizeButtonLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:14]];
-		[resizeButtonLabel setText:@"\uE7EA"];
-		[resizeButtonLabel setTextColor:[UIColor blackColor]];
-		[resizeButtonLabel setTextAlignment:NSTextAlignmentCenter];
-		[resizeButton addSubview:resizeButtonLabel];
-		
-		resizeGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setNextSize)];
-		[resizeButton addGestureRecognizer:resizeGestureRecognizer];
+		if (self.tileInfo.supportedSizes.count > 1) {
+			[self addSubview:resizeButton];
+		}
 	}
 	
 	return self;
@@ -230,16 +209,15 @@
 }
 
 - (void)setNextSize {
-	switch (self.size) {
-		case 1:
-			self.size = 3;
-			break;
-		case 2:
-			self.size = 1;
-			break;
-		case 3:
-			self.size = 2;
-		default: break;
+	NSArray* sizes = self.tileInfo.supportedSizes;
+	int currentSize = [sizes indexOfObject:[NSNumber numberWithInt:self.size]];
+	
+	if (sizes.count <= 1) {
+		return;
+	} else if (currentSize - 1 >= 0) {
+		self.size = [[sizes objectAtIndex:currentSize - 1] intValue];
+	} else {
+		self.size = [[sizes objectAtIndex:sizes.count - 1] intValue];
 	}
 	
 	CGSize newTileSize = [RSMetrics tileDimensionsForSize:self.size];
@@ -260,7 +238,7 @@
 	[self setFrame:newFrame];
 	[self setTransform:currentTransform];
 	
-	if (self.size < 2) {
+	if (self.size < 2 || self.tileInfo.tileHidesLabel || [[self.tileInfo.labelHiddenForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
 		[tileLabel setHidden:YES];
 	} else {
 		[tileLabel setHidden:NO];
