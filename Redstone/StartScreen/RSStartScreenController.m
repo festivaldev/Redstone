@@ -47,6 +47,17 @@
 
 - (void)saveTiles {}
 
+- (RSTile*)tileForLeafIdentifier:(NSString*)leafIdentifier {
+	for (RSTile* tile in pinnedTiles) {
+		if ([[tile.icon applicationBundleID] isEqualToString:leafIdentifier]) {
+			return tile;
+			break;
+		}
+	}
+	
+	return nil;
+}
+
 - (void)updateStartScreenContentSize {
 	if (pinnedTiles.count < 1) {
 		[self.view setContentSize:CGSizeMake(self.view.bounds.size.width, 0)];

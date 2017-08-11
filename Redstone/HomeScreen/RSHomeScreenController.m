@@ -17,6 +17,8 @@
 		
 		appListController = [RSAppListController new];
 		[homeScreenScrollView addSubview:appListController.view];
+		
+		launchScreenController = [[RSLaunchScreenController alloc] init];
 	}
 	return self;
 }
@@ -31,6 +33,22 @@
 
 - (RSAppListController*)appListController {
 	return appListController;
+}
+
+- (RSLaunchScreenController*)launchScreenController {
+	return launchScreenController;
+}
+
+- (CGFloat)launchApplication {
+	if (homeScreenScrollView.contentOffset.x < screenWidth/2) {
+		[RSAnimation startScreenAnimateOut];
+		
+		return [RSAnimation startScreenAnimationDelay];
+	} else if (homeScreenScrollView.contentOffset.x > screenWidth/2) {
+		
+	}
+	
+	return 0;
 }
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled {

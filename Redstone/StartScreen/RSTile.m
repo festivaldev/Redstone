@@ -137,6 +137,7 @@
 			[[[[RSCore sharedInstance] homeScreenController] startScreenController] setSelectedTile:self];
 		}
 	} else {
+		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
 		[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
 	}
 }

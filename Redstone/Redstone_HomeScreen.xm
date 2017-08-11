@@ -6,11 +6,20 @@ UIView* mainDisplaySceneLayoutView;
 BOOL switcherIsOpen;
 
 void playApplicationZoomAnimation(int direction, void (^callback)()) {
+	RSHomeScreenController* homeScreenController = [[RSCore sharedInstance] homeScreenController];
+	//RSStartScreenController* startScreenController = [homeScreenController startScreenController];
+	//RSAppListController* appListController = [homeScreenController appListController];
+	RSLaunchScreenController* launchScreenController = [homeScreenController launchScreenController];
+	
 	if (direction == 0) {
 		// Home Screen to App
 		
-		[RSAnimation startScreenAnimateOut];
-		callback();
+		CGFloat delay = [homeScreenController launchApplication];
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay+0.31 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[launchScreenController animateIn];
+			callback();
+		});
 	} else if (direction == 1) {
 		// App to Home Screeen
 		callback();

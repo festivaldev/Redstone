@@ -26,6 +26,9 @@ Redstone_FILES += StartScreen/RSStartScreenController.m StartScreen/RSStartScree
 # App List
 Redstone_FILES += AppList/RSAppListController.m
 
+# Launch Screen
+Redstone_FILES += LaunchScreen/RSLaunchScreenController.m
+
 include $(THEOS)/makefiles/tweak.mk
 
 after-install::

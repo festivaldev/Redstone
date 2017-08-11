@@ -139,6 +139,7 @@
 		8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191371F3D8933009A8568 /* RSAesthetics.m */; };
 		8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */; };
 		8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191401F3D9D25009A8568 /* RSAnimation.m */; };
+		8D1191461F3E5495009A8568 /* RSLaunchScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -300,6 +301,8 @@
 		8D11913F1F3D9D25009A8568 /* RSAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAnimation.h; sourceTree = "<group>"; };
 		8D1191401F3D9D25009A8568 /* RSAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAnimation.m; sourceTree = "<group>"; };
 		8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIAnimationZoomApp.h; sourceTree = "<group>"; };
+		8D1191441F3E5495009A8568 /* RSLaunchScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLaunchScreenController.h; sourceTree = "<group>"; };
+		8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLaunchScreenController.m; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -737,6 +740,15 @@
 			path = com.apple.weather;
 			sourceTree = "<group>";
 		};
+		8D1191431F3E5457009A8568 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8D1191441F3E5495009A8568 /* RSLaunchScreenController.h */,
+				8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		8D259E8B1F359E1500BFFB39 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -838,6 +850,7 @@
 				8DF5EB3B1F33C502003CC2B4 /* HomeScreen */,
 				8D3771681F3456CC008056D1 /* StartScreen */,
 				8DC70CF11F345BB700F9A884 /* AppList */,
+				8D1191431F3E5457009A8568 /* LaunchScreen */,
 			);
 			path = Redstone;
 			sourceTree = "<group>";
@@ -1106,6 +1119,7 @@
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
 				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,
+				8D1191461F3E5495009A8568 /* RSLaunchScreenController.m in Sources */,
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
 				8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */,
 				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,

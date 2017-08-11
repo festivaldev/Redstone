@@ -14,6 +14,7 @@
 
 - (void)loadTiles;
 - (void)saveTiles;
+- (RSTile*)tileForLeafIdentifier:(NSString*)leafIdentifier;
 
 - (void)setIsEditing:(BOOL)isEditing;
 - (void)setSelectedTile:(RSTile*)selectedTile;
