@@ -17,7 +17,7 @@
 		return 3;
 	}
 	
-	return 3;
+	return [[[RSPreferences preferences] objectForKey:@"columns"] intValue];
 }
 
 + (CGFloat)tileBorderSpacing {
@@ -39,6 +39,20 @@
 			return CGSizeMake(baseTileWidth*2 + [self tileBorderSpacing], baseTileWidth * 2 + [self tileBorderSpacing]);
 		case 3:
 			return CGSizeMake((baseTileWidth * 4) + ([self tileBorderSpacing] * 3), baseTileWidth * 2 + [self tileBorderSpacing]);
+	}
+	
+	return CGSizeZero;
+}
+
++ (CGSize)tileIconDimensionsForSize:(int)size {
+	CGSize tileSize = [self tileDimensionsForSize:size];
+	
+	switch (size) {
+		case 1:
+			return CGSizeMake(tileSize.height * 0.5, tileSize.height * 0.5);
+		case 2:
+		case 3:
+			return CGSizeMake(tileSize.height * 0.33333, tileSize.height * 0.33333);
 	}
 	
 	return CGSizeZero;

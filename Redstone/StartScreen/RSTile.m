@@ -11,6 +11,17 @@
 		
 		[self setBackgroundColor:[RSAesthetics accentColorForTile:self.tileInfo]];
 		
+		// Tile Icon
+		
+		if (self.tileInfo.fullSizeArtwork) {} else {
+			CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:size];
+			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
+			[tileImageView setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
+			[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
+			[tileImageView setTintColor:[UIColor whiteColor]];
+			[self addSubview:tileImageView];
+		}
+		
 		// Tile Label
 		
 		tileLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, frame.size.height-28, frame.size.width-16, 20)];
@@ -246,6 +257,15 @@
 									   newFrame.size.height - tileLabel.frame.size.height - 8,
 									   tileLabel.frame.size.width,
 									   tileLabel.frame.size.height)];
+	}
+	
+	if (self.tileInfo.fullSizeArtwork) {} else {
+		CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:self.size];
+		[tileImageView setFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
+		[tileImageView setCenter:CGPointMake(newFrame.size.width/2, newFrame.size.height/2)];
+		[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
+		[tileImageView setTintColor:[UIColor whiteColor]];
+		[self addSubview:tileImageView];
 	}
 	
 	[unpinButton setCenter:CGPointMake(newFrame.size.width, 0)];

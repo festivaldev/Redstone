@@ -5,5 +5,6 @@
 + (int)columns;
 + (CGFloat)tileBorderSpacing;
 + (CGSize)tileDimensionsForSize:(int)size;
++ (CGSize)tileIconDimensionsForSize:(int)size;
 
 @end

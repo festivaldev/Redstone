@@ -3,6 +3,7 @@
 @class SBLeafIcon, RSTileInfo, RSTileButton;
 
 @interface RSTile : UIView <UIGestureRecognizerDelegate> {
+	UIImageView* tileImageView;
 	UILabel* tileLabel;
 
 	BOOL panEnabled;

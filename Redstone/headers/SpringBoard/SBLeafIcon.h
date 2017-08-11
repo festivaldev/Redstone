@@ -7,5 +7,6 @@
 - (id)badgeNumberOrString;
 - (BOOL)isUninstallSupported;
 - (id)displayName;
+- (id)getUnmaskedIconImage:(int)arg1;
 
 @end
