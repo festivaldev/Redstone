@@ -137,6 +137,8 @@
 		8D1191341F3D0D10009A8568 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1190B31F3D0D10009A8568 /* tile@2x.png */; };
 		8D1191351F3D0D10009A8568 /* tile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1190B41F3D0D10009A8568 /* tile@3x.png */; };
 		8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191371F3D8933009A8568 /* RSAesthetics.m */; };
+		8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */; };
+		8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191401F3D9D25009A8568 /* RSAnimation.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -293,6 +295,11 @@
 		8D1191361F3D8933009A8568 /* RSAesthetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAesthetics.h; sourceTree = "<group>"; };
 		8D1191371F3D8933009A8568 /* RSAesthetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAesthetics.m; sourceTree = "<group>"; };
 		8D11913B1F3D8C00009A8568 /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
+		8D11913C1F3D9799009A8568 /* RSHomeScreenWallpaperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenWallpaperView.h; sourceTree = "<group>"; };
+		8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSHomeScreenWallpaperView.m; sourceTree = "<group>"; };
+		8D11913F1F3D9D25009A8568 /* RSAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAnimation.h; sourceTree = "<group>"; };
+		8D1191401F3D9D25009A8568 /* RSAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAnimation.m; sourceTree = "<group>"; };
+		8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIAnimationZoomApp.h; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -796,6 +803,7 @@
 		8DBEE1D21F352B7800AD4827 /* SpringBoard */ = {
 			isa = PBXGroup;
 			children = (
+				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
 				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
@@ -845,6 +853,8 @@
 				8DB0B6EC1F346515002E3CCF /* RSMetrics.m */,
 				8D1191361F3D8933009A8568 /* RSAesthetics.h */,
 				8D1191371F3D8933009A8568 /* RSAesthetics.m */,
+				8D11913F1F3D9D25009A8568 /* RSAnimation.h */,
+				8D1191401F3D9D25009A8568 /* RSAnimation.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -865,6 +875,8 @@
 				8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */,
 				8DF5EB3F1F33CC43003CC2B4 /* RSHomeScreenScrollView.h */,
 				8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */,
+				8D11913C1F3D9799009A8568 /* RSHomeScreenWallpaperView.h */,
+				8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -1093,7 +1105,9 @@
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
+				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
+				8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */,
 				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,
 				8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,

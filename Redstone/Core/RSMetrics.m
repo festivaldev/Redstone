@@ -58,4 +58,8 @@
 	return CGSizeZero;
 }
 
++ (CGFloat)sizeForPosition {
+	return [self tileDimensionsForSize:1].width + [self tileBorderSpacing];
+}
+
 @end

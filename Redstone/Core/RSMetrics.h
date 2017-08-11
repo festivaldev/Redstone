@@ -6,5 +6,6 @@
 + (CGFloat)tileBorderSpacing;
 + (CGSize)tileDimensionsForSize:(int)size;
 + (CGSize)tileIconDimensionsForSize:(int)size;
++ (CGFloat)sizeForPosition;
 
 @end

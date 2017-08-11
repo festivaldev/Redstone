@@ -5,6 +5,29 @@
 UIView* mainDisplaySceneLayoutView;
 BOOL switcherIsOpen;
 
+void playApplicationZoomAnimation(int direction, void (^callback)()) {
+	if (direction == 0) {
+		// Home Screen to App
+		
+		[RSAnimation startScreenAnimateOut];
+		callback();
+	} else if (direction == 1) {
+		// App to Home Screeen
+		callback();
+	}
+}
+
+// iOS 10
+%hook SBUIAnimationZoomApp
+
+- (void)__startAnimation {
+	playApplicationZoomAnimation([self zoomDirection], ^{
+		%orig;
+	});
+}
+
+%end // %hook SBUIAnimationZoomApp
+
 %hook SpringBoard
 
 - (long long) homeScreenRotationStyle {

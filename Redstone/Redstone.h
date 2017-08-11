@@ -1,5 +1,7 @@
 #define PREFERENCES_PATH @"/var/mobile/Library/Preferences/ml.festival.redstone.plist"
 #define RESOURCES_PATH @"/var/mobile/Library/FESTIVAL/Redstone"
+#define LOCK_WALLPAPER_PATH @"/var/mobile/Library/SpringBoard/LockBackground.cpbitmap"
+#define HOME_WALLPAPER_PATH @"/var/mobile/Library/SpringBoard/HomeBackground.cpbitmap"
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
@@ -21,10 +23,12 @@
 #import "Core/RSPreferences.h"
 #import "Core/RSMetrics.h"
 #import "Core/RSAesthetics.h"
+#import "Core/RSAnimation.h"
 
 #pragma mark Home Screen
 #import "HomeScreen/RSHomeScreenController.h"
 #import "HomeScreen/RSHomeScreenScrollView.h"
+#import "HomeScreen/RSHomeScreenWallpaperView.h"
 
 #pragma mark Start Screen
 #import "StartScreen/RSStartScreenController.h"

@@ -4,6 +4,8 @@
 
 @interface RSAesthetics : NSObject
 
++ (UIImage*)lockScreenWallpaper;
++ (UIImage*)homeScreenWallpaper;
 + (UIColor*)accentColor;
 + (UIColor*)accentColorForTile:(RSTileInfo*)tileInfo;
 + (CGFloat)tileOpacity;

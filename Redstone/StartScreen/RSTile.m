@@ -233,7 +233,7 @@
 	
 	CGSize newTileSize = [RSMetrics tileDimensionsForSize:self.size];
 	
-	CGFloat step = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
+	CGFloat step = [RSMetrics sizeForPosition];
 	
 	CGFloat maxPositionX = self.superview.bounds.size.width - newTileSize.width;
 	CGFloat maxPositionY = [(UIScrollView*)self.superview contentSize].height + [RSMetrics tileBorderSpacing];

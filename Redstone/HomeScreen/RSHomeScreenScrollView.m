@@ -15,8 +15,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	CGFloat progress = MIN(scrollView.contentOffset.x / scrollView.bounds.size.width, 0.75);
-	[scrollView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:progress]];
+	CGFloat progress = scrollView.contentOffset.x / scrollView.bounds.size.width;
+	
+	[scrollView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:MIN(progress, 0.75)]];
+	[[[[RSCore sharedInstance] homeScreenController] wallpaperView] setHorizontalParallax:progress];
 }
 
 @end

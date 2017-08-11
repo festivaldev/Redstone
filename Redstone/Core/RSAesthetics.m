@@ -1,6 +1,32 @@
 #import "Redstone.h"
 
+extern CFArrayRef CPBitmapCreateImagesFromData(CFDataRef cpbitmap, void*, int, void*);
+
 @implementation RSAesthetics
+
++ (UIImage*)lockScreenWallpaper {
+	NSData* lockScreenWallpaper = [NSData dataWithContentsOfFile:LOCK_WALLPAPER_PATH];
+	
+	CFDataRef lockWallpaperDataRef = (__bridge CFDataRef)lockScreenWallpaper;
+	NSArray* imageArray = (__bridge NSArray*)CPBitmapCreateImagesFromData(lockWallpaperDataRef, NULL, 1, NULL);
+	UIImage* lockWallpaper = [UIImage imageWithCGImage:(CGImageRef)imageArray[0]];
+	
+	return lockWallpaper;
+}
+
++ (UIImage*)homeScreenWallpaper {
+	NSData* homeScreenWallpaper = [NSData dataWithContentsOfFile:HOME_WALLPAPER_PATH];
+	
+	if (homeScreenWallpaper) {
+		CFDataRef homeWallpaperDataRef = (__bridge CFDataRef)homeScreenWallpaper;
+		NSArray* imageArray = (__bridge NSArray*)CPBitmapCreateImagesFromData(homeWallpaperDataRef, NULL, 1, NULL);
+		UIImage* homeWallpaper = [UIImage imageWithCGImage:(CGImageRef)imageArray[0]];
+		
+		return homeWallpaper;
+	} else {
+		return [self lockScreenWallpaper];
+	}
+}
 
 + (UIColor*)accentColor {
 	return [self colorFromHexString:[[RSPreferences preferences] objectForKey:@"accentColor"]];

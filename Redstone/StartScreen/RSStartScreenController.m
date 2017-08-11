@@ -20,7 +20,7 @@
 - (void)loadTiles {
 	NSArray* tileLayout = [[RSPreferences preferences] objectForKey:[NSString stringWithFormat:@"%iColumnLayout", 3]];
 	
-	CGFloat sizeForPosition = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
+	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
 	
 	for (int i=0; i<tileLayout.count; i++) {
 		SBLeafIcon* icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:[tileLayout objectAtIndex:i][@"bundleIdentifier"]];
@@ -113,7 +113,7 @@
 }
 
 - (void)snapTile:(RSTile*)tile withTouchPosition:(CGPoint)touchPosition {
-	CGFloat step = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
+	CGFloat step = [RSMetrics sizeForPosition];
 	CGFloat maxPositionX = self.view.bounds.size.width - tile.basePosition.size.width;
 	CGFloat maxPositionY = self.view.contentSize.height + [RSMetrics tileBorderSpacing];
 	
@@ -196,7 +196,7 @@
 - (void)eliminateEmptyRows {
 	pinnedTiles = [self sortPinnedTiles];
 	
-	CGFloat sizeForPosition = [RSMetrics tileDimensionsForSize:1].width + [RSMetrics tileBorderSpacing];
+	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
 	
 	for (RSTile* tile in pinnedTiles) {
 		CGRect tileFrame;

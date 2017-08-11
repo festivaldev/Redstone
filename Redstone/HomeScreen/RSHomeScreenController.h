@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 
-@class RSHomeScreenScrollView, RSStartScreenController, RSAppListController;
+@class RSHomeScreenWallpaperView, RSHomeScreenScrollView, RSStartScreenController, RSAppListController;
 
 @interface RSHomeScreenController : NSObject {
-	UIView* wallpaperView;
+	RSHomeScreenWallpaperView* wallpaperView;
 	RSHomeScreenScrollView* homeScreenScrollView;
 	
 	RSStartScreenController* startScreenController;
@@ -12,7 +12,9 @@
 
 @property (nonatomic, strong) UIView* view;
 
+- (RSHomeScreenWallpaperView*)wallpaperView;
 - (RSStartScreenController*)startScreenController;
+- (RSAppListController*)appListController;
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 
 @end
