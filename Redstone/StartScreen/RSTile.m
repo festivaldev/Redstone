@@ -1,4 +1,4 @@
-#import "../Redstone.h"
+#import "Redstone.h"
 
 @implementation RSTile
 
@@ -9,7 +9,7 @@
 		self.tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:bundleIdentifier];
 		self.originalCenter = self.center;
 		
-		[self setBackgroundColor:[UIColor colorWithRed:0.0 green:0.47 blue:0.84 alpha:0.8]];
+		[self setBackgroundColor:[RSAesthetics accentColorForTile:self.tileInfo]];
 		
 		// Tile Label
 		

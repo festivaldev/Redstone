@@ -136,6 +136,7 @@
 		8D1191331F3D0D10009A8568 /* tile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1190B21F3D0D10009A8568 /* tile.plist */; };
 		8D1191341F3D0D10009A8568 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1190B31F3D0D10009A8568 /* tile@2x.png */; };
 		8D1191351F3D0D10009A8568 /* tile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1190B41F3D0D10009A8568 /* tile@3x.png */; };
+		8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191371F3D8933009A8568 /* RSAesthetics.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -289,6 +290,9 @@
 		8D1190B21F3D0D10009A8568 /* tile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tile.plist; sourceTree = "<group>"; };
 		8D1190B31F3D0D10009A8568 /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
 		8D1190B41F3D0D10009A8568 /* tile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@3x.png"; sourceTree = "<group>"; };
+		8D1191361F3D8933009A8568 /* RSAesthetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAesthetics.h; sourceTree = "<group>"; };
+		8D1191371F3D8933009A8568 /* RSAesthetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAesthetics.m; sourceTree = "<group>"; };
+		8D11913B1F3D8C00009A8568 /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -320,7 +324,6 @@
 		8DBEE1CF1F3529D000AD4827 /* RSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSTile.m; path = Redstone/StartScreen/RSTile.m; sourceTree = SOURCE_ROOT; };
 		8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLeafIcon.h; sourceTree = "<group>"; };
 		8DBEE1D41F352B7800AD4827 /* SBUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
-		8DBEE1D51F352B8000AD4827 /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
 		8DBEE1D61F352BDC00AD4827 /* SBIconController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconController.h; sourceTree = "<group>"; };
 		8DBEE1D71F352C1600AD4827 /* SBIconModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconModel.h; sourceTree = "<group>"; };
 		8DC70CF21F345BCB00F9A884 /* RSAppListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 				8DC70CF61F345D4800F9A884 /* RSPreferences.m */,
 				8DB0B6EB1F346515002E3CCF /* RSMetrics.h */,
 				8DB0B6EC1F346515002E3CCF /* RSMetrics.m */,
+				8D1191361F3D8933009A8568 /* RSAesthetics.h */,
+				8D1191371F3D8933009A8568 /* RSAesthetics.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -847,7 +852,7 @@
 		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				8DBEE1D51F352B8000AD4827 /* SpringBoard.h */,
+				8D11913B1F3D8C00009A8568 /* SpringBoard.h */,
 				8DBEE1D21F352B7800AD4827 /* SpringBoard */,
 			);
 			path = headers;
@@ -1095,6 +1100,7 @@
 				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */,
 				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,

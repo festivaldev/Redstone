@@ -7,14 +7,14 @@ export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.rs-internal.$(shell
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Redstone
-Redstone_CFLAGS = -fobjc-arc
+Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
 Redstone_FILES = Redstone_Core.xm Redstone_HomeScreen.xm
 
 # Libraries
 Redstone_FILES += Libraries/CAKeyframeAnimation+AHEasing.m Libraries/easing.c Libraries/UIFont+WDCustomLoader.m Libraries/UIImageAverageColorAddition.m Libraries/UIView+Easing.m
 
 # Core
-Redstone_FILES += Core/RSCore.m Core/RSPreferences.m Core/RSMetrics.m
+Redstone_FILES += Core/RSCore.m Core/RSPreferences.m Core/RSMetrics.m Core/RSAesthetics.m
 
 # Home Screen
 Redstone_FILES += HomeScreen/RSHomeScreenController.m HomeScreen/RSHomeScreenScrollView.m
