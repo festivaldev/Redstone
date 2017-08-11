@@ -4,10 +4,11 @@
 
 UIView* mainDisplaySceneLayoutView;
 BOOL switcherIsOpen;
+static BOOL hasBeenUnlockedBefore;
 
 void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	RSHomeScreenController* homeScreenController = [[RSCore sharedInstance] homeScreenController];
-	//RSStartScreenController* startScreenController = [homeScreenController startScreenController];
+	RSStartScreenController* startScreenController = [homeScreenController startScreenController];
 	//RSAppListController* appListController = [homeScreenController appListController];
 	RSLaunchScreenController* launchScreenController = [homeScreenController launchScreenController];
 	
@@ -18,11 +19,43 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay+0.31 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[launchScreenController animateIn];
+			
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				[homeScreenController setContentOffset:CGPointZero];
+				[startScreenController setContentOffset:CGPointMake(0, -24)];
+			});
+			
 			callback();
 		});
 	} else if (direction == 1) {
 		// App to Home Screeen
-		callback();
+		
+		if ([launchScreenController launchIdentifier] != nil && ![launchScreenController isUnlocking]) {
+			[launchScreenController animateCurrentApplicationSnapshot];
+			[startScreenController setTilesHidden:YES];
+			
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				[RSAnimation startScreenAnimateIn];
+				
+				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+					[launchScreenController setLaunchIdentifier:nil];
+				});
+				
+				callback();
+			});
+		} else {
+			if (hasBeenUnlockedBefore) {
+				//[[RSHomeScreenController sharedInstance] deviceHasBeenUnlocked];
+			} else {
+				hasBeenUnlockedBefore = YES;
+				
+				[RSAnimation startScreenAnimateIn];
+			}
+			
+			callback();
+		}
+	
+		[launchScreenController setIsUnlocking:NO];
 	}
 }
 
@@ -36,6 +69,22 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 }
 
 %end // %hook SBUIAnimationZoomApp
+
+%hook SBLockScreenManager
+
+-(BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
+	//[[RSStartScreenController sharedInstance] setTilesVisible:NO];
+	
+	id frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (frontApp == nil) {
+		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:YES];
+	}
+	
+	return %orig;
+}
+
+%end // %hook SBLockScreenManager
 
 %hook SpringBoard
 

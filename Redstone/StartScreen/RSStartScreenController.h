@@ -12,6 +12,10 @@
 @property (nonatomic, assign) BOOL isEditing;
 @property (nonatomic, strong) RSTile* selectedTile;
 
+- (void)setScrollEnabled:(BOOL)scrollEnabled;
+- (void)setContentOffset:(CGPoint)contentOffset;
+- (void)setTilesHidden:(BOOL)hidden;
+
 - (void)loadTiles;
 - (void)saveTiles;
 - (RSTile*)tileForLeafIdentifier:(NSString*)leafIdentifier;

@@ -1,3 +1,4 @@
+#import "SpringBoard/SpringBoard-Class.h"
 #import "SpringBoard/SBUIAnimationZoomApp.h"
 #import "SpringBoard/SBUIController.h"
 #import "SpringBoard/SBIconController.h"

@@ -18,6 +18,8 @@
 - (RSAppListController*)appListController;
 - (RSLaunchScreenController*)launchScreenController;
 - (CGFloat)launchApplication;
+
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
+- (void)setContentOffset:(CGPoint)contentOffset;
 
 @end

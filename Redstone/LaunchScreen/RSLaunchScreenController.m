@@ -2,6 +2,8 @@
 
 @implementation RSLaunchScreenController
 
+UIImage* _UICreateScreenUIImage();
+
 - (id)init {
 	if (self = [super init]) {
 		self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
@@ -10,6 +12,10 @@
 		
 		launchImageView = [UIImageView new];
 		[self.window addSubview:launchImageView];
+		
+		applicationSnapshot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+		[applicationSnapshot setHidden:YES];
+		[self.window addSubview:applicationSnapshot];
 	}
 	
 	return self;
@@ -88,6 +94,53 @@
 			_isLaunchingApp = NO;
 			[self.window setHidden:YES];
 		});
+	});
+}
+
+- (void)animateCurrentApplicationSnapshot {
+	if (_isLaunchingApp) {
+		return;
+	}
+	
+	_isLaunchingApp = YES;
+	
+	[applicationSnapshot.layer removeAllAnimations];
+	[applicationSnapshot setImage:_UICreateScreenUIImage()];
+	[applicationSnapshot setHidden:NO];
+	
+	[self.window.layer removeAllAnimations];
+	[self.window setBackgroundColor:[UIColor clearColor]];
+	[launchImageView setHidden:YES];
+	
+	[self.window makeKeyAndVisible];
+	[self.window setAlpha:0];
+	[self.window setHidden:NO];
+	
+	CAAnimation *opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+															function:CubicEaseInOut
+														   fromValue:1.0
+															 toValue:0.0];
+	opacity.duration = 0.2;
+	opacity.removedOnCompletion = NO;
+	opacity.fillMode = kCAFillModeForwards;
+	
+	CAAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"
+														  function:CubicEaseInOut
+														 fromValue:1.0
+														   toValue:1.5];
+	scale.duration = 0.15;
+	scale.removedOnCompletion = NO;
+	scale.fillMode = kCAFillModeForwards;
+	
+	[self.window.layer addAnimation:opacity forKey:@"opacity"];
+	[self.window.layer addAnimation:scale forKey:@"scale"];
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		_isLaunchingApp = NO;
+		
+		[self.window setHidden:YES];
+		[applicationSnapshot setImage:nil];
+		[applicationSnapshot setHidden:YES];
 	});
 }
 

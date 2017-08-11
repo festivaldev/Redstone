@@ -138,7 +138,98 @@
 }
 
 + (void)startScreenAnimateIn {
+	RSStartScreenScrollView* startScreen = [[[[RSCore sharedInstance] homeScreenController] startScreenController] view];
 	
+	NSMutableArray* tiles = [NSMutableArray new];
+	for (UIView* view in startScreen.subviews) {
+		if ([view isKindOfClass:[RSTile class]]) {
+			[tiles addObject:view];
+		}
+	}
+	
+	NSMutableArray* tilesInView = [NSMutableArray new];
+	NSMutableArray* tilesNotInView = [NSMutableArray new];
+	
+	for (RSTile* tile in tiles) {
+		[tile.layer removeAllAnimations];
+		[tile setTransform:CGAffineTransformIdentity];
+		
+		if (CGRectIntersectsRect(startScreen.bounds, tile.basePosition)) {
+			[tilesInView addObject:tile];
+			
+			[tile setHidden:NO];
+			[tile.layer setOpacity:0];
+		} else {
+			[tilesNotInView addObject:tile];
+		}
+	}
+	
+	for (RSTile* tile in tilesNotInView) {
+		[tile setHidden:YES];
+	}
+	
+	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
+	int minX = INT_MAX, maxX = INT_MIN, minY = INT_MAX, maxY = INT_MIN;
+	for (RSTile* tile in tilesInView) {
+		minX = MIN(tile.basePosition.origin.x / sizeForPosition, minX);
+		maxX = MAX(tile.basePosition.origin.x / sizeForPosition, maxX);
+		
+		minY = MIN(tile.basePosition.origin.y / sizeForPosition, minY);
+		maxY = MAX(tile.basePosition.origin.y / sizeForPosition, maxY);
+	}
+	
+	float maxDelay = ((maxY - minY) * 0.01) + (maxX * 0.01);
+	
+	for (RSTile* tile in tilesInView) {
+		int tileX = tile.basePosition.origin.x / sizeForPosition;
+		int tileY = tile.basePosition.origin.y / sizeForPosition;
+		CGFloat delay = (tileX * 0.01) + (tileY - minY) * 0.01;
+		
+		CAAnimation* scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"
+															  function:CubicEaseOut
+															 fromValue:0.8
+															   toValue:1.0];
+		[scale setDuration:0.4];
+		[scale setRemovedOnCompletion:NO];
+		[scale setFillMode:kCAFillModeForwards];
+		
+		CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+																function:CubicEaseOut
+															   fromValue:0.0
+																 toValue:1.0];
+		[opacity setDuration:0.3];
+		[opacity setRemovedOnCompletion:NO];
+		[opacity setFillMode:kCAFillModeForwards];
+
+		[scale setBeginTime:CACurrentMediaTime() + delay];
+		[opacity setBeginTime:CACurrentMediaTime() + delay];
+		
+		[tile.layer setShouldRasterize:YES];
+		[tile.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+		[tile.layer setContentsScale:[[UIScreen mainScreen] scale]];
+		
+		CGFloat layerX = -(tile.basePosition.origin.x - CGRectGetMidX(startScreen.bounds))/tile.basePosition.size.width;
+		CGFloat layerY = -(tile.basePosition.origin.y - CGRectGetMidY(startScreen.bounds))/tile.basePosition.size.height;
+		
+		[tile setCenter:CGPointMake(CGRectGetMidX(startScreen.bounds),
+									CGRectGetMidY(startScreen.bounds))];
+		[tile.layer setAnchorPoint:CGPointMake(layerX, layerY)];
+		
+		[tile.layer addAnimation:scale forKey:@"scale"];
+		[tile.layer addAnimation:opacity forKey:@"opacity"];
+	}
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		
+		for (RSTile* tile in tiles) {
+			[tile.layer removeAllAnimations];
+			[tile.layer setOpacity:1];
+			[tile setAlpha:1.0];
+			[tile setHidden:NO];
+			[tile.layer setAnchorPoint:CGPointMake(0.5,0.5)];
+			[tile setCenter:[tile originalCenter]];
+		}
+	});
 }
 
 @end

@@ -4,6 +4,6 @@
 
 + (CGFloat)startScreenAnimationDelay;
 + (void)startScreenAnimateOut;
-//+ (void)homeScreenAnimateIn;
++ (void)startScreenAnimateIn;
 
 @end

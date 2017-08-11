@@ -15,6 +15,20 @@
 	return self;
 }
 
+- (void)setScrollEnabled:(BOOL)scrollEnabled {
+	[self.view setScrollEnabled:scrollEnabled];
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset {
+	[self.view setContentOffset:contentOffset];
+}
+
+- (void)setTilesHidden:(BOOL)hidden {
+	for (RSTile* tile in pinnedTiles) {
+		[tile.layer setOpacity:(hidden ? 0 : 1)];
+	}
+}
+
 #pragma mark Tile Management
 
 - (void)loadTiles {

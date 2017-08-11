@@ -303,6 +303,7 @@
 		8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIAnimationZoomApp.h; sourceTree = "<group>"; };
 		8D1191441F3E5495009A8568 /* RSLaunchScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLaunchScreenController.h; sourceTree = "<group>"; };
 		8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLaunchScreenController.m; sourceTree = "<group>"; };
+		8D1191471F3E6817009A8568 /* SpringBoard-Class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpringBoard-Class.h"; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -815,6 +816,7 @@
 		8DBEE1D21F352B7800AD4827 /* SpringBoard */ = {
 			isa = PBXGroup;
 			children = (
+				8D1191471F3E6817009A8568 /* SpringBoard-Class.h */,
 				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
 				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,

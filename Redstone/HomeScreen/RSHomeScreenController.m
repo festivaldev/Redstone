@@ -55,4 +55,8 @@
 	[homeScreenScrollView setScrollEnabled:scrollEnabled];
 }
 
+- (void)setContentOffset:(CGPoint)contentOffset {
+	[homeScreenScrollView setContentOffset:contentOffset];
+}
+
 @end
