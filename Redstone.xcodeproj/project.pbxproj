@@ -140,6 +140,13 @@
 		8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */; };
 		8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191401F3D9D25009A8568 /* RSAnimation.m */; };
 		8D1191461F3E5495009A8568 /* RSLaunchScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */; };
+		8D11914C1F3F8A93009A8568 /* default_icon-AppList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1191481F3F8A93009A8568 /* default_icon-AppList@2x.png */; };
+		8D11914D1F3F8A93009A8568 /* default_icon-AppList@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D1191491F3F8A93009A8568 /* default_icon-AppList@3x.png */; };
+		8D11914E1F3F8A93009A8568 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D11914A1F3F8A93009A8568 /* default_icon@2x.png */; };
+		8D11914F1F3F8A93009A8568 /* default_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D11914B1F3F8A93009A8568 /* default_icon@3x.png */; };
+		8D1191521F3F8CAE009A8568 /* RSAppListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191511F3F8CAE009A8568 /* RSAppListScrollView.m */; };
+		8D1191551F3F912C009A8568 /* RSApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191541F3F912C009A8568 /* RSApp.m */; };
+		8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191571F3F93B8009A8568 /* RSAppListSection.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -304,6 +311,19 @@
 		8D1191441F3E5495009A8568 /* RSLaunchScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLaunchScreenController.h; sourceTree = "<group>"; };
 		8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLaunchScreenController.m; sourceTree = "<group>"; };
 		8D1191471F3E6817009A8568 /* SpringBoard-Class.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpringBoard-Class.h"; sourceTree = "<group>"; };
+		8D1191481F3F8A93009A8568 /* default_icon-AppList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon-AppList@2x.png"; sourceTree = "<group>"; };
+		8D1191491F3F8A93009A8568 /* default_icon-AppList@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon-AppList@3x.png"; sourceTree = "<group>"; };
+		8D11914A1F3F8A93009A8568 /* default_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon@2x.png"; sourceTree = "<group>"; };
+		8D11914B1F3F8A93009A8568 /* default_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon@3x.png"; sourceTree = "<group>"; };
+		8D1191501F3F8CAE009A8568 /* RSAppListScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListScrollView.h; sourceTree = "<group>"; };
+		8D1191511F3F8CAE009A8568 /* RSAppListScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListScrollView.m; sourceTree = "<group>"; };
+		8D1191531F3F912C009A8568 /* RSApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSApp.h; sourceTree = "<group>"; };
+		8D1191541F3F912C009A8568 /* RSApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSApp.m; sourceTree = "<group>"; };
+		8D1191561F3F93B8009A8568 /* RSAppListSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListSection.h; sourceTree = "<group>"; };
+		8D1191571F3F93B8009A8568 /* RSAppListSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListSection.m; sourceTree = "<group>"; };
+		8D1191591F3F9909009A8568 /* segoeuisl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuisl.ttf; sourceTree = "<group>"; };
+		8D11915A1F3F9C30009A8568 /* segoeuil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuil.ttf; sourceTree = "<group>"; };
+		8D11915B1F3FAA5E009A8568 /* RSAppListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -337,7 +357,6 @@
 		8DBEE1D41F352B7800AD4827 /* SBUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
 		8DBEE1D61F352BDC00AD4827 /* SBIconController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconController.h; sourceTree = "<group>"; };
 		8DBEE1D71F352C1600AD4827 /* SBIconModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconModel.h; sourceTree = "<group>"; };
-		8DC70CF21F345BCB00F9A884 /* RSAppListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
@@ -368,6 +387,10 @@
 		8D11900F1F3D0D10009A8568 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				8D1191481F3F8A93009A8568 /* default_icon-AppList@2x.png */,
+				8D1191491F3F8A93009A8568 /* default_icon-AppList@3x.png */,
+				8D11914A1F3F8A93009A8568 /* default_icon@2x.png */,
+				8D11914B1F3F8A93009A8568 /* default_icon@3x.png */,
 				8D1190101F3D0D10009A8568 /* com.apple.appleseed.FeedbackAssistant */,
 				8D1190151F3D0D10009A8568 /* com.apple.AppStore */,
 				8D11901A1F3D0D10009A8568 /* com.apple.Bridge */,
@@ -772,6 +795,8 @@
 			children = (
 				8D6251A51F39B5920007298A /* segmdl2.ttf */,
 				8D259EA01F3700C400BFFB39 /* segoeui.ttf */,
+				8D1191591F3F9909009A8568 /* segoeuisl.ttf */,
+				8D11915A1F3F9C30009A8568 /* segoeuil.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -830,8 +855,14 @@
 		8DC70CF11F345BB700F9A884 /* AppList */ = {
 			isa = PBXGroup;
 			children = (
-				8DC70CF21F345BCB00F9A884 /* RSAppListController.h */,
+				8D11915B1F3FAA5E009A8568 /* RSAppListController.h */,
 				8DC70CF31F345BCB00F9A884 /* RSAppListController.m */,
+				8D1191501F3F8CAE009A8568 /* RSAppListScrollView.h */,
+				8D1191511F3F8CAE009A8568 /* RSAppListScrollView.m */,
+				8D1191531F3F912C009A8568 /* RSApp.h */,
+				8D1191541F3F912C009A8568 /* RSApp.m */,
+				8D1191561F3F93B8009A8568 /* RSAppListSection.h */,
+				8D1191571F3F93B8009A8568 /* RSAppListSection.m */,
 			);
 			path = AppList;
 			sourceTree = "<group>";
@@ -993,11 +1024,13 @@
 				8D1190F31F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D11911E1F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1190D01F3D0D10009A8568 /* tile@3x.png in Resources */,
+				8D11914F1F3F8A93009A8568 /* default_icon@3x.png in Resources */,
 				8D1191091F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1190CE1F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D1190C61F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D11911F1F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1190DD1F3D0D10009A8568 /* Localizable.strings in Resources */,
+				8D11914C1F3F8A93009A8568 /* default_icon-AppList@2x.png in Resources */,
 				8D11910C1F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D1190D31F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1190E31F3D0D10009A8568 /* Localizable.strings in Resources */,
@@ -1036,6 +1069,7 @@
 				8D1190EF1F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190CF1F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1191241F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
+				8D11914D1F3F8A93009A8568 /* default_icon-AppList@3x.png in Resources */,
 				8D1191191F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D11911B1F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191271F3D0D10009A8568 /* tile@2x.png in Resources */,
@@ -1050,6 +1084,7 @@
 				8D1191341F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1191231F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1190F01F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
+				8D11914E1F3F8A93009A8568 /* default_icon@2x.png in Resources */,
 				8D1191301F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191041F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D11912F1F3D0D10009A8568 /* tile@2x.png in Resources */,
@@ -1120,6 +1155,8 @@
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
+				8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */,
+				8D1191551F3F912C009A8568 /* RSApp.m in Sources */,
 				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,
 				8D1191461F3E5495009A8568 /* RSLaunchScreenController.m in Sources */,
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
@@ -1135,6 +1172,7 @@
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
 				8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */,
+				8D1191521F3F8CAE009A8568 /* RSAppListScrollView.m in Sources */,
 				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,7 +2,7 @@
 
 @class RSHomeScreenWallpaperView, RSHomeScreenScrollView, RSStartScreenController, RSAppListController, RSLaunchScreenController;
 
-@interface RSHomeScreenController : NSObject {
+@interface RSHomeScreenController : NSObject <UIScrollViewDelegate> {
 	RSHomeScreenWallpaperView* wallpaperView;
 	RSHomeScreenScrollView* homeScreenScrollView;
 	
@@ -20,6 +20,8 @@
 - (CGFloat)launchApplication;
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
+- (BOOL)isScrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;
+- (CGPoint)contentOffset;
 
 @end

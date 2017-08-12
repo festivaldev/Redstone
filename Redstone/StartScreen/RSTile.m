@@ -28,7 +28,15 @@
 		[tileLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
 		[tileLabel setTextAlignment:NSTextAlignmentLeft];
 		[tileLabel setTextColor:[UIColor whiteColor]];
-		[tileLabel setText:[self.icon displayName]];
+		
+		if (self.tileInfo.localizedDisplayName) {
+			[tileLabel setText:self.tileInfo.localizedDisplayName];
+		} else if (self.tileInfo.displayName) {
+			[tileLabel setText:self.tileInfo.displayName];
+		} else {
+			[tileLabel setText:[self.icon displayName]];
+		}
+		
 		[self addSubview:tileLabel];
 		
 		if (self.size < 2 || self.tileInfo.tileHidesLabel || [[self.tileInfo.labelHiddenForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
@@ -65,6 +73,7 @@
 		
 		resizeButton = [[RSTileButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30) title:@"\uE7EA" target:self action:@selector(setNextSize)];
 		[resizeButton setCenter:CGPointMake(frame.size.width, frame.size.height)];
+		[resizeButton setTransform:CGAffineTransformMakeRotation(deg2rad([self scaleButtonRotationForCurrentSize]))];
 		[resizeButton setHidden:YES];
 		
 		if (self.tileInfo.supportedSizes.count > 1) {
@@ -217,7 +226,7 @@
 }
 
 - (void)unpin {
-	
+	[[[[RSCore sharedInstance] homeScreenController] startScreenController] unpinTile:self];
 }
 
 - (void)setNextSize {

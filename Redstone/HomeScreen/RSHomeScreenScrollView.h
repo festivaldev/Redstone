@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface RSHomeScreenScrollView : UIScrollView <UIScrollViewDelegate>
+@interface RSHomeScreenScrollView : UIScrollView
 
 @end

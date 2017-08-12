@@ -36,7 +36,7 @@
 
 + (void)startScreenAnimateOut {
 	RSStartScreenScrollView* startScreen = [[[[RSCore sharedInstance] homeScreenController] startScreenController] view];
-	RSTile* sender = [[[[RSCore sharedInstance] homeScreenController] startScreenController] tileForLeafIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
+	RSTile* sender = [[[[RSCore sharedInstance] homeScreenController] startScreenController] tileForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
 	
 	NSMutableArray* tiles = [NSMutableArray new];
 	for (UIView* view in startScreen.subviews) {
@@ -228,6 +228,206 @@
 			[tile setHidden:NO];
 			[tile.layer setAnchorPoint:CGPointMake(0.5,0.5)];
 			[tile setCenter:[tile originalCenter]];
+		}
+	});
+}
+
++ (CGFloat)appListAnimationDelay {
+	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	
+	NSMutableArray* viewsInView = [NSMutableArray new];
+	
+	for (UIView* view in appList.subviews) {
+		if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+			if (CGRectIntersectsRect(appList.bounds, view.frame)) {
+				[viewsInView addObject:view];
+			}
+		}
+	}
+	
+	return [viewsInView count] * 0.01;
+}
+
++ (void)appListAnimateOut {
+	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	
+	RSApp* sender = [[[[RSCore sharedInstance] homeScreenController] appListController] appForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
+	
+	NSMutableArray* viewsInView = [NSMutableArray new];
+	NSMutableArray* viewsNotInView = [NSMutableArray new];
+	
+	for (UIView* view in appList.subviews) {
+		if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+			[view.layer removeAllAnimations];
+			[view setTransform:CGAffineTransformIdentity];
+			if (CGRectIntersectsRect(appList.bounds, view.frame)) {
+				[viewsInView addObject:view];
+			} else {
+				[viewsNotInView addObject:view];
+			}
+		}
+	}
+	
+	viewsInView = [[viewsInView sortedArrayUsingComparator:^NSComparisonResult(UIView* view1, UIView* view2) {
+		return [[NSNumber numberWithFloat:view1.frame.origin.y] compare:[NSNumber numberWithFloat:view2.frame.origin.y]];
+	}] mutableCopy];
+	
+	for (UIView* view in viewsNotInView) {
+		[view setHidden:YES];
+	}
+	
+	float maxDelay = [viewsInView count] * 0.01;
+	
+	for (UIView* view in viewsInView) {
+		CGFloat delay = [viewsInView indexOfObject:view] * 0.01;
+		
+		CAAnimation* scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"
+															  function:CubicEaseIn
+															 fromValue:1.0
+															   toValue:4.0];
+		[scale setDuration:0.225];
+		[scale setRemovedOnCompletion:NO];
+		[scale setFillMode:kCAFillModeForwards];
+		
+		CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+																function:CubicEaseIn
+															   fromValue:1.0
+																 toValue:0.0];
+		[opacity setDuration:0.2];
+		[opacity setRemovedOnCompletion:NO];
+		[opacity setFillMode:kCAFillModeForwards];
+		
+		if (view == sender) {
+			[view.superview sendSubviewToBack:view];
+			[scale setBeginTime:CACurrentMediaTime() + delay + 0.1];
+			[opacity setBeginTime:CACurrentMediaTime() + delay + 0.1];
+		} else if ([view isKindOfClass:NSClassFromString(@"RSAppListSection")]) {
+			[opacity setDuration:0.1];
+		} else {
+			[scale setBeginTime:CACurrentMediaTime() + delay];
+			[opacity setBeginTime:CACurrentMediaTime() + delay];
+		}
+		
+		[view.layer setShouldRasterize:YES];
+		[view.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+		[view.layer setContentsScale:[[UIScreen mainScreen] scale]];
+		
+		float width = view.bounds.size.width;
+		float height = view.bounds.size.height;
+		
+		CGRect basePosition = CGRectMake(view.layer.position.x - (width/2),
+										 view.layer.position.y - (height/2),
+										 width,
+										 height);
+		
+		CGFloat layerX = -(basePosition.origin.x - CGRectGetMidX(appList.bounds))/basePosition.size.width;
+		CGFloat layerY = -(basePosition.origin.y - CGRectGetMidY(appList.bounds))/basePosition.size.height;
+		
+		[view setCenter:CGPointMake(CGRectGetMidX(appList.bounds),
+									CGRectGetMidY(appList.bounds))];
+		[view.layer setAnchorPoint:CGPointMake(layerX, layerY)];
+		
+		[view.layer addAnimation:scale forKey:@"scale"];
+		[view.layer addAnimation:opacity forKey:@"opacity"];
+	}
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		for (UIView* view in appList.subviews) {
+			if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+				[view.layer setOpacity:0];
+				[view.layer removeAllAnimations];
+				[view.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
+				
+				[view setCenter:[(RSApp*)view originalCenter]];
+			}
+		}
+	});
+}
+
++ (void)appListAnimateIn {
+	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	
+	NSMutableArray* viewsInView = [NSMutableArray new];
+	NSMutableArray* viewsNotInView = [NSMutableArray new];
+	
+	for (UIView* view in appList.subviews) {
+		if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+			[view.layer removeAllAnimations];
+			[view setTransform:CGAffineTransformIdentity];
+			if (CGRectIntersectsRect(appList.bounds, view.frame)) {
+				[viewsInView addObject:view];
+			} else {
+				[viewsNotInView addObject:view];
+			}
+		}
+	}
+	
+	viewsInView = [[viewsInView sortedArrayUsingComparator:^NSComparisonResult(UIView* view1, UIView* view2) {
+		return [[NSNumber numberWithFloat:view1.frame.origin.y] compare:[NSNumber numberWithFloat:view2.frame.origin.y]];
+	}] mutableCopy];
+	
+	for (UIView* view in viewsNotInView) {
+		[view setHidden:YES];
+	}
+	
+	float maxDelay = [viewsInView count] * 0.01;
+	
+	for (UIView* view in viewsInView) {
+		CGFloat delay = [viewsInView indexOfObject:view] * 0.01;
+		
+		CAAnimation* scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"
+															  function:CubicEaseOut
+															 fromValue:0.8
+															   toValue:1.0];
+		[scale setDuration:0.4];
+		[scale setRemovedOnCompletion:NO];
+		[scale setFillMode:kCAFillModeForwards];
+		
+		CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+																function:CubicEaseOut
+															   fromValue:0.0
+																 toValue:1.0];
+		[opacity setDuration:0.3];
+		[opacity setRemovedOnCompletion:NO];
+		[opacity setFillMode:kCAFillModeForwards];
+		
+		[scale setBeginTime:CACurrentMediaTime() + delay];
+		[opacity setBeginTime:CACurrentMediaTime() + delay];
+		
+		[view.layer setShouldRasterize:YES];
+		[view.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+		[view.layer setContentsScale:[[UIScreen mainScreen] scale]];
+		
+		float width = view.bounds.size.width;
+		float height = view.bounds.size.height;
+		
+		CGRect basePosition = CGRectMake(view.layer.position.x - (width/2),
+										 view.layer.position.y - (height/2),
+										 width,
+										 height);
+		
+		CGFloat layerX = -(basePosition.origin.x - CGRectGetMidX(appList.bounds))/basePosition.size.width;
+		CGFloat layerY = -(basePosition.origin.y - CGRectGetMidY(appList.bounds))/basePosition.size.height;
+		
+		[view setCenter:CGPointMake(CGRectGetMidX(appList.bounds),
+									CGRectGetMidY(appList.bounds))];
+		[view.layer setAnchorPoint:CGPointMake(layerX, layerY)];
+		
+		[view.layer addAnimation:scale forKey:@"scale"];
+		[view.layer addAnimation:opacity forKey:@"opacity"];
+	}
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		for (UIView* view in appList.subviews) {
+			if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+				[view setUserInteractionEnabled:YES];
+				[view.layer removeAllAnimations];
+				[view.layer setOpacity:1];
+				[view setAlpha:1.0];
+				[view setHidden:NO];
+				[view.layer setAnchorPoint:CGPointMake(0.5,0.5)];
+				[view setCenter:[(RSApp*)view originalCenter]];
+			}
 		}
 	});
 }

@@ -9,7 +9,7 @@ static BOOL hasBeenUnlockedBefore;
 void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	RSHomeScreenController* homeScreenController = [[RSCore sharedInstance] homeScreenController];
 	RSStartScreenController* startScreenController = [homeScreenController startScreenController];
-	//RSAppListController* appListController = [homeScreenController appListController];
+	RSAppListController* appListController = [homeScreenController appListController];
 	RSLaunchScreenController* launchScreenController = [homeScreenController launchScreenController];
 	
 	if (direction == 0) {
@@ -23,6 +23,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 				[homeScreenController setContentOffset:CGPointZero];
 				[startScreenController setContentOffset:CGPointMake(0, -24)];
+				[appListController setContentOffset:CGPointMake(0, 0)];
 			});
 			
 			callback();
@@ -36,6 +37,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 				[RSAnimation startScreenAnimateIn];
+				[RSAnimation appListAnimateIn];
 				
 				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 					[launchScreenController setLaunchIdentifier:nil];
@@ -50,6 +52,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 				hasBeenUnlockedBefore = YES;
 				
 				[RSAnimation startScreenAnimateIn];
+				[RSAnimation appListAnimateIn];
 			}
 			
 			callback();

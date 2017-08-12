@@ -39,6 +39,8 @@ static RSCore* sharedInstance;
 		_window = window;
 		
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segoeui.ttf", RESOURCES_PATH]]];
+		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segoeuisl.ttf", RESOURCES_PATH]]];
+		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segoeuil.ttf", RESOURCES_PATH]]];
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segmdl2.ttf", RESOURCES_PATH]]];
 		
 		if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {

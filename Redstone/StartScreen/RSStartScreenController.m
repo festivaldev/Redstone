@@ -15,6 +15,8 @@
 	return self;
 }
 
+#pragma mark Delegate
+
 - (void)setScrollEnabled:(BOOL)scrollEnabled {
 	[self.view setScrollEnabled:scrollEnabled];
 }
@@ -27,6 +29,15 @@
 	for (RSTile* tile in pinnedTiles) {
 		[tile.layer setOpacity:(hidden ? 0 : 1)];
 	}
+}
+
+- (id)viewIntersectsWithAnotherView:(CGRect)rect {
+	for (RSTile* tile in pinnedTiles) {
+		if (CGRectIntersectsRect(tile.basePosition, rect)) {
+			return tile;
+		}
+	}
+	return nil;
 }
 
 #pragma mark Tile Management
@@ -61,9 +72,84 @@
 
 - (void)saveTiles {}
 
-- (RSTile*)tileForLeafIdentifier:(NSString*)leafIdentifier {
+- (void)pinTileWithBundleIdentifier:(NSString*)bundleIdentifier {
+	if ([pinnedIdentifiers containsObject:bundleIdentifier]) {
+		return;
+	}
+	
+	if (![[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:bundleIdentifier]) {
+		return;
+	}
+	
+	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
+	int maxTileX = 0, maxTileY = 0;
 	for (RSTile* tile in pinnedTiles) {
-		if ([[tile.icon applicationBundleID] isEqualToString:leafIdentifier]) {
+		if (tile.basePosition.origin.y / sizeForPosition > maxTileY) {
+			maxTileX = 0;
+		}
+		
+		maxTileX = MAX(tile.basePosition.origin.x / sizeForPosition, maxTileX);
+		maxTileY = MAX(tile.basePosition.origin.y / sizeForPosition, maxTileY);
+	}
+	
+	CGSize tileSize = [RSMetrics tileDimensionsForSize:2];
+	BOOL tileHasBeenPinned = NO;
+	
+	for (int i=0; i<3; i++) {
+		for (int j=0; j<[RSMetrics columns]*2; j++) {
+			CGRect tileFrame = CGRectMake(j * sizeForPosition,
+										  (maxTileY + i) * sizeForPosition,
+										  tileSize.width,
+										  tileSize.height);
+			
+			if (![self viewIntersectsWithAnotherView:tileFrame] && (tileFrame.origin.x + tileFrame.size.width) <= self.view.bounds.size.width) {
+				RSTile* tile = [[RSTile alloc] initWithFrame:tileFrame size:2 bundleIdentifier:bundleIdentifier];
+				[self.view addSubview:tile];
+				
+				[pinnedTiles addObject:tile];
+				[pinnedIdentifiers addObject:bundleIdentifier];
+				
+				tileHasBeenPinned = YES;
+				break;
+			}
+		}
+		
+		if (tileHasBeenPinned) {
+			break;
+		}
+	}
+	
+	[self eliminateEmptyRows];
+	[self saveTiles];
+	
+	[self.view setContentOffset:CGPointMake(0, MAX(self.view.contentSize.height - self.view.bounds.size.height + 64, -24)) animated:YES];
+}
+
+- (void)unpinTile:(RSTile*)tile {
+	if (![pinnedTiles containsObject:tile]) {
+		return;
+	}
+	
+	[pinnedTiles removeObject:tile];
+	[pinnedIdentifiers removeObject:tile.icon.applicationBundleID];
+	
+	[UIView animateWithDuration:.2 animations:^{
+		[tile setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+		
+		[tile setTransform:CGAffineTransformMakeScale(0.5, 0.5)];
+		[tile setAlpha:0.0];
+	} completion:^(BOOL finished) {
+		[tile removeEasingFunctionForKeyPath:@"frame"];
+		[tile removeFromSuperview];
+		
+		[self eliminateEmptyRows];
+		[self saveTiles];
+	}];
+}
+
+- (RSTile*)tileForBundleIdentifier:(NSString*)bundleIdentifier {
+	for (RSTile* tile in pinnedTiles) {
+		if ([[tile.icon applicationBundleID] isEqualToString:bundleIdentifier]) {
 			return tile;
 			break;
 		}

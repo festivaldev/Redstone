@@ -39,6 +39,9 @@
 
 #pragma mark App List
 #import "AppList/RSAppListController.h"
+#import "AppList/RSAppListScrollView.h"
+#import "AppList/RSApp.h"
+#import "AppList/RSAppListSection.h"
 
 #pragma mark Launch Screen
 #import "LaunchScreen/RSLaunchScreenController.h"

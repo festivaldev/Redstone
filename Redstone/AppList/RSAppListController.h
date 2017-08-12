@@ -1,7 +1,27 @@
 #import <UIKit/UIKit.h>
 
-@interface RSAppListController : NSObject
+@class RSAppListScrollView, RSAppListSection, RSApp;
 
-@property (nonatomic, strong) UIScrollView* view;
+@interface RSAppListController : NSObject <UIScrollViewDelegate> {
+	NSMutableArray* sections;
+	NSMutableArray* apps;
+	NSMutableDictionary* appsBySection;
+	
+	UIView* sectionBackgroundContainer;
+	UIImageView* sectionBackgroundImage;
+	UIView* sectionBackgroundOverlay;
+}
+
+@property (nonatomic, strong) RSAppListScrollView* view;
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled;
+- (void)setContentOffset:(CGPoint)contentOffset;
+- (void)updateSectionsWithOffset:(CGFloat)offset;
+- (void)setSectionOverlayAlpha:(CGFloat)alpha;
+
+- (void)loadApps;
+- (void)sortAppsAndLayout;
+- (RSAppListSection*)sectionWithLetter:(NSString*)letter;
+- (RSApp*)appForBundleIdentifier:(NSString*)bundleIdentifier;
 
 @end

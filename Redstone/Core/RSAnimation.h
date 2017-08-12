@@ -6,4 +6,8 @@
 + (void)startScreenAnimateOut;
 + (void)startScreenAnimateIn;
 
++ (CGFloat)appListAnimationDelay;
++ (void)appListAnimateOut;
++ (void)appListAnimateIn;
+
 @end
