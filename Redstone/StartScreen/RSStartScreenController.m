@@ -88,7 +88,7 @@
 		}
 	}
 	
-	CGSize contentSize = CGSizeMake(self.view.bounds.size.width, lastTile.frame.origin.y + lastTile.frame.size.height);
+	CGSize contentSize = CGSizeMake(self.view.bounds.size.width, lastTile.basePosition.origin.y + lastTile.basePosition.size.height);
 	
 	if (contentSize.height > screenHeight) {
 		[UIView animateWithDuration:.1 animations:^{
@@ -223,7 +223,7 @@
 	
 	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
 	
-	for (RSTile* tile in pinnedTiles) {
+	/*for (RSTile* tile in pinnedTiles) {
 		CGRect tileFrame;
 		
 		if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
@@ -267,6 +267,64 @@
 													tile.basePosition.size.height)];
 				
 				break;
+			}
+		}
+	}*/
+	
+	int rows = self.view.contentSize.height / sizeForPosition;
+	NSMutableArray* rowsToClear = [NSMutableArray new];
+	
+	for (int i=0; i<=rows; i++) {
+		CGRect testFrame = CGRectMake(0, i*sizeForPosition, self.view.bounds.size.width, [RSMetrics tileDimensionsForSize:1].height);
+		
+		BOOL rowIsEmpty = YES;
+		for (RSTile* tile in pinnedTiles) {
+			CGRect tileFrame;
+			
+			if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
+				tileFrame = tile.nextFrameUpdate;
+			} else {
+				tileFrame = tile.basePosition;
+			}
+			
+			if (CGRectIntersectsRect(testFrame, tileFrame)) {
+				rowIsEmpty = NO;
+				break;
+			}
+		}
+		
+		if (rowIsEmpty) {
+			[rowsToClear addObject:[NSNumber numberWithInt:i]];
+		}
+	}
+	
+	rowsToClear = [[[rowsToClear reverseObjectEnumerator] allObjects] mutableCopy];
+	
+	if (rowsToClear.count > 0) {
+		for (int i=0; i<rowsToClear.count; i++) {
+			int currentRow = [[rowsToClear objectAtIndex:i] intValue];
+			
+			for (RSTile* tile in pinnedTiles) {
+				CGRect tileFrame;
+				
+				if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
+					tileFrame = tile.nextFrameUpdate;
+				} else {
+					tileFrame = tile.basePosition;
+				}
+				
+				int tileRow = tileFrame.origin.y / sizeForPosition;
+				
+				if (tileRow > currentRow) {
+					CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
+													CGRectGetMidY(tileFrame) - sizeForPosition);
+					
+					[tile setNextCenterUpdate:newCenter];
+					[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
+														newCenter.y - tile.basePosition.size.height/2,
+														tile.basePosition.size.width,
+														tile.basePosition.size.height)];
+				}
 			}
 		}
 	}
