@@ -49,4 +49,9 @@ static RSPreferences* sharedInstance;
 	return [preferences objectForKey:key];
 }
 
+- (void)setObject:(id)anObject forKey:(NSString *)aKey {
+	[preferences setValue:anObject forKey:aKey];
+	[preferences writeToFile:PREFERENCES_PATH atomically:YES];
+}
+
 @end

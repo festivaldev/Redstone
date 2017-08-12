@@ -70,7 +70,26 @@
 	[self updateStartScreenContentSize];
 }
 
-- (void)saveTiles {}
+- (void)saveTiles {
+	NSMutableArray* tilesToSave = [NSMutableArray new];
+	CGFloat sizeForPosition = [RSMetrics sizeForPosition];
+	
+	for (RSTile* tile in pinnedTiles) {
+		NSMutableDictionary* tileInfo = [NSMutableDictionary new];
+		
+		int tilePositionX = tile.basePosition.origin.x / sizeForPosition;
+		int tilePositionY = tile.basePosition.origin.y / sizeForPosition;
+		
+		[tileInfo setValue:[NSNumber numberWithInteger:tile.size] forKey:@"size"];
+		[tileInfo setValue:[NSNumber numberWithInteger:tilePositionY] forKey:@"row"];
+		[tileInfo setValue:[NSNumber numberWithInteger:tilePositionX] forKey:@"column"];
+		[tileInfo setValue:[tile.icon applicationBundleID] forKey:@"bundleIdentifier"];
+		
+		[tilesToSave addObject:tileInfo];
+	}
+	
+	[[RSPreferences preferences] setObject:tilesToSave forKey:[NSString stringWithFormat:@"%iColumnLayout", [RSMetrics columns]]];
+}
 
 - (void)pinTileWithBundleIdentifier:(NSString*)bundleIdentifier {
 	if ([pinnedIdentifiers containsObject:bundleIdentifier]) {
@@ -213,6 +232,8 @@
 		} completion:^(BOOL finished) {
 			[self.view removeEasingFunctionForKeyPath:@"frame"];
 		}];
+		
+		[self saveTiles];
 	}
 }
 

@@ -6,5 +6,6 @@
 
 + (id)preferences;
 - (id)objectForKey:(NSString*)key;
+- (void)setObject:(id)anObject forKey:(NSString *)aKey;
 
 @end
