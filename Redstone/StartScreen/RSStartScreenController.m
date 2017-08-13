@@ -260,44 +260,33 @@
 										tile.basePosition.size.width,
 										tile.basePosition.size.height)];
 	
-	[self moveAffectedTilesForTile:tile];
+	[self moveAffectedTilesForTile:tile hasResizedTile:NO];
 }
 
-- (void)moveAffectedTilesForTile:(RSTile *)movedTile {
+- (void)moveAffectedTilesForTile:(RSTile *)movedTile hasResizedTile:(BOOL)hasResizedTile {
 	// This algorithm is based on Daniel T.'s answer here:
 	// http://stackoverflow.com/questions/43825803/get-all-uiviews-affected-by-moving-another-uiview-above-them/
 	
 	pinnedTiles = [self sortPinnedTiles];
 	
-	NSMutableArray* stack = [NSMutableArray new];
-	BOOL didMoveTileIntoPosition = NO;
-	
-	[stack addObject:movedTile];
-	
-	while ([stack count] > 0) {
-		RSTile* current = [stack objectAtIndex:0];
-		[stack removeObject:current];
+	if (hasResizedTile) {
+		int previousSize = movedTile.size + 1;
+		if (previousSize > 3) {
+			previousSize = 1;
+		}
 		
+		CGSize currentTileSize = [RSMetrics tileDimensionsForSize:movedTile.size];
+		CGSize previousTileSize = [RSMetrics tileDimensionsForSize:previousSize];
+		CGFloat moveDistance = currentTileSize.height - previousTileSize.height;
+		
+		NSMutableArray* affectedTiles = [NSMutableArray new];
 		for (RSTile* tile in pinnedTiles) {
-			if (tile != movedTile && CGRectIntersectsRect(tile.basePosition, movedTile.nextFrameUpdate) && tile.basePosition.origin.y < movedTile.nextFrameUpdate.origin.y && !didMoveTileIntoPosition) {
-				CGFloat moveDistance = (CGRectGetMaxY(tile.basePosition) - CGRectGetMinY(movedTile.nextFrameUpdate)) + [RSMetrics tileBorderSpacing];
-				
-				CGPoint newCenter = CGPointMake(movedTile.nextCenterUpdate.x,
-												movedTile.nextCenterUpdate.y + moveDistance);
-				
-				[movedTile setNextCenterUpdate:newCenter];
-				[movedTile setNextFrameUpdate:CGRectMake(newCenter.x - movedTile.basePosition.size.width/2,
-														 newCenter.y - movedTile.basePosition.size.height/2,
-														 movedTile.basePosition.size.width,
-														 movedTile.basePosition.size.height)];
-				
-				didMoveTileIntoPosition = YES;
-			} else if (tile != current) {
-				CGRect currentFrame, tileFrame;
-				if (!CGRectEqualToRect(current.nextFrameUpdate, CGRectZero)) {
-					currentFrame = current.nextFrameUpdate;
+			if (tile != movedTile) {
+				CGRect movedTileFrame, tileFrame;
+				if (!CGRectEqualToRect(movedTile.nextFrameUpdate, CGRectZero)) {
+					movedTileFrame = movedTile.nextFrameUpdate;
 				} else {
-					currentFrame = current.basePosition;
+					movedTileFrame = movedTile.basePosition;
 				}
 				
 				if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
@@ -306,19 +295,83 @@
 					tileFrame = tile.basePosition;
 				}
 				
-				if (CGRectIntersectsRect(currentFrame, tileFrame)) {
-					[stack addObject:tile];
+				if (tileFrame.origin.y >= movedTileFrame.origin.y) {
+					[affectedTiles addObject:tile];
+				}
+			}
+		}
+		
+		for (RSTile* tile in affectedTiles) {
+			CGRect tileFrame;
+			
+			if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
+				tileFrame = tile.nextFrameUpdate;
+			} else {
+				tileFrame = tile.basePosition;
+			}
+			
+			CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
+											CGRectGetMidY(tileFrame) + moveDistance);
+			
+			[tile setNextCenterUpdate:newCenter];
+			[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
+												newCenter.y - tile.basePosition.size.height/2,
+												tile.basePosition.size.width,
+												tile.basePosition.size.height)];
+		}
+		
+	} else {
+		NSMutableArray* stack = [NSMutableArray new];
+		BOOL didMoveTileIntoPosition = NO;
+		
+		[stack addObject:movedTile];
+		
+		while ([stack count] > 0) {
+			RSTile* current = [stack objectAtIndex:0];
+			[stack removeObject:current];
+			
+			for (RSTile* tile in pinnedTiles) {
+				if (tile != movedTile && CGRectIntersectsRect(tile.basePosition, movedTile.nextFrameUpdate) && tile.basePosition.origin.y < movedTile.nextFrameUpdate.origin.y && !didMoveTileIntoPosition) {
+					CGFloat moveDistance = (CGRectGetMaxY(tile.basePosition) - CGRectGetMinY(movedTile.nextFrameUpdate)) + [RSMetrics tileBorderSpacing];
 					
-					CGFloat moveDistance = (CGRectGetMaxY(currentFrame) - CGRectGetMinY(tileFrame)) + [RSMetrics tileBorderSpacing];
+					CGPoint newCenter = CGPointMake(movedTile.nextCenterUpdate.x,
+													movedTile.nextCenterUpdate.y + moveDistance);
 					
-					CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
-													CGRectGetMidY(tileFrame) + moveDistance);
+					[movedTile setNextCenterUpdate:newCenter];
+					[movedTile setNextFrameUpdate:CGRectMake(newCenter.x - movedTile.basePosition.size.width/2,
+															 newCenter.y - movedTile.basePosition.size.height/2,
+															 movedTile.basePosition.size.width,
+															 movedTile.basePosition.size.height)];
 					
-					[tile setNextCenterUpdate:newCenter];
-					[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
-														newCenter.y - tile.basePosition.size.height/2,
-														tile.basePosition.size.width,
-														tile.basePosition.size.height)];
+					didMoveTileIntoPosition = YES;
+				} else if (tile != current) {
+					CGRect currentFrame, tileFrame;
+					if (!CGRectEqualToRect(current.nextFrameUpdate, CGRectZero)) {
+						currentFrame = current.nextFrameUpdate;
+					} else {
+						currentFrame = current.basePosition;
+					}
+					
+					if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
+						tileFrame = tile.nextFrameUpdate;
+					} else {
+						tileFrame = tile.basePosition;
+					}
+					
+					if (CGRectIntersectsRect(currentFrame, tileFrame)) {
+						[stack addObject:tile];
+						
+						CGFloat moveDistance = (CGRectGetMaxY(currentFrame) - CGRectGetMinY(tileFrame)) + [RSMetrics tileBorderSpacing];
+						
+						CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
+														CGRectGetMidY(tileFrame) + moveDistance);
+						
+						[tile setNextCenterUpdate:newCenter];
+						[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
+															newCenter.y - tile.basePosition.size.height/2,
+															tile.basePosition.size.width,
+															tile.basePosition.size.height)];
+					}
 				}
 			}
 		}

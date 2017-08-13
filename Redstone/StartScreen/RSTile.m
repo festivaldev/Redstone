@@ -283,7 +283,8 @@
 	
 	[resizeButton setTransform:CGAffineTransformMakeRotation(deg2rad([self scaleButtonRotationForCurrentSize]))];
 	
-	[[[[RSCore sharedInstance] homeScreenController] startScreenController] moveAffectedTilesForTile:self];
+	//[[[[RSCore sharedInstance] homeScreenController] startScreenController] moveAffectedTilesForTile:self hasResizedTile:YES];
+	[[[[RSCore sharedInstance] homeScreenController] startScreenController] moveAffectedTilesForTile:self hasResizedTile:NO];
 }
 
 - (CGFloat)scaleButtonRotationForCurrentSize {
