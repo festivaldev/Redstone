@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class RSAppListScrollView, RSAppListSection, RSApp;
+@class RSAppListScrollView, RSAppListSection, RSApp, RSFlyoutMenu;
 
 @interface RSAppListController : NSObject <UIScrollViewDelegate> {
 	NSMutableArray* sections;
@@ -10,9 +10,13 @@
 	UIView* sectionBackgroundContainer;
 	UIImageView* sectionBackgroundImage;
 	UIView* sectionBackgroundOverlay;
+	
+	UITapGestureRecognizer* dismissRecognizer;
 }
 
 @property (nonatomic, strong) RSAppListScrollView* view;
+@property (nonatomic, strong) RSApp* selectedApp;
+@property (nonatomic, strong) RSFlyoutMenu* pinMenu;
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;
@@ -23,5 +27,8 @@
 - (void)sortAppsAndLayout;
 - (RSAppListSection*)sectionWithLetter:(NSString*)letter;
 - (RSApp*)appForBundleIdentifier:(NSString*)bundleIdentifier;
+
+- (void)showPinMenuForApp:(RSApp*)app withPoint:(CGPoint)point;
+- (void)hidePinMenu;
 
 @end

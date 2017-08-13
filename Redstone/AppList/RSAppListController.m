@@ -20,6 +20,14 @@
 		[sectionBackgroundOverlay setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.75]];
 		[sectionBackgroundContainer addSubview:sectionBackgroundOverlay];
 		
+		self.pinMenu = [RSFlyoutMenu new];
+		[self.pinMenu addActionWithTitle:@"PIN_TO_START" target:self action:@selector(pinSelectedApp)];
+		[self.pinMenu addActionWithTitle:@"UNINSTALL" target:self action:@selector(uninstallSelectedApp)];
+		
+		dismissRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePinMenu)];
+		[dismissRecognizer setEnabled:NO];
+		[self.view addGestureRecognizer:dismissRecognizer];
+		
 		[self loadApps];
 	}
 	
@@ -217,6 +225,62 @@
 	}
 	
 	return nil;
+}
+
+#pragma mark Pin Menu
+
+- (void)showPinMenuForApp:(RSApp*)app withPoint:(CGPoint)point {
+	[self.view sendSubviewToBack:app];
+	self.selectedApp = app;
+	
+	if ([[[[RSCore sharedInstance] homeScreenController] startScreenController] tileForBundleIdentifier:[[self.selectedApp icon] applicationBundleID]]) {
+		[self.pinMenu setActionDisabled:YES atIndex:0];
+	} else {
+		[self.pinMenu setActionDisabled:NO atIndex:0];
+	}
+	
+	[self.pinMenu setActionHidden:![[self.selectedApp icon] isUninstallSupported] atIndex:1];
+	
+	[[[RSCore sharedInstance] homeScreenController] setScrollEnabled:NO];
+	[self.view setScrollEnabled:NO];
+	[dismissRecognizer setEnabled:YES];
+	
+	for (UIView* view in self.view.subviews) {
+		[view setUserInteractionEnabled:NO];
+	}
+	
+	CGRect globalFrame = [self.view convertRect:app.frame toView:[[[RSCore sharedInstance] homeScreenController] view]];
+	
+	[self.pinMenu appearAtPosition:CGPointMake(point.x, globalFrame.origin.y)];
+}
+
+- (void)hidePinMenu {
+	[self.pinMenu disappear];
+	
+	for (UIView* view in self.view.subviews) {
+		[view setUserInteractionEnabled:YES];
+	}
+	
+	[dismissRecognizer setEnabled:NO];
+	[[[RSCore sharedInstance] homeScreenController] setScrollEnabled:YES];
+	[(UIScrollView*)self.view setScrollEnabled:YES];
+}
+
+- (void)pinSelectedApp {
+	[self hidePinMenu];
+	
+	if ([[[[RSCore sharedInstance] homeScreenController] startScreenController] tileForBundleIdentifier:[[self.selectedApp icon] applicationBundleID]]) {
+		return;
+	}
+	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[[[[RSCore sharedInstance] homeScreenController] startScreenController] pinTileWithBundleIdentifier:[[self.selectedApp icon] applicationBundleID]];
+		self.selectedApp = nil;
+	});
+}
+
+- (void)uninstallSelectedApp {
+	
 }
 
 @end

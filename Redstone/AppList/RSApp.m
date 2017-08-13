@@ -44,6 +44,9 @@
 		
 		UITapGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 		[self addGestureRecognizer:tapGestureRecognizer];
+		
+		UILongPressGestureRecognizer* longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed:)];
+		[self addGestureRecognizer:longPressGestureRecognizer];
 	}
 	
 	return self;
@@ -56,6 +59,13 @@
 	
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
 		[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
+}
+
+- (void)pressed:(UILongPressGestureRecognizer*)gestureRecognizer {
+	if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+		[self setTransform:CGAffineTransformIdentity];
+		[[[[RSCore sharedInstance] homeScreenController] appListController] showPinMenuForApp:self withPoint:[gestureRecognizer locationInView:self]];
+	}
 }
 
 @end

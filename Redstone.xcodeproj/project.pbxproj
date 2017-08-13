@@ -148,6 +148,7 @@
 		8D1191551F3F912C009A8568 /* RSApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191541F3F912C009A8568 /* RSApp.m */; };
 		8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191571F3F93B8009A8568 /* RSAppListSection.m */; };
 		8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191601F403FE3009A8568 /* RSTiltView.m */; };
+		8D1191641F40568D009A8568 /* RSFlyoutMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191631F40568D009A8568 /* RSFlyoutMenu.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -328,6 +329,8 @@
 		8D11915C1F403F12009A8568 /* SBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplication.h; sourceTree = "<group>"; };
 		8D11915F1F403FE3009A8568 /* RSTiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTiltView.h; sourceTree = "<group>"; };
 		8D1191601F403FE3009A8568 /* RSTiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTiltView.m; sourceTree = "<group>"; };
+		8D1191621F40568D009A8568 /* RSFlyoutMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFlyoutMenu.h; sourceTree = "<group>"; };
+		8D1191631F40568D009A8568 /* RSFlyoutMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSFlyoutMenu.m; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -782,6 +785,8 @@
 			children = (
 				8D11915F1F403FE3009A8568 /* RSTiltView.h */,
 				8D1191601F403FE3009A8568 /* RSTiltView.m */,
+				8D1191621F40568D009A8568 /* RSFlyoutMenu.h */,
+				8D1191631F40568D009A8568 /* RSFlyoutMenu.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1190,6 +1195,7 @@
 				8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */,
 				8D1191521F3F8CAE009A8568 /* RSAppListScrollView.m in Sources */,
 				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,
+				8D1191641F40568D009A8568 /* RSFlyoutMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

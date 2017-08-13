@@ -9,6 +9,9 @@
 		[self.layer setContentsScale:[UIScreen mainScreen].scale];
 		[self.layer setAllowsEdgeAntialiasing:YES];
 		
+		self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+		[self.titleLabel setTextAlignment:NSTextAlignmentCenter];
+		
 		highlightLayer = [CALayer new];
 		[highlightLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 		[highlightLayer setOpacity:0];
@@ -161,6 +164,16 @@
 - (void)addTarget:(id)target action:(SEL)action {
 	UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
 	[self addGestureRecognizer:tap];
+}
+
+- (void)setTitle:(NSString*)title {
+	if (title) {
+		[self addSubview:self.titleLabel];
+	} else {
+		[self.titleLabel removeFromSuperview];
+	}
+	
+	[self.titleLabel setText:title];
 }
 
 @end
