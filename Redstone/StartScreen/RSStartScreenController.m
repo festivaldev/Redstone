@@ -142,6 +142,7 @@
 	[self saveTiles];
 	
 	[self.view setContentOffset:CGPointMake(0, MAX(self.view.contentSize.height - self.view.bounds.size.height + 64, -24)) animated:YES];
+	[[[RSCore sharedInstance] homeScreenController] setContentOffset:CGPointZero animated:YES];
 }
 
 - (void)unpinTile:(RSTile*)tile {
@@ -240,6 +241,7 @@
 - (void)setSelectedTile:(RSTile*)selectedTile {
 	_selectedTile = selectedTile;
 	for (RSTile* tile in pinnedTiles) {
+		[tile setTiltEnabled:!self.isEditing];
 		[tile setIsSelectedTile:(tile == selectedTile)];
 	}
 }

@@ -51,6 +51,7 @@
 	for (RSTile* tile in tiles) {
 		[tile.layer removeAllAnimations];
 		[tile setTransform:CGAffineTransformIdentity];
+		[tile setTiltEnabled:NO];
 		
 		if (CGRectIntersectsRect(startScreen.bounds, tile.basePosition)) {
 			[tilesInView addObject:tile];
@@ -228,6 +229,7 @@
 			[tile setHidden:NO];
 			[tile.layer setAnchorPoint:CGPointMake(0.5,0.5)];
 			[tile setCenter:[tile originalCenter]];
+			[tile setTiltEnabled:YES];
 		}
 	});
 }
@@ -258,6 +260,7 @@
 	
 	for (UIView* view in appList.subviews) {
 		if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+			[(RSApp*)view setTiltEnabled:NO];
 			[view.layer removeAllAnimations];
 			[view setTransform:CGAffineTransformIdentity];
 			if (CGRectIntersectsRect(appList.bounds, view.frame)) {
@@ -427,6 +430,7 @@
 				[view setHidden:NO];
 				[view.layer setAnchorPoint:CGPointMake(0.5,0.5)];
 				[view setCenter:[(RSApp*)view originalCenter]];
+				[(RSApp*)view setTiltEnabled:YES];
 			}
 		}
 	});

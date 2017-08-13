@@ -8,6 +8,8 @@
 		self.tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:bundleIdentifier];
 		self.originalCenter = self.center;
 		
+		[self setHighlightEnabled:YES];
+		
 		// App Icon
 		
 		appImageBackground = [[UIView alloc] initWithFrame:CGRectMake(5, 2, 50, 50)];

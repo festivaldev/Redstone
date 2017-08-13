@@ -28,6 +28,16 @@ static RSPreferences* sharedInstance;
 			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"homeScreenEnabled"];
 		}
 		
+		// Accent Color
+		if (![preferences objectForKey:@"accentColor"]) {
+			[preferences setValue:@"#0078D7" forKey:@"accentColor"];
+		}
+		
+		// Tile Opacity
+		if (![preferences objectForKey:@"tileOpacity"]) {
+			[preferences setValue:[NSNumber numberWithFloat:0.8] forKey:@"tileOpacity"];
+		}
+		
 		// Default tile layout - 2 columns
 		if (![preferences objectForKey:@"2ColumnLayout"]) {
 			[preferences setObject:[NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/2ColumnDefaultLayout.plist", RESOURCES_PATH]] forKey:@"2ColumnLayout"];

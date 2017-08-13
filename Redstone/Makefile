@@ -9,7 +9,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = Redstone
 Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
 Redstone_PRIVATE_FRAMEWORKS = AppSupport
-Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m)
+Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m)
 
 include $(THEOS)/makefiles/tweak.mk
 

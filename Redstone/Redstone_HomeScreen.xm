@@ -47,7 +47,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			});
 		} else {
 			if (hasBeenUnlockedBefore) {
-				//[[RSHomeScreenController sharedInstance] deviceHasBeenUnlocked];
+				[homeScreenController deviceHasBeenUnlocked];
 			} else {
 				hasBeenUnlockedBefore = YES;
 				
@@ -72,6 +72,30 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 }
 
 %end // %hook SBUIAnimationZoomApp
+
+// iOS 9
+%hook SBUIAnimationZoomUpApp
+
+// Home Screen to App
+- (void)_startAnimation {
+	playApplicationZoomAnimation(0, ^{
+		%orig;
+	});
+}
+
+%end // %hook SBUIAnimationZoomUpApp
+
+// iOS 9
+%hook SBUIAnimationZoomDownApp
+
+// App to Home Screen
+- (void)_startAnimation {
+	playApplicationZoomAnimation(1, ^{
+		%orig;
+	});
+}
+
+%end // %hook SBUIAnimationZoomDownApp
 
 %hook SBLockScreenManager
 

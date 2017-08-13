@@ -50,6 +50,17 @@
 	return launchScreenController;
 }
 
+- (void)deviceHasBeenUnlocked {
+	[homeScreenScrollView setAlpha:0];
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		[homeScreenScrollView setEasingFunction:easeOutCubic forKeyPath:@"opacity"];
+		[homeScreenScrollView setAlpha:1.0];
+	} completion:^(BOOL finished) {
+		[homeScreenScrollView removeEasingFunctionForKeyPath:@"opacity"];
+	}];
+}
+
 - (CGFloat)launchApplication {
 	if (homeScreenScrollView.contentOffset.x < screenWidth/2) {
 		[RSAnimation startScreenAnimateOut];
@@ -74,6 +85,10 @@
 
 - (void)setContentOffset:(CGPoint)contentOffset {
 	[homeScreenScrollView setContentOffset:contentOffset];
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+	[homeScreenScrollView setContentOffset:contentOffset animated:animated];
 }
 
 - (CGPoint)contentOffset {

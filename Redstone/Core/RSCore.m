@@ -3,6 +3,7 @@
 @implementation RSCore
 
 static RSCore* sharedInstance;
+static id currentApplication;
 
 + (id)sharedInstance {
 	return sharedInstance;
@@ -56,6 +57,23 @@ static RSCore* sharedInstance;
 
 - (RSHomeScreenController*)homeScreenController {
 	return homeScreenController;
+}
+
+- (void)frontDisplayDidChange:(id)application {
+	if (homeScreenController == nil) {
+		return;
+	}
+	
+	currentApplication = application;
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (frontApp) {
+		//[[homeScreenController startScreenController] setTilesVisible:NO];
+		[[homeScreenController startScreenController] setIsEditing:NO];
+		[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
+	} else {
+		//[[homeScreenController startScreenController] setTilesVisible:YES];
+	}
 }
 
 @end

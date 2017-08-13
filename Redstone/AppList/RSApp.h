@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 
-@class SBLeafIcon, RSTileInfo;
+@class RSTiltView, SBLeafIcon, RSTileInfo;
 
-@interface RSApp : UIView {
+@interface RSApp : RSTiltView {
 	UIView* appImageBackground;
 	UIImageView* appImageView;
 	UILabel* appLabel;

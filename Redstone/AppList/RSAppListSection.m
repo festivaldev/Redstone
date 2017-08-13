@@ -7,6 +7,8 @@
 		displayName = letter;
 		self.originalCenter = self.center;
 		
+		[self setHighlightEnabled:YES];
+		
 		sectionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 60, 60)];
 		[sectionLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:30]];
 		[sectionLabel setTextColor:[UIColor whiteColor]];

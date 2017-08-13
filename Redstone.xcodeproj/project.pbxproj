@@ -147,6 +147,7 @@
 		8D1191521F3F8CAE009A8568 /* RSAppListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191511F3F8CAE009A8568 /* RSAppListScrollView.m */; };
 		8D1191551F3F912C009A8568 /* RSApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191541F3F912C009A8568 /* RSApp.m */; };
 		8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191571F3F93B8009A8568 /* RSAppListSection.m */; };
+		8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191601F403FE3009A8568 /* RSTiltView.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -324,6 +325,9 @@
 		8D1191591F3F9909009A8568 /* segoeuisl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuisl.ttf; sourceTree = "<group>"; };
 		8D11915A1F3F9C30009A8568 /* segoeuil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuil.ttf; sourceTree = "<group>"; };
 		8D11915B1F3FAA5E009A8568 /* RSAppListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
+		8D11915C1F403F12009A8568 /* SBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplication.h; sourceTree = "<group>"; };
+		8D11915F1F403FE3009A8568 /* RSTiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTiltView.h; sourceTree = "<group>"; };
+		8D1191601F403FE3009A8568 /* RSTiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTiltView.m; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -773,6 +777,15 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		8D11915E1F403FD5009A8568 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8D11915F1F403FE3009A8568 /* RSTiltView.h */,
+				8D1191601F403FE3009A8568 /* RSTiltView.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		8D259E8B1F359E1500BFFB39 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1191471F3E6817009A8568 /* SpringBoard-Class.h */,
+				8D11915C1F403F12009A8568 /* SBApplication.h */,
 				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
 				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
@@ -880,6 +894,7 @@
 				8DB0B6E41F346326002E3CCF /* Layout */,
 				8D259E8B1F359E1500BFFB39 /* Libraries */,
 				8DF5EB121F33BAA1003CC2B4 /* Core */,
+				8D11915E1F403FD5009A8568 /* UI */,
 				8DF5EB3B1F33C502003CC2B4 /* HomeScreen */,
 				8D3771681F3456CC008056D1 /* StartScreen */,
 				8DC70CF11F345BB700F9A884 /* AppList */,
@@ -1155,6 +1170,7 @@
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
+				8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */,
 				8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */,
 				8D1191551F3F912C009A8568 /* RSApp.m in Sources */,
 				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,

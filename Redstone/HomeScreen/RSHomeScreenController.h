@@ -17,11 +17,14 @@
 - (RSStartScreenController*)startScreenController;
 - (RSAppListController*)appListController;
 - (RSLaunchScreenController*)launchScreenController;
+
+- (void)deviceHasBeenUnlocked;
 - (CGFloat)launchApplication;
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 - (BOOL)isScrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 - (CGPoint)contentOffset;
 
 @end

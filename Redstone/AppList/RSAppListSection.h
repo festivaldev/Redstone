@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "UI/RSTiltView.h"
 
-@interface RSAppListSection : UIView {
+@interface RSAppListSection : RSTiltView {
 	NSString* displayName;
 	UILabel* sectionLabel;
 }
