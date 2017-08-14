@@ -44,6 +44,14 @@
 	[self.view setContentOffset:contentOffset];
 }
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+	[self.view setContentOffset:contentOffset animated:animated];
+}
+
+- (CGPoint)contentOffset {
+	return self.view.contentOffset;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[self updateSectionsWithOffset:self.view.contentOffset.y];
 }

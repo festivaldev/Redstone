@@ -14,5 +14,7 @@
 - (id)initWithWindow:(UIWindow*)window;
 
 - (RSHomeScreenController*)homeScreenController;
+- (void)frontDisplayDidChange:(id)application;
+- (BOOL)homeButtonPressed;
 
 @end

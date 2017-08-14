@@ -76,4 +76,42 @@ static id currentApplication;
 	}
 }
 
+- (BOOL)homeButtonPressed {
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (homeScreenController != nil) {
+		if  ([currentApplication isKindOfClass:NSClassFromString(@"SBDashBoardViewController")] || frontApp != nil) {
+			if ([[homeScreenController launchScreenController] isLaunchingApp]) {
+				[[homeScreenController launchScreenController] animateOut:YES];
+			}
+			
+			[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
+			return YES;
+		}
+		
+		if ([[[homeScreenController appListController] pinMenu] isOpen]) {
+			[[homeScreenController appListController] hidePinMenu];
+			return NO;
+		}
+		
+		/// TODO: Search Bar
+		
+		if ([[homeScreenController startScreenController] isEditing]) {
+			[[homeScreenController startScreenController] setIsEditing:NO];
+			return NO;
+		}
+		
+		if ([homeScreenController contentOffset].x != 0 || [[homeScreenController startScreenController] contentOffset].y != 0 || [[homeScreenController appListController] contentOffset].y != -24) {
+			[homeScreenController setContentOffset:CGPointZero animated:YES];
+			[[homeScreenController startScreenController] setContentOffset:CGPointMake(0, -24) animated:YES];
+			[[homeScreenController appListController] setContentOffset:CGPointZero animated:YES];
+			
+			return NO;
+		}
+
+	}
+	
+	return YES;
+}
+
 @end

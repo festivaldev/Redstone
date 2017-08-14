@@ -122,7 +122,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 - (void)frontDisplayDidChange:(id)arg1 {
 	%orig(arg1);
 	
-	//[[RSCore sharedInstance] frontDisplayDidChange:arg1];
+	[[RSCore sharedInstance] frontDisplayDidChange:arg1];
 }
 
 %end // %hook SpringBoard

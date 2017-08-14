@@ -20,6 +20,8 @@
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+- (CGPoint)contentOffset;
 - (void)updateSectionsWithOffset:(CGFloat)offset;
 - (void)setSectionOverlayAlpha:(CGFloat)alpha;
 

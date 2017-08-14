@@ -14,6 +14,8 @@
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+- (CGPoint)contentOffset;
 - (void)setTilesHidden:(BOOL)hidden;
 
 - (void)loadTiles;

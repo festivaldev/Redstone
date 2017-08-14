@@ -15,6 +15,7 @@ UIImage* _UICreateScreenUIImage();
 		
 		applicationSnapshot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		[applicationSnapshot setHidden:YES];
+		[self.window setUserInteractionEnabled:NO];
 		[self.window addSubview:applicationSnapshot];
 	}
 	
@@ -45,6 +46,10 @@ UIImage* _UICreateScreenUIImage();
 
 - (void)animateIn {
 	_isLaunchingApp = YES;
+	
+	[rootTimeout invalidate];
+	[fadeOutTimeout invalidate];
+	[hideTimeout invalidate];
 	
 	[self.window makeKeyAndVisible];
 	[self.window setAlpha:0];
@@ -77,10 +82,14 @@ UIImage* _UICreateScreenUIImage();
 }
 
 - (void)animateOut {
-	[rootTimeout invalidate];
+	[self animateOut:NO];
+}
+
+- (void)animateOut:(BOOL)forceClose {
+	/* [rootTimeout invalidate];
 	rootTimeout = nil;
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((forceClose ? 0 : 1) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
 																function:CubicEaseInOut
 															   fromValue:1.0
@@ -94,7 +103,46 @@ UIImage* _UICreateScreenUIImage();
 			_isLaunchingApp = NO;
 			[self.window setHidden:YES];
 		});
-	});
+	});*/
+	
+	_isLaunchingApp = NO;
+	
+	[self.window.layer removeAllAnimations];
+	[launchImageView.layer removeAllAnimations];
+	
+	[rootTimeout invalidate];
+	[fadeOutTimeout invalidate];
+	[hideTimeout invalidate];
+	
+	if (forceClose) {
+		CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+																function:CubicEaseInOut
+															   fromValue:1.0
+																 toValue:0.0];
+		[opacity setDuration:0.225];
+		[opacity setRemovedOnCompletion:NO];
+		[opacity setFillMode:kCAFillModeForwards];
+		[self.window.layer addAnimation:opacity forKey:@"opacity"];
+		
+		hideTimeout = [NSTimer timerWithTimeInterval:1.0 target:^{
+			[self.window setHidden:YES];
+		} selector:@selector(invoke) userInfo:nil repeats:NO];
+	} else {
+		fadeOutTimeout = [NSTimer timerWithTimeInterval:1.0 target:^{
+			CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+																	function:CubicEaseInOut
+																   fromValue:1.0
+																	 toValue:0.0];
+			[opacity setDuration:0.225];
+			[opacity setRemovedOnCompletion:NO];
+			[opacity setFillMode:kCAFillModeForwards];
+			[self.window.layer addAnimation:opacity forKey:@"opacity"];
+			
+			hideTimeout = [NSTimer timerWithTimeInterval:0.3 target:^{
+				[self.window setHidden:YES];
+			} selector:@selector(invoke) userInfo:nil repeats:NO];
+		} selector:@selector(invoke) userInfo:nil repeats:NO];
+	}
 }
 
 - (void)animateCurrentApplicationSnapshot {
@@ -135,13 +183,13 @@ UIImage* _UICreateScreenUIImage();
 	[self.window.layer addAnimation:opacity forKey:@"opacity"];
 	[self.window.layer addAnimation:scale forKey:@"scale"];
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+	hideTimeout = [NSTimer timerWithTimeInterval:0.2 target:^{
 		_isLaunchingApp = NO;
 		
 		[self.window setHidden:YES];
 		[applicationSnapshot setImage:nil];
 		[applicationSnapshot setHidden:YES];
-	});
+	} selector:@selector(invoke) userInfo:nil repeats:NO];
 }
 
 @end

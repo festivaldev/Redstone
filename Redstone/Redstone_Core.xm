@@ -15,6 +15,17 @@ RSPreferences* preferences;
 
 %end // %hook SpringBoard
 
+// iOS 10
+%hook SBHomeHardwareButton
+
+- (void)initialButtonUp:(id)arg1 {
+	if ([redstone homeButtonPressed]) {
+		%orig;
+	}
+}
+
+%end // %hook SBHomeHardwareButton
+
 %end // %group core
 
 %ctor {

@@ -5,6 +5,8 @@
 	UIImageView* applicationSnapshot;
 	
 	NSTimer* rootTimeout;
+	NSTimer* fadeOutTimeout;
+	NSTimer* hideTimeout;
 }
 
 @property (nonatomic, strong) UIWindow* window;
@@ -13,7 +15,7 @@
 @property (nonatomic, assign) BOOL isUnlocking;
 
 - (void)animateIn;
-- (void)animateOut;
+- (void)animateOut:(BOOL)forceClose;
 - (void)animateCurrentApplicationSnapshot;
 
 @end

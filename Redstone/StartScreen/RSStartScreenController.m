@@ -25,6 +25,14 @@
 	[self.view setContentOffset:contentOffset];
 }
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+	[self.view setContentOffset:contentOffset animated:animated];
+}
+
+- (CGPoint)contentOffset {
+	return self.view.contentOffset;
+}
+
 - (void)setTilesHidden:(BOOL)hidden {
 	for (RSTile* tile in pinnedTiles) {
 		[tile.layer setOpacity:(hidden ? 0 : 1)];
@@ -316,9 +324,6 @@
 			}
 			
 			moveDistance = MAX(moveDistance, (CGRectGetMaxY(movedTileFrame) - CGRectGetMinY(tileFrame)) + [RSMetrics tileBorderSpacing]);
-			
-			NSLog(@"[Redstone] tile frame: %@, moved tile frame: %@, move distance: %f", NSStringFromCGRect(tileFrame), NSStringFromCGRect(movedTileFrame), moveDistance);
-			NSLog(@"[Redstone] tile id: %@", tile.icon.applicationBundleID);
 			
 			if (moveDistance > 0) {
 				CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),

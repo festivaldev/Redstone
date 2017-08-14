@@ -36,7 +36,10 @@
 
 + (void)startScreenAnimateOut {
 	RSStartScreenScrollView* startScreen = [[[[RSCore sharedInstance] homeScreenController] startScreenController] view];
+	
 	RSTile* sender = [[[[RSCore sharedInstance] homeScreenController] startScreenController] tileForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
+	
+	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
 	NSMutableArray* tiles = [NSMutableArray new];
 	for (UIView* view in startScreen.subviews) {
@@ -134,12 +137,14 @@
 			for (RSTile* tile in tiles) {
 				[tile.layer setOpacity:1];
 			}
+			[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
 		});
 	});
 }
 
 + (void)startScreenAnimateIn {
 	RSStartScreenScrollView* startScreen = [[[[RSCore sharedInstance] homeScreenController] startScreenController] view];
+	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
 	NSMutableArray* tiles = [NSMutableArray new];
 	for (UIView* view in startScreen.subviews) {
@@ -222,6 +227,8 @@
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		
+		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+		
 		for (RSTile* tile in tiles) {
 			[tile.layer removeAllAnimations];
 			[tile.layer setOpacity:1];
@@ -254,6 +261,8 @@
 	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
 	
 	RSApp* sender = [[[[RSCore sharedInstance] homeScreenController] appListController] appForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
+	
+	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
 	NSMutableArray* viewsInView = [NSMutableArray new];
 	NSMutableArray* viewsNotInView = [NSMutableArray new];
@@ -344,11 +353,15 @@
 				[view setCenter:[(RSApp*)view originalCenter]];
 			}
 		}
+		
+		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
 	});
 }
 
 + (void)appListAnimateIn {
 	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	
+	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
 	NSMutableArray* viewsInView = [NSMutableArray new];
 	NSMutableArray* viewsNotInView = [NSMutableArray new];
@@ -421,6 +434,8 @@
 	}
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+		
 		for (UIView* view in appList.subviews) {
 			if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
 				[view setUserInteractionEnabled:YES];
