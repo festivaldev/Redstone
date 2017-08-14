@@ -17,7 +17,11 @@
 		return 3;
 	}
 	
-	return [[[RSPreferences preferences] objectForKey:@"columns"] intValue];
+	if ([[[RSPreferences preferences] objectForKey:@"showMoreTiles"] boolValue]) {
+		return 3;
+	} else {
+		return 2;
+	}
 }
 
 + (CGFloat)tileBorderSpacing {

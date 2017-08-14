@@ -38,6 +38,11 @@ static RSPreferences* sharedInstance;
 			[preferences setValue:[NSNumber numberWithFloat:0.8] forKey:@"tileOpacity"];
 		}
 		
+		// Columns
+		if (![preferences objectForKey:@"showMoreTiles"]) {
+			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"showMoreTiles"];
+		}
+		
 		// Default tile layout - 2 columns
 		if (![preferences objectForKey:@"2ColumnLayout"]) {
 			[preferences setObject:[NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/2ColumnDefaultLayout.plist", RESOURCES_PATH]] forKey:@"2ColumnLayout"];
