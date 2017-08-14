@@ -18,6 +18,7 @@
 		
 		appListController = [RSAppListController new];
 		[homeScreenScrollView addSubview:appListController.view];
+		[homeScreenScrollView addSubview:appListController.jumpList];
 		
 		launchScreenController = [[RSLaunchScreenController alloc] init];
 	}

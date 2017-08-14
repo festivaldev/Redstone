@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class RSAppListScrollView, RSAppListSection, RSApp, RSFlyoutMenu;
+@class RSAppListScrollView, RSAppListSection, RSApp, RSFlyoutMenu, RSJumpList;
 
 @interface RSAppListController : NSObject <UIScrollViewDelegate> {
 	NSMutableArray* sections;
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) RSAppListScrollView* view;
 @property (nonatomic, strong) RSApp* selectedApp;
 @property (nonatomic, strong) RSFlyoutMenu* pinMenu;
+@property (nonatomic, strong) RSJumpList* jumpList;
 @property (nonatomic, assign) BOOL isUninstallingApp;
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
@@ -33,5 +34,9 @@
 
 - (void)showPinMenuForApp:(RSApp*)app withPoint:(CGPoint)point;
 - (void)hidePinMenu;
+
+- (void)showJumpList;
+- (void)hideJumpList;
+- (void)jumpToSectionWithLetter:(NSString*)letter;
 
 @end

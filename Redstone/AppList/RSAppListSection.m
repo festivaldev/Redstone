@@ -1,4 +1,4 @@
-#import "RSAppListSection.h"
+#import "Redstone.h"
 
 @implementation RSAppListSection
 
@@ -20,9 +20,19 @@
 			[sectionLabel setText:letter];
 		}
 		[self addSubview:sectionLabel];
+		
+		UITapGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+		[self addGestureRecognizer:tapGestureRecognizer];
 	}
 	
 	return self;
+}
+
+- (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {
+	if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+		[self untilt];
+		[[[[RSCore sharedInstance] homeScreenController] appListController] showJumpList];
+	}
 }
 
 - (NSString*)displayName {

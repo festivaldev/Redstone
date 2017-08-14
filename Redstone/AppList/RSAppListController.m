@@ -29,6 +29,8 @@
 		[self.view addGestureRecognizer:dismissRecognizer];
 		
 		[self loadApps];
+		
+		self.jumpList = [[RSJumpList alloc] initWithFrame:CGRectMake(screenWidth, 0, screenWidth, screenHeight)];
 	}
 	
 	return self;
@@ -316,6 +318,31 @@
 			[self loadApps];
 			[self updateSectionsWithOffset:self.view.contentOffset.y];
 		}];
+	}
+}
+
+#pragma mark Jump List
+
+- (void)showJumpList {
+	//[self.searchBar resignFirstResponder];
+	[self.jumpList animateIn];
+}
+
+- (void)hideJumpList {
+	[self.jumpList animateOut];
+	[[[RSCore sharedInstance] homeScreenController] setScrollEnabled:YES];
+}
+
+- (void)jumpToSectionWithLetter:(NSString*)letter {
+	if ([self sectionWithLetter:letter]) {
+		for (RSAppListSection* section in sections) {
+			if ([section.displayName isEqualToString:letter]) {
+				int sectionOffset = section.yPosition;
+				int maxOffsetByScreen = [(UIScrollView*)[self view] contentSize].height - self.view.bounds.size.height + 80;
+				
+				[self setContentOffset:CGPointMake(0, MIN(sectionOffset, maxOffsetByScreen))];
+			}
+		}
 	}
 }
 

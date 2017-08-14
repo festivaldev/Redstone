@@ -164,6 +164,7 @@
 		8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEE1CF1F3529D000AD4827 /* RSTile.m */; };
 		8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF31F345BCB00F9A884 /* RSAppListController.m */; };
 		8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF61F345D4800F9A884 /* RSPreferences.m */; };
+		8DE6A3F51F42656A009EDE86 /* RSJumpList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6A3F41F42656A009EDE86 /* RSJumpList.m */; };
 		8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
 		8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */; };
 		8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */; };
@@ -368,6 +369,8 @@
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
 		8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplicationController.h; sourceTree = "<group>"; };
+		8DE6A3F31F42656A009EDE86 /* RSJumpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSJumpList.h; sourceTree = "<group>"; };
+		8DE6A3F41F42656A009EDE86 /* RSJumpList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSJumpList.m; sourceTree = "<group>"; };
 		8DF5EB0A1F336F8C003CC2B4 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
 		8DF5EB0B1F336F8C003CC2B4 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone.plist; sourceTree = "<group>"; };
@@ -884,6 +887,8 @@
 				8D1191541F3F912C009A8568 /* RSApp.m */,
 				8D1191561F3F93B8009A8568 /* RSAppListSection.h */,
 				8D1191571F3F93B8009A8568 /* RSAppListSection.m */,
+				8DE6A3F31F42656A009EDE86 /* RSJumpList.h */,
+				8DE6A3F41F42656A009EDE86 /* RSJumpList.m */,
 			);
 			path = AppList;
 			sourceTree = "<group>";
@@ -1175,6 +1180,7 @@
 			files = (
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
+				8DE6A3F51F42656A009EDE86 /* RSJumpList.m in Sources */,
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
 				8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */,

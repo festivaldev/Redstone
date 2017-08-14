@@ -46,6 +46,7 @@
 #import "AppList/RSAppListScrollView.h"
 #import "AppList/RSApp.h"
 #import "AppList/RSAppListSection.h"
+#import "AppList/RSJumpList.h"
 
 #pragma mark Launch Screen
 #import "LaunchScreen/RSLaunchScreenController.h"
