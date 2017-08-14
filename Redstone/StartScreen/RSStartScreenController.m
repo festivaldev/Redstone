@@ -275,27 +275,32 @@
 			previousSize = 1;
 		}
 		
-		CGSize currentTileSize = [RSMetrics tileDimensionsForSize:movedTile.size];
-		CGSize previousTileSize = [RSMetrics tileDimensionsForSize:previousSize];
-		CGFloat moveDistance = currentTileSize.height - previousTileSize.height;
+		CGRect movedTileFrame;
+		if (!CGRectEqualToRect(movedTile.nextFrameUpdate, CGRectZero)) {
+			movedTileFrame = movedTile.nextFrameUpdate;
+		} else {
+			movedTileFrame = movedTile.basePosition;
+		}
+		
+		CGFloat moveDistance = 0;
 		
 		NSMutableArray* affectedTiles = [NSMutableArray new];
 		for (RSTile* tile in pinnedTiles) {
 			if (tile != movedTile) {
-				CGRect movedTileFrame, tileFrame;
-				if (!CGRectEqualToRect(movedTile.nextFrameUpdate, CGRectZero)) {
-					movedTileFrame = movedTile.nextFrameUpdate;
-				} else {
-					movedTileFrame = movedTile.basePosition;
-				}
-				
+				CGRect tileFrame;
 				if (!CGRectEqualToRect(tile.nextFrameUpdate, CGRectZero)) {
 					tileFrame = tile.nextFrameUpdate;
 				} else {
 					tileFrame = tile.basePosition;
 				}
 				
-				if (tileFrame.origin.y >= movedTileFrame.origin.y) {
+				if (CGRectIntersectsRect(tileFrame, movedTileFrame)) {
+					[affectedTiles addObject:tile];
+					
+					if (tileFrame.origin.y == movedTileFrame.origin.y) {
+						moveDistance = movedTileFrame.size.height + [RSMetrics tileBorderSpacing];
+					}
+				} else if (tileFrame.origin.y > movedTileFrame.origin.y) {
 					[affectedTiles addObject:tile];
 				}
 			}
@@ -310,14 +315,21 @@
 				tileFrame = tile.basePosition;
 			}
 			
-			CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
-											CGRectGetMidY(tileFrame) + moveDistance);
+			moveDistance = MAX(moveDistance, (CGRectGetMaxY(movedTileFrame) - CGRectGetMinY(tileFrame)) + [RSMetrics tileBorderSpacing]);
 			
-			[tile setNextCenterUpdate:newCenter];
-			[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
-												newCenter.y - tile.basePosition.size.height/2,
-												tile.basePosition.size.width,
-												tile.basePosition.size.height)];
+			NSLog(@"[Redstone] tile frame: %@, moved tile frame: %@, move distance: %f", NSStringFromCGRect(tileFrame), NSStringFromCGRect(movedTileFrame), moveDistance);
+			NSLog(@"[Redstone] tile id: %@", tile.icon.applicationBundleID);
+			
+			if (moveDistance > 0) {
+				CGPoint newCenter = CGPointMake(CGRectGetMidX(tileFrame),
+												CGRectGetMidY(tileFrame) + moveDistance);
+				
+				[tile setNextCenterUpdate:newCenter];
+				[tile setNextFrameUpdate:CGRectMake(newCenter.x - tile.basePosition.size.width/2,
+													newCenter.y - tile.basePosition.size.height/2,
+													tile.basePosition.size.width,
+													tile.basePosition.size.height)];
+			}
 		}
 		
 	} else {
