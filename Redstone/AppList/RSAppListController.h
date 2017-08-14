@@ -17,6 +17,7 @@
 @property (nonatomic, strong) RSAppListScrollView* view;
 @property (nonatomic, strong) RSApp* selectedApp;
 @property (nonatomic, strong) RSFlyoutMenu* pinMenu;
+@property (nonatomic, assign) BOOL isUninstallingApp;
 
 - (void)setScrollEnabled:(BOOL)scrollEnabled;
 - (void)setContentOffset:(CGPoint)contentOffset;

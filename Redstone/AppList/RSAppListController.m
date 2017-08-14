@@ -95,6 +95,13 @@
 #pragma mark App Management
 
 - (void)loadApps {
+	if (sections && appsBySection) {
+		[sections makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		for (id key in appsBySection) {
+			[[appsBySection objectForKey:key] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		}
+	}
+	
 	sections = [NSMutableArray new];
 	apps = [NSMutableArray new];
 	appsBySection = [NSMutableDictionary new];
@@ -288,7 +295,28 @@
 }
 
 - (void)uninstallSelectedApp {
+	self.isUninstallingApp = YES;
+	[self hidePinMenu];
 	
+	if ([self.selectedApp.icon isUninstallSupported]) {
+		[self.selectedApp.icon setUninstalled];
+		[self.selectedApp.icon completeUninstall];
+		
+		[[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] removeIconForIdentifier:[self.selectedApp.icon applicationBundleID]];
+		
+		[UIView animateWithDuration:0.2 animations:^{
+			[self.selectedApp setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+			
+			[self.selectedApp setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+			[self.selectedApp.layer setOpacity:0.0];
+		} completion:^(BOOL finished) {
+			self.selectedApp = nil;
+			self.isUninstallingApp = NO;
+			
+			[self loadApps];
+			[self updateSectionsWithOffset:self.view.contentOffset.y];
+		}];
+	}
 }
 
 @end

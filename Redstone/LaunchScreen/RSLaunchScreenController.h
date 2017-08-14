@@ -5,7 +5,7 @@
 	UIImageView* applicationSnapshot;
 	
 	NSTimer* rootTimeout;
-	NSTimer* fadeOutTimeout;
+	NSTimer* animationTimeout;
 	NSTimer* hideTimeout;
 }
 

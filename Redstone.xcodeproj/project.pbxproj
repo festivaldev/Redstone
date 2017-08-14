@@ -367,6 +367,7 @@
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
+		8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplicationController.h; sourceTree = "<group>"; };
 		8DF5EB0A1F336F8C003CC2B4 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
 		8DF5EB0B1F336F8C003CC2B4 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8DF5EB0C1F336F8C003CC2B4 /* Redstone.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone.plist; sourceTree = "<group>"; };
@@ -861,6 +862,7 @@
 			children = (
 				8D1191471F3E6817009A8568 /* SpringBoard-Class.h */,
 				8D11915C1F403F12009A8568 /* SBApplication.h */,
+				8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */,
 				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
 				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
