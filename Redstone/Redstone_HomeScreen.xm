@@ -191,17 +191,6 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 
 %end // %hook SBDeckSwitcherViewController
 
-// iOS 10
-%hook SBHomeHardwareButton
-
-- (void)_singlePressUp:(id)arg1 {
-	if (![[[[RSCore sharedInstance] homeScreenController] launchScreenController] isLaunchingApp]) {
-		%orig;
-	}
-}
-
-%end // %hook SBHomeHardwareButton
-
 %end // %group homescreen
 
 %ctor {
