@@ -156,6 +156,7 @@
 		8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E951F359E1500BFFB39 /* UIView+Easing.m */; };
 		8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */; };
 		8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
+		8D452C071F439F620046721F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D452C091F439F620046721F /* Localizable.strings */; };
 		8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251A71F39B94F0007298A /* RSTileButton.m */; };
 		8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251AA1F39B95D0007298A /* RSTileInfo.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
@@ -348,6 +349,10 @@
 		8D259EA01F3700C400BFFB39 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
+		8D452C081F439F620046721F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D452C0B1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D452C0C1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D452C0D1F43A1100046721F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D6251A51F39B5920007298A /* segmdl2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segmdl2.ttf; sourceTree = "<group>"; };
 		8D6251A61F39B94F0007298A /* RSTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileButton.h; sourceTree = "<group>"; };
 		8D6251A71F39B94F0007298A /* RSTileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileButton.m; sourceTree = "<group>"; };
@@ -855,6 +860,7 @@
 				8D11900F1F3D0D10009A8568 /* Tiles */,
 				8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */,
 				8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */,
+				8D452C091F439F620046721F /* Localizable.strings */,
 			);
 			name = Layout;
 			path = Layout/var/mobile/Library/FESTIVAL/Redstone;
@@ -1014,8 +1020,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				de,
+				fr,
 			);
 			mainGroup = 8D4474881F2F2E9500DA9CEF;
 			productRefGroup = 8D4474881F2F2E9500DA9CEF;
@@ -1118,6 +1124,7 @@
 				8D1191031F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1191071F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190C31F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D452C071F439F620046721F /* Localizable.strings in Resources */,
 				8D1190EE1F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191221F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1190EC1F3D0D10009A8568 /* tile.plist in Resources */,
@@ -1233,6 +1240,17 @@
 			children = (
 				8D1190561F3D0D10009A8568 /* de */,
 				8D1190571F3D0D10009A8568 /* en */,
+				8D452C0B1F43A0020046721F /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		8D452C091F439F620046721F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D452C081F439F620046721F /* en */,
+				8D452C0C1F43A0020046721F /* fr */,
+				8D452C0D1F43A1100046721F /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

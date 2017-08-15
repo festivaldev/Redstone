@@ -1,8 +1,17 @@
 #import "Redstone.h"
 
 extern CFArrayRef CPBitmapCreateImagesFromData(CFDataRef cpbitmap, void*, int, void*);
+NSBundle* redstoneBundle;
 
 @implementation RSAesthetics
+
++ (NSString*)localizedStringForKey:(NSString*)key {
+	if (!redstoneBundle) {
+		redstoneBundle = [NSBundle bundleWithPath:RESOURCES_PATH];
+	}
+	
+	return [redstoneBundle localizedStringForKey:key value:key table:nil];
+}
 
 + (UIImage*)lockScreenWallpaper {
 	NSData* lockScreenWallpaper = [NSData dataWithContentsOfFile:LOCK_WALLPAPER_PATH];

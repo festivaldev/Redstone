@@ -21,8 +21,8 @@
 		[sectionBackgroundContainer addSubview:sectionBackgroundOverlay];
 		
 		self.pinMenu = [RSFlyoutMenu new];
-		[self.pinMenu addActionWithTitle:@"PIN_TO_START" target:self action:@selector(pinSelectedApp)];
-		[self.pinMenu addActionWithTitle:@"UNINSTALL" target:self action:@selector(uninstallSelectedApp)];
+		[self.pinMenu addActionWithTitle:[RSAesthetics localizedStringForKey:@"PIN_TO_START"] target:self action:@selector(pinSelectedApp)];
+		[self.pinMenu addActionWithTitle:[RSAesthetics localizedStringForKey:@"UNINSTALL"] target:self action:@selector(uninstallSelectedApp)];
 		
 		dismissRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePinMenu)];
 		[dismissRecognizer setEnabled:NO];

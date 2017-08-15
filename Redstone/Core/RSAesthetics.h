@@ -4,6 +4,7 @@
 
 @interface RSAesthetics : NSObject
 
++ (NSString*)localizedStringForKey:(NSString*)key;
 + (UIImage*)lockScreenWallpaper;
 + (UIImage*)homeScreenWallpaper;
 + (UIColor*)accentColor;
