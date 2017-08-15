@@ -20,8 +20,9 @@ RSPreferences* preferences;
 
 - (void)initialButtonUp:(id)arg1 {
 	if ([redstone homeButtonPressed]) {
-		%orig;
+		//%orig;
 	}
+	%orig;
 }
 
 %end // %hook SBHomeHardwareButton
