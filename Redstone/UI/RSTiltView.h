@@ -1,10 +1,12 @@
 #import <UIKit/UIKit.h>
 
-@interface RSTiltView : UIView {
+@interface RSTiltView : UIView <UIGestureRecognizerDelegate> {
 	CALayer* highlightLayer;
 	
 	BOOL isTilted;
 	BOOL isHighlighted;
+	
+	UILongPressGestureRecognizer* gestureRecognizer;
 }
 
 @property (nonatomic, assign) BOOL tiltEnabled;

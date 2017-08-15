@@ -49,6 +49,7 @@
 		[longPressGestureRecognizer setMinimumPressDuration:0.5];
 		[longPressGestureRecognizer setCancelsTouchesInView:NO];
 		[longPressGestureRecognizer setDelaysTouchesBegan:NO];
+		[longPressGestureRecognizer setDelegate:self];
 		[self addGestureRecognizer:longPressGestureRecognizer];
 		
 		panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panMoved:)];

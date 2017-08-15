@@ -35,6 +35,10 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			[launchScreenController animateCurrentApplicationSnapshot];
 			[startScreenController setTilesHidden:YES];
 			
+			[homeScreenController setContentOffset:CGPointZero];
+			[startScreenController setContentOffset:CGPointMake(0, -24)];
+			[appListController setContentOffset:CGPointMake(0, 0)];
+			
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 				[RSAnimation startScreenAnimateIn];
 				[RSAnimation appListAnimateIn];
