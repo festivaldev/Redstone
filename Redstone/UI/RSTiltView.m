@@ -18,18 +18,21 @@
 		[self.layer addSublayer:highlightLayer];
 		
 		[self setTiltEnabled:YES];
-		gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-		[gestureRecognizer setCancelsTouchesInView:NO];
-		[gestureRecognizer setDelaysTouchesEnded:NO];
-		[gestureRecognizer setMinimumPressDuration:0];
-		[gestureRecognizer setDelegate:self];
-		[self addGestureRecognizer:gestureRecognizer];
+		tiltGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+		[tiltGestureRecognizer setCancelsTouchesInView:NO];
+		[tiltGestureRecognizer setDelaysTouchesEnded:NO];
+		[tiltGestureRecognizer setDelaysTouchesBegan:YES];
+		[tiltGestureRecognizer setMinimumPressDuration:0];
+		[tiltGestureRecognizer setDelegate:self];
+		[tiltGestureRecognizer setAllowableMovement:10.0];
+		[self addGestureRecognizer:tiltGestureRecognizer];
 	}
 	
 	return self;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+	
 	return YES;
 }
 
@@ -37,6 +40,7 @@
 	switch (sender.state) {
 		case UIGestureRecognizerStateBegan:
 			if (self.tiltEnabled) {
+				NSLog(@"[Redstone] setting transform");
 				[self setTransformForPosition:[sender locationInView:self]];
 			}
 			
@@ -145,8 +149,48 @@
 	isHighlighted = NO;
 }
 
-- (void)setTitle:(NSString *)title {
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[super touchesCancelled:touches withEvent:event];
 	
+	NSLog(@"[Redstone] cancelling touch");
+	[self untilt];
+}
+
+- (void)setTiltEnabled:(BOOL)tiltEnabled {
+	_tiltEnabled = tiltEnabled;
+	
+	if (!tiltEnabled && isTilted) {
+		[self untilt];
+	}
+}
+
+- (void)setHighlightEnabled:(BOOL)highlightEnabled {
+	_highlightEnabled = highlightEnabled;
+	
+	if (!highlightEnabled && isHighlighted) {
+		[self untilt];
+	}
+}
+
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	[highlightLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+}
+
+- (void)addTarget:(id)target action:(SEL)action {
+	UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
+	[self addGestureRecognizer:tap];
+}
+
+- (void)setTitle:(NSString*)title {
+	if (title) {
+		[self addSubview:self.titleLabel];
+	} else {
+		[self.titleLabel removeFromSuperview];
+	}
+	
+	[self.titleLabel setText:title];
 }
 
 /*- (void)untilt {

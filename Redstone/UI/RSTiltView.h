@@ -6,7 +6,7 @@
 	BOOL isTilted;
 	BOOL isHighlighted;
 	
-	UILongPressGestureRecognizer* gestureRecognizer;
+	UILongPressGestureRecognizer* tiltGestureRecognizer;
 }
 
 @property (nonatomic, assign) BOOL tiltEnabled;

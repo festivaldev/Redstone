@@ -63,7 +63,7 @@
 
 - (void)pressed:(UILongPressGestureRecognizer*)gestureRecognizer {
 	if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-		[self setTransform:CGAffineTransformIdentity];
+		[self untilt];
 		[[[[RSCore sharedInstance] homeScreenController] appListController] showPinMenuForApp:self withPoint:[gestureRecognizer locationInView:self]];
 	}
 }

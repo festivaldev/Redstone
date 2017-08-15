@@ -89,6 +89,11 @@ static id currentApplication;
 			return YES;
 		}
 		
+		if ([[[homeScreenController appListController] jumpList] isOpen]) {
+			[[[homeScreenController appListController] jumpList] animateOut];
+			return NO;
+		}
+		
 		if ([[[homeScreenController appListController] pinMenu] isOpen]) {
 			[[homeScreenController appListController] hidePinMenu];
 			return NO;

@@ -94,10 +94,6 @@
 
 #pragma mark Gesture Recognizers
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-	return YES;
-}
-
 - (void)pressed:(UILongPressGestureRecognizer*)sender {
 	panEnabled = NO;
 	

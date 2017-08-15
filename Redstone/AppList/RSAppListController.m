@@ -54,6 +54,15 @@
 	return self.view.contentOffset;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	for (RSApp* app in apps) {
+		[app untilt];
+	}
+	for (RSAppListSection* section in sections) {
+		[section untilt];
+	}
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[self updateSectionsWithOffset:self.view.contentOffset.y];
 }
