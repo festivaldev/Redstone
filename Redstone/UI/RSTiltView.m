@@ -24,7 +24,7 @@
 		[tiltGestureRecognizer setDelaysTouchesBegan:YES];
 		[tiltGestureRecognizer setMinimumPressDuration:0];
 		[tiltGestureRecognizer setDelegate:self];
-		[tiltGestureRecognizer setAllowableMovement:10.0];
+		[tiltGestureRecognizer setAllowableMovement:1.0];
 		[self addGestureRecognizer:tiltGestureRecognizer];
 	}
 	
@@ -127,6 +127,8 @@
 	if (!self.tiltEnabled && !self.highlightEnabled) {
 		return;
 	}
+	
+	[self.layer removeAllAnimations];
 	
 	if (isTilted || isHighlighted) {
 		[UIView animateWithDuration:.15 animations:^{

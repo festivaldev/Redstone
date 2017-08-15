@@ -80,10 +80,7 @@ static id currentApplication;
 	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
 	
 	if (homeScreenController != nil) {
-		if  ([currentApplication isKindOfClass:NSClassFromString(@"SBDashBoardViewController")] || frontApp != nil) {
-			if ([[homeScreenController launchScreenController] isLaunchingApp]) {
-				[[homeScreenController launchScreenController] animateOut:YES];
-			}
+		if ([currentApplication isKindOfClass:NSClassFromString(@"SBDashBoardViewController")] || frontApp != nil) {
 			
 			[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 			return YES;

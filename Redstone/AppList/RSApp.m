@@ -42,11 +42,18 @@
 		
 		// Gesture Recognizers
 		
-		UITapGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-		[self addGestureRecognizer:tapGestureRecognizer];
-		
 		UILongPressGestureRecognizer* longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed:)];
+		[longPressGestureRecognizer setMinimumPressDuration:0.5];
+		[longPressGestureRecognizer setCancelsTouchesInView:NO];
+		[longPressGestureRecognizer setDelaysTouchesBegan:NO];
+		[longPressGestureRecognizer setDelegate:self];
 		[self addGestureRecognizer:longPressGestureRecognizer];
+		
+		UITapGestureRecognizer* tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+		[tapGestureRecognizer setCancelsTouchesInView:NO];
+		[tapGestureRecognizer setDelaysTouchesBegan:NO];
+		[tapGestureRecognizer requireGestureRecognizerToFail:longPressGestureRecognizer];
+		[self addGestureRecognizer:tapGestureRecognizer];
 	}
 	
 	return self;
