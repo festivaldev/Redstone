@@ -43,6 +43,30 @@
 			[tileLabel setHidden:YES];
 		}
 		
+		// Badge
+		if (self.tileInfo.usesCornerBadge || [[self.tileInfo.cornerBadgeForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
+			badgeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
+			[badgeLabel setTextColor:[UIColor whiteColor]];
+			[badgeLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+			[badgeLabel setLayoutMargins:UIEdgeInsetsZero];
+			[badgeLabel setHidden:YES];
+		} else {
+			badgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
+			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:36]];
+			[badgeLabel setTextColor:[UIColor whiteColor]];
+			[badgeLabel setTextAlignment:NSTextAlignmentCenter];
+			[badgeLabel setAdjustsFontSizeToFitWidth:YES];
+			[badgeLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
+			[badgeLabel setLayoutMargins:UIEdgeInsetsZero];
+			[badgeLabel setHidden:YES];
+		}
+		[self addSubview:badgeLabel];
+		
+		if ([[self.icon application] badgeNumberOrString] != nil) {
+			[self setBadge:[[[self.icon application] badgeNumberOrString] intValue]];
+		}
+	
 		// Gesture Recognizers
 		
 		longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pressed:)];
@@ -301,6 +325,86 @@
 			return 0.0;
 			break;
 			
+	}
+}
+
+#pragma mark Live Tile
+
+- (void)setBadge:(int)badgeCount {
+	badgeValue = badgeCount;
+	
+	if (!badgeCount || badgeCount == 0) {
+		[badgeLabel setText:nil];
+		[badgeLabel setHidden:YES];
+		[tileImageView setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)];
+		return;
+	}
+	
+	if ((self.tileInfo.usesCornerBadge || [[self.tileInfo.cornerBadgeForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) && self.size >= 2) {
+		if (badgeCount > 99) {
+			NSString* badgeString = @"99+";
+			
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:badgeString];
+			[attributedString addAttributes:@{
+											  NSBaselineOffsetAttributeName: @4.0
+											  } range:[badgeString rangeOfString:@"+"]];
+			[badgeLabel setAttributedText:attributedString];
+			[badgeLabel setHidden:NO];
+		} else {
+			[badgeLabel setText:[NSString stringWithFormat:@"%d", badgeCount]];
+		}
+		
+		[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
+		[badgeLabel sizeToFit];
+		[badgeLabel setFrame:CGRectMake(self.bounds.size.width - badgeLabel.frame.size.width - 8,
+									self.bounds.size.height - badgeLabel.frame.size.height - 8,
+									badgeLabel.frame.size.width,
+									badgeLabel.frame.size.height)];
+	} else {
+		if (self.size < 2) {
+			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:20]];
+		} else {
+			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:36]];
+		}
+		
+		if (badgeCount > 99) {
+			NSString* badgeString = @"99+";
+			
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:badgeString];
+			
+			if (self.size < 2) {
+				[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:16]];
+				
+				[attributedString addAttributes:@{
+												  NSBaselineOffsetAttributeName: @4.5,
+												  NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:14]
+												  } range:[badgeString rangeOfString:@"+"]];
+			} else {
+				[attributedString addAttributes:@{
+												  NSBaselineOffsetAttributeName: @10.0,
+												  NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:30]
+												  } range:[badgeString rangeOfString:@"+"]];
+			}
+			
+			[badgeLabel setAttributedText:attributedString];
+			[badgeLabel setHidden:NO];
+		} else {
+			[badgeLabel setText:[NSString stringWithFormat:@"%d", badgeCount]];
+		}
+		
+		[badgeLabel sizeToFit];
+		
+		CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:self.size];
+		CGSize combinedSize = CGSizeMake(tileImageSize.width + badgeLabel.frame.size.width + 8, tileImageSize.height);
+		
+		if (self.size < 2) {
+			combinedSize = CGSizeMake(tileImageSize.width + badgeLabel.frame.size.width + 2, tileImageSize.height);
+		}
+		
+		[tileImageView setCenter:CGPointMake(self.bounds.size.width/2 - (combinedSize.width - tileImageView.frame.size.width)/2, self.bounds.size.height/2)];
+		[badgeLabel setCenter:CGPointMake(self.bounds.size.width/2 + (combinedSize.width - badgeLabel.frame.size.width)/2, self.bounds.size.height/2)];
+		
+		[badgeLabel setHidden:NO];
 	}
 }
 

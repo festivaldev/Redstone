@@ -5,6 +5,9 @@
 @interface RSTile : RSTiltView <UIGestureRecognizerDelegate> {
 	UIImageView* tileImageView;
 	UILabel* tileLabel;
+	
+	int badgeValue;
+	UILabel* badgeLabel;
 
 	BOOL panEnabled;
 	CGPoint centerOffset;
