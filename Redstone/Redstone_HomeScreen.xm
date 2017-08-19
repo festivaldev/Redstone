@@ -117,6 +117,20 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 
 %end // %hook SBLockScreenManager
 
+%hook SBApplication
+
+- (void)setBadge:(id)arg1 {
+	%orig(arg1);
+	
+	RSStartScreenController* startScreenController = [[[RSCore sharedInstance] homeScreenController] startScreenController];
+	
+	if ([startScreenController tileForBundleIdentifier:[self bundleIdentifier]]) {
+		[[startScreenController tileForBundleIdentifier:[self bundleIdentifier]] setBadge:[arg1 intValue]];
+	}
+}
+
+%end // %hook SBApplication
+
 %hook SpringBoard
 
 - (long long) homeScreenRotationStyle {

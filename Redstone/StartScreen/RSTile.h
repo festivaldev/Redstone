@@ -32,5 +32,9 @@
 - (id)initWithFrame:(CGRect)frame size:(int)size bundleIdentifier:(NSString*)bundleIdentifier;
 - (CGRect)basePosition;
 - (void)setIsSelectedTile:(BOOL)isSelectedTile;
+- (void)unpin;
+- (void)setNextSize;
+- (CGFloat)scaleButtonRotationForCurrentSize;
+- (void)setBadge:(int)badgeCount;
 
 @end
