@@ -17,6 +17,8 @@ UIImage* _UICreateScreenUIImage();
 		[applicationSnapshot setHidden:YES];
 		[self.window setUserInteractionEnabled:NO];
 		[self.window addSubview:applicationSnapshot];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateOut) name:@"RedstoneApplicationDidBecomeActive" object:nil];
 	}
 	
 	return self;
@@ -48,8 +50,6 @@ UIImage* _UICreateScreenUIImage();
 	_isLaunchingApp = YES;
 	
 	[rootTimeout invalidate];
-	[animationTimeout invalidate];
-	[hideTimeout invalidate];
 	
 	[self.window makeKeyAndVisible];
 	[self.window setAlpha:0];
@@ -80,24 +80,17 @@ UIImage* _UICreateScreenUIImage();
 	[scale setFillMode:kCAFillModeForwards];
 	[launchImageView.layer addAnimation:scale forKey:@"scale"];
 	
-	[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(animateOut) userInfo:nil repeats:NO];
+	rootTimeout = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(animateOut) userInfo:nil repeats:NO];
 }
 
 - (void)animateOut {
-	[self animateOut:NO];
-}
-
-- (void)animateOut:(BOOL)forceClose {
 	[self.window setAlpha:1];
 	[self.window.layer removeAllAnimations];
 	[launchImageView.layer removeAllAnimations];
 	
 	[rootTimeout invalidate];
-	[animationTimeout invalidate];
-	[hideTimeout invalidate];
 	
-	animationTimeout = [NSTimer scheduledTimerWithTimeInterval:(forceClose ? 0.0 : 1.0) target:[NSBlockOperation blockOperationWithBlock:^{
-		
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[UIView animateWithDuration:0.225 animations:^{
 			[self.window setEasingFunction:easeInOutCubic forKeyPath:@"frame"];
 			[self.window setAlpha:0.0];
@@ -106,7 +99,7 @@ UIImage* _UICreateScreenUIImage();
 			[self.window removeEasingFunctionForKeyPath:@"frame"];
 			[self.window setHidden:YES];
 		}];
-	}] selector:@selector(main) userInfo:nil repeats:NO];
+	});
 }
 
 - (void)animateCurrentApplicationSnapshot {
@@ -147,13 +140,14 @@ UIImage* _UICreateScreenUIImage();
 	[self.window.layer addAnimation:opacity forKey:@"opacity"];
 	[self.window.layer addAnimation:scale forKey:@"scale"];
 	
-	hideTimeout = [NSTimer timerWithTimeInterval:0.2 target:^{
+	//hideTimeout = [NSTimer timerWithTimeInterval:0.2 target:^{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		_isLaunchingApp = NO;
 		
 		[self.window setHidden:YES];
 		[applicationSnapshot setImage:nil];
 		[applicationSnapshot setHidden:YES];
-	} selector:@selector(invoke) userInfo:nil repeats:NO];
+	});
 }
 
 @end

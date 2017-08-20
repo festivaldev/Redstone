@@ -1,4 +1,5 @@
 #import "Redstone.h"
+#import <objcipc/objcipc.h>
 
 %group homescreen
 
@@ -110,6 +111,8 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	
 	if (frontApp == nil) {
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:YES];
+	} else {
+		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 	}
 	
 	return %orig;
@@ -210,5 +213,11 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 %ctor {
 	if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
 		%init(homescreen);
+		
+		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.BecameActive"  handler:^NSDictionary *(NSDictionary *message) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneApplicationDidBecomeActive" object:nil];
+			
+			return nil;
+		}];
 	}
 }

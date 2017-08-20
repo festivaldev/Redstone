@@ -40,7 +40,6 @@
 	switch (sender.state) {
 		case UIGestureRecognizerStateBegan:
 			if (self.tiltEnabled) {
-				NSLog(@"[Redstone] setting transform");
 				[self setTransformForPosition:[sender locationInView:self]];
 			}
 			

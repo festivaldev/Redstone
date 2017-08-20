@@ -149,6 +149,9 @@
 		8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191571F3F93B8009A8568 /* RSAppListSection.m */; };
 		8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191601F403FE3009A8568 /* RSTiltView.m */; };
 		8D1191641F40568D009A8568 /* RSFlyoutMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191631F40568D009A8568 /* RSFlyoutMenu.m */; };
+		8D14C6B11F498E0200ADD69A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6AE1F498E0200ADD69A /* Makefile */; };
+		8D14C6B21F498E0200ADD69A /* Redstone_UIKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D14C6AF1F498E0200ADD69A /* Redstone_UIKit.plist */; };
+		8D14C6B31F498E0200ADD69A /* Tweak.xm in Resources */ = {isa = PBXBuildFile; fileRef = 8D14C6B01F498E0200ADD69A /* Tweak.xm */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -333,6 +336,9 @@
 		8D1191601F403FE3009A8568 /* RSTiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTiltView.m; sourceTree = "<group>"; };
 		8D1191621F40568D009A8568 /* RSFlyoutMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSFlyoutMenu.h; sourceTree = "<group>"; };
 		8D1191631F40568D009A8568 /* RSFlyoutMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSFlyoutMenu.m; sourceTree = "<group>"; };
+		8D14C6AE1F498E0200ADD69A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8D14C6AF1F498E0200ADD69A /* Redstone_UIKit.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone_UIKit.plist; sourceTree = "<group>"; };
+		8D14C6B01F498E0200ADD69A /* Tweak.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tweak.xm; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -800,6 +806,16 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8D14C6AE1F498E0200ADD69A /* Makefile */,
+				8D14C6AF1F498E0200ADD69A /* Redstone_UIKit.plist */,
+				8D14C6B01F498E0200ADD69A /* Tweak.xm */,
+			);
+			path = Redstone_UIKit;
+			sourceTree = "<group>";
+		};
 		8D259E8B1F359E1500BFFB39 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -908,6 +924,7 @@
 				8DF5EB311F33BB24003CC2B4 /* Redstone.h */,
 				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
 				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
+				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DB0B6E41F346326002E3CCF /* Layout */,
 				8D259E8B1F359E1500BFFB39 /* Libraries */,
@@ -1114,6 +1131,7 @@
 				8D1190DE1F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190D51F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190BF1F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D14C6B21F498E0200ADD69A /* Redstone_UIKit.plist in Resources */,
 				8D1191341F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1191231F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1190F01F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
@@ -1127,6 +1145,7 @@
 				8D452C071F439F620046721F /* Localizable.strings in Resources */,
 				8D1190EE1F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191221F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D14C6B31F498E0200ADD69A /* Tweak.xm in Resources */,
 				8D1190EC1F3D0D10009A8568 /* tile.plist in Resources */,
 				8D1190DB1F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1190FB1F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
@@ -1203,6 +1222,7 @@
 				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8D14C6B11F498E0200ADD69A /* Makefile in Sources */,
 				8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */,
 				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
