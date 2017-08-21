@@ -53,3 +53,6 @@
 
 #pragma mark Launch Screen
 #import "LaunchScreen/RSLaunchScreenController.h"
+
+#pragma mark Volume Controls
+#import "VolumeControls/RSAudioController.h"
