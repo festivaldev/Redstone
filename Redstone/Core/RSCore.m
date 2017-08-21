@@ -71,6 +71,18 @@ static id currentApplication;
 		//[[homeScreenController startScreenController] setTilesVisible:NO];
 		[[homeScreenController startScreenController] setIsEditing:NO];
 		[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
+		
+		for (RSAlertController* alertController in [homeScreenController alertControllers]) {
+			[alertController dismiss];
+		}
+		
+		[[[homeScreenController appListController] jumpList] animateOut];
+		[[homeScreenController appListController] hidePinMenu];
+		
+		[[[homeScreenController appListController] searchBar] resignFirstResponder];
+		[[[homeScreenController appListController] searchBar] setText:@""];
+		[[homeScreenController appListController] showAppsFittingQuery];
+		[[[homeScreenController appListController] searchBar] resignFirstResponder];
 	} else {
 		//[[homeScreenController startScreenController] setTilesVisible:YES];
 	}
@@ -86,6 +98,10 @@ static id currentApplication;
 			return YES;
 		}
 		
+		if ([homeScreenController alertControllers].count > 0) {
+			[(RSAlertController*)[[homeScreenController alertControllers] lastObject] dismiss];
+		}
+		
 		if ([[[homeScreenController appListController] jumpList] isOpen]) {
 			[[[homeScreenController appListController] jumpList] animateOut];
 			return NO;
@@ -96,7 +112,16 @@ static id currentApplication;
 			return NO;
 		}
 		
-		/// TODO: Search Bar
+		if ([[[homeScreenController appListController] searchBar] text].length > 0) {
+			[[[homeScreenController appListController] searchBar] resignFirstResponder];
+			[[[homeScreenController appListController] searchBar] setText:@""];
+			[[homeScreenController appListController] showAppsFittingQuery];
+		}
+		
+		if ([[[homeScreenController appListController] searchBar] isFirstResponder]) {
+			[[[homeScreenController appListController] searchBar] resignFirstResponder];
+			return NO;
+		}
 		
 		if ([[homeScreenController startScreenController] isEditing]) {
 			[[homeScreenController startScreenController] setIsEditing:NO];

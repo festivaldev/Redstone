@@ -149,6 +149,8 @@
 	[self eliminateEmptyRows];
 	[self saveTiles];
 	
+	[self.view.allAppsButton setHidden:NO];
+	
 	[self.view setContentOffset:CGPointMake(0, MAX(self.view.contentSize.height - self.view.bounds.size.height + 64, -24)) animated:YES];
 	[[[RSCore sharedInstance] homeScreenController] setContentOffset:CGPointZero animated:YES];
 }
@@ -221,7 +223,9 @@
 	}
 	
 	_isEditing = isEditing;
+	
 	[[RSCore.sharedInstance homeScreenController] setScrollEnabled:!isEditing];
+	[self.view.allAppsButton setHidden:(isEditing || pinnedTiles.count == 0)];
 	
 	if (isEditing) {
 		[UIView animateWithDuration:.2 animations:^{

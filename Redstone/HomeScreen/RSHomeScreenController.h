@@ -12,8 +12,10 @@
 }
 
 @property (nonatomic, strong) UIView* view;
+@property (nonatomic, strong) NSMutableArray* alertControllers;
 
 - (RSHomeScreenWallpaperView*)wallpaperView;
+- (UIScrollView*)homeScreenScrollView;
 - (RSStartScreenController*)startScreenController;
 - (RSAppListController*)appListController;
 - (RSLaunchScreenController*)launchScreenController;

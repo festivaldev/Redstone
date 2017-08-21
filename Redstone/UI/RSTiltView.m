@@ -194,6 +194,16 @@
 	[self.titleLabel setText:title];
 }
 
+- (void)setAttributedTitle:(NSAttributedString*)attributedTitle {
+	if (attributedTitle) {
+		[self addSubview:self.titleLabel];
+	} else {
+		[self.titleLabel removeFromSuperview];
+	}
+	
+	[self.titleLabel setAttributedText:attributedTitle];
+}
+
 /*- (void)untilt {
 	if (!self.tiltEnabled && !self.highlightEnabled) {
 		return;

@@ -13,6 +13,14 @@ RSPreferences* preferences;
 	redstone = [[RSCore alloc] initWithWindow:[[%c(SBUIController) sharedInstance] window]];
 }
 
+// iOS 9
+- (void)_handleMenuButtonEvent {
+	if ([redstone homeButtonPressed]) {
+		//%orig;
+	}
+	%orig;
+}
+
 %end // %hook SpringBoard
 
 // iOS 10

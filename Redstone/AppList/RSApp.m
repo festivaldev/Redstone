@@ -59,6 +59,10 @@
 	return self;
 }
 
+- (NSString*)displayName {
+	return appLabel.text;
+}
+
 #pragma mark Gesture Recognizers
 
 - (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {

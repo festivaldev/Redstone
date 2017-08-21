@@ -13,5 +13,6 @@
 @property (nonatomic, assign) CGPoint originalCenter;
 
 - (id)initWithFrame:(CGRect)frame bundleIdentifier:(NSString *)bundleIdentifier;
+- (NSString*)displayName;
 
 @end

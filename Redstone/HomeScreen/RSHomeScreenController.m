@@ -17,10 +17,13 @@
 		[homeScreenScrollView addSubview:startScreenController.view];
 		
 		appListController = [RSAppListController new];
+		[homeScreenScrollView addSubview:appListController.searchBar];
 		[homeScreenScrollView addSubview:appListController.view];
 		[homeScreenScrollView addSubview:appListController.jumpList];
 		
 		launchScreenController = [[RSLaunchScreenController alloc] init];
+		
+		self.alertControllers = [NSMutableArray new];
 	}
 	return self;
 }
@@ -37,6 +40,10 @@
 
 - (RSHomeScreenWallpaperView*)wallpaperView {
 	return wallpaperView;
+}
+
+- (UIScrollView*)homeScreenScrollView {
+	return homeScreenScrollView;
 }
 
 - (RSStartScreenController*)startScreenController {

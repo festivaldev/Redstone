@@ -1,4 +1,7 @@
 {
+	"SEARCH" = "Suchen";
+	"NO_RESULTS_FOUND" = "Keine Ergebnisse für %@ gefunden.";
 	"PIN_TO_START" = "An „Start“ anheften";
 	"UNINSTALL" = "Deinstallieren";
+	"ALL_APPS" = "Alle Apps";
 }

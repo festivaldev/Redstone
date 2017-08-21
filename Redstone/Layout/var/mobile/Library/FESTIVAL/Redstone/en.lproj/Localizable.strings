@@ -1,4 +1,7 @@
 {
+	"SEARCH" = "Search";
+	"NO_RESULTS_FOUND" = "No results for %@";
 	"PIN_TO_START" = "Pin to Start";
 	"UNINSTALL" = "Uninstall";
+	"ALL_APPS" = "All apps";
 }

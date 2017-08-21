@@ -7,6 +7,16 @@
 		self.view = [[RSAppListScrollView alloc] initWithFrame:CGRectMake(screenWidth, 70, screenWidth, screenHeight - 70)];
 		[self.view setDelegate:self];
 		
+		self.searchBar = [[RSTextField alloc] initWithFrame:CGRectMake(screenWidth + 5, 24, screenWidth - 10, 40)];
+		[self.searchBar setPlaceholder:[RSAesthetics localizedStringForKey:@"SEARCH"]];
+		[self.searchBar addTarget:self action:@selector(showAppsFittingQuery) forControlEvents:UIControlEventEditingChanged];
+		
+		noResultsLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, self.view.frame.size.width-10, 30)];
+		[noResultsLabel setTextColor:[UIColor colorWithWhite:0.5 alpha:1.0]];
+		[noResultsLabel setFont:[UIFont fontWithName:@"SegoeUI" size:17]];
+		[noResultsLabel setHidden:YES];
+		[self.view addSubview:noResultsLabel];
+		
 		sectionBackgroundContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
 		[sectionBackgroundContainer setClipsToBounds:YES];
 		
@@ -309,7 +319,7 @@
 	self.isUninstallingApp = YES;
 	[self hidePinMenu];
 	
-	if ([self.selectedApp.icon isUninstallSupported]) {
+	/*if ([self.selectedApp.icon isUninstallSupported]) {
 		[self.selectedApp.icon setUninstalled];
 		[self.selectedApp.icon completeUninstall];
 		
@@ -327,7 +337,39 @@
 			[self loadApps];
 			[self updateSectionsWithOffset:self.view.contentOffset.y];
 		}];
-	}
+	}*/
+	
+	RSAlertController* alertController = [RSAlertController alertControllerWithTitle:[self.selectedApp.icon uninstallAlertTitle] message:[self.selectedApp.icon uninstallAlertBody]];
+	[alertController show];
+	
+	RSAlertAction* uninstallAction = [RSAlertAction actionWithTitle:[self.selectedApp.icon uninstallAlertConfirmTitle] handler:^{
+		if ([self.selectedApp.icon isUninstallSupported]) {
+			[self.selectedApp.icon setUninstalled];
+			[self.selectedApp.icon completeUninstall];
+			
+			[[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] removeIconForIdentifier:[self.selectedApp.icon applicationBundleID]];
+			
+			[UIView animateWithDuration:0.2 animations:^{
+				[self.selectedApp setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+				
+				[self.selectedApp setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+				[self.selectedApp.layer setOpacity:0.0];
+			} completion:^(BOOL finished) {
+				self.selectedApp = nil;
+				self.isUninstallingApp = NO;
+				
+				[self loadApps];
+			}];
+		}
+	}];
+	
+	RSAlertAction* cancelAction = [RSAlertAction actionWithTitle:[self.selectedApp.icon uninstallAlertCancelTitle] handler:^{
+		self.selectedApp = nil;
+		self.isUninstallingApp = NO;
+	}];
+	
+	[alertController addAction:uninstallAction];
+	[alertController addAction:cancelAction];
 }
 
 #pragma mark Jump List
@@ -352,6 +394,79 @@
 				[self setContentOffset:CGPointMake(0, MIN(sectionOffset, maxOffsetByScreen))];
 			}
 		}
+	}
+}
+
+#pragma mark Search Bar
+
+- (void)showAppsFittingQuery {
+	NSString* query = [self.searchBar text];
+	NSMutableArray* newSubviews = [NSMutableArray new];
+	
+	for (UIView* view in self.view.subviews) {
+		if (query != nil && ![query isEqualToString:@""] && [query length] > 0) {
+			if ([view isKindOfClass:[RSApp class]]) {
+				NSArray* displayName = [[[(RSApp*)view displayName] lowercaseString] componentsSeparatedByString:@" "];
+				
+				for (int i=0; i<[displayName count]; i++) {
+					if ([[displayName objectAtIndex:i] hasPrefix:[query lowercaseString]]) {
+						[newSubviews addObject:view];
+						break;
+					} else {
+						[view setHidden:YES];
+					}
+				}
+			} else {
+				[view setHidden:YES];
+			}
+		} else {
+			[view setHidden:NO];
+		}
+	}
+	
+	if ([newSubviews count] > 0 && (query != nil || ![query isEqualToString:@""])) {
+		for (UIView* view in self.view.subviews) {
+			[view setHidden:YES];
+		}
+		
+		newSubviews = [[newSubviews sortedArrayUsingComparator:^NSComparisonResult(RSApp* app1, RSApp* app2) {
+			return [[app1 displayName] caseInsensitiveCompare:[app2 displayName]];
+		}] mutableCopy];
+		
+		for (int i=0; i<[newSubviews count]; i++) {
+			RSApp* app = [newSubviews objectAtIndex:i];
+			[app setHidden:NO];
+			
+			CGRect frame = app.frame;
+			frame.origin.y = i * frame.size.height;
+			[app setFrame:frame];
+		}
+		
+		CGRect contentRect = CGRectZero;
+		for (UIView *view in self.view.subviews) {
+			if (!view.hidden) {
+				contentRect = CGRectUnion(contentRect, view.frame);
+			}
+		}
+		
+		[(UIScrollView*)self.view setContentSize:contentRect.size];
+	} else if ([newSubviews count] == 0 && query != nil && ![query isEqualToString:@""]) {
+		[self showNoResultsLabel:YES forQuery:query];
+	} else {
+		[self showNoResultsLabel:NO forQuery:nil];
+		[self sortAppsAndLayout];
+	}
+}
+
+- (void)showNoResultsLabel:(BOOL)visible forQuery:(NSString*)query {
+	[noResultsLabel setHidden:!visible];
+	
+	if (query != nil && ![query isEqualToString:@""]) {
+		NSString* baseString = [NSString stringWithFormat:[RSAesthetics localizedStringForKey:@"NO_RESULTS_FOUND"], query];
+		NSRange range = [baseString rangeOfString:query options:NSBackwardsSearch];
+		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:baseString];
+		[string addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+		[noResultsLabel setAttributedText:string];
 	}
 }
 

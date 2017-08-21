@@ -79,6 +79,16 @@
 	
 	float maxDelay = ((maxY - minY) * 0.01) + (maxX * 0.01);
 	
+	CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+															function:CubicEaseIn
+														   fromValue:1.0
+															 toValue:0.0];
+	[opacity setDuration:0.2];
+	[opacity setRemovedOnCompletion:NO];
+	[opacity setFillMode:kCAFillModeForwards];
+	
+	[startScreen.allAppsButton.layer addAnimation:opacity forKey:@"opacity"];
+	
 	for (RSTile* tile in tilesInView) {
 		int tileX = tile.basePosition.origin.x / sizeForPosition;
 		int tileY = tile.basePosition.origin.y / sizeForPosition;
@@ -138,6 +148,7 @@
 				[tile.layer setOpacity:1];
 			}*/
 			[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+			[startScreen.allAppsButton.layer removeAllAnimations];
 		});
 	});
 }
@@ -186,6 +197,16 @@
 	
 	float maxDelay = ((maxY - minY) * 0.01) + (maxX * 0.01);
 	
+	CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+															function:CubicEaseIn
+														   fromValue:0.0
+															 toValue:1.0];
+	[opacity setDuration:0.3];
+	[opacity setRemovedOnCompletion:NO];
+	[opacity setFillMode:kCAFillModeForwards];
+	
+	[startScreen.allAppsButton.layer addAnimation:opacity forKey:@"opacity"];
+	
 	for (RSTile* tile in tilesInView) {
 		int tileX = tile.basePosition.origin.x / sizeForPosition;
 		int tileY = tile.basePosition.origin.y / sizeForPosition;
@@ -228,6 +249,7 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		
 		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+		[startScreen.allAppsButton.layer removeAllAnimations];
 		
 		for (RSTile* tile in tiles) {
 			[tile.layer removeAllAnimations];
@@ -258,9 +280,10 @@
 }
 
 + (void)appListAnimateOut {
-	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	RSAppListController* appListController = [[[RSCore sharedInstance] homeScreenController] appListController];
+	RSAppListScrollView* appList = appListController.view;
 	
-	RSApp* sender = [[[[RSCore sharedInstance] homeScreenController] appListController] appForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
+	RSApp* sender = [appListController appForBundleIdentifier:[[[[RSCore sharedInstance] homeScreenController] launchScreenController] launchIdentifier]];
 	
 	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
@@ -287,6 +310,16 @@
 	for (UIView* view in viewsNotInView) {
 		[view setHidden:YES];
 	}
+	
+	CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+															function:CubicEaseIn
+														   fromValue:1.0
+															 toValue:0.0];
+	[opacity setDuration:0.2];
+	[opacity setRemovedOnCompletion:NO];
+	[opacity setFillMode:kCAFillModeForwards];
+	
+	[appListController.searchBar.layer addAnimation:opacity forKey:@"opacity"];
 	
 	float maxDelay = [viewsInView count] * 0.01;
 	
@@ -355,11 +388,17 @@
 		}
 		
 		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[appListController.searchBar setText:@""];
+			[appListController showAppsFittingQuery];
+		});
 	});
 }
 
 + (void)appListAnimateIn {
-	RSAppListScrollView* appList = [[[[RSCore sharedInstance] homeScreenController] appListController] view];
+	RSAppListController* appListController = [[[RSCore sharedInstance] homeScreenController] appListController];
+	RSAppListScrollView* appList = appListController.view;
 	
 	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
 	
@@ -385,6 +424,16 @@
 	for (UIView* view in viewsNotInView) {
 		[view setHidden:YES];
 	}
+	
+	CAAnimation* opacity = [CAKeyframeAnimation animationWithKeyPath:@"opacity"
+															function:CubicEaseIn
+														   fromValue:0.0
+															 toValue:1.0];
+	[opacity setDuration:0.3];
+	[opacity setRemovedOnCompletion:NO];
+	[opacity setFillMode:kCAFillModeForwards];
+	
+	[appListController.searchBar.layer addAnimation:opacity forKey:@"opacity"];
 	
 	float maxDelay = [viewsInView count] * 0.01;
 	

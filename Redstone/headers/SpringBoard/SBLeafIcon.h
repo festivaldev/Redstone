@@ -12,4 +12,9 @@
 - (id)displayName;
 - (id)getUnmaskedIconImage:(int)arg1;
 
+- (id)uninstallAlertTitle;
+- (id)uninstallAlertBody;
+- (id)uninstallAlertConfirmTitle;
+- (id)uninstallAlertCancelTitle;
+
 @end
