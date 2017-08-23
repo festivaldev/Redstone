@@ -7,3 +7,4 @@
 #import "SpringBoard/SBIconModel.h"
 #import "SpringBoard/SBLeafIcon.h"
 #import "SpringBoard/SBMainDisplaySceneLayoutViewController.h"
+#import "SpringBoard/VolumeControl.h"

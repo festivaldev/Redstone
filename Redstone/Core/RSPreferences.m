@@ -28,6 +28,11 @@ static RSPreferences* sharedInstance;
 			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"homeScreenEnabled"];
 		}
 		
+		// Volume Controls
+		if (![preferences objectForKey:@"volumeControlsEnabled"]) {
+			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"volumeControlsEnabled"];
+		}
+		
 		// Accent Color
 		if (![preferences objectForKey:@"accentColor"]) {
 			[preferences setValue:@"#0078D7" forKey:@"accentColor"];

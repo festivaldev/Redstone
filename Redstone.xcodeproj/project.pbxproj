@@ -156,6 +156,14 @@
 		8D14C6B91F4AE00E00ADD69A /* RSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6B81F4AE00E00ADD69A /* RSAlertController.m */; };
 		8D14C6BC1F4AE11600ADD69A /* RSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6BB1F4AE11600ADD69A /* RSAlertAction.m */; };
 		8D14C6C01F4B88C400ADD69A /* RSAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6BF1F4B88C400ADD69A /* RSAudioController.m */; };
+		8D14C6CA1F4D5CA800ADD69A /* RSVolumeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */; };
+		8D14C6D61F4E1EBF00ADD69A /* entry.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D14C6CF1F4E1EBF00ADD69A /* entry.plist */; };
+		8D14C6D71F4E1EBF00ADD69A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6D01F4E1EBF00ADD69A /* Makefile */; };
+		8D14C6D81F4E1EBF00ADD69A /* RDSRootListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6D21F4E1EBF00ADD69A /* RDSRootListController.m */; };
+		8D14C6D91F4E1EBF00ADD69A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D14C6D41F4E1EBF00ADD69A /* Info.plist */; };
+		8D14C6DA1F4E1EBF00ADD69A /* Root.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D14C6D51F4E1EBF00ADD69A /* Root.plist */; };
+		8D14C6DD1F4E1FEF00ADD69A /* PFHeaderCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6DC1F4E1FEF00ADD69A /* PFHeaderCell.mm */; };
+		8D14C6E01F4E1FFA00ADD69A /* RDSAccentColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6DF1F4E1FFA00ADD69A /* RDSAccentColorList.m */; };
 		8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
 		8D259E971F359E1500BFFB39 /* easing.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8E1F359E1500BFFB39 /* easing.c */; };
 		8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
@@ -313,7 +321,6 @@
 		8D1190B41F3D0D10009A8568 /* tile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@3x.png"; sourceTree = "<group>"; };
 		8D1191361F3D8933009A8568 /* RSAesthetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAesthetics.h; sourceTree = "<group>"; };
 		8D1191371F3D8933009A8568 /* RSAesthetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAesthetics.m; sourceTree = "<group>"; };
-		8D11913B1F3D8C00009A8568 /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
 		8D11913C1F3D9799009A8568 /* RSHomeScreenWallpaperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSHomeScreenWallpaperView.h; sourceTree = "<group>"; };
 		8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSHomeScreenWallpaperView.m; sourceTree = "<group>"; };
 		8D11913F1F3D9D25009A8568 /* RSAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAnimation.h; sourceTree = "<group>"; };
@@ -353,6 +360,22 @@
 		8D14C6BF1F4B88C400ADD69A /* RSAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAudioController.m; sourceTree = "<group>"; };
 		8D14C6C11F4B892C00ADD69A /* Redstone_VolumeControls.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_VolumeControls.xm; sourceTree = "<group>"; };
 		8D14C6C51F4B8BE100ADD69A /* MPVolumeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPVolumeController.h; sourceTree = "<group>"; };
+		8D14C6C71F4D5B0600ADD69A /* AVSystemController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVSystemController.h; sourceTree = "<group>"; };
+		8D14C6C81F4D5CA800ADD69A /* RSVolumeHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVolumeHUD.h; sourceTree = "<group>"; };
+		8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVolumeHUD.m; sourceTree = "<group>"; };
+		8D14C6CB1F4D5D8000ADD69A /* MPVolumeControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPVolumeControllerDelegate.h; sourceTree = "<group>"; };
+		8D14C6CC1F4D661100ADD69A /* VolumeControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VolumeControl.h; sourceTree = "<group>"; };
+		8D14C6CD1F4D666200ADD69A /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
+		8D14C6CF1F4E1EBF00ADD69A /* entry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entry.plist; sourceTree = "<group>"; };
+		8D14C6D01F4E1EBF00ADD69A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8D14C6D11F4E1EBF00ADD69A /* RDSRootListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDSRootListController.h; sourceTree = "<group>"; };
+		8D14C6D21F4E1EBF00ADD69A /* RDSRootListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDSRootListController.m; sourceTree = "<group>"; };
+		8D14C6D41F4E1EBF00ADD69A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D14C6D51F4E1EBF00ADD69A /* Root.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Root.plist; sourceTree = "<group>"; };
+		8D14C6DB1F4E1FEF00ADD69A /* PFHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFHeaderCell.h; sourceTree = "<group>"; };
+		8D14C6DC1F4E1FEF00ADD69A /* PFHeaderCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PFHeaderCell.mm; sourceTree = "<group>"; };
+		8D14C6DE1F4E1FFA00ADD69A /* RDSAccentColorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDSAccentColorList.h; sourceTree = "<group>"; };
+		8D14C6DF1F4E1FFA00ADD69A /* RDSAccentColorList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDSAccentColorList.m; sourceTree = "<group>"; };
 		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
@@ -841,6 +864,8 @@
 			children = (
 				8D14C6BE1F4B88C400ADD69A /* RSAudioController.h */,
 				8D14C6BF1F4B88C400ADD69A /* RSAudioController.m */,
+				8D14C6C81F4D5CA800ADD69A /* RSVolumeHUD.h */,
+				8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */,
 			);
 			path = VolumeControls;
 			sourceTree = "<group>";
@@ -849,8 +874,42 @@
 			isa = PBXGroup;
 			children = (
 				8D14C6C51F4B8BE100ADD69A /* MPVolumeController.h */,
+				8D14C6CB1F4D5D8000ADD69A /* MPVolumeControllerDelegate.h */,
 			);
 			path = MediaPlayer;
+			sourceTree = "<group>";
+		};
+		8D14C6C61F4D5AFA00ADD69A /* Celestial */ = {
+			isa = PBXGroup;
+			children = (
+				8D14C6C71F4D5B0600ADD69A /* AVSystemController.h */,
+			);
+			path = Celestial;
+			sourceTree = "<group>";
+		};
+		8D14C6CE1F4E1EBF00ADD69A /* Redstone_Prefs */ = {
+			isa = PBXGroup;
+			children = (
+				8D14C6CF1F4E1EBF00ADD69A /* entry.plist */,
+				8D14C6D01F4E1EBF00ADD69A /* Makefile */,
+				8D14C6D11F4E1EBF00ADD69A /* RDSRootListController.h */,
+				8D14C6D21F4E1EBF00ADD69A /* RDSRootListController.m */,
+				8D14C6DE1F4E1FFA00ADD69A /* RDSAccentColorList.h */,
+				8D14C6DF1F4E1FFA00ADD69A /* RDSAccentColorList.m */,
+				8D14C6DB1F4E1FEF00ADD69A /* PFHeaderCell.h */,
+				8D14C6DC1F4E1FEF00ADD69A /* PFHeaderCell.mm */,
+				8D14C6D31F4E1EBF00ADD69A /* Resources */,
+			);
+			path = Redstone_Prefs;
+			sourceTree = "<group>";
+		};
+		8D14C6D31F4E1EBF00ADD69A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D14C6D41F4E1EBF00ADD69A /* Info.plist */,
+				8D14C6D51F4E1EBF00ADD69A /* Root.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		8D259E8B1F359E1500BFFB39 /* Libraries */ = {
@@ -922,6 +981,7 @@
 		8DBEE1D21F352B7800AD4827 /* SpringBoard */ = {
 			isa = PBXGroup;
 			children = (
+				8D14C6CD1F4D666200ADD69A /* SpringBoard.h */,
 				8D1191471F3E6817009A8568 /* SpringBoard-Class.h */,
 				8D11915C1F403F12009A8568 /* SBApplication.h */,
 				8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */,
@@ -931,6 +991,7 @@
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
 				8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */,
 				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
+				8D14C6CC1F4D661100ADD69A /* VolumeControl.h */,
 			);
 			path = SpringBoard;
 			sourceTree = "<group>";
@@ -963,6 +1024,7 @@
 				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
 				8D14C6C11F4B892C00ADD69A /* Redstone_VolumeControls.xm */,
 				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
+				8D14C6CE1F4E1EBF00ADD69A /* Redstone_Prefs */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DB0B6E41F346326002E3CCF /* Layout */,
 				8D259E8B1F359E1500BFFB39 /* Libraries */,
@@ -997,9 +1059,9 @@
 		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				8D11913B1F3D8C00009A8568 /* SpringBoard.h */,
 				8DBEE1D21F352B7800AD4827 /* SpringBoard */,
 				8D14C6C41F4B8BE100ADD69A /* MediaPlayer */,
+				8D14C6C61F4D5AFA00ADD69A /* Celestial */,
 			);
 			path = headers;
 			sourceTree = "<group>";
@@ -1022,7 +1084,7 @@
 /* Begin PBXLegacyTarget section */
 		8DF5EB0E1F337073003CC2B4 /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "";
+			buildArgumentsString = do;
 			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
@@ -1144,6 +1206,7 @@
 				8D1191281F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1190F21F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191151F3D0D10009A8568 /* tile.plist in Resources */,
+				8D14C6D91F4E1EBF00ADD69A /* Info.plist in Resources */,
 				8D1190E11F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D1191201F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190D71F3D0D10009A8568 /* tile@2x.png in Resources */,
@@ -1226,6 +1289,7 @@
 				8D1190D91F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190C51F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190CB1F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D14C6D61F4E1EBF00ADD69A /* entry.plist in Resources */,
 				8D1190D61F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D1190B81F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191081F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
@@ -1233,6 +1297,7 @@
 				8D1191291F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190C41F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1191051F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D14C6DA1F4E1EBF00ADD69A /* Root.plist in Resources */,
 				8D1190FA1F3D0D10009A8568 /* tile@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1245,11 +1310,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
+				8D14C6E01F4E1FFA00ADD69A /* RDSAccentColorList.m in Sources */,
+				8D14C6D81F4E1EBF00ADD69A /* RDSRootListController.m in Sources */,
 				8D14C6BC1F4AE11600ADD69A /* RSAlertAction.m in Sources */,
 				8D14C6B91F4AE00E00ADD69A /* RSAlertController.m in Sources */,
+				8D14C6D71F4E1EBF00ADD69A /* Makefile in Sources */,
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8DE6A3F51F42656A009EDE86 /* RSJumpList.m in Sources */,
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
+				8D14C6CA1F4D5CA800ADD69A /* RSVolumeHUD.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
 				8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */,
 				8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */,
@@ -1271,6 +1340,7 @@
 				8D14C6C01F4B88C400ADD69A /* RSAudioController.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
+				8D14C6DD1F4E1FEF00ADD69A /* PFHeaderCell.mm in Sources */,
 				8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */,
 				8D1191521F3F8CAE009A8568 /* RSAppListScrollView.m in Sources */,
 				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,

@@ -78,6 +78,15 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 
 %end // %hook SBUIAnimationZoomApp
 
+%hook SBUIAnimationLockScreenToAppZoomIn
+
+- (void)_startAnimation {
+	[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
+	%orig;
+}
+
+%end // %hook SBUIAnimationLockScreenToAppZoomIn
+
 // iOS 9
 %hook SBUIAnimationZoomUpApp
 
@@ -112,6 +121,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	if (frontApp == nil) {
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:YES];
 	} else {
+		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 	}
 	
@@ -211,7 +221,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 %end // %group homescreen
 
 %ctor {
-	if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
 		%init(homescreen);
 		
 		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.BecameActive"  handler:^NSDictionary *(NSDictionary *message) {

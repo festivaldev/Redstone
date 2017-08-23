@@ -23,5 +23,5 @@ after-package::
 	@cd $(PROJECT_DIR) && dpkg-scanpackages -m . /dev/null > $(PROJECT_DIR)/Packages
 	@bzip2 -k $(PROJECT_DIR)/Packages
 
-SUBPROJECTS += Redstone_UIKit
+SUBPROJECTS += Redstone_UIKit Redstone_Prefs
 include $(THEOS_MAKE_PATH)/aggregate.mk

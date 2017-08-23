@@ -50,6 +50,10 @@ static id currentApplication;
 		
 			[[self class] hideAllExcept:homeScreenController.view];
 		}
+		
+		if ([[[RSPreferences preferences] objectForKey:@"volumeControlsEnabled"] boolValue]) {
+			audioController = [RSAudioController new];
+		}
 	}
 	
 	return self;
@@ -57,6 +61,10 @@ static id currentApplication;
 
 - (RSHomeScreenController*)homeScreenController {
 	return homeScreenController;
+}
+
+- (RSAudioController*)audioController {
+	return audioController;
 }
 
 - (void)frontDisplayDidChange:(id)application {

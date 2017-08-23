@@ -153,7 +153,6 @@
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 	[super touchesCancelled:touches withEvent:event];
 	
-	NSLog(@"[Redstone] cancelling touch");
 	[self untilt];
 }
 

@@ -40,7 +40,7 @@ RSPreferences* preferences;
 %ctor {
 	preferences = [RSPreferences new];
 	
-	if ([[preferences objectForKey:@"enabled"] boolValue]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue]) {
 		%init(core);
 	}
 }

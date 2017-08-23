@@ -9,7 +9,8 @@
 
 #import <objc/runtime.h>
 
-#import "headers/SpringBoard.h"
+#import <SpringBoard/SpringBoard.h>
+#import <Celestial/AVSystemController.h>
 
 #pragma mark Libraries
 #import "Libraries/CAKeyframeAnimation+AHEasing.h"
@@ -56,3 +57,4 @@
 
 #pragma mark Volume Controls
 #import "VolumeControls/RSAudioController.h"
+#import "VolumeControls/RSVolumeHUD.h"
