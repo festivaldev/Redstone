@@ -174,6 +174,7 @@
 		8D452C071F439F620046721F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D452C091F439F620046721F /* Localizable.strings */; };
 		8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251A71F39B94F0007298A /* RSTileButton.m */; };
 		8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251AA1F39B95D0007298A /* RSTileInfo.m */; };
+		8D96D6801F4E2CF30006A624 /* RSVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
 		8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
@@ -403,6 +404,8 @@
 		8D6251AA1F39B95D0007298A /* RSTileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileInfo.m; sourceTree = "<group>"; };
 		8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_HomeScreen.xm; sourceTree = "<group>"; };
 		8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMainDisplaySceneLayoutViewController.h; sourceTree = "<group>"; };
+		8D96D67E1F4E2CF30006A624 /* RSVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVolumeView.h; sourceTree = "<group>"; };
+		8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSVolumeView.m; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 				8D14C6BF1F4B88C400ADD69A /* RSAudioController.m */,
 				8D14C6C81F4D5CA800ADD69A /* RSVolumeHUD.h */,
 				8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */,
+				8D96D67E1F4E2CF30006A624 /* RSVolumeView.h */,
+				8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */,
 			);
 			path = VolumeControls;
 			sourceTree = "<group>";
@@ -1328,6 +1333,7 @@
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
 				8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */,
 				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,
+				8D96D6801F4E2CF30006A624 /* RSVolumeView.m in Sources */,
 				8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */,
 				8D14C6B61F4AD00A00ADD69A /* RSTextField.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,

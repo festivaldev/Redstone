@@ -29,24 +29,34 @@
 		return NO;
 	}
 	
-	// return YES
-	return NO;
+	if ([volumeHUD isVisible]) {
+		return NO;
+	}
+	
+	return YES;
+	// return NO;
+}
+
+- (void)displayHUDIfPossible {
+	if ([self canDisplayHUD]) {
+		[self.window makeKeyAndVisible];
+		[volumeHUD appear];
+		[volumeHUD resetAnimationTimer];
+	} else if ([volumeHUD isVisible]) {
+		[volumeHUD resetAnimationTimer];
+	}
 }
 
 - (void)volumeIncreasedForCategory:(NSString*)category {
 	NSLog(@"[Redstone] volume increased for %@", category);
 	
-	if ([self canDisplayHUD]) {
-		[self.window makeKeyAndVisible];
-	}
+	[self displayHUDIfPossible];
 }
 
 - (void)volumeDecreasedForCategory:(NSString*)category {
 	NSLog(@"[Redstone] volume decreased for %@", category);
 	
-	if ([self canDisplayHUD]) {
-		[self.window makeKeyAndVisible];
-	}
+	[self displayHUDIfPossible];
 }
 
 @end

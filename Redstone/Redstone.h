@@ -58,3 +58,4 @@
 #pragma mark Volume Controls
 #import "VolumeControls/RSAudioController.h"
 #import "VolumeControls/RSVolumeHUD.h"
+#import "VolumeControls/RSVolumeView.h"
