@@ -222,3 +222,19 @@ Description: An awesome MobileSubstrate tweak!
 Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone
 
+Package: ml.festival.redstone
+Version: 17w34a.rs-internal.170822
+Architecture: iphoneos-arm
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Installed-Size: 4600
+Depends: mobilesubstrate
+Filename: ./Redstone/packages/ml.festival.redstone_17w34a.rs-internal.170822_iphoneos-arm.deb
+Size: 1835306
+MD5sum: bf0078294a739f41865503de49672909
+SHA1: b125b8d65477b1cc8b740b32e61b3cd7262e56ca
+SHA256: 5f918b44475b5cd8b5460b5b9beea087eb46a79287910861700cd5b6d2c49d38
+Section: Tweaks
+Description: An awesome MobileSubstrate tweak!
+Author: Sniper_GER <sniperger@festival.ml>
+Name: Redstone
+
