@@ -8,4 +8,6 @@
 	"RINGER_VOLUME" = "Sonnerie+Notifications";
 	"MEDIA_VOLUME" = "Medias+Applications";
 	"HEADPHONE_VOLUME" = "Casques";
+	"VIBRATE_ENABLED" = "Vibreur activé";
+	"VIBRATE_DISABLED" = "Vibreur désactivé";
 }

@@ -342,8 +342,6 @@
 		8D1191541F3F912C009A8568 /* RSApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSApp.m; sourceTree = "<group>"; };
 		8D1191561F3F93B8009A8568 /* RSAppListSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAppListSection.h; sourceTree = "<group>"; };
 		8D1191571F3F93B8009A8568 /* RSAppListSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListSection.m; sourceTree = "<group>"; };
-		8D1191591F3F9909009A8568 /* segoeuisl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuisl.ttf; sourceTree = "<group>"; };
-		8D11915A1F3F9C30009A8568 /* segoeuil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeuil.ttf; sourceTree = "<group>"; };
 		8D11915B1F3FAA5E009A8568 /* RSAppListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppListController.h; sourceTree = "<group>"; };
 		8D11915C1F403F12009A8568 /* SBApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplication.h; sourceTree = "<group>"; };
 		8D11915F1F403FE3009A8568 /* RSTiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTiltView.h; sourceTree = "<group>"; };
@@ -392,14 +390,12 @@
 		8D259E951F359E1500BFFB39 /* UIView+Easing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Easing.m"; sourceTree = "<group>"; };
 		8D259E9B1F35A51300BFFB39 /* RSStartScreenScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSStartScreenScrollView.h; sourceTree = "<group>"; };
 		8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenScrollView.m; sourceTree = "<group>"; };
-		8D259EA01F3700C400BFFB39 /* segoeui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoeui.ttf; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
 		8D452C081F439F620046721F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0B1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0C1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0D1F43A1100046721F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8D6251A51F39B5920007298A /* segmdl2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segmdl2.ttf; sourceTree = "<group>"; };
 		8D6251A61F39B94F0007298A /* RSTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileButton.h; sourceTree = "<group>"; };
 		8D6251A71F39B94F0007298A /* RSTileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileButton.m; sourceTree = "<group>"; };
 		8D6251A91F39B95D0007298A /* RSTileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileInfo.h; sourceTree = "<group>"; };
@@ -414,7 +410,6 @@
 		8D96D6851F4F18A00006A624 /* SBMediaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMediaController.h; sourceTree = "<group>"; };
 		8D96D6861F4F33920006A624 /* RSNowPlayingControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNowPlayingControls.h; sourceTree = "<group>"; };
 		8D96D6871F4F33920006A624 /* RSNowPlayingControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNowPlayingControls.m; sourceTree = "<group>"; };
-		8D96D6891F4F77E00006A624 /* seguisb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = seguisb.ttf; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -947,18 +942,6 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
-		8D259E9E1F3700A200BFFB39 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				8D6251A51F39B5920007298A /* segmdl2.ttf */,
-				8D259EA01F3700C400BFFB39 /* segoeui.ttf */,
-				8D1191591F3F9909009A8568 /* segoeuisl.ttf */,
-				8D11915A1F3F9C30009A8568 /* segoeuil.ttf */,
-				8D96D6891F4F77E00006A624 /* seguisb.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		8D3771681F3456CC008056D1 /* StartScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -987,7 +970,6 @@
 		8DB0B6E41F346326002E3CCF /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				8D259E9E1F3700A200BFFB39 /* Fonts */,
 				8D11900F1F3D0D10009A8568 /* Tiles */,
 				8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */,
 				8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */,

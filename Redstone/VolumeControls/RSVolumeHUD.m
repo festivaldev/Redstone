@@ -59,6 +59,11 @@
 		[extendButton addTarget:self action:@selector(toggleExtended)];
 		[self addSubview:extendButton];
 		
+		vibrationButton = [UIButton buttonWithType:UIButtonTypeSystem];
+		[vibrationButton addTarget:self action:@selector(toggleVibrationEnabled) forControlEvents:UIControlEventTouchUpInside];
+		[self addSubview:vibrationButton];
+		[self updateVibrateButtonStatus];
+		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(0, 100, screenWidth, 120)];
 		[self addSubview:nowPlayingControls];
 		[nowPlayingControls setHidden:YES];
@@ -169,11 +174,15 @@
 		if (self.isShowingNowPlayingControls) {
 			[nowPlayingControls setHidden:YES];
 			[extendButton setFrame:CGRectMake(self.frame.size.width - 46, 162, 36, 18)];
+			[vibrationButton setFrame:CGRectMake(10, 110, vibrationButton.frame.size.width, 18)];
 		} else {
 			[extendButton setFrame:CGRectMake(self.frame.size.width - 46, 216, 36, 18)];
+			[vibrationButton setFrame:CGRectMake(10, 216, vibrationButton.frame.size.width, 18)];
 		}
 		
 		[extendButton setTransform:CGAffineTransformMakeRotation(deg2rad(180))];
+		
+		[vibrationButton setHidden:NO];
 	} else {
 		if (self.isShowingNowPlayingControls) {
 			if (self.isShowingHeadphoneVolume) {
@@ -185,6 +194,7 @@
 			}
 			
 			[nowPlayingControls setHidden:NO];
+			[vibrationButton setHidden:YES];
 		} else {
 			[mediaVolumeView setHidden:YES];
 			[headphoneVolumeView setHidden:YES];
@@ -396,6 +406,73 @@
 	}
 	
 	return NO;
+}
+
+- (void)toggleVibrationEnabled {
+	[self resetAnimationTimer];
+	
+	if ([[objc_getClass("SBMediaController") sharedInstance] isRingerMuted]) {
+		BOOL silentVibrate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"silent-vibrate"] boolValue];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!silentVibrate] forKey:@"silent-vibrate"];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!silentVibrate] forKey:@"slient-vibrate"];
+		
+	} else {
+		BOOL ringerVibrate = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ring-vibrate"] boolValue];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!ringerVibrate] forKey:@"ring-vibrate"];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:!ringerVibrate] forKey:@"ring-vibrate"];
+	}
+	
+	[self updateVibrateButtonStatus];
+	[self updateVolumeValues];
+}
+
+- (void)updateVibrateButtonStatus {
+	[vibrationButton setFrame:CGRectMake(10, 214, self.frame.size.width/2 - 10, 20)];
+	
+	[UIView performWithoutAnimation:^{
+		if ([self getVibrationEnabled]) {
+			NSString* baseString = [NSString stringWithFormat:@"\uE877 %@", [RSAesthetics localizedStringForKey:@"VIBRATE_ENABLED"]];
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
+			
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
+											  NSForegroundColorAttributeName: [RSAesthetics accentColor],
+											  NSBaselineOffsetAttributeName: @-3.0
+											  } range:[baseString rangeOfString:@"\uE877"]];
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
+											  NSForegroundColorAttributeName: [RSAesthetics accentColor]
+											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"VIBRATE_ENABLED"]]];
+			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+		} else {
+			NSString* baseString = [NSString stringWithFormat:@"\uE877 %@", [RSAesthetics localizedStringForKey:@"VIBRATE_DISABLED"]];
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
+			
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
+											  NSForegroundColorAttributeName: [UIColor whiteColor],
+											  NSBaselineOffsetAttributeName: @-3.0
+											  } range:[baseString rangeOfString:@"\uE877"]];
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
+											  NSForegroundColorAttributeName: [UIColor whiteColor]
+											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"VIBRATE_DISABLED"]]];
+			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+		}
+		
+		[vibrationButton layoutIfNeeded];
+	}];
+	
+	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.apple.springboard.silent-vibrate.changed"), NULL, NULL, TRUE);
+	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.apple.springboard.ring-vibrate.changed"), NULL, NULL, TRUE);
+	
+	[vibrationButton sizeToFit];
+	
+	if (self.isShowingNowPlayingControls) {
+		[vibrationButton setFrame:CGRectMake(10, 110, vibrationButton.frame.size.width, 18)];
+	} else {
+		[vibrationButton setFrame:CGRectMake(10, 216, vibrationButton.frame.size.width, 18)];
+	}
 }
 
 #pragma mark Mute Buttons

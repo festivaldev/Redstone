@@ -21,6 +21,7 @@ void MRMediaRemoteGetNowPlayingInfo(dispatch_queue_t queue, MRMediaRemoteGetNowP
 	RSTiltView* headphoneMuteButton;
 	
 	RSTiltView* extendButton;
+	UIButton* vibrationButton;
 	
 	RSNowPlayingControls* nowPlayingControls;
 }
