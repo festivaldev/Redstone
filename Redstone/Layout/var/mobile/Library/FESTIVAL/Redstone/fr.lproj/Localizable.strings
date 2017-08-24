@@ -4,4 +4,8 @@
 	"PIN_TO_START" = "Épingler à l'écran de démarrage";
 	"UNINSTALL" = "Désinstaller";
 	"ALL_APPS" = "Toutes les applications";
+	
+	"RINGER_VOLUME" = "Sonnerie+Notifications";
+	"MEDIA_VOLUME" = "Medias+Applications";
+	"HEADPHONE_VOLUME" = "Casques";
 }

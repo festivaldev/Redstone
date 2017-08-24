@@ -4,4 +4,8 @@
 	"PIN_TO_START" = "Pin to Start";
 	"UNINSTALL" = "Uninstall";
 	"ALL_APPS" = "All apps";
+	
+	"RINGER_VOLUME" = "Ringer + Notifications";
+	"MEDIA_VOLUME" = "Media + Apps";
+	"HEADPHONE_VOLUME" = "Headphones";
 }

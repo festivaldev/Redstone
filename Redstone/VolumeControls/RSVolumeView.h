@@ -8,5 +8,6 @@
 }
 
 - (id)initWithFrame:(CGRect)frame forCategory:(NSString*)_category;
+- (void)setVolumeValue:(float)volumeValue;
 
 @end

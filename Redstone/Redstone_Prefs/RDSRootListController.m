@@ -39,7 +39,12 @@
 	return (settings[properties[@"key"]]) ?: properties[@"default"];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
+	//system("killall cfprefsd"); // I shouldn't do this probably, but this problem requires a more brutal solution
+	
 	id properties = [specifier properties];
 	
 	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/%@.plist", properties[@"defaults"]];
@@ -52,9 +57,6 @@
 		CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), notificationName, NULL, NULL, YES);
 	}
 }
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (void)killSpringBoard {
 	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@""

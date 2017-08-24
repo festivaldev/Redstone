@@ -4,4 +4,8 @@
 	"PIN_TO_START" = "An „Start“ anheften";
 	"UNINSTALL" = "Deinstallieren";
 	"ALL_APPS" = "Alle Apps";
+	
+	"RINGER_VOLUME" = "Klingeln + Benachrichtigungen";
+	"MEDIA_VOLUME" = "Medien + Apps";
+	"HEADPHONE_VOLUME" = "Kopfhörer";
 }

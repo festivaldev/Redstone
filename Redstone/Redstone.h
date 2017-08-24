@@ -32,6 +32,7 @@
 #import "UI/RSTextField.h"
 #import "UI/RSAlertController.h"
 #import "UI/RSAlertAction.h"
+#import "UI/RSSlider.h"
 
 #pragma mark Home Screen
 #import "HomeScreen/RSHomeScreenController.h"
@@ -59,3 +60,4 @@
 #import "VolumeControls/RSAudioController.h"
 #import "VolumeControls/RSVolumeHUD.h"
 #import "VolumeControls/RSVolumeView.h"
+#import "VolumeControls/RSNowPlayingControls.h"

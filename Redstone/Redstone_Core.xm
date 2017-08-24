@@ -1,7 +1,7 @@
 #import "Redstone.h"
 
 RSCore* redstone;
-RSPreferences* preferences;
+BOOL isAllowedToPressHomeButton = YES;
 
 %group core
 
@@ -26,10 +26,14 @@ RSPreferences* preferences;
 // iOS 10
 %hook SBHomeHardwareButton
 
-- (void)initialButtonUp:(id)arg1 {
-	if ([redstone homeButtonPressed]) {
-		//%orig;
+- (void)singlePressUp:(id)arg1 {
+	if (isAllowedToPressHomeButton) {
+		%orig;
 	}
+}
+
+- (void)initialButtonUp:(id)arg1 {
+	isAllowedToPressHomeButton = [redstone homeButtonPressed];
 	%orig;
 }
 
@@ -38,9 +42,9 @@ RSPreferences* preferences;
 %end // %group core
 
 %ctor {
-	preferences = [RSPreferences new];
+	id preferences = [[RSPreferences alloc] init];
 	
-	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue]) {
+	if ([[preferences objectForKey:@"enabled"] boolValue]) {
 		%init(core);
 	}
 }

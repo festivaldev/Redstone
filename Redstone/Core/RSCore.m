@@ -43,6 +43,7 @@ static id currentApplication;
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segoeuisl.ttf", RESOURCES_PATH]]];
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segoeuil.ttf", RESOURCES_PATH]]];
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segmdl2.ttf", RESOURCES_PATH]]];
+		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/seguisb.ttf", RESOURCES_PATH]]];
 		
 		if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
 			homeScreenController = [RSHomeScreenController new];
@@ -98,6 +99,13 @@ static id currentApplication;
 
 - (BOOL)homeButtonPressed {
 	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (audioController != nil) {
+		if ([audioController isShowingVolumeHUD]) {
+			[audioController hideVolumeHUD];
+			return NO;
+		}
+	}
 	
 	if (homeScreenController != nil) {
 		if ([currentApplication isKindOfClass:NSClassFromString(@"SBDashBoardViewController")] || frontApp != nil) {

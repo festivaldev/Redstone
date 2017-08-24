@@ -34,4 +34,8 @@
 	}
 }
 
+- (void)setVolumeValue:(float)volumeValue {
+	[volumeValueLabel setText:[NSString stringWithFormat:@"%02.00f", volumeValue * 16.0]];
+}
+
 @end
