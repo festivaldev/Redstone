@@ -10,4 +10,6 @@
 	"HEADPHONE_VOLUME" = "Casques";
 	"VIBRATE_ENABLED" = "Vibreur activé";
 	"VIBRATE_DISABLED" = "Vibreur désactivé";
+	"RINGER_ENABLED" = "Sonnerie activé";
+	"RINGER_DISABLED" = "Sonnerie désactivé";
 }

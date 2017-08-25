@@ -64,6 +64,11 @@
 		[self addSubview:vibrationButton];
 		[self updateVibrateButtonStatus];
 		
+		ringerButton = [UIButton buttonWithType:UIButtonTypeSystem];
+		[ringerButton addTarget:self action:@selector(toggleRingerMuted) forControlEvents:UIControlEventTouchUpInside];
+		[self addSubview:ringerButton];
+		[self updateRingerButtonStatus];
+		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(0, 100, screenWidth, 120)];
 		[self addSubview:nowPlayingControls];
 		[nowPlayingControls setHidden:YES];
@@ -175,9 +180,13 @@
 			[nowPlayingControls setHidden:YES];
 			[extendButton setFrame:CGRectMake(self.frame.size.width - 46, 162, 36, 18)];
 			[vibrationButton setFrame:CGRectMake(10, 110, vibrationButton.frame.size.width, 18)];
+			
+			[ringerButton setHidden:NO];
 		} else {
 			[extendButton setFrame:CGRectMake(self.frame.size.width - 46, 216, 36, 18)];
 			[vibrationButton setFrame:CGRectMake(10, 216, vibrationButton.frame.size.width, 18)];
+			
+			[ringerButton setHidden:YES];
 		}
 		
 		[extendButton setTransform:CGAffineTransformMakeRotation(deg2rad(180))];
@@ -202,6 +211,8 @@
 		
 		[extendButton setFrame:CGRectMake(self.frame.size.width - 46, 10, 36, 18)];
 		[extendButton setTransform:CGAffineTransformIdentity];
+		
+		[ringerButton setHidden:YES];
 	}
 	
 	if (self.isVisible) {
@@ -427,7 +438,7 @@
 }
 
 - (void)updateVibrateButtonStatus {
-	[vibrationButton setFrame:CGRectMake(10, 214, self.frame.size.width/2 - 10, 20)];
+	[vibrationButton setFrame:CGRectMake(10, 214, self.frame.size.width/2 - 10, 18)];
 	
 	[UIView performWithoutAnimation:^{
 		if ([self getVibrationEnabled]) {
@@ -475,6 +486,55 @@
 	}
 }
 
+- (void)updateRingerButtonStatus {
+	[ringerButton setFrame:CGRectMake(self.frame.size.width/2, 214, self.frame.size.width/2 - 10, 18)];
+	
+	SBMediaController* mediaController = [objc_getClass("SBMediaController") sharedInstance];
+	
+	[UIView performWithoutAnimation:^{
+		if (![mediaController isRingerMuted]) {
+			NSString* baseString = [NSString stringWithFormat:@"\uEA8F %@", [RSAesthetics localizedStringForKey:@"RINGER_ENABLED"]];
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
+			
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
+											  NSForegroundColorAttributeName: [RSAesthetics accentColor],
+											  NSBaselineOffsetAttributeName: @-3.0
+											  } range:[baseString rangeOfString:@"\uEA8F"]];
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
+											  NSForegroundColorAttributeName: [RSAesthetics accentColor]
+											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"RINGER_ENABLED"]]];
+			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+		} else {
+			NSString* baseString = [NSString stringWithFormat:@"\uE7ED %@", [RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]];
+			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
+			
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
+											  NSForegroundColorAttributeName: [UIColor whiteColor],
+											  NSBaselineOffsetAttributeName: @-3.0
+											  } range:[baseString rangeOfString:@"\uE7ED"]];
+			[attributedString addAttributes:@{
+											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
+											  NSForegroundColorAttributeName: [UIColor whiteColor]
+											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]]];
+			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+		}
+		
+		[ringerButton layoutIfNeeded];
+	}];
+	
+	[ringerButton sizeToFit];
+	
+	[ringerButton setFrame:CGRectMake(self.frame.size.width - ringerButton.frame.size.width - 10, 110, ringerButton.frame.size.width, 18)];
+	if (self.isShowingNowPlayingControls) {
+		[ringerButton setHidden:NO];
+	} else {
+		[ringerButton setHidden:YES];
+	}
+}
+
 #pragma mark Mute Buttons
 
 - (void)toggleRingerMuted {
@@ -492,6 +552,7 @@
 	}
 	
 	[self updateVolumeValues];
+	[self updateRingerButtonStatus];
 }
 
 - (void)toggleMediaMuted {

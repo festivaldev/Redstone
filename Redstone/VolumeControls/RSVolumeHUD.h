@@ -22,6 +22,7 @@ void MRMediaRemoteGetNowPlayingInfo(dispatch_queue_t queue, MRMediaRemoteGetNowP
 	
 	RSTiltView* extendButton;
 	UIButton* vibrationButton;
+	UIButton* ringerButton;
 	
 	RSNowPlayingControls* nowPlayingControls;
 }
