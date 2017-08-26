@@ -54,7 +54,7 @@
 		</dict>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
@@ -259,6 +259,8 @@
 			<string>PSSegmentCell</string>
 			<key>defaults</key>
 			<string>ml.festival.redstone</string>
+			<key>default</key>
+			<string>dark</string>
 			<key>key</key>
 			<string>themeColor</string>
 			<key>enabled</key>

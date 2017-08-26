@@ -45,18 +45,18 @@ static id currentApplication;
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/segmdl2.ttf", RESOURCES_PATH]]];
 		[UIFont registerFontFromURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/Fonts/seguisb.ttf", RESOURCES_PATH]]];
 		
-		if ([[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
+		if ([[RSPreferences preferences] homeScreenEnabled]) {
 			homeScreenController = [RSHomeScreenController new];
 			[_window addSubview:homeScreenController.view];
 		
 			[[self class] hideAllExcept:homeScreenController.view];
 		}
 		
-		if ([[[RSPreferences preferences] objectForKey:@"volumeControlsEnabled"] boolValue]) {
+		if ([[RSPreferences preferences] volumeControlsEnabled]) {
 			audioController = [RSAudioController new];
 		}
 		
-		if ([[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
+		if ([[RSPreferences preferences] lockScreenEnabled]) {
 			lockScreenController = [RSLockScreenController new];
 		}
 	}

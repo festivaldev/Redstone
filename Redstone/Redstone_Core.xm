@@ -44,7 +44,7 @@ BOOL isAllowedToPressHomeButton = YES;
 %ctor {
 	id preferences = [[RSPreferences alloc] init];
 	
-	if ([[preferences objectForKey:@"enabled"] boolValue]) {
+	if ([preferences enabled]) {
 		%init(core);
 	}
 }

@@ -12,11 +12,7 @@ static RSPreferences* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		
-		[self loadPreferences];
-		
-		if (!preferences) {
-			preferences = [NSMutableDictionary new];
-		}
+		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
 		// Main Switch
 		if (![preferences objectForKey:@"enabled"]) {
@@ -63,6 +59,16 @@ static RSPreferences* sharedInstance;
 			[preferences setObject:[NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/3ColumnDefaultLayout.plist", RESOURCES_PATH]] forKey:@"3ColumnLayout"];
 		}
 		
+		_enabled = [[preferences objectForKey:@"enabled"] boolValue];
+		_homeScreenEnabled = [[preferences objectForKey:@"homeScreenEnabled"] boolValue];
+		_volumeControlsEnabled = [[preferences objectForKey:@"volumeControlsEnabled"] boolValue];
+		_lockScreenEnabled = [[preferences objectForKey:@"lockScreenEnabled"] boolValue];
+		_accentColor = [preferences objectForKey:@"accentColor"];
+		_tileOpacity = [[preferences objectForKey:@"tileOpacity"] floatValue];
+		_columns = [[preferences objectForKey:@"columns"] intValue];
+		_twoColumnLayout = [preferences objectForKey:@"2ColumnLayout"];
+		_threeColumnLayout = [preferences objectForKey:@"3ColumnLayout"];
+		
 		[self savePreferences];
 	}
 	
@@ -73,26 +79,8 @@ static RSPreferences* sharedInstance;
 	return @"/var/mobile/Library/Preferences/ml.festival.redstone.plist";
 }
 
-- (NSString*)settingsIdentifier {
-	return @"ml.festival.redstone";
-}
-
-- (void)loadPreferences {
-	CFPreferencesAppSynchronize((__bridge CFStringRef)[self settingsIdentifier]);
-	CFArrayRef keyList = CFPreferencesCopyKeyList((__bridge CFStringRef)[self settingsIdentifier], kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
-	if (keyList) {
-		preferences = [(NSDictionary *)CFBridgingRelease(CFPreferencesCopyMultiple(keyList, (__bridge CFStringRef)[self settingsIdentifier], kCFPreferencesCurrentUser, kCFPreferencesCurrentHost)) mutableCopy];
-	} else {
-		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
-	}
-}
-
 - (void)savePreferences {
-	CFPreferencesSetMultiple((CFDictionaryRef)preferences, NULL, (__bridge CFStringRef)[self settingsIdentifier], kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
-	CFPreferencesAppSynchronize((__bridge CFStringRef)[self settingsIdentifier]);
-	
-	NSData *data = [NSPropertyListSerialization dataWithPropertyList:preferences format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil];
-	[data writeToFile:[self settingsFilePath] atomically:YES];
+	[preferences writeToFile:[self settingsFilePath] atomically:YES];
 }
 
 - (id)objectForKey:(NSString*)key {

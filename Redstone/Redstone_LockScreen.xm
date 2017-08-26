@@ -30,8 +30,6 @@
 	
 	[[[[RSCore sharedInstance] lockScreenController] view] setTime:[MSHookIvar<SBUILegibilityLabel *>(self,"_timeLabel") string]];
 	[[[[RSCore sharedInstance] lockScreenController] view] setDate:[MSHookIvar<SBUILegibilityLabel *>(self,"_dateSubtitleView") string]];
-	//[[RSLockScreenController sharedInstance] setLockScreenTime:[MSHookIvar<SBUILegibilityLabel *>(self,"_timeLabel") string]];
-	//[[RSLockScreenController sharedInstance] setLockScreenDate:[MSHookIvar<SBUILegibilityLabel *>(self,"_dateSubtitleView") string]];
 }
 
 %end // %hook SBFLockScreenDateView
@@ -64,7 +62,7 @@
 %end // %group lockscreen
 
 %ctor {
-	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
+	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] lockScreenEnabled]) {
 		
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			%init(lockscreen);
