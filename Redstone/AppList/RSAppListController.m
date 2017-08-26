@@ -23,7 +23,7 @@
 		sectionBackgroundImage = [[UIImageView alloc] initWithImage:[RSAesthetics homeScreenWallpaper]];
 		[sectionBackgroundImage setContentMode:UIViewContentModeScaleAspectFill];
 		[sectionBackgroundImage setFrame:CGRectMake(0, -70, screenWidth, screenHeight)];
-		//[sectionBackgroundImage setTransform:CGAffineTransformMakeScale(1.5, 1.5)];
+		[sectionBackgroundImage setTransform:CGAffineTransformMakeScale(1.5, 1.5)];
 		[sectionBackgroundContainer addSubview:sectionBackgroundImage];
 		
 		sectionBackgroundOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
@@ -87,15 +87,15 @@
 				[sectionBackgroundContainer setFrame:CGRectMake(0, offset, self.view.frame.size.width, 60)];
 				/*[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2 + (-screenWidth + [[RSHomeScreenController sharedInstance] contentOffset].x),
 															  screenHeight/2 - 70 - [[RSHomeScreenController sharedInstance] parallaxPosition])];*/
-				[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2 + (-screenWidth + [[[RSCore sharedInstance] homeScreenController] contentOffset].x),
-															  screenHeight/2 - 70)];
+				[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2 + (-screenWidth + [[[RSCore sharedInstance] homeScreenController] contentOffset].x) + [[[[RSCore sharedInstance] homeScreenController] wallpaperView] parallaxPosition].x,
+															  screenHeight/2 - 70 - [[[[RSCore sharedInstance] homeScreenController] wallpaperView] parallaxPosition].y)];
 			} else {
 				[section setFrame:CGRectMake(0, [[sections objectAtIndex:i+1] yPosition] - 60, self.view.frame.size.width, 60)];
 				[sectionBackgroundContainer setFrame:CGRectMake(0, [[sections objectAtIndex:i+1] yPosition] - 60, self.view.frame.size.width, 60)];
 				/*[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2  + (-screenWidth + [[RSHomeScreenController sharedInstance] contentOffset].x),
 															  screenHeight/2 + (offset - [[sections objectAtIndex:i+1] yPosition] - 10)  - [[RSHomeScreenController sharedInstance] parallaxPosition])];*/
-				[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2 + (-screenWidth + [[[RSCore sharedInstance] homeScreenController] contentOffset].x),
-															  screenHeight/2 + (offset - [[sections objectAtIndex:i+1] yPosition] - 10))];
+				[sectionBackgroundImage setCenter:CGPointMake(screenWidth/2 + (-screenWidth + [[[RSCore sharedInstance] homeScreenController] contentOffset].x) + [[[[RSCore sharedInstance] homeScreenController] wallpaperView] parallaxPosition].x,
+															  screenHeight/2 + (offset - [[sections objectAtIndex:i+1] yPosition] - 10) - [[[[RSCore sharedInstance] homeScreenController] wallpaperView] parallaxPosition].y)];
 			}
 		} else {
 			[section setFrame:CGRectMake(0, [section yPosition], self.view.frame.size.width, 60)];

@@ -3,7 +3,7 @@
 
 @class RSStartScreenScrollView, RSTile;
 
-@interface RSStartScreenController : NSObject {
+@interface RSStartScreenController : NSObject <UIScrollViewDelegate> {
 	NSMutableArray* pinnedTiles;
 	NSMutableArray* pinnedIdentifiers;
 }

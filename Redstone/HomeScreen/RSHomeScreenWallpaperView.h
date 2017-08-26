@@ -1,8 +1,12 @@
 #import <UIKit/UIKit.h>
 
-@interface RSHomeScreenWallpaperView : UIImageView
+@interface RSHomeScreenWallpaperView : UIImageView {
+	CGFloat horizontalParallaxPosition;
+	CGFloat verticalParallaxPosition;
+}
 
-- (void)setHorizontalParallax:(CGFloat)progress;
-- (void)setVerticalParallax:(CGFloat)progress;;
+- (void)calculateHorizontalParallax;
+- (void)calculateVerticalParallax;
+- (CGPoint)parallaxPosition;
 
 @end

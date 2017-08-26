@@ -5,6 +5,7 @@
 - (id)init {
 	if (self = [super init]) {
 		self.view = [[RSStartScreenScrollView alloc] initWithFrame:CGRectMake(4, 0, screenWidth-8, screenHeight)];
+		[self.view setDelegate:self];
 		
 		pinnedTiles = [NSMutableArray new];
 		pinnedIdentifiers = [NSMutableArray new];
@@ -46,6 +47,11 @@
 		}
 	}
 	return nil;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	
+	[[[[RSCore sharedInstance] homeScreenController] wallpaperView] calculateVerticalParallax];
 }
 
 #pragma mark Tile Management
