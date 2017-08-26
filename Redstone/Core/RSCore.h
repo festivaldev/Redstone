@@ -1,12 +1,13 @@
 #import <UIKit/UIKit.h>
 
-@class RSHomeScreenController, RSAudioController;
+@class RSHomeScreenController, RSAudioController, RSLockScreenController;
 
 @interface RSCore : NSObject {
 	UIWindow* _window;
 	
 	RSHomeScreenController* homeScreenController;
 	RSAudioController* audioController;
+	RSLockScreenController* lockScreenController;
 }
 
 + (id)sharedInstance;
@@ -16,6 +17,7 @@
 
 - (RSHomeScreenController*)homeScreenController;
 - (RSAudioController*)audioController;
+- (RSLockScreenController*)lockScreenController;
 
 - (void)frontDisplayDidChange:(id)application;
 - (BOOL)homeButtonPressed;

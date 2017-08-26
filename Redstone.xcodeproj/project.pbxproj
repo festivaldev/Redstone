@@ -183,6 +183,9 @@
 		8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEE1CF1F3529D000AD4827 /* RSTile.m */; };
 		8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF31F345BCB00F9A884 /* RSAppListController.m */; };
 		8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF61F345D4800F9A884 /* RSPreferences.m */; };
+		8DCE1C681F5164BE00B2804E /* RSLockScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */; };
+		8DCE1C6B1F51658B00B2804E /* RSLockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */; };
+		8DCE1C6D1F5165FE00B2804E /* Redstone_LockScreen.xm in Resources */ = {isa = PBXBuildFile; fileRef = 8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */; };
 		8DE6A3F51F42656A009EDE86 /* RSJumpList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6A3F41F42656A009EDE86 /* RSJumpList.m */; };
 		8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
 		8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */; };
@@ -423,6 +426,15 @@
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
+		8DCE1C661F5164BE00B2804E /* RSLockScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenController.h; sourceTree = "<group>"; };
+		8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenController.m; sourceTree = "<group>"; };
+		8DCE1C691F51658B00B2804E /* RSLockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenView.h; sourceTree = "<group>"; };
+		8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenView.m; sourceTree = "<group>"; };
+		8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_LockScreen.xm; sourceTree = "<group>"; };
+		8DCE1C6E1F5166A400B2804E /* SBDashBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBDashBoardView.h; sourceTree = "<group>"; };
+		8DCE1C6F1F5169B600B2804E /* SBLockScreenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenManager.h; sourceTree = "<group>"; };
+		8DCE1C701F516BA200B2804E /* SBUILegibilityLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUILegibilityLabel.h; sourceTree = "<group>"; };
+		8DCE1C711F516E8200B2804E /* SBBacklightController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBacklightController.h; sourceTree = "<group>"; };
 		8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBApplicationController.h; sourceTree = "<group>"; };
 		8DE6A3F31F42656A009EDE86 /* RSJumpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSJumpList.h; sourceTree = "<group>"; };
 		8DE6A3F41F42656A009EDE86 /* RSJumpList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSJumpList.m; sourceTree = "<group>"; };
@@ -986,13 +998,17 @@
 				8D1191471F3E6817009A8568 /* SpringBoard-Class.h */,
 				8D11915C1F403F12009A8568 /* SBApplication.h */,
 				8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */,
-				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
-				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
+				8DCE1C711F516E8200B2804E /* SBBacklightController.h */,
+				8DCE1C6E1F5166A400B2804E /* SBDashBoardView.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
 				8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */,
-				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
+				8DCE1C6F1F5169B600B2804E /* SBLockScreenManager.h */,
 				8D96D6851F4F18A00006A624 /* SBMediaController.h */,
+				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
+				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
+				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
+				8DCE1C701F516BA200B2804E /* SBUILegibilityLabel.h */,
 				8D96D6841F4EBA290006A624 /* SBVolumeHUDView.h */,
 				8D14C6CC1F4D661100ADD69A /* VolumeControl.h */,
 			);
@@ -1016,6 +1032,17 @@
 			path = AppList;
 			sourceTree = "<group>";
 		};
+		8DCE1C651F51646400B2804E /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8DCE1C661F5164BE00B2804E /* RSLockScreenController.h */,
+				8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */,
+				8DCE1C691F51658B00B2804E /* RSLockScreenView.h */,
+				8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */,
+			);
+			path = LockScreen;
+			sourceTree = "<group>";
+		};
 		8DF5EB091F336F8C003CC2B4 /* Redstone */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1053,7 @@
 				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
 				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
 				8D14C6C11F4B892C00ADD69A /* Redstone_VolumeControls.xm */,
+				8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */,
 				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
 				8D14C6CE1F4E1EBF00ADD69A /* Redstone_Prefs */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
@@ -1038,6 +1066,7 @@
 				8DC70CF11F345BB700F9A884 /* AppList */,
 				8D1191431F3E5457009A8568 /* LaunchScreen */,
 				8D14C6BD1F4B88A900ADD69A /* VolumeControls */,
+				8DCE1C651F51646400B2804E /* LockScreen */,
 			);
 			path = Redstone;
 			sourceTree = "<group>";
@@ -1280,6 +1309,7 @@
 				8D1190C71F3D0D10009A8568 /* tile@2x.png in Resources */,
 				8D11912D1F3D0D10009A8568 /* tile-AppList@2x.png in Resources */,
 				8D1190F91F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8DCE1C6D1F5165FE00B2804E /* Redstone_LockScreen.xm in Resources */,
 				8D1191351F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D1190BE1F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D1191211F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
@@ -1313,6 +1343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
+				8DCE1C6B1F51658B00B2804E /* RSLockScreenView.m in Sources */,
 				8D96D6881F4F33920006A624 /* RSNowPlayingControls.m in Sources */,
 				8D14C6E01F4E1FFA00ADD69A /* RDSAccentColorList.m in Sources */,
 				8D14C6D81F4E1EBF00ADD69A /* RDSRootListController.m in Sources */,
@@ -1325,6 +1356,7 @@
 				8D14C6CA1F4D5CA800ADD69A /* RSVolumeHUD.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
 				8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */,
+				8DCE1C681F5164BE00B2804E /* RSLockScreenController.m in Sources */,
 				8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */,
 				8D1191551F3F912C009A8568 /* RSApp.m in Sources */,
 				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,

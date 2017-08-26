@@ -11,7 +11,7 @@ Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
 Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote
 Redstone_FRAMEWORKS = MediaPlayer
 Redstone_LIBRARIES = objcipc
-Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard VolumeControls/*.m)
+Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard VolumeControls/*.m) $(wildcard LockScreen/*.m)
 
 include $(THEOS)/makefiles/tweak.mk
 

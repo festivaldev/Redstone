@@ -33,6 +33,11 @@ static RSPreferences* sharedInstance;
 			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"volumeControlsEnabled"];
 		}
 		
+		// Lock Screen
+		if (![preferences objectForKey:@"lockScreenEnabled"]) {
+			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"lockScreenEnabled"];
+		}
+		
 		// Accent Color
 		if (![preferences objectForKey:@"accentColor"]) {
 			[preferences setValue:@"#0078D7" forKey:@"accentColor"];

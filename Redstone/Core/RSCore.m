@@ -55,6 +55,10 @@ static id currentApplication;
 		if ([[[RSPreferences preferences] objectForKey:@"volumeControlsEnabled"] boolValue]) {
 			audioController = [RSAudioController new];
 		}
+		
+		if ([[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
+			lockScreenController = [RSLockScreenController new];
+		}
 	}
 	
 	return self;
@@ -66,6 +70,10 @@ static id currentApplication;
 
 - (RSAudioController*)audioController {
 	return audioController;
+}
+
+- (RSLockScreenController*)lockScreenController {
+	return lockScreenController;
 }
 
 - (void)frontDisplayDidChange:(id)application {

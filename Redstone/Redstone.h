@@ -61,3 +61,7 @@
 #import "VolumeControls/RSVolumeHUD.h"
 #import "VolumeControls/RSVolumeView.h"
 #import "VolumeControls/RSNowPlayingControls.h"
+
+#pragma mark Lock Screen
+#import "LockScreen/RSLockScreenController.h"
+#import "LockScreen/RSLockScreenView.h"
