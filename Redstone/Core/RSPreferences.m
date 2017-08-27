@@ -14,6 +14,10 @@ static RSPreferences* sharedInstance;
 		
 		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
+		if (!preferences) {
+			preferences = [NSMutableDictionary new];
+		}
+		
 		// Main Switch
 		if (![preferences objectForKey:@"enabled"]) {
 			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"enabled"];
@@ -59,28 +63,10 @@ static RSPreferences* sharedInstance;
 			[preferences setObject:[NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/3ColumnDefaultLayout.plist", RESOURCES_PATH]] forKey:@"3ColumnLayout"];
 		}
 		
-		_enabled = [[preferences objectForKey:@"enabled"] boolValue];
-		_homeScreenEnabled = [[preferences objectForKey:@"homeScreenEnabled"] boolValue];
-		_volumeControlsEnabled = [[preferences objectForKey:@"volumeControlsEnabled"] boolValue];
-		_lockScreenEnabled = [[preferences objectForKey:@"lockScreenEnabled"] boolValue];
-		_accentColor = [preferences objectForKey:@"accentColor"];
-		_tileOpacity = [[preferences objectForKey:@"tileOpacity"] floatValue];
-		_columns = [[preferences objectForKey:@"columns"] intValue];
-		_twoColumnLayout = [preferences objectForKey:@"2ColumnLayout"];
-		_threeColumnLayout = [preferences objectForKey:@"3ColumnLayout"];
-		
-		[self savePreferences];
+		[preferences writeToFile:PREFERENCES_PATH atomically:YES];
 	}
 	
 	return self;
-}
-
-- (NSString*)settingsFilePath {
-	return @"/var/mobile/Library/Preferences/ml.festival.redstone.plist";
-}
-
-- (void)savePreferences {
-	[preferences writeToFile:[self settingsFilePath] atomically:YES];
 }
 
 - (id)objectForKey:(NSString*)key {
@@ -89,8 +75,7 @@ static RSPreferences* sharedInstance;
 
 - (void)setObject:(id)anObject forKey:(NSString *)aKey {
 	[preferences setValue:anObject forKey:aKey];
-	
-	[self savePreferences];
+	[preferences writeToFile:PREFERENCES_PATH atomically:YES];
 }
 
 @end

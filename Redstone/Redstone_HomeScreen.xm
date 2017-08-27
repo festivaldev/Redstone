@@ -221,7 +221,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 %end // %group homescreen
 
 %ctor {
-	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] homeScreenEnabled]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"homeScreenEnabled"] boolValue]) {
 		%init(homescreen);
 		
 		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.BecameActive"  handler:^NSDictionary *(NSDictionary *message) {

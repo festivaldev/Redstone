@@ -62,7 +62,7 @@
 %end // %group lockscreen
 
 %ctor {
-	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] lockScreenEnabled]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 		
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			%init(lockscreen);
