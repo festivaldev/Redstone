@@ -9,4 +9,6 @@
 	RSTiltView* nextTitleButton;
 }
 
+- (void)updateNowPlayingInfo;
+
 @end

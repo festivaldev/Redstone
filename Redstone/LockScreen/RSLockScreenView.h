@@ -1,17 +1,23 @@
 #import <UIKit/UIKit.h>
 
+@class RSNowPlayingControls;
+
 @interface RSLockScreenView : UIView <UIScrollViewDelegate> {
 	UIImageView* wallpaperView;
 	UIImageView* fakeHomeScreenWallpaperView;
+	UIView* wallpaperOverlay;
 	
 	UIScrollView* unlockScrollView;
 	UIView* timeAndDateView;
 	
 	UILabel* timeLabel;
 	UILabel* dateLabel;
+	
+	RSNowPlayingControls* nowPlayingControls;
 }
 
 @property (nonatomic, assign) BOOL isScrolling;
+@property (nonatomic, assign) BOOL isUnlocking;
 
 - (void)setContentOffset:(CGPoint)contentOffset;
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;

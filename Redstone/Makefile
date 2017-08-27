@@ -2,7 +2,7 @@ export THEOS_DEVICE_IP=192.168.178.38
 export THEOS_DEVICE_PORT=22
 
 #export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.internal.$(shell date +%y%m%d)-$(shell date +%H%M)"
-export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.rs-internal.$(shell date +%y%m%d)"
+export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)b.rs-internal.$(shell date +%y%m%d)"
 
 include $(THEOS)/makefiles/common.mk
 
@@ -11,7 +11,7 @@ Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
 Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote
 Redstone_FRAMEWORKS = MediaPlayer
 Redstone_LIBRARIES = objcipc
-Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard VolumeControls/*.m) $(wildcard LockScreen/*.m)
+Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard AudioControls/*.m) $(wildcard LockScreen/*.m)
 
 include $(THEOS)/makefiles/tweak.mk
 

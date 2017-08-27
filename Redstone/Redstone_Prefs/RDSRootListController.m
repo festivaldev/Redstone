@@ -43,7 +43,7 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
-	//system("killall cfprefsd"); // I shouldn't do this probably, but this problem requires a more brutal solution
+	system("killall cfprefsd"); // I shouldn't do this probably, but this problem requires a more brutal solution
 	
 	id properties = [specifier properties];
 	

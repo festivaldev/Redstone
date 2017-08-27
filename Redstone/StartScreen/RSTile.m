@@ -299,6 +299,8 @@
 		[self addSubview:tileImageView];
 	}
 	
+	[self setBadge:badgeValue];
+	
 	[unpinButton setCenter:CGPointMake(newFrame.size.width, 0)];
 	[resizeButton setCenter:CGPointMake(newFrame.size.width, newFrame.size.height)];
 	

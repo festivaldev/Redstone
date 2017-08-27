@@ -33,6 +33,7 @@
 #import "UI/RSAlertController.h"
 #import "UI/RSAlertAction.h"
 #import "UI/RSSlider.h"
+#import "UI/RSNowPlayingControls.h"
 
 #pragma mark Home Screen
 #import "HomeScreen/RSHomeScreenController.h"
@@ -57,11 +58,11 @@
 #import "LaunchScreen/RSLaunchScreenController.h"
 
 #pragma mark Volume Controls
-#import "VolumeControls/RSAudioController.h"
-#import "VolumeControls/RSVolumeHUD.h"
-#import "VolumeControls/RSVolumeView.h"
-#import "VolumeControls/RSNowPlayingControls.h"
+#import "AudioControls/RSAudioController.h"
+#import "AudioControls/RSVolumeHUD.h"
+#import "AudioControls/RSVolumeView.h"
 
 #pragma mark Lock Screen
 #import "LockScreen/RSLockScreenController.h"
 #import "LockScreen/RSLockScreenView.h"
+#import "LockScreen/RSLockScreenSecurityController.h"

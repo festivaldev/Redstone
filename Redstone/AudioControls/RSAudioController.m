@@ -4,20 +4,22 @@
 
 - (id)init {
 	if (self = [super init]) {
-		audioVideoController = [objc_getClass("AVSystemController") sharedAVSystemController];
-		
-		[audioVideoController getVolume:&ringerVolume forCategory:@"Ringtone"];
-		[audioVideoController getVolume:&mediaVolume forCategory:@"Audio/Video"];
-		
-		if ([[objc_getClass("SBMediaController") sharedInstance]  isRingerMuted]) {
-			ringerVolume = 0.0;
+		if ([[RSPreferences preferences] volumeControlsEnabled]) {
+			audioVideoController = [objc_getClass("AVSystemController") sharedAVSystemController];
+			
+			[audioVideoController getVolume:&ringerVolume forCategory:@"Ringtone"];
+			[audioVideoController getVolume:&mediaVolume forCategory:@"Audio/Video"];
+			
+			if ([[objc_getClass("SBMediaController") sharedInstance]  isRingerMuted]) {
+				ringerVolume = 0.0;
+			}
+			
+			self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
+			[self.window setWindowLevel:2200];
+			
+			volumeHUD = [[RSVolumeHUD alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
+			[self.window addSubview:volumeHUD];
 		}
-		
-		self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-		[self.window setWindowLevel:2200];
-		
-		volumeHUD = [[RSVolumeHUD alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-		[self.window addSubview:volumeHUD];
 	}
 	
 	return self;
@@ -116,15 +118,17 @@
 }
 
 - (void)nowPlayingInfoDidChange {
-	[audioVideoController getVolume:&ringerVolume forCategory:@"Ringtone"];
-	[audioVideoController getVolume:&mediaVolume forCategory:@"Audio/Video"];
-	
-	if ([[objc_getClass("SBMediaController") sharedInstance] isRingerMuted]) {
-		ringerVolume = 0.0;
+	if (volumeHUD) {
+		[audioVideoController getVolume:&ringerVolume forCategory:@"Ringtone"];
+		[audioVideoController getVolume:&mediaVolume forCategory:@"Audio/Video"];
+		
+		if ([[objc_getClass("SBMediaController") sharedInstance] isRingerMuted]) {
+			ringerVolume = 0.0;
+		}
+		
+		BOOL isShowingHeadphones = [[audioVideoController attributeForKey:@"AVSystemController_HeadphoneJackIsConnectedAttribute"] boolValue];
+		[volumeHUD setIsShowingHeadphoneVolume:isShowingHeadphones];
 	}
-	
-	BOOL isShowingHeadphones = [[audioVideoController attributeForKey:@"AVSystemController_HeadphoneJackIsConnectedAttribute"] boolValue];
-	[volumeHUD setIsShowingHeadphoneVolume:isShowingHeadphones];
 	
 	MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef information) {
 		isPlaying = [[(__bridge NSDictionary*)information objectForKey:@"kMRMediaRemoteNowPlayingInfoPlaybackRate"] boolValue];
@@ -136,10 +140,12 @@
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneNowPlayingUpdateFinished" object:nil];
 		
-		if (!isPlaying && !artwork) {
-			[volumeHUD setIsShowingNowPlayingControls:NO];
-		} else {
-			[volumeHUD setIsShowingNowPlayingControls:YES];
+		if (volumeHUD) {
+			if (!isPlaying && !artwork) {
+				[volumeHUD setIsShowingNowPlayingControls:NO];
+			} else {
+				[volumeHUD setIsShowingNowPlayingControls:YES];
+			}
 		}
 	});
 }

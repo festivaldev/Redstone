@@ -1,11 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class RSLockScreenView;
+@class RSLockScreenView, RSLockScreenSecurityController;
 
 @interface RSLockScreenController : NSObject
 
 @property (nonatomic, strong) RSLockScreenView* view;
-
-- (void)resetLockScreen;
+@property (nonatomic, strong) RSLockScreenSecurityController* securityController;
 
 @end

@@ -63,6 +63,11 @@ static RSPreferences* sharedInstance;
 			[preferences setObject:[NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/3ColumnDefaultLayout.plist", RESOURCES_PATH]] forKey:@"3ColumnLayout"];
 		}
 		
+		_enabled = [[preferences objectForKey:@"enabled"] boolValue];
+		_homeScreenEnabled = [[preferences objectForKey:@"homeScreenEnabled"] boolValue];
+		_volumeControlsEnabled = [[preferences objectForKey:@"volumeControlsEnabled"] boolValue];
+		_lockScreenEnabled = [[preferences objectForKey:@"lockScreenEnabled"] boolValue];
+		
 		[preferences writeToFile:PREFERENCES_PATH atomically:YES];
 	}
 	

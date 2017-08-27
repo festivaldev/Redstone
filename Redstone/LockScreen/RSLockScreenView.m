@@ -21,6 +21,12 @@
 		[wallpaperView setContentMode:UIViewContentModeScaleAspectFill];
 		[self addSubview:wallpaperView];
 		
+		wallpaperOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+		[wallpaperOverlay setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+		[wallpaperOverlay setHidden:YES];
+		[wallpaperOverlay setAlpha:0];
+		[self addSubview:wallpaperOverlay];
+		
 		unlockScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 		[unlockScrollView setContentSize:CGSizeMake(0, screenHeight * 2)];
 		[unlockScrollView setDelegate:self];
@@ -42,6 +48,9 @@
 		[dateLabel setTextColor:[UIColor whiteColor]];
 		[dateLabel sizeToFit];
 		[timeAndDateView addSubview:dateLabel];
+		
+		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
+		[timeAndDateView addSubview:nowPlayingControls];
 	}
 	
 	return self;
@@ -52,6 +61,7 @@
 	
 	CGFloat alpha = 1 - MIN(scrollView.contentOffset.y / (scrollView.bounds.size.height * 0.6), 1);
 	[timeAndDateView setAlpha:alpha];
+	[wallpaperOverlay setAlpha:1-alpha];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -59,20 +69,28 @@
 		CGPoint parallaxPosition = [[[[RSCore sharedInstance] homeScreenController] wallpaperView] parallaxPosition];
 		[fakeHomeScreenWallpaperView setTransform:CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(parallaxPosition.x, parallaxPosition.y))];
 	}
+	
+	[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	self.isScrolling = NO;
+	self.isUnlocking = YES;
+	
 	if (scrollView.contentOffset.y >= scrollView.frame.size.height) {
-		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
-		
-		/*[UIView animateWithDuration:0.15 animations:^{
-			[wallpaperView setEasingFunction:easeOutCubic forKeyPath:@"frame"];
-			[wallpaperView setAlpha:0.0];
-		} completion:^(BOOL finished) {
-			[wallpaperView removeEasingFunctionForKeyPath:@"frame"];
+		if ([[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]) {
+			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+		} else {
 			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
-		}];*/
+			
+			/*[UIView animateWithDuration:0.15 animations:^{
+				[wallpaperView setEasingFunction:easeOutCubic forKeyPath:@"frame"];
+				[wallpaperView setAlpha:0.0];
+			} completion:^(BOOL finished) {
+				[wallpaperView removeEasingFunctionForKeyPath:@"frame"];
+				[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
+			}];*/
+		}
 	}
 }
 
@@ -106,6 +124,10 @@
 }
 
 - (void)reset {
+	self.isScrolling = NO;
+	self.isUnlocking = NO;
+	
+	[nowPlayingControls updateNowPlayingInfo];
 	[unlockScrollView setContentOffset:CGPointZero];
 	[wallpaperView setAlpha:1.0];
 }

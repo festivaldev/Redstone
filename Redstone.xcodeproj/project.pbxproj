@@ -171,12 +171,13 @@
 		8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E951F359E1500BFFB39 /* UIView+Easing.m */; };
 		8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */; };
 		8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
+		8D3920B21F52A7C7002A4C24 /* RSNowPlayingControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3920B11F52A7C7002A4C24 /* RSNowPlayingControls.m */; };
+		8D3920B61F52B1EC002A4C24 /* RSLockScreenSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3920B51F52B1EC002A4C24 /* RSLockScreenSecurityController.m */; };
 		8D452C071F439F620046721F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D452C091F439F620046721F /* Localizable.strings */; };
 		8D6251A81F39B94F0007298A /* RSTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251A71F39B94F0007298A /* RSTileButton.m */; };
 		8D6251AB1F39B95D0007298A /* RSTileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251AA1F39B95D0007298A /* RSTileInfo.m */; };
 		8D96D6801F4E2CF30006A624 /* RSVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */; };
 		8D96D6831F4E35950006A624 /* RSSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D6821F4E35950006A624 /* RSSlider.m */; };
-		8D96D6881F4F33920006A624 /* RSNowPlayingControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D6871F4F33920006A624 /* RSNowPlayingControls.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
 		8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
@@ -395,6 +396,13 @@
 		8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenScrollView.m; sourceTree = "<group>"; };
 		8D3771691F3456FA008056D1 /* RSStartScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStartScreenController.h; sourceTree = "<group>"; };
 		8D37716A1F3456FA008056D1 /* RSStartScreenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSStartScreenController.m; sourceTree = "<group>"; };
+		8D3920B01F52A7C7002A4C24 /* RSNowPlayingControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNowPlayingControls.h; sourceTree = "<group>"; };
+		8D3920B11F52A7C7002A4C24 /* RSNowPlayingControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNowPlayingControls.m; sourceTree = "<group>"; };
+		8D3920B31F52AA5C002A4C24 /* SBPagedScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBPagedScrollView.h; sourceTree = "<group>"; };
+		8D3920B41F52B1EC002A4C24 /* RSLockScreenSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenSecurityController.h; sourceTree = "<group>"; };
+		8D3920B51F52B1EC002A4C24 /* RSLockScreenSecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenSecurityController.m; sourceTree = "<group>"; };
+		8D3920B71F52B32B002A4C24 /* SBUserAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUserAgent.h; sourceTree = "<group>"; };
+		8D3920B91F52BADC002A4C24 /* SBUIPasscodeLockViewBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUIPasscodeLockViewBase.h; sourceTree = "<group>"; };
 		8D452C081F439F620046721F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0B1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0C1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -411,8 +419,6 @@
 		8D96D6821F4E35950006A624 /* RSSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSlider.m; sourceTree = "<group>"; };
 		8D96D6841F4EBA290006A624 /* SBVolumeHUDView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBVolumeHUDView.h; sourceTree = "<group>"; };
 		8D96D6851F4F18A00006A624 /* SBMediaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMediaController.h; sourceTree = "<group>"; };
-		8D96D6861F4F33920006A624 /* RSNowPlayingControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNowPlayingControls.h; sourceTree = "<group>"; };
-		8D96D6871F4F33920006A624 /* RSNowPlayingControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNowPlayingControls.m; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -866,6 +872,8 @@
 				8D14C6BB1F4AE11600ADD69A /* RSAlertAction.m */,
 				8D96D6811F4E35950006A624 /* RSSlider.h */,
 				8D96D6821F4E35950006A624 /* RSSlider.m */,
+				8D3920B01F52A7C7002A4C24 /* RSNowPlayingControls.h */,
+				8D3920B11F52A7C7002A4C24 /* RSNowPlayingControls.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -880,7 +888,7 @@
 			path = Redstone_UIKit;
 			sourceTree = "<group>";
 		};
-		8D14C6BD1F4B88A900ADD69A /* VolumeControls */ = {
+		8D14C6BD1F4B88A900ADD69A /* AudioControls */ = {
 			isa = PBXGroup;
 			children = (
 				8D14C6BE1F4B88C400ADD69A /* RSAudioController.h */,
@@ -889,10 +897,8 @@
 				8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */,
 				8D96D67E1F4E2CF30006A624 /* RSVolumeView.h */,
 				8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */,
-				8D96D6861F4F33920006A624 /* RSNowPlayingControls.h */,
-				8D96D6871F4F33920006A624 /* RSNowPlayingControls.m */,
 			);
-			path = VolumeControls;
+			path = AudioControls;
 			sourceTree = "<group>";
 		};
 		8D14C6C41F4B8BE100ADD69A /* MediaPlayer */ = {
@@ -971,6 +977,14 @@
 			path = StartScreen;
 			sourceTree = "<group>";
 		};
+		8D3920B81F52BA9F002A4C24 /* SpringBoardUIServices */ = {
+			isa = PBXGroup;
+			children = (
+				8D3920B91F52BADC002A4C24 /* SBUIPasscodeLockViewBase.h */,
+			);
+			path = SpringBoardUIServices;
+			sourceTree = "<group>";
+		};
 		8D4474881F2F2E9500DA9CEF = {
 			isa = PBXGroup;
 			children = (
@@ -1006,9 +1020,11 @@
 				8DCE1C6F1F5169B600B2804E /* SBLockScreenManager.h */,
 				8D96D6851F4F18A00006A624 /* SBMediaController.h */,
 				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
+				8D3920B31F52AA5C002A4C24 /* SBPagedScrollView.h */,
 				8D1191421F3DA317009A8568 /* SBUIAnimationZoomApp.h */,
 				8DBEE1D41F352B7800AD4827 /* SBUIController.h */,
 				8DCE1C701F516BA200B2804E /* SBUILegibilityLabel.h */,
+				8D3920B71F52B32B002A4C24 /* SBUserAgent.h */,
 				8D96D6841F4EBA290006A624 /* SBVolumeHUDView.h */,
 				8D14C6CC1F4D661100ADD69A /* VolumeControl.h */,
 			);
@@ -1039,6 +1055,8 @@
 				8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */,
 				8DCE1C691F51658B00B2804E /* RSLockScreenView.h */,
 				8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */,
+				8D3920B41F52B1EC002A4C24 /* RSLockScreenSecurityController.h */,
+				8D3920B51F52B1EC002A4C24 /* RSLockScreenSecurityController.m */,
 			);
 			path = LockScreen;
 			sourceTree = "<group>";
@@ -1065,7 +1083,7 @@
 				8D3771681F3456CC008056D1 /* StartScreen */,
 				8DC70CF11F345BB700F9A884 /* AppList */,
 				8D1191431F3E5457009A8568 /* LaunchScreen */,
-				8D14C6BD1F4B88A900ADD69A /* VolumeControls */,
+				8D14C6BD1F4B88A900ADD69A /* AudioControls */,
 				8DCE1C651F51646400B2804E /* LockScreen */,
 			);
 			path = Redstone;
@@ -1092,6 +1110,7 @@
 			isa = PBXGroup;
 			children = (
 				8DBEE1D21F352B7800AD4827 /* SpringBoard */,
+				8D3920B81F52BA9F002A4C24 /* SpringBoardUIServices */,
 				8D14C6C41F4B8BE100ADD69A /* MediaPlayer */,
 				8D14C6C61F4D5AFA00ADD69A /* Celestial */,
 			);
@@ -1344,7 +1363,6 @@
 			files = (
 				8DF5EB301F33BAF5003CC2B4 /* RSCore.m in Sources */,
 				8DCE1C6B1F51658B00B2804E /* RSLockScreenView.m in Sources */,
-				8D96D6881F4F33920006A624 /* RSNowPlayingControls.m in Sources */,
 				8D14C6E01F4E1FFA00ADD69A /* RDSAccentColorList.m in Sources */,
 				8D14C6D81F4E1EBF00ADD69A /* RDSRootListController.m in Sources */,
 				8D14C6BC1F4AE11600ADD69A /* RSAlertAction.m in Sources */,
@@ -1355,6 +1373,7 @@
 				8D259E981F359E1500BFFB39 /* UIFont+WDCustomLoader.m in Sources */,
 				8D14C6CA1F4D5CA800ADD69A /* RSVolumeHUD.m in Sources */,
 				8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */,
+				8D3920B61F52B1EC002A4C24 /* RSLockScreenSecurityController.m in Sources */,
 				8D1191611F403FE3009A8568 /* RSTiltView.m in Sources */,
 				8DCE1C681F5164BE00B2804E /* RSLockScreenController.m in Sources */,
 				8D1191581F3F93B8009A8568 /* RSAppListSection.m in Sources */,
@@ -1371,6 +1390,7 @@
 				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
+				8D3920B21F52A7C7002A4C24 /* RSNowPlayingControls.m in Sources */,
 				8D14C6B11F498E0200ADD69A /* Makefile in Sources */,
 				8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */,
 				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,

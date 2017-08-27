@@ -12,4 +12,7 @@
 	"VIBRATE_DISABLED" = "Vibrieren aus";
 	"RINGER_ENABLED" = "Klingeln ein";
 	"RINGER_DISABLED" = "Klingeln aus";
+	
+	"MEDIA_UNKNOWN_TITLE" = "Unbekannter Titel";
+	"MEDIA_UNKNOWN_ARTIST" = "Unbekannter Künstler";
 }

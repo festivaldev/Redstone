@@ -3,6 +3,44 @@
 
 %group lockscreen
 
+SBPagedScrollView* dashboardScrollView;
+
+%hook SBDashBoardScrollGestureController
+
+- (id)initWithDashBoardView:(id)arg1 systemGestureManager:(id)arg2 {
+	id r = %orig;
+	
+	dashboardScrollView = MSHookIvar<SBPagedScrollView*>(r, "_scrollView");
+	
+	return r;
+}
+
+%end // %hook SBDashBoardScrollGestureController
+
+%hook SBPagedScrollView
+
+- (void)layoutSubviews {
+	if (self == dashboardScrollView) {
+		[self setScrollEnabled:NO];
+		[self setUserInteractionEnabled:NO];
+		[self setContentOffset:CGPointMake(-screenWidth, 0)];
+	} else {
+		%orig;
+	}
+}
+
+%end // %hook SBDashBoardScrollGestureController
+
+%hook SBDashBoardViewController
+
+- (void)startLockScreenFadeInAnimationForSource:(int)arg1 {
+	[[[[RSCore sharedInstance] lockScreenController] view] reset];
+	
+	%orig(arg1);
+}
+
+%end // %hook SBDashBoardViewController
+
 %hook SBDashBoardView
 
 - (void)layoutSubviews {
@@ -39,6 +77,7 @@
 - (BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[[[[RSCore sharedInstance] lockScreenController] view] reset];
+		[[[[RSCore sharedInstance] lockScreenController] securityController] setCurrentLockView:nil];
 	});
 	
 	return %orig;
@@ -49,7 +88,7 @@
 %hook SBBacklightController
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-	if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling]) {
+	if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling] || [[[[RSCore sharedInstance] lockScreenController] view] isUnlocking]) {
 		[self resetIdleTimer];
 		return;
 	}
@@ -59,10 +98,19 @@
 
 %end // %hook SBBacklightController
 
+%hook SBUIPasscodeLockViewBase
+
+- (void)layoutSubviews {
+	[[[[RSCore sharedInstance] lockScreenController] securityController] setCurrentLockView:self];
+	%orig;
+}
+
+%end // %hook SBUIPasscodeLockViewBase
+
 %end // %group lockscreen
 
 %ctor {
-	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
+	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] lockScreenEnabled]) {
 		
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			%init(lockscreen);
