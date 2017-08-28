@@ -85,11 +85,9 @@
 	
 		if (passcodeType == RSPasscodeKeyboardTypeDigits) {
 			[passcodeTextField setFrame:CGRectMake(0, 0, self.frame.size.width, 55)];
-			[passcodeTextField setTextAlignment:NSTextAlignmentCenter];
 			[passcodeConfirmButton setHidden:YES];
 		} else if (passcodeType == RSPasscodeKeyboardTypeDigitsWithConfirm) {
 			[passcodeTextField setFrame:CGRectMake(20, 0, self.frame.size.width - buttonHeight - [RSMetrics tileBorderSpacing] - 20, 55)];
-			[passcodeTextField setTextAlignment:NSTextAlignmentLeft];
 		
 			[passcodeConfirmButton setHidden:NO];
 			[passcodeConfirmButton setFrame:CGRectMake(passcodeTextField.frame.size.width + [RSMetrics tileBorderSpacing], 0, buttonHeight, 55)];
@@ -103,6 +101,7 @@
 
 - (void)resetPasscodeText {
 	[passcodeTextField setText:nil];
+	[passcodeTextField setTextAlignment:NSTextAlignmentCenter];
 	[passcodeConfirmButton setUserInteractionEnabled:NO];
 	[passcodeConfirmButton setAlpha:0.4];
 }
@@ -114,6 +113,10 @@
 		[passcodeConfirmButton setUserInteractionEnabled:YES];
 		[passcodeConfirmButton setAlpha:1.0];
 	}
+	
+	if (currentPasscodeType == RSPasscodeKeyboardTypeDigitsWithConfirm || currentPasscodeType == RSPasscodeKeyboardTypeAlphanumeric) {
+		[passcodeTextField setTextAlignment:NSTextAlignmentLeft];
+	}
 }
 
 - (void)removeCharacter {
@@ -124,6 +127,7 @@
 			[passcodeConfirmButton setUserInteractionEnabled:NO];
 			[passcodeConfirmButton setAlpha:0.4];
 		}
+		[passcodeTextField setTextAlignment:NSTextAlignmentCenter];
 	}
 }
 

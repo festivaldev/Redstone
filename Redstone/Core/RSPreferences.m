@@ -35,7 +35,7 @@ static RSPreferences* sharedInstance;
 		
 		// Lock Screen
 		if (![preferences objectForKey:@"lockScreenEnabled"]) {
-			[preferences setValue:[NSNumber numberWithBool:YES] forKey:@"lockScreenEnabled"];
+			[preferences setValue:[NSNumber numberWithBool:NO] forKey:@"lockScreenEnabled"];
 		}
 		
 		// Accent Color
