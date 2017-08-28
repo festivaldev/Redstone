@@ -32,6 +32,7 @@
 		[unlockScrollView setDelegate:self];
 		[unlockScrollView setPagingEnabled:YES];
 		[unlockScrollView setBounces:NO];
+		[unlockScrollView setDelaysContentTouches:NO];
 		[self addSubview:unlockScrollView];
 		
 		timeAndDateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
@@ -51,6 +52,13 @@
 		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
 		[timeAndDateView addSubview:nowPlayingControls];
+		
+		// Passcode stuff
+		self.passcodeEntryView = [[RSLockScreenPasscodeEntryView alloc] initWithFrame:CGRectMake(4, screenHeight*2 - 382, screenWidth - 8, 382)];
+		[unlockScrollView addSubview:self.passcodeEntryView];
+		
+		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:NO animated:NO];
+		
 	}
 	
 	return self;
@@ -71,15 +79,19 @@
 	}
 	
 	[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
+	
+	[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+	[self.passcodeEntryView setKeypadForPasscodeType:[[[[RSCore sharedInstance] lockScreenController] securityController] keyboardTypeForCurrentLockView]];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	self.isScrolling = NO;
-	self.isUnlocking = YES;
 	
 	if (scrollView.contentOffset.y >= scrollView.frame.size.height) {
+		self.isUnlocking = YES;
 		if ([[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]) {
 			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+
 		} else {
 			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
 			
@@ -91,6 +103,8 @@
 				[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
 			}];*/
 		}
+	} else {
+		self.isUnlocking = NO;
 	}
 }
 
@@ -130,6 +144,7 @@
 	[nowPlayingControls updateNowPlayingInfo];
 	[unlockScrollView setContentOffset:CGPointZero];
 	[wallpaperView setAlpha:1.0];
+	[self.passcodeEntryView resetPasscodeText];
 }
 
 @end

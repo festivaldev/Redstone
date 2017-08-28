@@ -14,5 +14,6 @@ typedef NS_ENUM(NSUInteger, RSPasscodeKeyboardType) {
 
 - (BOOL)deviceIsLocked;
 - (BOOL)deviceIsPasscodeLocked;
+- (RSPasscodeKeyboardType)keyboardTypeForCurrentLockView;
 
 @end

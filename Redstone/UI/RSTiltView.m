@@ -39,6 +39,9 @@
 - (void)handleGesture:(UILongPressGestureRecognizer*)sender {
 	switch (sender.state) {
 		case UIGestureRecognizerStateBegan:
+			[self.layer removeAllAnimations];
+			[highlightLayer removeAllAnimations];
+			
 			if (self.tiltEnabled) {
 				[self setTransformForPosition:[sender locationInView:self]];
 			}
@@ -64,6 +67,48 @@
 			break;
 		default: break;
 	}
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[super touchesBegan:touches withEvent:event];
+	
+	if (tiltGestureRecognizer.enabled) {
+		return;
+	}
+	
+	[self.layer removeAllAnimations];
+	[highlightLayer removeAllAnimations];
+	
+	if (self.tiltEnabled) {
+		UITouch* touch = [touches anyObject];
+		[self setTransformForPosition:[touch locationInView:self]];
+	}
+	
+	if (self.highlightEnabled) {
+		[CATransaction begin];
+		[CATransaction setDisableActions:YES];
+		
+		isHighlighted = YES;
+		if (self.coloredHighlight) {
+			[highlightLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
+		} else {
+			[highlightLayer setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2].CGColor];
+		}
+		[highlightLayer setOpacity:1.0];
+		
+		[CATransaction commit];
+	}
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[super touchesEnded:touches withEvent:event];
+	[self untilt];
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	[super touchesCancelled:touches withEvent:event];
+	[self untilt];
 }
 
 - (void)setTransformForPosition:(CGPoint)position {
@@ -128,9 +173,18 @@
 	}
 	
 	[self.layer removeAllAnimations];
+	[highlightLayer removeAllAnimations];
+	
+	[UIView animateWithDuration:.15 delay:0 options:(UIViewAnimationOptionAllowUserInteraction) animations:^{
+		[self.layer setTransform:CATransform3DIdentity];
+		[highlightLayer setOpacity:0.0];
+	} completion:^(BOOL finished) {
+		isTilted = NO;
+		isHighlighted = NO;
+	}];
 	
 	if (isTilted || isHighlighted) {
-		[UIView animateWithDuration:.15 animations:^{
+		/*[UIView animateWithDuration:.15 animations:^{
 			if (self.tiltEnabled && isTilted) {
 				[self.layer setTransform:CATransform3DIdentity];
 			}
@@ -141,19 +195,12 @@
 		} completion:^(BOOL finished) {
 			isTilted = NO;
 			isHighlighted = NO;
-		}];
+		}];*/
+		
+		
 	} else {
 		[self.layer setTransform:CATransform3DIdentity];
 	}
-	
-	isTilted = NO;
-	isHighlighted = NO;
-}
-
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-	[super touchesCancelled:touches withEvent:event];
-	
-	[self untilt];
 }
 
 - (void)setTiltEnabled:(BOOL)tiltEnabled {

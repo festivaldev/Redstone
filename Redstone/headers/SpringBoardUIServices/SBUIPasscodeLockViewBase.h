@@ -2,4 +2,6 @@
 
 @interface SBUIPasscodeLockViewBase : UIView
 
+- (NSString*)passcode;
+
 @end

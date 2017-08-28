@@ -66,3 +66,6 @@
 #import "LockScreen/RSLockScreenController.h"
 #import "LockScreen/RSLockScreenView.h"
 #import "LockScreen/RSLockScreenSecurityController.h"
+#import "LockScreen/RSLockScreenPasscodeEntryView.h"
+#import "LockScreen/RSLockScreenPasscodeEntryButton.h"
+#import "LockScreen/RSLockScreenPasscodeEntryTextField.h"
