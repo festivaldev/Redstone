@@ -11,6 +11,7 @@
 
 #import <SpringBoard/SpringBoard.h>
 #import <Celestial/AVSystemController.h>
+#import <SpringBoardUIServices/SpringBoardUIServices.h>
 
 #pragma mark Libraries
 #import "Libraries/CAKeyframeAnimation+AHEasing.h"
@@ -65,7 +66,3 @@
 #pragma mark Lock Screen
 #import "LockScreen/RSLockScreenController.h"
 #import "LockScreen/RSLockScreenView.h"
-#import "LockScreen/RSLockScreenSecurityController.h"
-#import "LockScreen/RSLockScreenPasscodeEntryView.h"
-#import "LockScreen/RSLockScreenPasscodeEntryButton.h"
-#import "LockScreen/RSLockScreenPasscodeEntryTextField.h"

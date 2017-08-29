@@ -52,13 +52,6 @@
 		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
 		[timeAndDateView addSubview:nowPlayingControls];
-		
-		// Passcode stuff
-		self.passcodeEntryView = [[RSLockScreenPasscodeEntryView alloc] initWithFrame:CGRectMake(4, screenHeight*2 - 382, screenWidth - 8, 382)];
-		[unlockScrollView addSubview:self.passcodeEntryView];
-		
-		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
-		
 	}
 	
 	return self;
@@ -78,10 +71,7 @@
 		[fakeHomeScreenWallpaperView setTransform:CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(parallaxPosition.x, parallaxPosition.y))];
 	}
 	
-	[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
-	
-	/*[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
-	[self.passcodeEntryView setKeypadForPasscodeType:[[[[RSCore sharedInstance] lockScreenController] securityController] keyboardTypeForCurrentLockView]];*/
+	//[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -89,23 +79,15 @@
 	
 	if (scrollView.contentOffset.y >= scrollView.frame.size.height) {
 		self.isUnlocking = YES;
-		if ([[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]) {
-			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
-
-		} else {
-			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
-			
-			/*[UIView animateWithDuration:0.15 animations:^{
-				[wallpaperView setEasingFunction:easeOutCubic forKeyPath:@"frame"];
-				[wallpaperView setAlpha:0.0];
-			} completion:^(BOOL finished) {
-				[wallpaperView removeEasingFunctionForKeyPath:@"frame"];
-				[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
-			}];*/
-		}
+		
+		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
 	} else {
 		self.isUnlocking = NO;
 	}
+}
+
+- (UIScrollView*)unlockScrollView {
+	return unlockScrollView;
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset {
@@ -144,7 +126,6 @@
 	[nowPlayingControls updateNowPlayingInfo];
 	[unlockScrollView setContentOffset:CGPointZero];
 	[wallpaperView setAlpha:1.0];
-	[self.passcodeEntryView resetPasscodeText];
 }
 
 @end

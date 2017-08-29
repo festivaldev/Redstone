@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class RSNowPlayingControls, RSLockScreenPasscodeEntryView;
+@class RSNowPlayingControls;
 
 @interface RSLockScreenView : UIView <UIScrollViewDelegate> {
 	UIImageView* wallpaperView;
@@ -18,8 +18,8 @@
 
 @property (nonatomic, assign) BOOL isScrolling;
 @property (nonatomic, assign) BOOL isUnlocking;
-@property (nonatomic, strong) RSLockScreenPasscodeEntryView* passcodeEntryView;
 
+- (UIScrollView*)unlockScrollView;
 - (void)setContentOffset:(CGPoint)contentOffset;
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 - (CGPoint)contentOffset;

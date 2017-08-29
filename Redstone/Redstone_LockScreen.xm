@@ -36,8 +36,6 @@ SBPagedScrollView* dashboardScrollView;
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1 {
 	[[[[RSCore sharedInstance] lockScreenController] view] reset];
 	
-	[(SBLockScreenManager*)[%c(SBLockScreenManager) sharedInstance] _setPasscodeVisible:YES animated:NO];
-	
 	%orig(arg1);
 }
 
@@ -79,7 +77,6 @@ SBPagedScrollView* dashboardScrollView;
 - (BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		[[[[RSCore sharedInstance] lockScreenController] view] reset];
-		[[[[RSCore sharedInstance] lockScreenController] securityController] setCurrentLockView:nil];
 	});
 	
 	return %orig;
@@ -99,52 +96,6 @@ SBPagedScrollView* dashboardScrollView;
 }
 
 %end // %hook SBBacklightController
-
-%hook SBUIPasscodeLockViewBase
-
-- (void)layoutSubviews {
-	[[[[RSCore sharedInstance] lockScreenController] securityController] setCurrentLockView:self];
-	%orig;
-}
-
-%end // %hook SBUIPasscodeLockViewBase
-
-%hook SBUIPasscodeLockViewWithKeypad
-
-- (void)passcodeEntryFieldTextDidChange:(id)arg1 {
-	%log;
-	[[[[[RSCore sharedInstance] lockScreenController] view] passcodeEntryView] handlePasscodeTextChanged];
-	
-	%orig;
-}
-
-%end // %hook SBUIPasscodeLockViewWithKeypad
-
-%hook SBFUserAuthenticationController
-
--(void)_handleSuccessfulAuthentication:(id)arg1 responder:(id)arg2 {
-	//[[[RSLockScreenController sharedInstance] passcodeEntryController] handleSuccessfulAuthentication];
-	%orig;
-}
-
-- (void)_handleFailedAuthentication:(id)arg1 error:(id)arg2 responder:(id)arg3 {
-	[[[[[RSCore sharedInstance] lockScreenController] view] passcodeEntryView] handleFailedAuthentication];
-	%orig;
-}
-
-%end // %hook SBFUserAuthenticationController
-
-%hook SBDashBoardMesaUnlockBehavior
-
-- (void)handleBiometricEvent:(unsigned long long)arg1 {
-	%orig;
-	
-	if(arg1 == 10) {
-		[[[[[RSCore sharedInstance] lockScreenController] view] passcodeEntryView] handleFailedMesaAuthentication];
-	}
-}
-
-%end // %hook SBDashBoardMesaUnlockBehavior
 
 %end // %group lockscreen
 
