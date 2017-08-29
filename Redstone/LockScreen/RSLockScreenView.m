@@ -57,7 +57,7 @@
 		self.passcodeEntryView = [[RSLockScreenPasscodeEntryView alloc] initWithFrame:CGRectMake(4, screenHeight*2 - 382, screenWidth - 8, 382)];
 		[unlockScrollView addSubview:self.passcodeEntryView];
 		
-		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:NO animated:NO];
+		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
 		
 	}
 	
@@ -80,8 +80,8 @@
 	
 	[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
 	
-	[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
-	[self.passcodeEntryView setKeypadForPasscodeType:[[[[RSCore sharedInstance] lockScreenController] securityController] keyboardTypeForCurrentLockView]];
+	/*[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+	[self.passcodeEntryView setKeypadForPasscodeType:[[[[RSCore sharedInstance] lockScreenController] securityController] keyboardTypeForCurrentLockView]];*/
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

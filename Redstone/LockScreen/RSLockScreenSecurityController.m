@@ -1,4 +1,5 @@
 #import "Redstone.h"
+#import <SpringBoardUIServices/SBUIPasscodeLockViewBase.h>
 
 @implementation RSLockScreenSecurityController
 
@@ -33,6 +34,11 @@
 	}
 	
 	return RSPasscodeKeyboardTypeNone;
+}
+
+- (void)setCurrentLockView:(SBUIPasscodeLockViewBase *)currentLockView {
+	_currentLockView = currentLockView;
+	[[[[[RSCore sharedInstance] lockScreenController] view] passcodeEntryView] setKeypadForPasscodeType:[self keyboardTypeForCurrentLockView]];
 }
 
 @end

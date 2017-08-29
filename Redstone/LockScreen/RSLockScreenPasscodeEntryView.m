@@ -87,10 +87,10 @@
 			[passcodeTextField setFrame:CGRectMake(0, 0, self.frame.size.width, 55)];
 			[passcodeConfirmButton setHidden:YES];
 		} else if (passcodeType == RSPasscodeKeyboardTypeDigitsWithConfirm) {
-			[passcodeTextField setFrame:CGRectMake(20, 0, self.frame.size.width - buttonHeight - [RSMetrics tileBorderSpacing] - 20, 55)];
+			[passcodeTextField setFrame:CGRectMake(0, 0, self.frame.size.width - buttonHeight - [RSMetrics tileBorderSpacing], 55)];
 		
 			[passcodeConfirmButton setHidden:NO];
-			[passcodeConfirmButton setFrame:CGRectMake(passcodeTextField.frame.size.width + [RSMetrics tileBorderSpacing], 0, buttonHeight, 55)];
+			[passcodeConfirmButton setFrame:CGRectMake(passcodeTextField.frame.origin.x + passcodeTextField.frame.size.width + [RSMetrics tileBorderSpacing], 0, buttonHeight, 55)];
 			[passcodeConfirmButton.titleLabel setFrame:CGRectMake(0, 0, buttonHeight, 55)];
 			[self addSubview:passcodeConfirmButton];
 		}
@@ -126,8 +126,8 @@
 		if (passcodeTextField.text.length < 1) {
 			[passcodeConfirmButton setUserInteractionEnabled:NO];
 			[passcodeConfirmButton setAlpha:0.4];
+			[passcodeTextField setTextAlignment:NSTextAlignmentCenter];
 		}
-		[passcodeTextField setTextAlignment:NSTextAlignmentCenter];
 	}
 }
 

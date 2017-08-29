@@ -17,7 +17,15 @@
 }
 
 - (CGRect)placeholderRectForBounds:(CGRect)bounds {
-	return CGRectMake(0, 7.5, self.frame.size.width, 40);
+	return CGRectInset(bounds, 20, 12);
+}
+
+- (CGRect)textRectForBounds:(CGRect)bounds {
+	return CGRectInset(bounds, 20, 6);
+}
+
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+	return CGRectInset(bounds, 20, 6);
 }
 
 - (void)showInvalidPIN {

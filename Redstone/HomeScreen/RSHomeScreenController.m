@@ -66,6 +66,14 @@
 		[homeScreenScrollView setAlpha:1.0];
 	} completion:^(BOOL finished) {
 		[homeScreenScrollView removeEasingFunctionForKeyPath:@"opacity"];
+		
+		for (UIView* view in startScreenController.view.subviews) {
+			[view setUserInteractionEnabled:YES];
+		}
+		
+		for (UIView* view in appListController.view.subviews) {
+			[view setUserInteractionEnabled:YES];
+		}
 	}];
 }
 

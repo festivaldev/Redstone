@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
-#import <SpringBoardUIServices/SBUIPasscodeLockViewBase.h>
+//#import <SpringBoardUIServices/SBUIPasscodeLockViewBase.h>
+
+@class SBUIPasscodeLockViewBase;
 
 typedef NS_ENUM(NSUInteger, RSPasscodeKeyboardType) {
 	RSPasscodeKeyboardTypeNone,
