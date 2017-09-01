@@ -1,0 +1,26 @@
+{
+	"ENABLED" = "Enabled";
+	
+	/* Components */
+	"COMPONENTS_TITLE" = "Components";
+	"COMPONENTS_FOOTER" = "Lock screen notifications are only affected by the Lock Screen component.";
+	"HOME_SCREEN" = "Home Screen";
+	"LOCK_SCREEN" = "Lock Screen";
+	"VOLUME_CONTROLS" = "Volume Controls";
+	"NOTIFICATIONS" = "Notifications";
+	
+	/* Design */
+	"ACCENT_COLOR" = "Accent Color";
+	"CHOOSE_FROM_WALLPAPER" = "Choose from Background";
+	
+	/* Buttons */
+	"RESET_START_SCREEN_LAYOUT_TITLE" = "Reset Start Screen";
+	"RESET_START_SCREEN_LAYOUT_MESSAGE" = "This will reset your Start Screen layout to factory defaults.";
+	"RESET_START_SCREEN_LAYOUT_CONFIRM" = "Reset Start Screen";
+	"RESET_START_SCREEN_LAYOUT_CANCEL" = "Cancel";
+	
+	"RESTART_SPRINGBOARD_TITLE" = "Restart SpringBoard";
+	"RESTART_SPRINGBOARD_MESSAGE" = "Restarting SpringBoard will apply all changed settings.";
+	"RESTART_SPRINGBOARD_CONFIRM" = "Restart SpringBoard";
+	"RESTART_SPRINGBOARD_CANCEL" = "Cancel";
+}

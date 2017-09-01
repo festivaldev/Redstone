@@ -1,10 +1,12 @@
-#import <Preferences/PSListController.h>
+#import <CepheiPrefs/HBRootListController.h>
+#import <Cephei/HBPreferences.h>
 
-@interface RDSRootListController : PSListController {
+@interface RDSRootListController : HBRootListController {
 	UIWindow* settingsView;
+	NSBundle* prefBundle;
 }
 
-- (void)killSpringBoard;
 - (void)resetHomeScreenLayout;
+- (void)killSpringBoard;
 
 @end

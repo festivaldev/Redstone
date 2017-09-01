@@ -33,25 +33,30 @@
 		[unlockScrollView setPagingEnabled:YES];
 		[unlockScrollView setBounces:NO];
 		[unlockScrollView setDelaysContentTouches:NO];
+		[unlockScrollView setShowsVerticalScrollIndicator:NO];
+		[unlockScrollView setShowsHorizontalScrollIndicator:NO];
 		[self addSubview:unlockScrollView];
 		
 		timeAndDateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 		[unlockScrollView addSubview:timeAndDateView];
 		
 		timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-		[timeLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:75]];
+		[timeLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:90]];
 		[timeLabel setTextColor:[UIColor whiteColor]];
 		[timeLabel sizeToFit];
 		[timeAndDateView addSubview:timeLabel];
 		
 		dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-		[dateLabel setFont:[UIFont fontWithName:@"SegoeUI-Semilight" size:24]];
+		[dateLabel setFont:[UIFont fontWithName:@"SegoeUI-Semilight" size:30]];
 		[dateLabel setTextColor:[UIColor whiteColor]];
 		[dateLabel sizeToFit];
 		[timeAndDateView addSubview:dateLabel];
 		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
 		[timeAndDateView addSubview:nowPlayingControls];
+		
+		notificationArea = [[RSLockScreenNotificationArea alloc] initWithFrame:CGRectMake(20, screenHeight-180, screenWidth - 40, 180)];
+		[timeAndDateView addSubview:notificationArea];
 	}
 	
 	return self;
@@ -90,6 +95,10 @@
 	return unlockScrollView;
 }
 
+- (RSLockScreenNotificationArea*)notificationArea {
+	return notificationArea;
+}
+
 - (void)setContentOffset:(CGPoint)contentOffset {
 	[unlockScrollView setContentOffset:contentOffset];
 }
@@ -103,6 +112,7 @@
 }
 
 - (void)setTime:(NSString *)time {
+	
 	NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:time];
 	[attributedString addAttributes:@{
 									  NSBaselineOffsetAttributeName: @8.0
@@ -110,13 +120,13 @@
 	
 	[timeLabel setAttributedText:attributedString];
 	[timeLabel sizeToFit];
-	[timeLabel setFrame:CGRectMake(21, screenHeight - timeLabel.frame.size.height - (140 - 42), timeLabel.frame.size.width, timeLabel.frame.size.height)];
+	[timeLabel setFrame:CGRectMake(21, screenHeight - timeLabel.frame.size.height - 115 - (notificationArea.isShowingDetailedStatus ? 100 : 0), timeLabel.frame.size.width, timeLabel.frame.size.height)];
 }
 
 - (void)setDate:(NSString *)date {
 	[dateLabel setText:date];
 	[dateLabel sizeToFit];
-	[dateLabel setFrame:CGRectMake(21, screenHeight - dateLabel.frame.size.height - (110 - 42), dateLabel.frame.size.width, dateLabel.frame.size.height)];
+	[dateLabel setFrame:CGRectMake(21, screenHeight - dateLabel.frame.size.height - 80 - (notificationArea.isShowingDetailedStatus ? 100 : 0), dateLabel.frame.size.width, dateLabel.frame.size.height)];
 }
 
 - (void)reset {

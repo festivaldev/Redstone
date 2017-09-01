@@ -87,20 +87,38 @@ SBPagedScrollView* dashboardScrollView;
 %hook SBBacklightController
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-	if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling] || [[[[RSCore sharedInstance] lockScreenController] view] isUnlocking]) {
+	return;
+	/*if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling] || [[[[RSCore sharedInstance] lockScreenController] view] isUnlocking]) {
 		[self resetIdleTimer];
 		return;
 	}
 	
-	%orig(arg1);
+	%orig(arg1);*/
+}
+
+- (double)defaultLockScreenDimInterval {
+	return -1;
+}
+- (void)_lockScreenDimTimerFired {
+	return;
 }
 
 %end // %hook SBBacklightController
 
+%hook SBApplication
+
+- (void)setBadge:(id)arg1 {
+	%orig(arg1);
+	
+	[[[[[RSCore sharedInstance] lockScreenController] view] notificationArea] setBadgeForApp:[self bundleIdentifier] value:[arg1 intValue]];
+}
+
+%end // %hook SBApplication
+
 %end // %group lockscreen
 
 %ctor {
-	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] lockScreenEnabled]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 		
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
 			%init(lockscreen);

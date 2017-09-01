@@ -39,12 +39,18 @@ BOOL isAllowedToPressHomeButton = YES;
 
 %end // %hook SBHomeHardwareButton
 
+static void SettingsChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneSettingsChanged" object:nil];
+}
+
 %end // %group core
 
 %ctor {
 	id preferences = [[RSPreferences alloc] init];
 	
-	if ([preferences enabled]) {
+	if ([[preferences objectForKey:@"enabled"] boolValue]) {
 		%init(core);
+		
+		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, SettingsChangedCallback, CFSTR("ml.festival.redstone.PreferencesChanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 	}
 }

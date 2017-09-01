@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class RSNowPlayingControls;
+@class RSNowPlayingControls, RSLockScreenNotificationArea;
 
 @interface RSLockScreenView : UIView <UIScrollViewDelegate> {
 	UIImageView* wallpaperView;
@@ -14,12 +14,14 @@
 	UILabel* dateLabel;
 	
 	RSNowPlayingControls* nowPlayingControls;
+	RSLockScreenNotificationArea* notificationArea;
 }
 
 @property (nonatomic, assign) BOOL isScrolling;
 @property (nonatomic, assign) BOOL isUnlocking;
 
 - (UIScrollView*)unlockScrollView;
+- (RSLockScreenNotificationArea*)notificationArea;
 - (void)setContentOffset:(CGPoint)contentOffset;
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 - (CGPoint)contentOffset;

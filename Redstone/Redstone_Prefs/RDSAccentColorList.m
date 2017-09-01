@@ -14,6 +14,11 @@
 	return cell;
 }
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	[self setSeparatorColor:[UIColor clearColor]];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	

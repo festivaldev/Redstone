@@ -95,7 +95,7 @@
 		int tileX = tile.basePosition.origin.x / sizeForPosition;
 		int tileY = tile.basePosition.origin.y / sizeForPosition;
 		CGFloat delay = (tileX * 0.01) + (tileY - minY) * 0.01;
-
+		
 		CAAnimation* scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"
 															  function:CubicEaseIn
 															 fromValue:1.0
@@ -146,12 +146,15 @@
 		}
 		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			/*for (RSTile* tile in tiles) {
-				[tile.layer setOpacity:1];
-			}*/
 			[startScreen setUserInteractionEnabled:YES];
 			[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
 			[startScreen.allAppsButton.layer removeAllAnimations];
+			
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				for (RSTile* tile in tiles) {
+					[tile setUserInteractionEnabled:YES];
+				}
+			});
 		});
 	});
 }
@@ -231,7 +234,7 @@
 		[opacity setDuration:0.3];
 		[opacity setRemovedOnCompletion:NO];
 		[opacity setFillMode:kCAFillModeForwards];
-
+		
 		[scale setBeginTime:CACurrentMediaTime() + delay];
 		[opacity setBeginTime:CACurrentMediaTime() + delay];
 		
@@ -400,6 +403,12 @@
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[appListController.searchBar setText:@""];
 			[appListController showAppsFittingQuery];
+			
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+				for (UIView* view in appList.subviews) {
+					[view setUserInteractionEnabled:YES];
+				}
+			});
 		});
 	});
 }

@@ -6,6 +6,8 @@
 	if (!_specifiers) {
 		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
 	}
+	
+	prefBundle = [NSBundle bundleWithPath:@"/Library/PreferenceBundles/Redstone.bundle"];
 
 	return _specifiers;
 }
@@ -26,46 +28,41 @@
 	self.navigationController.navigationBar.tintColor = nil;
 }
 
-- (id)readPreferenceValue:(PSSpecifier*)specifier {
-	id properties = [specifier properties];
-	
-	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/%@.plist", properties[@"defaults"]];
-	NSDictionary* settings = [NSDictionary dictionaryWithContentsOfFile:path];
-	
-	if ([[specifier propertyForKey:@"key"] isEqualToString:@"showMoreTiles"] && [UIScreen mainScreen].bounds.size.width == 414) {
-		[specifier setProperty:[NSNumber numberWithBool:NO] forKey:@"enabled"];
-	}
-	
-	return (settings[properties[@"key"]]) ?: properties[@"default"];
-}
-
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-- (void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
-	system("killall cfprefsd"); // I shouldn't do this probably, but this problem requires a more brutal solution
+- (void)resetHomeScreenLayout {
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@""
+																			 message:[prefBundle localizedStringForKey:@"RESET_START_SCREEN_LAYOUT_MESSAGE" value:@"" table:@"Root"]
+																	  preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:[prefBundle localizedStringForKey:@"RESET_START_SCREEN_LAYOUT_CANCEL" value:@"" table:@"Root"]
+														   style:UIAlertActionStyleCancel
+														 handler:nil];
 	
-	id properties = [specifier properties];
+	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:[prefBundle localizedStringForKey:@"RESET_START_SCREEN_LAYOUT_CONFIRM" value:@"" table:@"Root"]
+															style:UIAlertActionStyleDestructive
+														  handler:^(UIAlertAction *action) {
+															  HBPreferences* preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.redstone"];
+															  [preferences setObject:[NSArray arrayWithContentsOfFile:@"/var/mobile/Library/FESTIVAL/Redstone/2ColumnDefaultLayout.plist"] forKey:@"2ColumnLayout"];
+															  [preferences setObject:[NSArray arrayWithContentsOfFile:@"/var/mobile/Library/FESTIVAL/Redstone/3ColumnDefaultLayout.plist"] forKey:@"3ColumnLayout"];
+															  [preferences synchronize];
+															  
+															  system("killall SpringBoard");
+														  }];
+	[alertController addAction:cancelAction];
+	[alertController addAction:confirmAction];
+	[self presentViewController:alertController animated:YES completion:nil];
 	
-	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/%@.plist", properties[@"defaults"]];
-	NSMutableDictionary* settings = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-	
-	[settings setObject:value forKey:properties[@"key"]];
-	[settings writeToFile:path atomically:YES];
-	CFStringRef notificationName = (CFStringRef)properties[@"PostNotification"];
-	if (notificationName) {
-		CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), notificationName, NULL, NULL, YES);
-	}
 }
 
 - (void)killSpringBoard {
 	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@""
-																			 message:@"Restarting SpringBoard will apply all changed settings."
+																			 message:[prefBundle localizedStringForKey:@"RESTART_SPRINGBOARD_MESSAGE" value:@"" table:@"Root"]
 																	  preferredStyle:UIAlertControllerStyleActionSheet];
 	
-	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:[prefBundle localizedStringForKey:@"RESTART_SPRINGBOARD_CANCEL" value:@"" table:@"Root"]
 														   style:UIAlertActionStyleCancel handler:nil];
-	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Restart SpringBoard"
+	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:[prefBundle localizedStringForKey:@"RESTART_SPRINGBOARD_CONFIRM" value:@"" table:@"Root"]
 															style:UIAlertActionStyleDestructive
 														  handler:^(UIAlertAction* action) {
 															  system("killall SpringBoard");
@@ -74,31 +71,6 @@
 	[alertController addAction:cancelAction];
 	[alertController addAction:confirmAction];
 	[self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)resetHomeScreenLayout {
-	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@""
-																			 message:@"This will reset your Start Screen layout to factory defaults."
-																	  preferredStyle:UIAlertControllerStyleActionSheet];
-	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-														   style:UIAlertActionStyleCancel
-														 handler:nil];
-	
-	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Reset Start Screen"
-															style:UIAlertActionStyleDestructive
-														  handler:^(UIAlertAction *action) {
-															  NSMutableDictionary* preferences = [NSMutableDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/ml.festival.redstone.plist"];
-															  [preferences setObject:[NSArray arrayWithContentsOfFile:@"/var/mobile/Library/FESTIVAL/Redstone/2ColumnDefaultLayout.plist"] forKey:@"2ColumnLayout"];
-															  [preferences setObject:[NSArray arrayWithContentsOfFile:@"/var/mobile/Library/FESTIVAL/Redstone/3ColumnDefaultLayout.plist"] forKey:@"3ColumnLayout"];
-															  
-															  [preferences writeToFile:@"/var/mobile/Library/Preferences/ml.festival.redstone.plist" atomically:YES];
-															  
-															  system("killall SpringBoard");
-														  }];
-	[alertController addAction:cancelAction];
-	[alertController addAction:confirmAction];
-	[self presentViewController:alertController animated:YES completion:nil];
-	
 }
 
 #pragma GCC diagnostic pop

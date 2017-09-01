@@ -4,7 +4,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		if ([[RSPreferences preferences] volumeControlsEnabled]) {
+		if ([[[RSPreferences preferences] objectForKey:@"volumeControlsEnabled"] boolValue]) {
 			audioVideoController = [objc_getClass("AVSystemController") sharedAVSystemController];
 			
 			[audioVideoController getVolume:&ringerVolume forCategory:@"Ringtone"];

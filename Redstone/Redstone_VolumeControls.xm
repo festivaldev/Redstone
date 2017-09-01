@@ -74,7 +74,7 @@ static void AVHeadphonesConnectedNotification(CFNotificationCenterRef center, vo
 %end // %group volume
 
 %ctor {
-	if ([[RSPreferences preferences] enabled] && [[RSPreferences preferences] volumeControlsEnabled]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"volumeControlsEnabled"] boolValue]) {
 		%init(volume);
 		
 		CFNotificationCenterAddObserver(CFNotificationCenterGetLocalCenter(), NULL, &AVHeadphonesConnectedNotification, CFSTR("AVSystemController_HeadphoneJackIsConnectedDidChangeNotification"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);

@@ -66,3 +66,5 @@
 #pragma mark Lock Screen
 #import "LockScreen/RSLockScreenController.h"
 #import "LockScreen/RSLockScreenView.h"
+#import "LockScreen/RSLockScreenNotificationArea.h"
+#import "LockScreen/RSLockScreenNotificationApp.h"

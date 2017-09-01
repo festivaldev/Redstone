@@ -1,10 +1,11 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = Redstone
-Redstone_FILES = RDSRootListController.m RDSAccentColorList.m PFHeaderCell.mm
+Redstone_FILES = PFHeaderCell.mm RDSRootListController.m RDSHomeScreenPreferences.m RDSLockScreenPreferences.m RDSAccentColorList.m
 Redstone_INSTALL_PATH = /Library/PreferenceBundles
 Redstone_FRAMEWORKS = UIKit
 Redstone_PRIVATE_FRAMEWORKS = Preferences
+Redstone_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

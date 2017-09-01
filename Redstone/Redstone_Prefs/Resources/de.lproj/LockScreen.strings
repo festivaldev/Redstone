@@ -1,0 +1,15 @@
+{
+	"LOCK_SCREEN" = "Sperrbildschirm";
+	"ENABLED" = "Aktiviert";
+	
+	"LOCK_SCREEN_DETAIL_APP" = "Ausführliche Statusinfos";
+	"LOCK_SCREEN_DETAIL_APP_FOOTER" = "App zum Anzeigen ausführlicher Statusinfos auswählen";
+	
+	"LOCK_SCREEN_APPS" = "Kurze StatusInfos";
+	"LOCK_SCREEN_APPS_FOOTER" = "Apps zur Anzeige kurzer Statusinfos auswählen";
+	"LOCK_SCREEN_APP_1" = "App 1";
+	"LOCK_SCREEN_APP_2" = "App 2";
+	"LOCK_SCREEN_APP_3" = "App 3";
+	"LOCK_SCREEN_APP_4" = "App 4";
+	"LOCK_SCREEN_APP_5" = "App 5";
+}

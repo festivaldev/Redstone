@@ -1,7 +1,7 @@
-#import <Preferences/PSListItemsController.h>
+#import <CepheiPrefs/HBListItemsController.h>
 #import <Preferences/PSTableCell.h>
 
-@interface RDSAccentColorList : PSListItemsController {
+@interface RDSAccentColorList : HBListItemsController {
 	UIWindow* settingsView;
 }
 

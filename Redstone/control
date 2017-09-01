@@ -1,6 +1,6 @@
 Package: ml.festival.redstone
 Name: Redstone
-Depends: mobilesubstrate, cc.tweak.libobjcipc
+Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!

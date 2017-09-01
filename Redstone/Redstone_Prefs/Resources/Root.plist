@@ -30,83 +30,61 @@
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
-			<string>Enabled</string>
+			<string>ENABLED</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Components</string>
+			<string>COMPONENTS_TITLE</string>
 			<key>footerText</key>
-			<string>Lock screen notifications are only affected by the Lock Screen component.</string>
+			<string>COMPONENTS_FOOTER</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>homeScreenEnabled</string>
+			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Home Screen</string>
+			<string>HOME_SCREEN</string>
+			<key>detail</key>
+			<string>RDSHomeScreenPreferences</string>
+			<key>isController</key>
+			<true/>
 		</dict>
 		<dict>
-			<key>enabled</key>
-			<true/>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>lockScreenEnabled</string>
+			<string>PSLinkCell</string>
 			<key>label</key>
-			<string>Lock Screen</string>
+			<string>LOCK_SCREEN</string>
+			<key>detail</key>
+			<string>RDSLockScreenPreferences</string>
+			<key>isController</key>
+			<true/>
 		</dict>
 		<dict>
-			<key>enabled</key>
-			<false/>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
 			<true/>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>notificationsEnabled</string>
-			<key>label</key>
-			<string>Notifications</string>
-		</dict>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
 			<key>defaults</key>
 			<string>ml.festival.redstone</string>
 			<key>key</key>
 			<string>volumeControlsEnabled</string>
 			<key>label</key>
-			<string>Volume Control</string>
+			<string>VOLUME_CONTROLS</string>
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>ml.festival.redstone</string>
+			<key>key</key>
+			<string>notificationsEnabled</string>
 			<key>label</key>
-			<string>Component Debugging</string>
-			<key>footerText</key>
-			<string>Components in this list are currently tested internally for bugs, crashes and other issues. As a preview tester, you&apos;re welcome to enable these components and report any issues to @Sniper_GER on Twitter.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSStaticTextCell</string>
-			<key>label</key>
-			<string>None</string>
+			<string>NOTIFICATIONS</string>
+			<key>enabled</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -122,7 +100,7 @@
 			<key>key</key>
 			<string>accentColor</string>
 			<key>label</key>
-			<string>Accent Color</string>
+			<string>ACCENT_COLOR</string>
 			<key>PostNotification</key>
 			<string>ml.festival.redstone.AccentColorChanged</string>
 			<key>validTitles</key>
@@ -176,7 +154,7 @@
 				<string>#847545</string>
 				<string>#7E735F</string>
 				<string>#3E65FF</string>
-				<string>Automatic</string>
+				<string>CHOOSE_FROM_WALLPAPER</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -234,125 +212,13 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<string>YES</string>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>showWallpaper</string>
-			<key>label</key>
-			<string>Show Wallpaper</string>
-			<key>PostNotification</key>
-			<string>ml.festival.redstone.WallpaperChanged</string>
-			<key>enabled</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Theme Color</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSegmentCell</string>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>default</key>
-			<string>dark</string>
-			<key>key</key>
-			<string>themeColor</string>
-			<key>enabled</key>
-			<false/>
-			<key>validTitles</key>
-			<array>
-				<string>Dark</string>
-				<string>Light</string>
-			</array>
-			<key>validValues</key>
-			<array>
-				<string>dark</string>
-				<string>light</string>
-			</array>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Tile Opacity</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>default</key>
-			<real>0.8</real>
-			<key>min</key>
-			<integer>0</integer>
-			<key>max</key>
-			<integer>1</integer>
-			<key>showValue</key>
-			<true/>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>tileOpacity</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Show More Tiles enables a third column on 4&quot; and 4.7&quot; devices. This option is always enabled on 5.5&quot; devices.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>ml.festival.redstone</string>
-			<key>key</key>
-			<string>showMoreTiles</string>
-			<key>label</key>
-			<string>Show More Tiles</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>label</key>
-			<string>Credits</string>
-			<key>detail</key>
-			<string>RDSCreditsListController</string>
-			<key>isController</key>
-			<true/>
-			<key>enabled</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>action</key>
-			<string>donate</string>
-			<key>label</key>
-			<string>Keep our servers running</string>
-			<key>icon</key>
-			<string>paypal_logo.png</string>
-			<key>enabled</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Reset Start Screen Layout</string>
+			<string>RESET_START_SCREEN_LAYOUT_TITLE</string>
 			<key>action</key>
 			<string>resetHomeScreenLayout</string>
 		</dict>
@@ -360,7 +226,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Restart SpringBoard</string>
+			<string>RESTART_SPRINGBOARD_TITLE</string>
 			<key>action</key>
 			<string>killSpringBoard</string>
 		</dict>

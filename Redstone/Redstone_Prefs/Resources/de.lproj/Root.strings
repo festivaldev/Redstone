@@ -1,0 +1,26 @@
+{
+	"ENABLED" = "Aktiviert";
+	
+	/* Components */
+	"COMPONENTS_TITLE" = "Komponenten";
+	"COMPONENTS_FOOTER" = "Mitteilungen auf dem Sperrbildschirm werden mit der Komponente „Sperrbildschirm“ gesteuert.";
+	"HOME_SCREEN" = "Startbildschirm";
+	"LOCK_SCREEN" = "Sperrbildschirm";
+	"VOLUME_CONTROLS" = "Lautstärkeregler";
+	"NOTIFICATIONS" = "Mitteilungen";
+	
+	/* Design */
+	"ACCENT_COLOR" = "Akzentfarbe";
+	"CHOOSE_FROM_WALLPAPER" = "Aus Hintergrund auswählen";
+	
+	/* Buttons */
+	"RESET_START_SCREEN_LAYOUT_TITLE" = "Startbildschirm zurücksetzen";
+	"RESET_START_SCREEN_LAYOUT_MESSAGE" = "Hiermit wird die Anordnung der Kacheln auf dem Startbildschirm auf die Werkseinstellung zurückgesetzt.";
+	"RESET_START_SCREEN_LAYOUT_CONFIRM" = "Bildschirm zurücksetzen";
+	"RESET_START_SCREEN_LAYOUT_CANCEL" = "Abbrechen";
+	
+	"RESTART_SPRINGBOARD_TITLE" = "SpringBoard neustarten";
+	"RESTART_SPRINGBOARD_MESSAGE" = "Hiermit werden alle Änderungen gespeichert und das SpringBoard neu gestartet.";
+	"RESTART_SPRINGBOARD_CONFIRM" = "SpringBoard neustarten";
+	"RESTART_SPRINGBOARD_CANCEL" = "Abbrechen";
+}

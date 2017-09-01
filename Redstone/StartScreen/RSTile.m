@@ -13,7 +13,11 @@
 		
 		// Tile Icon
 		
-		if (self.tileInfo.fullSizeArtwork) {} else {
+		if (self.tileInfo.fullSizeArtwork) {
+			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+			[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:YES]];
+			[self addSubview:tileImageView];
+		} else {
 			CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:size];
 			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
 			[tileImageView setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
@@ -290,7 +294,10 @@
 									   tileLabel.frame.size.height)];
 	}
 	
-	if (self.tileInfo.fullSizeArtwork) {} else {
+	if (self.tileInfo.fullSizeArtwork) {
+		[tileImageView setFrame:CGRectMake(0, 0, newFrame.size.width, newFrame.size.height)];
+		[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:YES]];
+	} else {
 		CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:self.size];
 		[tileImageView setFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
 		[tileImageView setCenter:CGPointMake(newFrame.size.width/2, newFrame.size.height/2)];
@@ -335,7 +342,7 @@
 - (void)setBadge:(int)badgeCount {
 	badgeValue = badgeCount;
 	
-	if (!badgeCount || badgeCount == 0) {
+	if (!badgeCount || badgeCount < 1) {
 		[badgeLabel setText:nil];
 		[badgeLabel setHidden:YES];
 		[tileImageView setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)];

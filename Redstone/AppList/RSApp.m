@@ -16,13 +16,16 @@
 		[appImageBackground setBackgroundColor:[[RSAesthetics accentColorForTile:self.tileInfo] colorWithAlphaComponent:1.0]];
 		[self addSubview:appImageBackground];
 		
-		if (self.tileInfo.fullSizeArtwork) {} else {
+		if (self.tileInfo.fullSizeArtwork) {
+			appImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+			[appImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:5 colored:YES]];
+		} else {
 			appImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 37.5, 37.5)];
 			[appImageView setCenter:CGPointMake(25, 25)];
 			[appImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:5 colored:self.tileInfo.hasColoredIcon]];
 			[appImageView setTintColor:[UIColor whiteColor]];
-			[appImageBackground addSubview:appImageView];
 		}
+		[appImageBackground addSubview:appImageView];
 		
 		// App Label
 		

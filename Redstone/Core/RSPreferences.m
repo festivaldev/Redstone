@@ -12,7 +12,25 @@ static RSPreferences* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		
-		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
+		preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.redstone"];
+		
+		[preferences registerDefaults:@{
+										@"enabled": @YES,
+										@"homeScreenEnabled": @YES,
+										@"lockScreenEnabled": @NO,
+										@"volumeControlsEnabled": @YES,
+										@"accentColor": @"#0078D7",
+										@"tileOpacity": @0.8f,
+										@"showMoreTiles": @YES,
+										@"2ColumnLayout": [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/2ColumnDefaultLayout.plist", RESOURCES_PATH]],
+										@"3ColumnLayout": [NSArray arrayWithContentsOfFile:[NSString stringWithFormat:@"%@/3ColumnDefaultLayout.plist", RESOURCES_PATH]],
+										@"lockDetailApp": @"com.apple.mobilecal",
+										@"lockApp1": @"com.apple.mobilephone",
+										@"lockApp2": @"com.apple.MobileSMS",
+										@"lockApp3": @"com.apple.mobilemail"
+										}];
+		
+		/*preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
 		
 		if (!preferences) {
 			preferences = [NSMutableDictionary new];
@@ -68,7 +86,7 @@ static RSPreferences* sharedInstance;
 		_volumeControlsEnabled = [[preferences objectForKey:@"volumeControlsEnabled"] boolValue];
 		_lockScreenEnabled = [[preferences objectForKey:@"lockScreenEnabled"] boolValue];
 		
-		[preferences writeToFile:PREFERENCES_PATH atomically:YES];
+		[preferences writeToFile:PREFERENCES_PATH atomically:YES];*/
 	}
 	
 	return self;
@@ -79,8 +97,7 @@ static RSPreferences* sharedInstance;
 }
 
 - (void)setObject:(id)anObject forKey:(NSString *)aKey {
-	[preferences setValue:anObject forKey:aKey];
-	[preferences writeToFile:PREFERENCES_PATH atomically:YES];
+	[preferences setObject:anObject forKey:aKey];
 }
 
 @end
