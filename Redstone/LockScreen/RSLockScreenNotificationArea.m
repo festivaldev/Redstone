@@ -56,4 +56,18 @@
 	}
 }
 
+- (BBBulletin*)currentBulletin {
+	return currentBulletin;
+}
+
+- (void)setCurrentBulletin:(BBBulletin *)bulletin {
+	currentBulletin = bulletin;
+	
+	if (bulletin) {
+		[self setIsShowingDetailedStatus:YES];
+	} else {
+		[self setIsShowingDetailedStatus:NO];
+	}
+}
+
 @end

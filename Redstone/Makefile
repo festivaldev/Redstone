@@ -8,7 +8,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Redstone
 Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
-Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote
+Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote BulletinBoard
 Redstone_FRAMEWORKS = MediaPlayer
 Redstone_LIBRARIES = objcipc
 Redstone_EXTRA_FRAMEWORKS = Cephei

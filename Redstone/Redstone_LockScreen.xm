@@ -87,20 +87,12 @@ SBPagedScrollView* dashboardScrollView;
 %hook SBBacklightController
 
 - (void)_startFadeOutAnimationFromLockSource:(int)arg1 {
-	return;
-	/*if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling] || [[[[RSCore sharedInstance] lockScreenController] view] isUnlocking]) {
+	if ([[[[RSCore sharedInstance] lockScreenController] view] isScrolling] || [[[[RSCore sharedInstance] lockScreenController] view] isUnlocking]) {
 		[self resetIdleTimer];
 		return;
 	}
 	
-	%orig(arg1);*/
-}
-
-- (double)defaultLockScreenDimInterval {
-	return -1;
-}
-- (void)_lockScreenDimTimerFired {
-	return;
+	%orig(arg1);
 }
 
 %end // %hook SBBacklightController
@@ -114,6 +106,18 @@ SBPagedScrollView* dashboardScrollView;
 }
 
 %end // %hook SBApplication
+
+%hook BBServer
+
+- (void)_addBulletin:(BBBulletin*)arg1 {
+	%orig;
+}
+
+- (void)_removeBulletin:(BBBulletin*)arg1 {
+	%orig;
+}
+
+%end // %hook BBServer
 
 %end // %group lockscreen
 

@@ -1211,6 +1211,7 @@
 		8D8E43A71F59521400AE2694 /* tile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@3x.png"; sourceTree = "<group>"; };
 		8D8E43A81F59521400AE2694 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8D8E43AC1F59521400AE2694 /* ml.festival.redstoneicons_1.0_iphoneos-arm.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "ml.festival.redstoneicons_1.0_iphoneos-arm.deb"; sourceTree = "<group>"; };
+		8D8E452A1F59D5B600AE2694 /* BBBulletin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBBulletin.h; sourceTree = "<group>"; };
 		8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_HomeScreen.xm; sourceTree = "<group>"; };
 		8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMainDisplaySceneLayoutViewController.h; sourceTree = "<group>"; };
 		8D96D67E1F4E2CF30006A624 /* RSVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVolumeView.h; sourceTree = "<group>"; };
@@ -3001,6 +3002,14 @@
 			path = packages;
 			sourceTree = "<group>";
 		};
+		8D8E45291F59D57E00AE2694 /* BulletinBoard */ = {
+			isa = PBXGroup;
+			children = (
+				8D8E452A1F59D5B600AE2694 /* BBBulletin.h */,
+			);
+			path = BulletinBoard;
+			sourceTree = "<group>";
+		};
 		8DB0B6E41F346326002E3CCF /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -3119,10 +3128,11 @@
 		8DF5EB321F33BC5E003CC2B4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				8D8E45291F59D57E00AE2694 /* BulletinBoard */,
+				8D14C6C61F4D5AFA00ADD69A /* Celestial */,
+				8D14C6C41F4B8BE100ADD69A /* MediaPlayer */,
 				8DBEE1D21F352B7800AD4827 /* SpringBoard */,
 				8D3920B81F52BA9F002A4C24 /* SpringBoardUIServices */,
-				8D14C6C41F4B8BE100ADD69A /* MediaPlayer */,
-				8D14C6C61F4D5AFA00ADD69A /* Celestial */,
 			);
 			path = headers;
 			sourceTree = "<group>";
