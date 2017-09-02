@@ -572,6 +572,15 @@
 		8D8E45281F59521500AE2694 /* ml.festival.redstoneicons_1.0_iphoneos-arm.deb in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8E43AC1F59521400AE2694 /* ml.festival.redstoneicons_1.0_iphoneos-arm.deb */; };
 		8D96D6801F4E2CF30006A624 /* RSVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */; };
 		8D96D6831F4E35950006A624 /* RSSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D6821F4E35950006A624 /* RSSlider.m */; };
+		8D9C163B1F5A9FE600B4DE3A /* control in Resources */ = {isa = PBXBuildFile; fileRef = 8D9C16381F5A9FE600B4DE3A /* control */; };
+		8D9C163C1F5A9FE600B4DE3A /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16391F5A9FE600B4DE3A /* main.mm */; };
+		8D9C163D1F5A9FE600B4DE3A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C163A1F5A9FE600B4DE3A /* Makefile */; };
+		8D9C16531F5AA8EB00B4DE3A /* RSWeatherInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16521F5AA8EB00B4DE3A /* RSWeatherInfoService.m */; };
+		8D9C16561F5AAB9800B4DE3A /* RSWeatherInfoUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16551F5AAB9800B4DE3A /* RSWeatherInfoUpdater.m */; };
+		8D9C165A1F5AB01700B4DE3A /* RSWeatherInfoWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16591F5AB01700B4DE3A /* RSWeatherInfoWorker.m */; };
+		8D9C16611F5B50CD00B4DE3A /* RSNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16601F5B50CD00B4DE3A /* RSNotificationController.m */; };
+		8D9C16631F5B56F900B4DE3A /* Redstone_Notifications.xm in Resources */ = {isa = PBXBuildFile; fileRef = 8D9C16621F5B56F900B4DE3A /* Redstone_Notifications.xm */; };
+		8D9C16661F5B5B2E00B4DE3A /* RSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */; };
 		8DB0B6E81F346356002E3CCF /* 2ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */; };
 		8DB0B6EA1F346361002E3CCF /* 3ColumnDefaultLayout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */; };
 		8DB0B6ED1F346515002E3CCF /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
@@ -1220,6 +1229,31 @@
 		8D96D6821F4E35950006A624 /* RSSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSlider.m; sourceTree = "<group>"; };
 		8D96D6841F4EBA290006A624 /* SBVolumeHUDView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBVolumeHUDView.h; sourceTree = "<group>"; };
 		8D96D6851F4F18A00006A624 /* SBMediaController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMediaController.h; sourceTree = "<group>"; };
+		8D9C16381F5A9FE600B4DE3A /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		8D9C16391F5A9FE600B4DE3A /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		8D9C163A1F5A9FE600B4DE3A /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8D9C164C1F5AA7F200B4DE3A /* IOKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOKit.h; sourceTree = "<group>"; };
+		8D9C164D1F5AA7F200B4DE3A /* NSXPCConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSXPCConnection.h; sourceTree = "<group>"; };
+		8D9C164E1F5AA7F200B4DE3A /* NSXPCInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSXPCInterface.h; sourceTree = "<group>"; };
+		8D9C164F1F5AA7F200B4DE3A /* NSXPCListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSXPCListener.h; sourceTree = "<group>"; };
+		8D9C16501F5AA7F200B4DE3A /* NSXPCListenerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSXPCListenerDelegate.h; sourceTree = "<group>"; };
+		8D9C16511F5AA8EB00B4DE3A /* RSWeatherInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherInfoService.h; sourceTree = "<group>"; };
+		8D9C16521F5AA8EB00B4DE3A /* RSWeatherInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWeatherInfoService.m; sourceTree = "<group>"; };
+		8D9C16541F5AAB9800B4DE3A /* RSWeatherInfoUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherInfoUpdater.h; sourceTree = "<group>"; };
+		8D9C16551F5AAB9800B4DE3A /* RSWeatherInfoUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWeatherInfoUpdater.m; sourceTree = "<group>"; };
+		8D9C16571F5AAC1200B4DE3A /* RSWeatherInfoUpdaterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSWeatherInfoUpdaterDelegate.h; sourceTree = "<group>"; };
+		8D9C16581F5AB01700B4DE3A /* RSWeatherInfoWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherInfoWorker.h; sourceTree = "<group>"; };
+		8D9C16591F5AB01700B4DE3A /* RSWeatherInfoWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWeatherInfoWorker.m; sourceTree = "<group>"; };
+		8D9C165B1F5AB04600B4DE3A /* RSWeatherInfoWorkerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSWeatherInfoWorkerDelegate.h; sourceTree = "<group>"; };
+		8D9C165C1F5ABC1300B4DE3A /* WeatherUpdaterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherUpdaterDelegate.h; sourceTree = "<group>"; };
+		8D9C165D1F5B4F9E00B4DE3A /* TWCCityUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWCCityUpdater.h; sourceTree = "<group>"; };
+		8D9C165F1F5B50CD00B4DE3A /* RSNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNotificationController.h; sourceTree = "<group>"; };
+		8D9C16601F5B50CD00B4DE3A /* RSNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNotificationController.m; sourceTree = "<group>"; };
+		8D9C16621F5B56F900B4DE3A /* Redstone_Notifications.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_Notifications.xm; sourceTree = "<group>"; };
+		8D9C16641F5B5B2E00B4DE3A /* RSNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSNotificationView.h; sourceTree = "<group>"; };
+		8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNotificationView.m; sourceTree = "<group>"; };
+		8D9C16671F5B61EF00B4DE3A /* BBObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBObserver.h; sourceTree = "<group>"; };
+		8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBulletinBannerController.h; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -1771,6 +1805,7 @@
 			children = (
 				8DF5EB091F336F8C003CC2B4 /* Redstone */,
 				8D8E41C81F59521400AE2694 /* Redstone_Icons */,
+				8D9C16371F5A9FE600B4DE3A /* libweathermanager */,
 				8D259E8A1F35302C00BFFB39 /* hiddenapp.app */,
 			);
 			sourceTree = "<group>";
@@ -3006,8 +3041,69 @@
 			isa = PBXGroup;
 			children = (
 				8D8E452A1F59D5B600AE2694 /* BBBulletin.h */,
+				8D9C16671F5B61EF00B4DE3A /* BBObserver.h */,
 			);
 			path = BulletinBoard;
+			sourceTree = "<group>";
+		};
+		8D9C16371F5A9FE600B4DE3A /* libweathermanager */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C16381F5A9FE600B4DE3A /* control */,
+				8D9C163A1F5A9FE600B4DE3A /* Makefile */,
+				8D9C16461F5AA7CD00B4DE3A /* headers */,
+				8D9C163F1F5AA54B00B4DE3A /* Daemon */,
+				8D9C16401F5AA55400B4DE3A /* Library */,
+			);
+			path = libweathermanager;
+			sourceTree = "<group>";
+		};
+		8D9C163F1F5AA54B00B4DE3A /* Daemon */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C16391F5A9FE600B4DE3A /* main.mm */,
+				8D9C16511F5AA8EB00B4DE3A /* RSWeatherInfoService.h */,
+				8D9C16521F5AA8EB00B4DE3A /* RSWeatherInfoService.m */,
+				8D9C16541F5AAB9800B4DE3A /* RSWeatherInfoUpdater.h */,
+				8D9C16551F5AAB9800B4DE3A /* RSWeatherInfoUpdater.m */,
+				8D9C16571F5AAC1200B4DE3A /* RSWeatherInfoUpdaterDelegate.h */,
+				8D9C16581F5AB01700B4DE3A /* RSWeatherInfoWorker.h */,
+				8D9C16591F5AB01700B4DE3A /* RSWeatherInfoWorker.m */,
+				8D9C165B1F5AB04600B4DE3A /* RSWeatherInfoWorkerDelegate.h */,
+			);
+			name = Daemon;
+			sourceTree = "<group>";
+		};
+		8D9C16401F5AA55400B4DE3A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		8D9C16461F5AA7CD00B4DE3A /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C164C1F5AA7F200B4DE3A /* IOKit.h */,
+				8D9C164D1F5AA7F200B4DE3A /* NSXPCConnection.h */,
+				8D9C164E1F5AA7F200B4DE3A /* NSXPCInterface.h */,
+				8D9C164F1F5AA7F200B4DE3A /* NSXPCListener.h */,
+				8D9C16501F5AA7F200B4DE3A /* NSXPCListenerDelegate.h */,
+				8D9C165C1F5ABC1300B4DE3A /* WeatherUpdaterDelegate.h */,
+				8D9C165D1F5B4F9E00B4DE3A /* TWCCityUpdater.h */,
+			);
+			path = headers;
+			sourceTree = "<group>";
+		};
+		8D9C165E1F5B50AC00B4DE3A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				8D9C165F1F5B50CD00B4DE3A /* RSNotificationController.h */,
+				8D9C16601F5B50CD00B4DE3A /* RSNotificationController.m */,
+				8D9C16641F5B5B2E00B4DE3A /* RSNotificationView.h */,
+				8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		8DB0B6E41F346326002E3CCF /* Layout */ = {
@@ -3030,6 +3126,7 @@
 				8D11915C1F403F12009A8568 /* SBApplication.h */,
 				8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */,
 				8DCE1C711F516E8200B2804E /* SBBacklightController.h */,
+				8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */,
 				8DCE1C6E1F5166A400B2804E /* SBDashBoardView.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
@@ -3090,6 +3187,7 @@
 				8DF5EB0D1F336F8C003CC2B4 /* Redstone_Core.xm */,
 				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
 				8D14C6C11F4B892C00ADD69A /* Redstone_VolumeControls.xm */,
+				8D9C16621F5B56F900B4DE3A /* Redstone_Notifications.xm */,
 				8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */,
 				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
 				8D7C54A71F57EB1100780214 /* Redstone_Prefs */,
@@ -3103,6 +3201,7 @@
 				8DC70CF11F345BB700F9A884 /* AppList */,
 				8D1191431F3E5457009A8568 /* LaunchScreen */,
 				8D14C6BD1F4B88A900ADD69A /* AudioControls */,
+				8D9C165E1F5B50AC00B4DE3A /* Notifications */,
 				8DCE1C651F51646400B2804E /* LockScreen */,
 			);
 			path = Redstone;
@@ -3385,6 +3484,7 @@
 				8D8E447E1F59521500AE2694 /* tile@2x.png in Resources */,
 				8D8E44CA1F59521500AE2694 /* tile-AppList@2x.png in Resources */,
 				8D1191171F3D0D10009A8568 /* tile@3x.png in Resources */,
+				8D9C163B1F5A9FE600B4DE3A /* control in Resources */,
 				8D1190E51F3D0D10009A8568 /* tile-AppList@3x.png in Resources */,
 				8D8E44481F59521500AE2694 /* tile-AppList@2x.png in Resources */,
 				8D8E451E1F59521500AE2694 /* tile-AppList@3x.png in Resources */,
@@ -3759,6 +3859,7 @@
 				8D1190C41F3D0D10009A8568 /* tile@3x.png in Resources */,
 				8D8E44261F59521500AE2694 /* tile@2x.png in Resources */,
 				8D1191051F3D0D10009A8568 /* tile@2x.png in Resources */,
+				8D9C16631F5B56F900B4DE3A /* Redstone_Notifications.xm in Resources */,
 				8D1190FA1F3D0D10009A8568 /* tile@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3776,6 +3877,7 @@
 				8D14C6BC1F4AE11600ADD69A /* RSAlertAction.m in Sources */,
 				8D14C6B91F4AE00E00ADD69A /* RSAlertController.m in Sources */,
 				8D7C54B01F57EB1100780214 /* Makefile in Sources */,
+				8D9C163D1F5A9FE600B4DE3A /* Makefile in Sources */,
 				8DF5EB411F33CC43003CC2B4 /* RSHomeScreenScrollView.m in Sources */,
 				8DE6A3F51F42656A009EDE86 /* RSJumpList.m in Sources */,
 				8D7C54C61F580A6E00780214 /* RDSAccentColorList.m in Sources */,
@@ -3791,7 +3893,9 @@
 				8D1191411F3D9D25009A8568 /* RSAnimation.m in Sources */,
 				8D1191461F3E5495009A8568 /* RSLaunchScreenController.m in Sources */,
 				8D259E9A1F359E1500BFFB39 /* UIView+Easing.m in Sources */,
+				8D9C16661F5B5B2E00B4DE3A /* RSNotificationView.m in Sources */,
 				8D7C54C91F580EDF00780214 /* RDSLockScreenPreferences.m in Sources */,
+				8D9C16561F5AAB9800B4DE3A /* RSWeatherInfoUpdater.m in Sources */,
 				8D11913E1F3D9799009A8568 /* RSHomeScreenWallpaperView.m in Sources */,
 				8D259E9D1F35A51300BFFB39 /* RSStartScreenScrollView.m in Sources */,
 				8D96D6801F4E2CF30006A624 /* RSVolumeView.m in Sources */,
@@ -3799,14 +3903,17 @@
 				8D14C6B61F4AD00A00ADD69A /* RSTextField.m in Sources */,
 				8DF5EB3E1F33C51A003CC2B4 /* RSHomeScreenController.m in Sources */,
 				8D259E971F359E1500BFFB39 /* easing.c in Sources */,
+				8D9C165A1F5AB01700B4DE3A /* RSWeatherInfoWorker.m in Sources */,
 				8DC70CF71F345D4800F9A884 /* RSPreferences.m in Sources */,
 				8D37716B1F3456FA008056D1 /* RSStartScreenController.m in Sources */,
 				8D3920B21F52A7C7002A4C24 /* RSNowPlayingControls.m in Sources */,
 				8D14C6B11F498E0200ADD69A /* Makefile in Sources */,
 				8D1191381F3D8933009A8568 /* RSAesthetics.m in Sources */,
+				8D9C16611F5B50CD00B4DE3A /* RSNotificationController.m in Sources */,
 				8D259E961F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m in Sources */,
 				8D7C54BC1F57F4B700780214 /* PFHeaderCell.mm in Sources */,
 				8D14C6C01F4B88C400ADD69A /* RSAudioController.m in Sources */,
+				8D9C16531F5AA8EB00B4DE3A /* RSWeatherInfoService.m in Sources */,
 				8DBEE1D01F3529D000AD4827 /* RSTile.m in Sources */,
 				8D7C54B11F57EB1100780214 /* RDSRootListController.m in Sources */,
 				8DC70CF41F345BCB00F9A884 /* RSAppListController.m in Sources */,
@@ -3816,6 +3923,7 @@
 				8D259E991F359E1500BFFB39 /* UIImageAverageColorAddition.m in Sources */,
 				8D1191641F40568D009A8568 /* RSFlyoutMenu.m in Sources */,
 				8D96D6831F4E35950006A624 /* RSSlider.m in Sources */,
+				8D9C163C1F5A9FE600B4DE3A /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

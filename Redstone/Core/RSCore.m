@@ -56,6 +56,8 @@ static id currentApplication;
 			audioController = [RSAudioController new];
 		}
 		
+		notificationController = [RSNotificationController new];
+		
 		if ([[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 			lockScreenController = [RSLockScreenController new];
 		}
@@ -70,6 +72,10 @@ static id currentApplication;
 
 - (RSAudioController*)audioController {
 	return audioController;
+}
+
+- (RSNotificationController*)notificationController {
+	return notificationController;
 }
 
 - (RSLockScreenController*)lockScreenController {

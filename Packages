@@ -382,19 +382,34 @@ Description: An awesome MobileSubstrate tweak!
 Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone
 
+Package: ml.festival.redstone
+Version: 17w35a.rs-internal.170903
+Architecture: iphoneos-arm
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Installed-Size: 6160
+Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common
+Filename: ./Redstone/packages/ml.festival.redstone_17w35a.rs-internal.170903_iphoneos-arm.deb
+Size: 2310418
+MD5sum: 8495c882f381ca1b41decc3fd51f5dc4
+SHA1: f016a565b5c9ca8b183cd1a3a0322bfd6962ab5b
+SHA256: 6df5314d32a27e36af3541a629d8e1dfbee38927b26917138204595bfceaab0d
+Section: Tweaks
+Description: An awesome MobileSubstrate tweak!
+Author: Sniper_GER <sniperger@festival.ml>
+Name: Redstone
+
 Package: ml.festival.redstoneicons
 Version: 1.0
 Architecture: iphoneos-arm
-Maintainer: Sniper_GER<sniperger@festival.ml>
+Maintainer: Sniper_GER <sniperger@festival.ml>
 Installed-Size: 1564
 Filename: ./Redstone_Icons/packages/ml.festival.redstoneicons_1.0_iphoneos-arm.deb
-Size: 1091740
-MD5sum: aa6addaef0f0ebf940d9aa9d7a7130e7
-SHA1: cb324b27ecdcecf7bb65c301ec62ebe184cfd33d
-SHA256: dfb79809f655bf7b98a7aa82b295370bf909d06327e8b34bd364e649f993bd9d
-Section: System
-Description: An awesome tool of some sort!!
-Tag: role::hacker
-Author: Sniper_GER<sniperger@festival.ml>
+Size: 1091716
+MD5sum: 921d6890d706f2c0840ad517730959b0
+SHA1: 6fc05f05aac7bb06b4e102dadd32558298138db0
+SHA256: 203168b142c8540f27a9707d5f9c1fcc06ba20de007665dd046b94c55da18bae
+Section: Resources
+Description: Icons for Redstone
+Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone Icons
 

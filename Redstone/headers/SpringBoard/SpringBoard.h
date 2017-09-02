@@ -2,6 +2,7 @@
 #import "SpringBoard/SBApplication.h"
 #import "SpringBoard/SBApplicationController.h"
 #import "SpringBoard/SBBacklightController.h"
+#import "SpringBoard/SBBulletinBannerController.h"
 #import "SpringBoard/SBDashBoardView.h"
 #import "SpringBoard/SBIconController.h"
 #import "SpringBoard/SBIconModel.h"

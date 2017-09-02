@@ -26,7 +26,7 @@
 - (void)prepareStatusAreas {
 	[[quickStatusArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
-	if (currentBulletin) {
+	if (currentBulletin && [[currentBulletin section] isEqualToString:[[RSPreferences preferences] objectForKey:@"lockDetailApp"]]) {
 		NSString* bulletinText = @"";
 		
 		if ([currentBulletin title]) {
@@ -55,6 +55,7 @@
 			[detailedStatusArea setText:bulletinText];
 		});
 	} else {
+		currentBulletin = nil;
 		dispatch_async(dispatch_get_main_queue(), ^{
 			self.isShowingDetailedStatus = NO;
 			[detailedStatusArea setHidden:NO];

@@ -72,6 +72,8 @@
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(0, 100, screenWidth, 120)];
 		[self addSubview:nowPlayingControls];
 		[nowPlayingControls setHidden:YES];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappear) name:@"RedstoneDeviceLocked" object:nil];
 	}
 	
 	return self;

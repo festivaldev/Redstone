@@ -4,6 +4,6 @@ Depends:
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: Icons for Redstone
-Maintainer: Sniper_GER<sniperger@festival.ml>
-Author: Sniper_GER<sniperger@festival.ml>
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Author: Sniper_GER <sniperger@festival.ml>
 Section: Resources

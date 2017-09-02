@@ -4,5 +4,6 @@
 
 - (id)bundleIdentifier;
 - (id)badgeNumberOrString;
+- (id)displayName;
 
 @end

@@ -17,6 +17,7 @@ static RSPreferences* sharedInstance;
 		[preferences registerDefaults:@{
 										@"enabled": @YES,
 										@"homeScreenEnabled": @YES,
+										@"notificationsEnabled": @YES,
 										@"lockScreenEnabled": @NO,
 										@"volumeControlsEnabled": @YES,
 										@"accentColor": @"#0078D7",

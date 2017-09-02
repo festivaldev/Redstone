@@ -12,7 +12,7 @@ Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote BulletinBoard
 Redstone_FRAMEWORKS = MediaPlayer
 Redstone_LIBRARIES = objcipc
 Redstone_EXTRA_FRAMEWORKS = Cephei
-Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard AudioControls/*.m) $(wildcard LockScreen/*.m)
+Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard AudioControls/*.m) $(wildcard Notifications/*.m) $(wildcard LockScreen/*.m)
 
 include $(THEOS)/makefiles/tweak.mk
 

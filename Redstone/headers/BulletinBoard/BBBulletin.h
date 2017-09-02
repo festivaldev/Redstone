@@ -2,6 +2,7 @@
 
 @interface BBBulletin : NSObject
 
+- (id)bulletinID;
 - (id)title;
 - (id)subtitle;
 - (id)message;

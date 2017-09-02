@@ -64,6 +64,10 @@
 #import "AudioControls/RSVolumeHUD.h"
 #import "AudioControls/RSVolumeView.h"
 
+#pragma mark Notifications
+#import "Notifications/RSNotificationController.h"
+#import "Notifications/RSNotificationView.h"
+
 #pragma mark Lock Screen
 #import "LockScreen/RSLockScreenController.h"
 #import "LockScreen/RSLockScreenView.h"
