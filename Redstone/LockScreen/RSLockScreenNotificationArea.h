@@ -5,7 +5,7 @@
 @interface RSLockScreenNotificationArea : UIView {
 	NSMutableArray* notificationApps;
 	
-	UIView* detailedStatusArea;
+	UILabel* detailedStatusArea;
 	UIView* quickStatusArea;
 	
 	BBBulletin* currentBulletin;

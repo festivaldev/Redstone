@@ -7,10 +7,11 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		/*UIView* detailedStatusTest = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-		[detailedStatusTest setBackgroundColor:[UIColor greenColor]];
-		[self addSubview:detailedStatusTest];
-		self.isShowingDetailedStatus = YES;*/
+		detailedStatusArea = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 100)];
+		[detailedStatusArea setNumberOfLines:3];
+		[detailedStatusArea setFont:[UIFont fontWithName:@"SegoeUI" size:24]];
+		[detailedStatusArea setTextColor:[UIColor whiteColor]];
+		[self addSubview:detailedStatusArea];
 		
 		quickStatusArea = [[UIView alloc] initWithFrame:CGRectMake(0, 100, frame.size.width, 80)];
 		[self addSubview:quickStatusArea];
@@ -23,10 +24,43 @@
 }
 
 - (void)prepareStatusAreas {
-	//[[detailedStatusArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[[quickStatusArea subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
-	/// TODO: Detailed Status Area
+	if (currentBulletin) {
+		NSString* bulletinText = @"";
+		
+		if ([currentBulletin title]) {
+			bulletinText = [bulletinText stringByAppendingString:[currentBulletin title]];
+		}
+		
+		if ([currentBulletin title] && [currentBulletin subtitle]) {
+			bulletinText = [bulletinText stringByAppendingString:@"\n"];
+		}
+		
+		if ([currentBulletin subtitle]) {
+			bulletinText = [bulletinText stringByAppendingString:[currentBulletin subtitle]];
+		}
+		
+		if (([currentBulletin title] && [currentBulletin message]) || ([currentBulletin subtitle] && [currentBulletin message])) {
+			bulletinText = [bulletinText stringByAppendingString:@"\n"];
+		}
+		
+		if ([currentBulletin message]) {
+			bulletinText = [bulletinText stringByAppendingString:[currentBulletin message]];
+		}
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			self.isShowingDetailedStatus = YES;
+			[detailedStatusArea setHidden:NO];
+			[detailedStatusArea setText:bulletinText];
+		});
+	} else {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			self.isShowingDetailedStatus = NO;
+			[detailedStatusArea setHidden:NO];
+			[detailedStatusArea setText:@""];
+		});
+	}
 	
 	notificationApps = [NSMutableArray new];
 	for (int i=0; i<5; i++) {
@@ -61,13 +95,12 @@
 }
 
 - (void)setCurrentBulletin:(BBBulletin *)bulletin {
-	currentBulletin = bulletin;
-	
-	if (bulletin) {
-		[self setIsShowingDetailedStatus:YES];
-	} else {
-		[self setIsShowingDetailedStatus:NO];
+	if (bulletin && ![[bulletin section] isEqualToString:[[RSPreferences preferences] objectForKey:@"lockDetailApp"]]) {
+		return;
 	}
+	
+	currentBulletin = bulletin;
+	[self prepareStatusAreas];
 }
 
 @end

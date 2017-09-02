@@ -111,10 +111,16 @@ SBPagedScrollView* dashboardScrollView;
 
 - (void)_addBulletin:(BBBulletin*)arg1 {
 	%orig;
+	
+	[[[[[RSCore sharedInstance] lockScreenController] view] notificationArea] setCurrentBulletin:arg1];
 }
 
-- (void)_removeBulletin:(BBBulletin*)arg1 {
+- (void)_removeBulletin:(BBBulletin*)arg1 rescheduleTimerIfAffected:(BOOL)arg2 shouldSync:(BOOL)arg3 {
 	%orig;
+	
+	if (arg1 == [[[[[RSCore sharedInstance] lockScreenController] view] notificationArea] currentBulletin]) {
+		[[[[[RSCore sharedInstance] lockScreenController] view] notificationArea] setCurrentBulletin:nil];
+	}
 }
 
 %end // %hook BBServer
