@@ -52,6 +52,11 @@
 		[dateLabel sizeToFit];
 		[timeAndDateView addSubview:dateLabel];
 		
+		if (screenWidth < 375) {
+			[timeLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:80]];
+			[dateLabel setFont:[UIFont fontWithName:@"SegoeUI-Semilight" size:24]];
+		}
+		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
 		[timeAndDateView addSubview:nowPlayingControls];
 		

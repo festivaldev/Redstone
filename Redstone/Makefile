@@ -2,7 +2,7 @@ export THEOS_DEVICE_IP=192.168.178.38
 export THEOS_DEVICE_PORT=22
 
 #export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.internal.$(shell date +%y%m%d)-$(shell date +%H%M)"
-export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)a.rs-internal.$(shell date +%y%m%d)"
+export PACKAGE_VERSION="$(shell date +%y)w$(shell date +%W)b.rs-internal.$(shell date +%y%m%d)"
 
 include $(THEOS)/makefiles/common.mk
 

@@ -80,7 +80,17 @@
 - (void)volumeIncreasedForCategory:(NSString*)category volumeValue:(float)volumeValue {
 	NSLog(@"[Redstone] volume increased for %@ (volume at %f)", category, volumeValue);
 	
+	if (![self isShowingVolumeHUD]) {
+		[volumeHUD updateVolumeValues];
+		[self displayHUDIfPossible];
+		return;
+	}
+	
 	if ([category isEqualToString:@"Ringtone"]) {
+		if ([[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
+			return;
+		}
+		
 		if (ringerVolume == 0.0) {
 			ringerVolume = 1.0/16.0;
 			
@@ -93,14 +103,24 @@
 		mediaVolume = volumeValue;
 	}
 
-	[volumeHUD updateVolumeValues];
 	[self displayHUDIfPossible];
+	[volumeHUD updateVolumeValues];
 }
 
 - (void)volumeDecreasedForCategory:(NSString*)category volumeValue:(float)volumeValue {
 	NSLog(@"[Redstone] volume decreased for %@ (volume at %f)", category, volumeValue);
 	
+	if (![self isShowingVolumeHUD]) {
+		[self displayHUDIfPossible];
+		[volumeHUD updateVolumeValues];
+		return;
+	}
+	
 	if ([category isEqualToString:@"Ringtone"]) {
+		if ([[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
+			return;
+		}
+		
 		if (volumeValue == 1.0/16.0 && (ringerVolume == volumeValue || ringerVolume == 0.0)) {
 			ringerVolume = 0.0;
 			
@@ -113,8 +133,8 @@
 		mediaVolume = volumeValue;
 	}
 	
-	[volumeHUD updateVolumeValues];
 	[self displayHUDIfPossible];
+	[volumeHUD updateVolumeValues];
 }
 
 - (void)nowPlayingInfoDidChange {

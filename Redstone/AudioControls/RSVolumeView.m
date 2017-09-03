@@ -11,8 +11,11 @@
 		[categoryLabel setTextColor:[UIColor whiteColor]];
 		[self addSubview:categoryLabel];
 		
-		volumeValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 51, 31, 36, 36)];
-		[volumeValueLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:32]];
+		self.slider = [[RSSlider alloc] initWithFrame:CGRectMake(56, 37, frame.size.width - 112, 24)];
+		[self addSubview:self.slider];
+		
+		volumeValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 46, 31, 36, 36)];
+		[volumeValueLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:30]];
 		[volumeValueLabel setTextAlignment:NSTextAlignmentCenter];
 		[volumeValueLabel setTextColor:[UIColor whiteColor]];
 		[volumeValueLabel setText:@"--"];

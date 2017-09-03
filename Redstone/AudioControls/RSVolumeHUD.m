@@ -10,11 +10,8 @@
 		[self setFrame:frame];
 		
 		ringerVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100) forCategory:@"Ringtone"];
+		[ringerVolumeView.slider addTarget:self action:@selector(ringerVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:ringerVolumeView];
-		
-		ringerSlider = [[RSSlider alloc] initWithFrame:CGRectMake(screenWidth/2 - 280/2, 37, 280, 24)];
-		[ringerSlider addTarget:self action:@selector(ringerVolumeChanged) forControlEvents:UIControlEventValueChanged];
-		[ringerVolumeView addSubview:ringerSlider];
 		
 		ringerMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
 		[ringerMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
@@ -24,11 +21,8 @@
 		[ringerVolumeView addSubview:ringerMuteButton];
 		
 		mediaVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, screenWidth, 100) forCategory:@"Audio/Video"];
+		[mediaVolumeView.slider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:mediaVolumeView];
-		
-		mediaSlider = [[RSSlider alloc] initWithFrame:CGRectMake(screenWidth/2 - 280/2, 37, 280, 24)];
-		[mediaSlider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
-		[mediaVolumeView addSubview:mediaSlider];
 		
 		mediaMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
 		[mediaMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
@@ -38,11 +32,8 @@
 		[mediaVolumeView addSubview:mediaMuteButton];
 		
 		headphoneVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, screenWidth, 100) forCategory:@"Headphones"];
+		[headphoneVolumeView.slider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:headphoneVolumeView];
-		
-		headphoneSlider = [[RSSlider alloc] initWithFrame:CGRectMake(screenWidth/2 - 280/2, 37, 280, 24)];
-		[headphoneSlider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
-		[headphoneVolumeView addSubview:headphoneSlider];
 		
 		headphoneMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
 		[headphoneMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
@@ -99,7 +90,7 @@
 
 - (void)updateVolumeValues {
 	[ringerVolumeView setVolumeValue:[[[RSCore sharedInstance] audioController] ringerVolume]];
-	[ringerSlider setValue:[[[RSCore sharedInstance] audioController] ringerVolume]];
+	[ringerVolumeView.slider setValue:[[[RSCore sharedInstance] audioController] ringerVolume]];
 	
 	if ([[[RSCore sharedInstance] audioController] ringerVolume] >= 1.0/16.0) {
 		[ringerMuteButton setTitle:@"\uEA8F"];
@@ -112,7 +103,7 @@
 	}
 	
 	[mediaVolumeView setVolumeValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
-	[mediaSlider setValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
+	[mediaVolumeView.slider setValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
 	
 	if ([[[RSCore sharedInstance] audioController] mediaVolume] >= 1.0/16.0) {
 		[mediaMuteButton setTitle:@"\uE767"];
@@ -121,7 +112,7 @@
 	}
 	
 	[headphoneVolumeView setVolumeValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
-	[headphoneSlider setValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
+	[headphoneVolumeView.slider setValue:[[[RSCore sharedInstance] audioController] mediaVolume]];
 }
 
 #pragma mark Animations
@@ -351,7 +342,7 @@
 - (void)ringerVolumeChanged {
 	[self resetAnimationTimer];
 	
-	float ringerVolume = [[NSString stringWithFormat:@"%.04f", [ringerSlider currentValue]] floatValue];
+	float ringerVolume = [[NSString stringWithFormat:@"%.04f", [ringerVolumeView.slider currentValue]] floatValue];
 	ringerVolume = roundf(ringerVolume * 16) / 16;
 	
 	if (ringerVolume >= 1.0/16.0) {
@@ -377,7 +368,7 @@
 - (void)mediaVolumeChanged {
 	[self resetAnimationTimer];
 	
-	float mediaVolume = [[NSString stringWithFormat:@"%.04f", [mediaSlider currentValue]] floatValue];
+	float mediaVolume = [[NSString stringWithFormat:@"%.04f", [mediaVolumeView.slider currentValue]] floatValue];
 	mediaVolume = roundf(mediaVolume * 16) / 16;
 	
 	[[objc_getClass("AVSystemController") sharedAVSystemController] setVolumeTo:mediaVolume forCategory:@"Audio/Video"];
@@ -394,7 +385,7 @@
 - (void)headphoneVolumeChanged {
 	[self resetAnimationTimer];
 	
-	float headphoneVolume = [[NSString stringWithFormat:@"%.04f", [headphoneSlider currentValue]] floatValue];
+	float headphoneVolume = [[NSString stringWithFormat:@"%.04f", [headphoneVolumeView.slider currentValue]] floatValue];
 	headphoneVolume = roundf(headphoneVolume * 16) / 16;
 	
 	[[objc_getClass("AVSystemController") sharedAVSystemController] setVolumeTo:headphoneVolume forCategory:@"Headphones"];

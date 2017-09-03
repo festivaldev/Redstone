@@ -13,6 +13,10 @@
 		[detailedStatusArea setTextColor:[UIColor whiteColor]];
 		[self addSubview:detailedStatusArea];
 		
+		if (screenWidth < 375) {
+			[detailedStatusArea setFont:[UIFont fontWithName:@"SegoeUI" size:20]];
+		}
+		
 		quickStatusArea = [[UIView alloc] initWithFrame:CGRectMake(0, 100, frame.size.width, 80)];
 		[self addSubview:quickStatusArea];
 		

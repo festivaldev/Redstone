@@ -9,15 +9,12 @@ void MRMediaRemoteGetNowPlayingInfo(dispatch_queue_t queue, MRMediaRemoteGetNowP
 	NSTimer* animationTimer;
 	
 	RSVolumeView* ringerVolumeView;
-	RSSlider* ringerSlider;
 	RSTiltView* ringerMuteButton;
 	
 	RSVolumeView* mediaVolumeView;
-	RSSlider* mediaSlider;
 	RSTiltView* mediaMuteButton;
 	
 	RSVolumeView* headphoneVolumeView;
-	RSSlider* headphoneSlider;
 	RSTiltView* headphoneMuteButton;
 	
 	RSTiltView* extendButton;

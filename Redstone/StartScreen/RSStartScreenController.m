@@ -91,8 +91,8 @@
 	for (RSTile* tile in pinnedTiles) {
 		NSMutableDictionary* tileInfo = [NSMutableDictionary new];
 		
-		int tilePositionX = tile.basePosition.origin.x / sizeForPosition;
-		int tilePositionY = tile.basePosition.origin.y / sizeForPosition;
+		int tilePositionX = roundf(tile.basePosition.origin.x / sizeForPosition);
+		int tilePositionY = roundf(tile.basePosition.origin.y / sizeForPosition);
 		
 		[tileInfo setValue:[NSNumber numberWithInteger:tile.size] forKey:@"size"];
 		[tileInfo setValue:[NSNumber numberWithInteger:tilePositionY] forKey:@"row"];

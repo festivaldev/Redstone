@@ -74,19 +74,19 @@
 	
 	if (position.x <= screenWidth / 3) {
 		CGRect baseFrame = CGRectMake(0,
-									  MAX(0, position.y - self.frame.size.height),
+									  MAX(20, position.y - self.frame.size.height),
 									  self.frame.size.width,
 									  self.frame.size.height);
 		[self setFrame:baseFrame];
 	} else if (position.x > screenWidth/3 && position.x <= (screenWidth/3) * 2) {
 		CGRect baseFrame = CGRectMake(screenWidth/2 - self.frame.size.width/2,
-									  MAX(0, position.y - self.frame.size.height),
+									  MAX(20, position.y - self.frame.size.height),
 									  self.frame.size.width,
 									  self.frame.size.height);
 		[self setFrame:baseFrame];
 	} else if (position.x > (screenWidth/3) * 2) {
 		CGRect baseFrame = CGRectMake(screenWidth - self.frame.size.width,
-									  MAX(0, position.y - self.frame.size.height),
+									  MAX(20, position.y - self.frame.size.height),
 									  self.frame.size.width,
 									  self.frame.size.height);
 		[self setFrame:baseFrame];

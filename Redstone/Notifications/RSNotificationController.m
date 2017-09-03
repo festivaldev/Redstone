@@ -23,6 +23,10 @@
 
 - (void)addBulletin:(BBBulletin*)bulletin {
 	dispatch_async(dispatch_get_main_queue(), ^{
+		if ([[[RSCore sharedInstance] audioController] isShowingVolumeHUD]) {
+			[[[RSCore sharedInstance] audioController] hideVolumeHUD];
+		}
+		
 		if ([[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue] && [[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
 			// Add notification to Lock Screen
 			
