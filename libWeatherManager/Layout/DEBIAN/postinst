@@ -1,0 +1,9 @@
+#!/bin/bash
+
+chown root:wheel /Library/LaunchDaemons/ml.festival.weathermanagerd.plist
+
+echo "Stopping WeatherManager service (if loaded)"
+launchctl unload /Library/LaunchDaemons/ml.festival.weathermanagerd.plist
+
+echo "Starting WeatherManager service"
+launchctl load /Library/LaunchDaemons/ml.festival.weathermanagerd.plist

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Stopping WeatherManager service (if loaded)"
+launchctl unload /Library/LaunchDaemons/ml.festival.weathermanagerd.plist

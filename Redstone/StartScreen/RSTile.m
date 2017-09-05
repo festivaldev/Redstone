@@ -11,19 +11,26 @@
 		
 		[self setBackgroundColor:[RSAesthetics accentColorForTile:self.tileInfo]];
 		
+		tileWrapper = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+		[tileWrapper setClipsToBounds:YES];
+		[self addSubview:tileWrapper];
+		
+		tileContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+		[tileWrapper addSubview:tileContainer];
+		
 		// Tile Icon
 		
 		if (self.tileInfo.fullSizeArtwork) {
 			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 			[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:YES]];
-			[self addSubview:tileImageView];
+			[tileContainer addSubview:tileImageView];
 		} else {
 			CGSize tileImageSize = [RSMetrics tileIconDimensionsForSize:size];
 			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
 			[tileImageView setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
 			[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
 			[tileImageView setTintColor:[UIColor whiteColor]];
-			[self addSubview:tileImageView];
+			[tileContainer addSubview:tileImageView];
 		}
 		
 		// Tile Label
@@ -41,7 +48,7 @@
 			[tileLabel setText:[self.icon displayName]];
 		}
 		
-		[self addSubview:tileLabel];
+		[tileContainer addSubview:tileLabel];
 		
 		if (self.size < 2 || self.tileInfo.tileHidesLabel || [[self.tileInfo.labelHiddenForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
 			[tileLabel setHidden:YES];
@@ -65,10 +72,20 @@
 			[badgeLabel setLayoutMargins:UIEdgeInsetsZero];
 			[badgeLabel setHidden:YES];
 		}
-		[self addSubview:badgeLabel];
+		[tileContainer addSubview:badgeLabel];
 		
 		if ([[self.icon application] badgeNumberOrString] != nil) {
 			[self setBadge:[[[self.icon application] badgeNumberOrString] intValue]];
+		}
+		
+		// Live Tile
+		liveTileBundle = [NSBundle bundleWithPath:[NSString stringWithFormat:@"%@/Live Tiles/%@.tile", RESOURCES_PATH, bundleIdentifier]];
+		if (liveTileBundle) {
+			liveTile = [[[liveTileBundle principalClass] alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) tile:self];
+		}
+		if (liveTile) {
+			[liveTile setClipsToBounds:YES];
+			[tileWrapper addSubview:liveTile];
 		}
 	
 		// Gesture Recognizers
@@ -118,6 +135,18 @@
 					  self.center.y - (self.bounds.size.height/2),
 					  self.bounds.size.width,
 					  self.bounds.size.height);
+}
+
+- (void)removeFromSuperview {
+	[self stopLiveTile];
+	
+	if ([liveTile respondsToSelector:@selector(prepareForRemoval)]) {
+		[liveTile prepareForRemoval];
+	}
+	
+	liveTile.tile = nil;
+	liveTile = nil;
+	[super removeFromSuperview];
 }
 
 #pragma mark Gesture Recognizers
@@ -171,6 +200,7 @@
 			[[[[RSCore sharedInstance] homeScreenController] startScreenController] setSelectedTile:self];
 		}
 	} else {
+		self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:self.icon.applicationBundleID];
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
 		[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
 	}
@@ -284,6 +314,19 @@
 	[self setFrame:newFrame];
 	[self setTransform:currentTransform];
 	
+	[tileWrapper setFrame:CGRectMake(0, 0, newFrame.size.width, newFrame.size.height)];
+	
+	if (liveTile) {
+		[tileContainer setFrame:CGRectMake(0, tileContainer.frame.origin.y, self.bounds.size.width, self.bounds.size.height)];
+		[liveTile setFrame:CGRectMake(0, liveTile.frame.origin.y, self.bounds.size.width, self.bounds.size.height)];
+		
+//		if ([liveTile isKindOfClass:[RSTileNotificationView class]]) {
+//			[self setLiveTileHidden:(self.size < 2 || ![liveTile readyForDisplay])];
+//		} else {
+			[self startLiveTile];
+//		}
+	}
+	
 	if (self.size < 2 || self.tileInfo.tileHidesLabel || [[self.tileInfo.labelHiddenForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
 		[tileLabel setHidden:YES];
 	} else {
@@ -303,7 +346,6 @@
 		[tileImageView setCenter:CGPointMake(newFrame.size.width/2, newFrame.size.height/2)];
 		[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
 		[tileImageView setTintColor:[UIColor whiteColor]];
-		[self addSubview:tileImageView];
 	}
 	
 	[self setBadge:badgeValue];
@@ -414,6 +456,194 @@
 		[badgeLabel setCenter:CGPointMake(self.bounds.size.width/2 + (combinedSize.width - badgeLabel.frame.size.width)/2, self.bounds.size.height/2)];
 		
 		[badgeLabel setHidden:NO];
+	}
+}
+
+- (void)startLiveTile {
+	if (!liveTile) {
+		return;
+	}
+	
+	if (liveTileUpdateTimer) {
+		[liveTileUpdateTimer invalidate];
+		liveTileUpdateTimer = nil;
+	}
+	
+	if (liveTileAnimationTimer) {
+		[liveTileAnimationTimer invalidate];
+		liveTileAnimationTimer = nil;
+	}
+	
+	if ([liveTile respondsToSelector:@selector(hasStarted)]) {
+		[liveTile hasStarted];
+	}
+	
+	if ([liveTile isReadyForDisplay]) {
+//		if ([liveTile isKindOfClass:[RSTileNotificationView class]] && self.size < 2) {
+//			[self setLiveTileHidden:YES];
+//		} else {
+			[self setLiveTileHidden:NO];
+//		}
+	}
+	
+	if ([liveTile updateInterval] > 0 && [liveTile respondsToSelector:@selector(update)]) {
+		liveTileUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:[liveTile updateInterval] target:liveTile selector:@selector(update) userInfo:nil repeats:YES];
+		[[NSRunLoop mainRunLoop] addTimer:liveTileUpdateTimer forMode:NSRunLoopCommonModes];
+	}
+	
+	NSArray* viewsForSize = [liveTile viewsForSize:self.size];
+	if (viewsForSize != nil && viewsForSize.count > 0) {
+		[[liveTile subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+		for (int i=0; i<viewsForSize.count; i++) {
+			[[viewsForSize objectAtIndex:i] setFrame:CGRectMake(0, (i > 0) ? self.bounds.size.height : 0, self.bounds.size.width, self.bounds.size.height)];
+			[liveTile addSubview:[viewsForSize objectAtIndex:i]];
+		}
+	}
+	
+	liveTilePageIndex = 0;
+	if (viewsForSize.count > 1 || [liveTile respondsToSelector:@selector(triggerAnimation)]) {
+		for (int i=0; i<viewsForSize.count; i++) {
+			[[viewsForSize objectAtIndex:i] setFrame:CGRectMake(0, (i > 0) ? self.bounds.size.height : 0, self.bounds.size.width, self.bounds.size.height)];
+		}
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((arc4random_uniform(4) * 0.5)  * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			liveTileAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(displayNextLiveTilePage) userInfo:nil repeats:YES];
+			[[NSRunLoop mainRunLoop] addTimer:liveTileAnimationTimer forMode:NSRunLoopCommonModes];
+		});
+	}
+}
+
+- (void)stopLiveTile {
+	if (liveTileUpdateTimer) {
+		[liveTileUpdateTimer invalidate];
+		liveTileUpdateTimer = nil;
+	}
+	
+	if (liveTileAnimationTimer) {
+		[liveTileAnimationTimer invalidate];
+		liveTileAnimationTimer = nil;
+	}
+	
+	[self setLiveTileHidden:YES];
+	
+	if ([liveTile respondsToSelector:@selector(hasStopped)]) {
+		[liveTile hasStopped];
+	}
+}
+
+- (void)setLiveTileHidden:(BOOL)hidden {
+	if (!liveTile) {
+		return;
+	}
+	
+	if (!hidden) {
+		if ([liveTile started]) {
+			return;
+		}
+		[liveTile setStarted:YES];
+		
+		[tileContainer setFrame:CGRectMake(0, -self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+		[liveTile setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+		[tileContainer setHidden:YES];
+	} else {
+		if (![liveTile started]) {
+			return;
+		}
+		[liveTile setStarted:NO];
+		
+		[tileContainer setHidden:NO];
+		[tileContainer setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+		[liveTile setFrame:CGRectMake(0, self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+	}
+}
+
+- (void)setLiveTileHidden:(BOOL)hidden animated:(BOOL)animated {
+	if (!liveTile) {
+		return;
+	}
+	
+	if (!animated) {
+		[self setLiveTileHidden:hidden];
+	} else {
+		if (!hidden) {
+			if ([liveTile started]) {
+				return;
+			}
+			[liveTile setStarted:YES];
+			
+			[tileContainer setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+			[liveTile setFrame:CGRectMake(0, self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+			
+			[UIView animateWithDuration:1.0 animations:^{
+				[tileContainer setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+				[liveTile setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+				
+				[tileContainer setFrame:CGRectMake(0, -self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+				[liveTile setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+			} completion:^(BOOL finished){
+				[tileContainer removeEasingFunctionForKeyPath:@"frame"];
+				[liveTile removeEasingFunctionForKeyPath:@"frame"];
+				
+				[tileContainer setHidden:YES];
+			}];
+		} else {
+			if (![liveTile started]) {
+				return;
+			}
+			[liveTile setStarted:NO];
+			
+			[tileContainer setHidden:NO];
+			[tileContainer setFrame:CGRectMake(0, -self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+			[liveTile setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+			
+			[UIView animateWithDuration:1.0 animations:^{
+				[tileContainer setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+				[liveTile setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+				
+				[tileContainer setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+				[liveTile setFrame:CGRectMake(0, self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+			} completion:^(BOOL finished){
+				[tileContainer removeEasingFunctionForKeyPath:@"frame"];
+				[liveTile removeEasingFunctionForKeyPath:@"frame"];
+			}];
+		}
+	}
+}
+
+- (void)displayNextLiveTilePage {
+	if ([[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsLocked]) {
+		[self stopLiveTile];
+		return;
+	}
+	
+	if ([liveTile respondsToSelector:@selector(triggerAnimation)]) {
+		[liveTile triggerAnimation];
+		return;
+	}
+	
+	NSArray* viewsForCurrentSize = [liveTile viewsForSize:self.size];
+	UIView* currentPage = [viewsForCurrentSize objectAtIndex:liveTilePageIndex];
+	UIView* nextPage = [viewsForCurrentSize objectAtIndex:(liveTilePageIndex+1 >= liveTile.subviews.count) ? 0 : liveTilePageIndex+1];
+	
+	[currentPage setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+	[nextPage setFrame:CGRectMake(0, self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+	
+	[UIView animateWithDuration:1.0 animations:^{
+		[currentPage setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+		[nextPage setEasingFunction:easeOutQuint forKeyPath:@"frame"];
+		
+		[currentPage setFrame:CGRectMake(0, -self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+		[nextPage setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+	} completion:^(BOOL finished){
+		[currentPage removeEasingFunctionForKeyPath:@"frame"];
+		[nextPage removeEasingFunctionForKeyPath:@"frame"];
+		
+		[currentPage setFrame:CGRectMake(0, self.bounds.size.height, self.bounds.size.width, self.bounds.size.height)];
+	}];
+	
+	liveTilePageIndex++;
+	if (liveTilePageIndex >= liveTile.subviews.count) {
+		liveTilePageIndex = 0;
 	}
 }
 

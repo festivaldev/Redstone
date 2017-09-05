@@ -3,13 +3,13 @@
 @protocol RSLiveTileInterface <NSObject>
 
 @required
-@property (nonatomic, assign) BOOL isReadyForDisplay;
-@property (nonatomic, assign) BOOL isStarted;
+@property (nonatomic, assign) BOOL started;
 @property (nonatomic, assign) RSTile* tile;
 
 - (id)initWithFrame:(CGRect)frame tile:(RSTile*)tile;
 - (NSArray*)viewsForSize:(int)size;
 - (CGFloat)updateInterval;
+- (BOOL)isReadyForDisplay;
 
 @optional
 - (void)update;

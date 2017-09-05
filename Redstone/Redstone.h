@@ -49,6 +49,7 @@
 #import "StartScreen/RSTile.h"
 #import "StartScreen/RSTileButton.h"
 #import "StartScreen/RSTileInfo.h"
+#import "StartScreen/RSLiveTileInterface.h"
 
 #pragma mark App List
 #import "AppList/RSAppListController.h"

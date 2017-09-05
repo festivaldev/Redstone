@@ -32,4 +32,7 @@
 - (void)applyPendingFrameUpdates;
 - (NSMutableArray*)sortPinnedTiles;
 
+- (void)startLiveTiles;
+- (void)stopLiveTiles;
+
 @end

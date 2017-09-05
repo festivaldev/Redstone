@@ -1,9 +1,13 @@
 #import <UIKit/UIKit.h>
 #import "UI/RSTiltView.h"
 
+@protocol RSLiveTileInterface;
 @class SBLeafIcon, RSTileInfo, RSTileButton;
 
 @interface RSTile : RSTiltView <UIGestureRecognizerDelegate> {
+	UIView* tileWrapper;
+	UIView* tileContainer;
+	
 	UIImageView* tileImageView;
 	UILabel* tileLabel;
 	
@@ -19,6 +23,12 @@
 	
 	RSTileButton* unpinButton;
 	RSTileButton* resizeButton;
+	
+	NSBundle* liveTileBundle;
+	UIView<RSLiveTileInterface>* liveTile;
+	NSTimer* liveTileUpdateTimer;
+	NSTimer* liveTileAnimationTimer;
+	NSInteger liveTilePageIndex;
 }
 
 @property (nonatomic, assign) int size;
@@ -37,5 +47,11 @@
 - (void)setNextSize;
 - (CGFloat)scaleButtonRotationForCurrentSize;
 - (void)setBadge:(int)badgeCount;
+
+- (void)startLiveTile;
+- (void)stopLiveTile;
+- (void)setLiveTileHidden:(BOOL)hidden;
+- (void)setLiveTileHidden:(BOOL)hidden animated:(BOOL)animated;
+- (void)displayNextLiveTilePage;
 
 @end

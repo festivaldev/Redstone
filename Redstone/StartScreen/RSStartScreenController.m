@@ -11,9 +11,24 @@
 		pinnedIdentifiers = [NSMutableArray new];
 		
 		[self loadTiles];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"RedstoneDeviceHasFinishedLock" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)accentColorChanged {
+	for (RSTile* tile in pinnedTiles) {
+		[tile setBackgroundColor:[RSAesthetics accentColorForTile:tile.tileInfo]];
+	}
+}
+
+- (void)deviceFinishedLock {
+	[self setIsEditing:NO];
+	
+	[self stopLiveTiles];
 }
 
 #pragma mark Delegate
@@ -572,6 +587,20 @@
 	}
 	
 	return [sortedTiles mutableCopy];
+}
+
+#pragma mark Live Tiles
+
+- (void)startLiveTiles {
+	for (RSTile* tile in pinnedTiles) {
+		[tile startLiveTile];
+	}
+}
+
+- (void)stopLiveTiles {
+	for (RSTile* tile in pinnedTiles) {
+		[tile stopLiveTile];
+	}
 }
 
 @end

@@ -145,6 +145,8 @@
 			[tile setCenter:[tile originalCenter]];
 		}
 		
+		[[[[RSCore sharedInstance] homeScreenController] startScreenController] stopLiveTiles];
+		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[startScreen setUserInteractionEnabled:YES];
 			[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
@@ -163,6 +165,8 @@
 	RSStartScreenScrollView* startScreen = [[[[RSCore sharedInstance] homeScreenController] startScreenController] view];
 	[startScreen setUserInteractionEnabled:NO];
 	[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:NO];
+	
+	[[[[RSCore sharedInstance] homeScreenController] startScreenController] startLiveTiles];
 	
 	NSMutableArray* tiles = [NSMutableArray new];
 	for (UIView* view in startScreen.subviews) {

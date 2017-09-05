@@ -61,6 +61,8 @@
 - (void)deviceHasBeenUnlocked {
 	[homeScreenScrollView setAlpha:0];
 	
+	[startScreenController startLiveTiles];
+	
 	[UIView animateWithDuration:0.3 animations:^{
 		[homeScreenScrollView setEasingFunction:easeOutCubic forKeyPath:@"opacity"];
 		[homeScreenScrollView setAlpha:1.0];
