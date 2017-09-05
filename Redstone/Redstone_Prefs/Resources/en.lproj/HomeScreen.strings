@@ -1,5 +1,9 @@
 {
 	"HOME_SCREEN" = "Home Screen";
 	"ENABLED" = "Enabled";
+	"TILE_OPACITY" = "Tile Opacity";
+	"SHOW_MORE_TILES" = "Show More Tiles";
+	"SHOW_MORE_TILES_FOOTER" = "Show More Tiles enables a third column on 4\" and 4.7\" devices. This option is always enabled on 5.5\" devices.";
+	"SHOW_WALLPAPER" = "Show Wallpaper";
 	"LIVE_TILES" = "Live Tiles";
 }

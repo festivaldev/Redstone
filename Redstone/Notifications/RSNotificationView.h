@@ -13,6 +13,9 @@
 	
 	NSTimer* slideOutTimer;
 	UITapGestureRecognizer* tapGestureRecognizer;
+	
+	UIView* grabberView;
+	UILabel* grabberLabel;
 }
 
 - (id)initWithBulletin:(BBBulletin*)bulletin;

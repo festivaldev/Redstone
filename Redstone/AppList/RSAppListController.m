@@ -41,9 +41,23 @@
 		[self loadApps];
 		
 		self.jumpList = [[RSJumpList alloc] initWithFrame:CGRectMake(screenWidth, 0, screenWidth, screenHeight)];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"RedstoneDeviceHasFinishedLock" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)accentColorChanged {
+	for (RSApp* app in apps) {
+		[app setBackgroundColor:[RSAesthetics accentColorForTile:app.tileInfo]];
+	}
+}
+
+- (void)deviceFinishedLock {
+	[self.pinMenu disappear];
+	[self.jumpList animateOut];
 }
 
 #pragma mark Delegate

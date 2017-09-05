@@ -64,11 +64,11 @@
 		
 		// Fake Grabber Thing
 		
-		UIView* grabberView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, screenWidth, 20)];
+		grabberView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, screenWidth, 20)];
 		[grabberView setBackgroundColor:[RSAesthetics accentColor]];
 		[self addSubview:grabberView];
 		
-		UILabel* grabberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 20)];
+		grabberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 20)];
 		[grabberLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:18]];
 		[grabberLabel setText:@"\uE76F"];
 		[grabberLabel setTextAlignment:NSTextAlignmentCenter];
@@ -79,9 +79,15 @@
 		
 		tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
 		[self addGestureRecognizer:tapGestureRecognizer];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)accentColorChanged {
+	[grabberView setBackgroundColor:[RSAesthetics accentColor]];
 }
 
 - (void)animateIn {

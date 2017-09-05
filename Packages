@@ -1,3 +1,18 @@
+Package: ml.festival.libweathermanager
+Version: 0.0.1
+Architecture: iphoneos-arm
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Installed-Size: 500
+Filename: ./libWeatherManager/packages/ml.festival.libweathermanager_0.0.1_iphoneos-arm.deb
+Size: 63838
+MD5sum: 342d031b0907f901fd1ed9a2acfa38c2
+SHA1: b61736242a3e585641000f657b90a55e26fb439f
+SHA256: e12252266a5aa5cfd6ec53fb65d854d434bdfbee5a51d7c1c457a8dc29da1328
+Section: System
+Description: This library gets Weather data. Should work on iOS 9 and 10
+Author: Sniper_GER <sniperger@festival.ml>
+Name: libWeatherManager
+
 Package: ml.festival.redstone
 Version: 17w31a.rs-internal.170804
 Architecture: iphoneos-arm
@@ -415,18 +430,18 @@ Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone
 
 Package: ml.festival.redstone
-Version: 17w36b.rs-internal.170904
+Version: 17w36a.rs-internal.170905
 Architecture: iphoneos-arm
 Maintainer: Sniper_GER <sniperger@festival.ml>
-Installed-Size: 6192
-Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common
-Filename: ./Redstone/packages/ml.festival.redstone_17w36b.rs-internal.170904_iphoneos-arm.deb
-Size: 2313376
-MD5sum: 6dcb395cc72823060e8d0cdbc7687559
-SHA1: d8c065a0ff32033b81d663a79b482d8421830e3f
-SHA256: d387bd7c89ad42ce7190d1b3245c72b789d289612da0b3a3b69a8ae7c0a63237
+Installed-Size: 7008
+Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common, ml.festival.libweathermanager
+Filename: ./Redstone/packages/ml.festival.redstone_17w36a.rs-internal.170905_iphoneos-arm.deb
+Size: 2481144
+MD5sum: c41949a41530036729665fae129c6407
+SHA1: 71a0a6665d8766a76fb07c2bb775cc44ddcf3b84
+SHA256: 1d432c13b7622364cf2af2c1b013d2207266edeb3876389eba0a4a01d46bc295
 Section: Tweaks
-Description: An awesome MobileSubstrate tweak!
+Description: A Tweak to bring the Windows 10 Mobile experience to iOS
 Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone
 

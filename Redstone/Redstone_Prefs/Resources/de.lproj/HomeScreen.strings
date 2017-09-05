@@ -1,5 +1,9 @@
 {
 	"HOME_SCREEN" = "Startbildschirm";
 	"ENABLED" = "Aktiviert";
+	"TILE_OPACITY" = "Transparenz";
+	"SHOW_MORE_TILES" = "Mehr Kacheln zeigen";
+	"SHOW_MORE_TILES_FOOTER" = "„Mehr Kacheln zeigen“ aktiviert eine weitere Spalte für Kacheln auf Geräten mit 4\" und 4,7\"-Bildschirmen. Auf Geräten mit 5,5\" und mehr ist diese Option dauerhaft aktiviert.";
+	"SHOW_WALLPAPER" = "Hintergrund anzeigen";
 	"LIVE_TILES" = "Live-Kacheln";
 }

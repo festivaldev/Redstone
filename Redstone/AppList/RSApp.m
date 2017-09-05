@@ -66,6 +66,10 @@
 	return appLabel.text;
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+	[appImageBackground setBackgroundColor:backgroundColor];
+}
+
 #pragma mark Gesture Recognizers
 
 - (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {

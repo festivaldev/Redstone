@@ -10,6 +10,14 @@
 	return _specifiers;
 }
 
+- (id)readPreferenceValue:(PSSpecifier*)specifier {
+	if ([[specifier propertyForKey:@"key"] isEqualToString:@"showMoreTiles"] && [UIScreen mainScreen].bounds.size.width == 414) {
+		[specifier setProperty:[NSNumber numberWithBool:NO] forKey:@"enabled"];
+	}
+	
+	return [super readPreferenceValue:specifier];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	

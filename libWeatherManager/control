@@ -1,10 +1,9 @@
 Package: ml.festival.libweathermanager
-Name: weathermanagerd
+Name: libWeatherManager
 Depends: 
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome tool of some sort!!
+Description: This library gets Weather data. Should work on iOS 9 and 10
 Maintainer: Sniper_GER <sniperger@festival.ml>
 Author: Sniper_GER <sniperger@festival.ml>
 Section: System
-Tag: role::hacker

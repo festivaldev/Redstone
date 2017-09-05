@@ -22,9 +22,16 @@
 		[thumbLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
 		[thumbLayer setCornerRadius:4.0];
 		[self.layer addSublayer:thumbLayer];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)accentColorChanged {
+	[trackFillLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
+	[thumbLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {

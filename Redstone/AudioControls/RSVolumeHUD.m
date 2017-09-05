@@ -65,9 +65,16 @@
 		[nowPlayingControls setHidden:YES];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disappear) name:@"RedstoneDeviceLocked" object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)accentColorChanged {
+	[self updateVibrateButtonStatus];
+	[self updateRingerButtonStatus];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
