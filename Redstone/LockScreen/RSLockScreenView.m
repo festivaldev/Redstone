@@ -143,4 +143,9 @@
 	[wallpaperView setAlpha:1.0];
 }
 
+- (void)notificationsUpdated {
+	[timeLabel setFrame:CGRectMake(21, screenHeight - timeLabel.frame.size.height - 115 - (notificationArea.isShowingDetailedStatus ? 100 : 0), timeLabel.frame.size.width, timeLabel.frame.size.height)];
+	[dateLabel setFrame:CGRectMake(21, screenHeight - dateLabel.frame.size.height - 80 - (notificationArea.isShowingDetailedStatus ? 100 : 0), dateLabel.frame.size.width, dateLabel.frame.size.height)];
+}
+
 @end

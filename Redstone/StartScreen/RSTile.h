@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "UI/RSTiltView.h"
 
-@class RSTiltView, SBLeafIcon, RSTileInfo, RSTileButton;
+@class SBLeafIcon, RSTileInfo, RSTileButton;
 
 @interface RSTile : RSTiltView <UIGestureRecognizerDelegate> {
 	UIImageView* tileImageView;

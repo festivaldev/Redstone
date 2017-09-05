@@ -30,4 +30,6 @@
 - (void)setDate:(NSString*)date;
 - (void)reset;
 
+- (void)notificationsUpdated;
+
 @end

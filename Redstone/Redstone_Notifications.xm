@@ -48,10 +48,6 @@
 
 - (void)_addBulletin:(BBBulletin*)arg1 {
 	%orig;
-	
-	if ([[RSCore sharedInstance] notificationController]) {
-		[[[RSCore sharedInstance] notificationController] addBulletin:arg1];
-	}
 }
 
 - (void)_removeBulletin:(BBBulletin*)arg1 rescheduleTimerIfAffected:(BOOL)arg2 shouldSync:(BOOL)arg3 {
@@ -78,12 +74,32 @@
 
 %hook SBBulletinBannerController
 
+-(void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 {
+	%log;
+	%orig;
+}
+
 %new
 - (id)observer {
 	return MSHookIvar<BBObserver*>(self, "_observer");
 }
 
 %end // %hook SBBulletinBannerController
+
+%hook NCNotificationDispatcher
+
+- (void)postNotificationWithRequest:(NCNotificationRequest*)arg1 {
+	%log;
+	%orig;
+	
+	NSArray* bulletinDestinations = [[arg1 requestDestinations] allObjects];
+	
+	if (bulletinDestinations.count > 1 && [[RSCore sharedInstance] notificationController]) {
+		[[[RSCore sharedInstance] notificationController] addBulletin:[arg1 bulletin]];
+	}
+}
+
+%end // %hook NCNotificationDispatcher
 
 %end // %group notifications
 

@@ -13,6 +13,7 @@
 #import <Celestial/AVSystemController.h>
 #import <SpringBoardUIServices/SpringBoardUIServices.h>
 #import <BulletinBoard/BBBulletin.h>
+#import <UserNotificationsKit/NCNotificationRequest.h>
 
 #pragma mark Libraries
 #import "Libraries/CAKeyframeAnimation+AHEasing.h"

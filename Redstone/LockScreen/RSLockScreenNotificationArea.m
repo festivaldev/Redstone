@@ -57,6 +57,8 @@
 			self.isShowingDetailedStatus = YES;
 			[detailedStatusArea setHidden:NO];
 			[detailedStatusArea setText:bulletinText];
+			
+			[[[[RSCore sharedInstance] lockScreenController] view] notificationsUpdated];
 		});
 	} else {
 		currentBulletin = nil;
@@ -64,6 +66,8 @@
 			self.isShowingDetailedStatus = NO;
 			[detailedStatusArea setHidden:NO];
 			[detailedStatusArea setText:@""];
+			
+			[[[[RSCore sharedInstance] lockScreenController] view] notificationsUpdated];
 		});
 	}
 	

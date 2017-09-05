@@ -63,6 +63,10 @@
 			[currentBulletins removeObjectForKey:[bulletin bulletinID]];
 			[bulletinViews removeObjectForKey:[bulletin bulletinID]];
 		}
+		
+		if (currentBulletins.count < 1) {
+			[self.window setHidden:YES];
+		}
 	});
 }
 
