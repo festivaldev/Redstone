@@ -1,7 +1,7 @@
 #import "Redstone.h"
 #import "substrate.h"
 
-%group lockscreen
+%group lockscreen_ios10
 
 SBPagedScrollView* dashboardScrollView;
 
@@ -56,7 +56,6 @@ SBPagedScrollView* dashboardScrollView;
 
 %end // %hook SBDashboardView
 
-// iOS 10
 %hook SBFLockScreenDateView
 
 - (void)layoutSubviews {
@@ -71,6 +70,45 @@ SBPagedScrollView* dashboardScrollView;
 }
 
 %end // %hook SBFLockScreenDateView
+
+%end // %group lockscreen_ios10
+
+%group lockscreen_ios9
+
+%hook SBLockScreenView
+
+- (void)layoutSubviews {
+	%orig;
+	[self setHidden:YES];
+	
+	if (![self.superview.subviews containsObject:[[[RSCore sharedInstance] lockScreenController] view]]) {
+		[self.superview addSubview:[[[RSCore sharedInstance] lockScreenController] view]];
+	}
+	
+	[self.superview bringSubviewToFront:[[[RSCore sharedInstance] lockScreenController] view]];
+}
+
+%end // %hook SBLockScreenView
+
+%hook SBFLockScreenDateView
+
+- (void)layoutSubviews {
+	[MSHookIvar<SBUILegibilityLabel *>(self,"_legibilityTimeLabel") removeFromSuperview];
+	[MSHookIvar<SBUILegibilityLabel *>(self,"_legibilityDateLabel") removeFromSuperview];
+	
+	[[[[RSCore sharedInstance] lockScreenController] view] setTime:[MSHookIvar<SBUILegibilityLabel *>(self,"_legibilityTimeLabel") string]];
+	[[[[RSCore sharedInstance] lockScreenController] view] setDate:[MSHookIvar<SBUILegibilityLabel *>(self,"_legibilityDateLabel") string]];
+	
+	%orig;
+}
+
+%end // %hook SBFLockScreenDateView
+
+%end // %group lockscreen_ios9
+
+
+
+%group lockscreen_general
 
 %hook SBLockScreenManager
 
@@ -125,13 +163,17 @@ SBPagedScrollView* dashboardScrollView;
 
 %end // %hook BBServer
 
-%end // %group lockscreen
+%end // %group lockscreen_general
 
 %ctor {
 	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 		
 		if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_9_x_Max) {
-			%init(lockscreen);
+			%init(lockscreen_ios10);
+		} else {
+			%init(lockscreen_ios9);
 		}
+		
+		%init(lockscreen_general);
 	}
 }

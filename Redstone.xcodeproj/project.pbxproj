@@ -114,7 +114,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8D0181D21F5F4A7A003FDA37 /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = People.tile; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/People.tile"; sourceTree = "<absolute>"; };
 		8D0181DC1F5F4AFE003FDA37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0181DD1F5F4AFE003FDA37 /* RSPeopleTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPeopleTile.h; sourceTree = "<group>"; };
 		8D0181DE1F5F4AFE003FDA37 /* RSPeopleTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPeopleTile.m; sourceTree = "<group>"; };
@@ -869,7 +868,6 @@
 		8D90EF4F1F5E882400303F23 /* prerm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = prerm; sourceTree = "<group>"; };
 		8D90EF521F5E882400303F23 /* ml.festival.weathermanagerd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ml.festival.weathermanagerd.plist; sourceTree = "<group>"; };
 		8D90EF5B1F5F1CEF00303F23 /* RSWeatherCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherCity.h; sourceTree = "<group>"; };
-		8D90EF661F5F1FD400303F23 /* Weather.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Weather.tile; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/Weather.tile"; sourceTree = "<absolute>"; };
 		8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = Redstone_HomeScreen.xm; sourceTree = "<group>"; };
 		8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBMainDisplaySceneLayoutViewController.h; sourceTree = "<group>"; };
 		8D96D67E1F4E2CF30006A624 /* RSVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSVolumeView.h; sourceTree = "<group>"; };
@@ -885,6 +883,10 @@
 		8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNotificationView.m; sourceTree = "<group>"; };
 		8D9C16671F5B61EF00B4DE3A /* BBObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBObserver.h; sourceTree = "<group>"; };
 		8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBulletinBannerController.h; sourceTree = "<group>"; };
+		8DA4CC311F608FF600006CF6 /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = People.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA4CC321F608FF600006CF6 /* Weather.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA4CC331F60A2D500006CF6 /* Redstone_LockScreen.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_LockScreen.xm; sourceTree = "<group>"; };
+		8DA4CC341F60A3E700006CF6 /* SBLockScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenView.h; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -902,7 +904,6 @@
 		8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenController.m; sourceTree = "<group>"; };
 		8DCE1C691F51658B00B2804E /* RSLockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenView.h; sourceTree = "<group>"; };
 		8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenView.m; sourceTree = "<group>"; };
-		8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_LockScreen.xm; sourceTree = "<group>"; };
 		8DCE1C6E1F5166A400B2804E /* SBDashBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBDashBoardView.h; sourceTree = "<group>"; };
 		8DCE1C6F1F5169B600B2804E /* SBLockScreenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenManager.h; sourceTree = "<group>"; };
 		8DCE1C701F516BA200B2804E /* SBUILegibilityLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUILegibilityLabel.h; sourceTree = "<group>"; };
@@ -1458,6 +1459,8 @@
 				8D90EEAF1F5E843D00303F23 /* libWeatherManager */,
 				8D259E8A1F35302C00BFFB39 /* hiddenapp.app */,
 				8D8E67591F5F2AF400270CC0 /* Frameworks */,
+				8DA4CC311F608FF600006CF6 /* People.tile */,
+				8DA4CC321F608FF600006CF6 /* Weather.tile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2976,6 +2979,7 @@
 				8DBEE1D71F352C1600AD4827 /* SBIconModel.h */,
 				8DBEE1D31F352B7800AD4827 /* SBLeafIcon.h */,
 				8DCE1C6F1F5169B600B2804E /* SBLockScreenManager.h */,
+				8DA4CC341F60A3E700006CF6 /* SBLockScreenView.h */,
 				8D96D6851F4F18A00006A624 /* SBMediaController.h */,
 				8D94E93F1F39A760005A3A71 /* SBMainDisplaySceneLayoutViewController.h */,
 				8D3920B31F52AA5C002A4C24 /* SBPagedScrollView.h */,
@@ -3032,7 +3036,7 @@
 				8D94E93E1F39A66A005A3A71 /* Redstone_HomeScreen.xm */,
 				8D14C6C11F4B892C00ADD69A /* Redstone_VolumeControls.xm */,
 				8D9C16621F5B56F900B4DE3A /* Redstone_Notifications.xm */,
-				8DCE1C6C1F5165FE00B2804E /* Redstone_LockScreen.xm */,
+				8DA4CC331F60A2D500006CF6 /* Redstone_LockScreen.xm */,
 				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
 				8D7C54A71F57EB1100780214 /* Redstone_Prefs */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
@@ -3101,7 +3105,7 @@
 /* Begin PBXLegacyTarget section */
 		8DF5EB0E1F337073003CC2B4 /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = do;
+			buildArgumentsString = "do -B";
 			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
@@ -3133,7 +3137,7 @@
 			);
 			name = People;
 			productName = People;
-			productReference = 8D0181D21F5F4A7A003FDA37 /* People.tile */;
+			productReference = 8DA4CC311F608FF600006CF6 /* People.tile */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D90EF651F5F1FD400303F23 /* Weather */ = {
@@ -3151,7 +3155,7 @@
 			);
 			name = Weather;
 			productName = Weather;
-			productReference = 8D90EF661F5F1FD400303F23 /* Weather.tile */;
+			productReference = 8DA4CC321F608FF600006CF6 /* Weather.tile */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8DF5EB181F33BAD8003CC2B4 /* hiddenapp */ = {
@@ -3767,7 +3771,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				SYSROOT = "$(THEOS)/skds/iPhoneOS10.1.sdk";
 				TARGET = "iphone:latest";
 				THEOS = /opt/theos/;
 			};
@@ -3820,7 +3824,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
+				SYSROOT = "$(THEOS)/skds/iPhoneOS10.1.sdk";
 				TARGET = "iphone:latest";
 				THEOS = /opt/theos/;
 			};
@@ -3971,6 +3975,7 @@
 				8D0181D61F5F4A7A003FDA37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D44748C1F2F2E9500DA9CEF /* Build configuration list for PBXProject "Redstone" */ = {
 			isa = XCConfigurationList;

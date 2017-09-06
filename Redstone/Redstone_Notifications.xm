@@ -1,4 +1,5 @@
 #import "Redstone.h"
+#import "substrate.h"
 
 %group notifications
 
