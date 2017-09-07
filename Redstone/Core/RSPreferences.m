@@ -12,6 +12,7 @@ static RSPreferences* sharedInstance;
 	if (self = [super init]) {
 		sharedInstance = self;
 		
+#if (!TARGET_OS_SIMULATOR)
 		preferences = [[HBPreferences alloc] initWithIdentifier:@"ml.festival.redstone"];
 		
 		[preferences registerDefaults:@{
@@ -32,10 +33,11 @@ static RSPreferences* sharedInstance;
 										@"lockApp2": @"com.apple.MobileSMS",
 										@"lockApp3": @"com.apple.mobilemail"
 										}];
+#else
+		preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
+#endif
 		
-		/*preferences = [NSMutableDictionary dictionaryWithContentsOfFile:PREFERENCES_PATH];
-		
-		if (!preferences) {
+		/*if (!preferences) {
 			preferences = [NSMutableDictionary new];
 		}
 		

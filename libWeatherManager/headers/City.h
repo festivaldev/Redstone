@@ -13,9 +13,12 @@
 @property (assign,nonatomic) float windDirection;
 @property (assign,nonatomic) float windSpeed;
 
+@property (assign,nonatomic,getter=isDataCelsius) BOOL dataCelsius;
+
 -(NSArray*)hourlyForecasts;
 -(void)setHourlyForecasts:(id)arg1;
 -(NSArray*)dayForecasts;
 -(void)setDayForecasts:(id)arg1;
+-(BOOL)isDataCelsius;
 
 @end

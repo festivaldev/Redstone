@@ -28,8 +28,32 @@
 		
 		[cityName setText:[city name]];
 	} else {
-		// iOS older than iOS 10 is currently not supported
+		DayForecast* currentDayForecast = [[city dayForecasts] objectAtIndex:0];
+		HourlyForecast* currentHourForecast = [[city hourlyForecasts] objectAtIndex:0];
+		
+		BOOL dataIsCelsius = [city isDataCelsius];
+		NSString* currentTemperatureValue = dataIsCelsius ? [currentHourForecast detail] : [self celsiusToFahrenheit:[currentHourForecast detail]];
+		NSString* highTempValue = dataIsCelsius ? [currentDayForecast high] : [self celsiusToFahrenheit:[currentDayForecast high]];
+		NSString* lowTempValue = dataIsCelsius ? [currentDayForecast low] : [self celsiusToFahrenheit:[currentDayForecast low]];
+		int precipitationValue = round([currentHourForecast percentPrecipitation]);
+		
+		[currentTemperature setText:currentTemperatureValue];
+		
+		[highTemp setText:highTempValue];
+		[lowTemp setText:lowTempValue];
+		
+		[percentPrecipitation setText:[NSString stringWithFormat:@"%i%%", precipitationValue]];
+		
+		NSString* windSpeedValue = [[objc_getClass("WeatherWindSpeedFormatter") convenienceFormatter] stringForWindSpeed:[city windSpeed]];
+		[windSpeed setText:windSpeedValue];
+		[windIcon setTransform:CGAffineTransformMakeRotation(deg2rad([city windDirection]))];
 	}
+}
+
+- (NSString*)celsiusToFahrenheit:(NSString*)degrees {
+	double temperature = (([degrees intValue]*9)/5) + 32;
+	
+	return [NSString stringWithFormat:@"%d", (unsigned int)temperature];
 }
 
 - (NSString*)localizedConditionForCode:(NSInteger)code {

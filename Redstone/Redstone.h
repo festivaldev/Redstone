@@ -1,7 +1,14 @@
+#if (TARGET_OS_SIMULATOR)
+#define PREFERENCES_PATH @"/opt/simject/FESTIVAL/ml.festival.redstone.plist"
+#define RESOURCES_PATH @"/opt/simject/FESTIVAL/Redstone"
+#define LOCK_WALLPAPER_PATH [NSString stringWithFormat:@"%@/Library/SpringBoard/LockBackground.cpbitmap", NSHomeDirectory()]
+#define HOME_WALLPAPER_PATH [NSString stringWithFormat:@"%@/Library/SpringBoard/HomeBackground.cpbitmap", NSHomeDirectory()]
+#else
 #define PREFERENCES_PATH @"/var/mobile/Library/Preferences/ml.festival.redstone.plist"
 #define RESOURCES_PATH @"/var/mobile/Library/FESTIVAL/Redstone"
 #define LOCK_WALLPAPER_PATH @"/var/mobile/Library/SpringBoard/LockBackground.cpbitmap"
 #define HOME_WALLPAPER_PATH @"/var/mobile/Library/SpringBoard/HomeBackground.cpbitmap"
+#endif
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height

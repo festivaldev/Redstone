@@ -1,10 +1,12 @@
 #import "RSWeatherTile.h"
 #import <libWeatherManager/RSWeatherCity.h>
+#import <dlfcn.h>
 
 @implementation RSWeatherTile
 
 - (id)initWithFrame:(CGRect)frame tile:(RSTile*)tile {
 	if (self = [super initWithFrame:frame]) {
+		dlopen("/Systen/Library/PrivateFrameworks/Weather.framework/Weather", RTLD_NOW);
 		self.tile = tile;
 		
 		NSBundle* tileBundle = [NSBundle bundleForClass:[self class]];

@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8D0181E01F5F4AFE003FDA37 /* RSPeopleTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0181DE1F5F4AFE003FDA37 /* RSPeopleTile.m */; };
-		8D0181E21F5F4B0F003FDA37 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0181E11F5F4B0F003FDA37 /* Contacts.framework */; };
 		8D8E674D1F5F20D600270CC0 /* ConditionView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67421F5F20A200270CC0 /* ConditionView.xib */; };
 		8D8E674E1F5F20D600270CC0 /* DayForecastView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67431F5F20A200270CC0 /* DayForecastView.xib */; };
 		8D8E674F1F5F20D600270CC0 /* HourlyForecastView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67441F5F20A200270CC0 /* HourlyForecastView.xib */; };
 		8D8E67501F5F20D600270CC0 /* RSWeatherTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67471F5F20A200270CC0 /* RSWeatherTile.m */; };
-		8D8E675B1F5F2AF400270CC0 /* libWeatherManager.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8E675A1F5F2AF400270CC0 /* libWeatherManager.dylib */; };
 		8D8E675C1F5F2B0E00270CC0 /* ConditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E67421F5F20A200270CC0 /* ConditionView.xib */; };
 		8D8E675D1F5F2B0E00270CC0 /* DayForecastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E67431F5F20A200270CC0 /* DayForecastView.xib */; };
 		8D8E675E1F5F2B0E00270CC0 /* HourlyForecastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E67441F5F20A200270CC0 /* HourlyForecastView.xib */; };
@@ -94,6 +92,7 @@
 		8D8E68461F5F3F8A00270CC0 /* RSWeatherShortLookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E68451F5F3F8A00270CC0 /* RSWeatherShortLookView.m */; };
 		8D8E68491F5F41EB00270CC0 /* RSWeatherHourlyForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E68481F5F41EB00270CC0 /* RSWeatherHourlyForecastView.m */; };
 		8D8E684C1F5F429D00270CC0 /* RSWeatherDayForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E684B1F5F429D00270CC0 /* RSWeatherDayForecastView.m */; };
+		8DA4CC911F60A80C00006CF6 /* libWeatherManager.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,13 +110,26 @@
 			remoteGlobalIDString = 8D90EF651F5F1FD400303F23;
 			remoteInfo = Weather;
 		};
+		8DA4CC971F611FFA00006CF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D90EF651F5F1FD400303F23;
+			remoteInfo = Weather;
+		};
+		8DA4CC991F611FFC00006CF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D0181D11F5F4A7A003FDA37;
+			remoteInfo = People;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8D0181DC1F5F4AFE003FDA37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0181DD1F5F4AFE003FDA37 /* RSPeopleTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPeopleTile.h; sourceTree = "<group>"; };
 		8D0181DE1F5F4AFE003FDA37 /* RSPeopleTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPeopleTile.m; sourceTree = "<group>"; };
-		8D0181E11F5F4B0F003FDA37 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Contacts.framework; sourceTree = DEVELOPER_DIR; };
 		8D1190111F3D0D10009A8568 /* tile-AppList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-AppList@2x.png"; sourceTree = "<group>"; };
 		8D1190121F3D0D10009A8568 /* tile-AppList@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-AppList@3x.png"; sourceTree = "<group>"; };
 		8D1190131F3D0D10009A8568 /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
@@ -295,7 +307,7 @@
 		8D14C6CB1F4D5D8000ADD69A /* MPVolumeControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPVolumeControllerDelegate.h; sourceTree = "<group>"; };
 		8D14C6CC1F4D661100ADD69A /* VolumeControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VolumeControl.h; sourceTree = "<group>"; };
 		8D14C6CD1F4D666200ADD69A /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
-		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = hiddenapp.app; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/hiddenapp.app"; sourceTree = "<absolute>"; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
 		8D259E8E1F359E1500BFFB39 /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
@@ -750,7 +762,6 @@
 		8D8E67451F5F20A200270CC0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D8E67461F5F20A200270CC0 /* RSWeatherTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherTile.h; sourceTree = "<group>"; };
 		8D8E67471F5F20A200270CC0 /* RSWeatherTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWeatherTile.m; sourceTree = "<group>"; };
-		8D8E675A1F5F2AF400270CC0 /* libWeatherManager.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libWeatherManager.dylib; path = ../../../../../opt/theos/lib/libWeatherManager.dylib; sourceTree = "<group>"; };
 		8D8E67621F5F2CD700270CC0 /* RSWeatherConditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSWeatherConditionView.h; sourceTree = "<group>"; };
 		8D8E67631F5F2CD700270CC0 /* RSWeatherConditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSWeatherConditionView.m; sourceTree = "<group>"; };
 		8D8E67671F5F3CF300270CC0 /* Icon_PoP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_PoP@2x.png"; sourceTree = "<group>"; };
@@ -883,10 +894,11 @@
 		8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNotificationView.m; sourceTree = "<group>"; };
 		8D9C16671F5B61EF00B4DE3A /* BBObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBObserver.h; sourceTree = "<group>"; };
 		8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBulletinBannerController.h; sourceTree = "<group>"; };
-		8DA4CC311F608FF600006CF6 /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = People.tile; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DA4CC321F608FF600006CF6 /* Weather.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA4CC311F608FF600006CF6 /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = People.tile; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/People.tile"; sourceTree = "<absolute>"; };
 		8DA4CC331F60A2D500006CF6 /* Redstone_LockScreen.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_LockScreen.xm; sourceTree = "<group>"; };
 		8DA4CC341F60A3E700006CF6 /* SBLockScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenView.h; sourceTree = "<group>"; };
+		8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libWeatherManager.dylib; path = libWeatherManager/.theos/obj/iphone_simulator/debug/libWeatherManager.dylib; sourceTree = "<group>"; };
+		8DA4CC921F60A80C00006CF6 /* Weather.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.tile; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -929,7 +941,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0181E21F5F4B0F003FDA37 /* Contacts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,7 +948,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D8E675B1F5F2AF400270CC0 /* libWeatherManager.dylib in Frameworks */,
+				8DA4CC911F60A80C00006CF6 /* libWeatherManager.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,10 +1468,8 @@
 				8DF5EB091F336F8C003CC2B4 /* Redstone */,
 				8D8E41C81F59521400AE2694 /* Redstone_Icons */,
 				8D90EEAF1F5E843D00303F23 /* libWeatherManager */,
-				8D259E8A1F35302C00BFFB39 /* hiddenapp.app */,
-				8D8E67591F5F2AF400270CC0 /* Frameworks */,
-				8DA4CC311F608FF600006CF6 /* People.tile */,
-				8DA4CC321F608FF600006CF6 /* Weather.tile */,
+				8DA4CC8F1F60A80C00006CF6 /* Frameworks */,
+				8DA4CC921F60A80C00006CF6 /* Weather.tile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2740,15 +2749,6 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
-		8D8E67591F5F2AF400270CC0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8D0181E11F5F4B0F003FDA37 /* Contacts.framework */,
-				8D8E675A1F5F2AF400270CC0 /* libWeatherManager.dylib */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8D8E67661F5F3CF300270CC0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -2953,6 +2953,14 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		8DA4CC8F1F60A80C00006CF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8DB0B6E41F346326002E3CCF /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -3103,9 +3111,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
+		8DA4CC931F611D2200006CF6 /* Build (Simulator) */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "-B";
+			buildConfigurationList = 8DA4CC941F611D2200006CF6 /* Build configuration list for PBXLegacyTarget "Build (Simulator)" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
+			dependencies = (
+				8DA4CC9A1F611FFC00006CF6 /* PBXTargetDependency */,
+				8DA4CC981F611FFA00006CF6 /* PBXTargetDependency */,
+			);
+			name = "Build (Simulator)";
+			passBuildSettingsInEnvironment = 1;
+			productName = "Build (Simulator)";
+		};
 		8DF5EB0E1F337073003CC2B4 /* Install */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "do -B";
+			buildArgumentsString = do;
 			buildConfigurationList = 8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */;
 			buildPhases = (
 			);
@@ -3155,7 +3179,7 @@
 			);
 			name = Weather;
 			productName = Weather;
-			productReference = 8DA4CC321F608FF600006CF6 /* Weather.tile */;
+			productReference = 8DA4CC921F60A80C00006CF6 /* Weather.tile */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8DF5EB181F33BAD8003CC2B4 /* hiddenapp */ = {
@@ -3188,6 +3212,10 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
+					8DA4CC931F611D2200006CF6 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					8DF5EB0E1F337073003CC2B4 = {
 						CreatedOnToolsVersion = 9.0;
 					};
@@ -3212,6 +3240,7 @@
 			projectRoot = "";
 			targets = (
 				8DF5EB0E1F337073003CC2B4 /* Install */,
+				8DA4CC931F611D2200006CF6 /* Build (Simulator) */,
 				8DF5EB181F33BAD8003CC2B4 /* hiddenapp */,
 				8D90EF651F5F1FD400303F23 /* Weather */,
 				8D0181D11F5F4A7A003FDA37 /* People */,
@@ -3377,6 +3406,16 @@
 			isa = PBXTargetDependency;
 			target = 8D90EF651F5F1FD400303F23 /* Weather */;
 			targetProxy = 8D8E67601F5F2C1200270CC0 /* PBXContainerItemProxy */;
+		};
+		8DA4CC981F611FFA00006CF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D90EF651F5F1FD400303F23 /* Weather */;
+			targetProxy = 8DA4CC971F611FFA00006CF6 /* PBXContainerItemProxy */;
+		};
+		8DA4CC9A1F611FFC00006CF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D0181D11F5F4A7A003FDA37 /* People */;
+			targetProxy = 8DA4CC991F611FFC00006CF6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3645,6 +3684,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/theos/lib,
+					"$(PROJECT_DIR)/libWeatherManager/.theos/obj/iphone_simulator/debug",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -3704,6 +3744,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/opt/theos/lib,
+					"$(PROJECT_DIR)/libWeatherManager/.theos/obj/iphone_simulator/debug",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -3712,6 +3753,103 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = tile;
+			};
+			name = Release;
+		};
+		8DA4CC951F611D2200006CF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphonesimulator;
+				TARGET = "simulator:latest";
+				THEOS = /opt/theos/;
+			};
+			name = Debug;
+		};
+		8DA4CC961F611D2200006CF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphonesimulator;
+				TARGET = "simulator:latest";
+				THEOS = /opt/theos/;
 			};
 			name = Release;
 		};
@@ -3771,7 +3909,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SYSROOT = "$(THEOS)/skds/iPhoneOS10.1.sdk";
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
 				TARGET = "iphone:latest";
 				THEOS = /opt/theos/;
 			};
@@ -3824,7 +3962,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SYSROOT = "$(THEOS)/skds/iPhoneOS10.1.sdk";
+				SYSROOT = "$(THEOS)/sdks/iPhoneOS10.1.sdk";
 				TARGET = "iphone:latest";
 				THEOS = /opt/theos/;
 			};
@@ -3994,6 +4132,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8DA4CC941F611D2200006CF6 /* Build configuration list for PBXLegacyTarget "Build (Simulator)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DA4CC951F611D2200006CF6 /* Debug */,
+				8DA4CC961F611D2200006CF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */ = {
 			isa = XCConfigurationList;

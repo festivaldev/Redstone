@@ -10,8 +10,12 @@ TWEAK_NAME = Redstone
 Redstone_CFLAGS = -fobjc-arc -I./headers -I ./
 Redstone_PRIVATE_FRAMEWORKS = AppSupport MediaRemote BulletinBoard
 Redstone_FRAMEWORKS = MediaPlayer
+
+ifeq ($(THEOS_TARGET_NAME),iphone)
 Redstone_LIBRARIES = objcipc
 Redstone_EXTRA_FRAMEWORKS = Cephei
+endif
+
 Redstone_FILES = $(wildcard *.xm) $(wildcard Libraries/*.c) $(wildcard Libraries/*.m) $(wildcard Core/*.m) $(wildcard UI/*.m) $(wildcard HomeScreen/*.m) $(wildcard StartScreen/*.m) $(wildcard AppList/*.m) $(wildcard LaunchScreen/*.m) $(wildcard AudioControls/*.m) $(wildcard Notifications/*.m) $(wildcard LockScreen/*.m)
 
 include $(THEOS)/makefiles/tweak.mk
@@ -24,5 +28,16 @@ after-package::
 	@cd $(PROJECT_DIR) && dpkg-scanpackages -m . /dev/null > $(PROJECT_DIR)/Packages
 	@bzip2 -k $(PROJECT_DIR)/Packages
 
+ifeq ($(THEOS_TARGET_NAME),iphone_simulator)
+after-all::
+	@echo Copying .dylib to /opt/simject
+	@cp $(THEOS_OBJ_DIR)/$(PROJECT_NAME).dylib /opt/simject
+	@cp $(PROJECT_NAME).plist /opt/simject
+	@~/Documents/Xcode/simject/bin/respring_simulator
+endif
+
+ifeq ($(THEOS_TARGET_NAME),iphone)
 SUBPROJECTS += Redstone_UIKit Redstone_Prefs
+endif
+
 include $(THEOS_MAKE_PATH)/aggregate.mk

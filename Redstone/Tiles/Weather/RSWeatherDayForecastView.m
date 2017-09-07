@@ -40,9 +40,50 @@
 		
 		[cityName setText:[city name]];
 	} else {
-		// iOS older than iOS 10 is currently not supported
+		DayForecast* currentDayForecast = [[city hourlyForecasts] objectAtIndex:0];
+		DayForecast* nextDayForecast = [[city hourlyForecasts] objectAtIndex:1];
+		DayForecast* nextNextDayForecast = [[city hourlyForecasts] objectAtIndex:2];
+		
+		BOOL dataIsCelsius = [city isDataCelsius];
+		
+		NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"HH:mm"];
+		
+		NSDate* currentDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%llu", [currentDayForecast dayOfWeek]]];
+		NSDate* nextDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%llu", [nextDayForecast dayOfWeek]]];
+		NSDate* nextNextDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%llu", [nextNextDayForecast dayOfWeek]]];
+		
+		[dateFormatter setDateFormat:@"EEEE"];
+		
+		NSString* currentDay = [[dateFormatter stringFromDate:currentDate] substringWithRange:NSMakeRange(0, 3)];
+		NSString* nextDay = [[dateFormatter stringFromDate:nextDate] substringWithRange:NSMakeRange(0, 3)];
+		NSString* nextNextDay = [[dateFormatter stringFromDate:nextNextDate] substringWithRange:NSMakeRange(0, 3)];
+		
+		[day1Label setText:currentDay];
+		[day1High setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [currentDayForecast high] : [self celsiusToFahrenheit:[currentDayForecast high]])]];
+		[day1Low setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [currentDayForecast low] : [self celsiusToFahrenheit:[currentDayForecast low]])]];
+		[day1Image setImage:[self iconForCondition:(int)[city conditionCode] isDay:YES]];
+		
+		[day2Label setText:nextDay];
+		[day2High setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextDayForecast high] : [self celsiusToFahrenheit:[nextDayForecast high]])]];
+		[day2Low setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextDayForecast low] : [self celsiusToFahrenheit:[nextDayForecast low]])]];
+		[day2Image setImage:[self iconForCondition:(int)[nextDayForecast icon] isDay:YES]];
+		
+		[day3Label setText:nextNextDay];
+		[day3High setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextNextDayForecast high] : [self celsiusToFahrenheit:[nextNextDayForecast high]])]];
+		[day3Low setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextNextDayForecast low] : [self celsiusToFahrenheit:[nextNextDayForecast low]])]];
+		[day3Image setImage:[self iconForCondition:(int)[nextNextDayForecast icon] isDay:YES]];
+		
+		[cityName setText:[city name]];
 	}
 }
+
+- (NSString*)celsiusToFahrenheit:(NSString*)degrees {
+	double temperature = (([degrees intValue]*9)/5) + 32;
+	
+	return [NSString stringWithFormat:@"%d", (unsigned int)temperature];
+}
+
 
 - (NSString*)dayNightStringForCurrentVersion:(BOOL)isDay {
 	return (isDay ? @"Day" : @"Night");

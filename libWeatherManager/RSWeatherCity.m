@@ -157,6 +157,8 @@
 			
 			[self setDayForecasts:[dayForecasts copy]];
 		} else {
+			self.dataCelsius = city.dataCelsius;
+			
 			NSMutableArray* hourlyForecasts = [NSMutableArray arrayWithCapacity:[city hourlyForecasts].count];
 			for (HourlyForecast* hourlyForecast in [city hourlyForecasts]) {
 				RSWeatherHourlyForecast* weatherInfoHourlyForecast = [[RSWeatherHourlyForecast alloc] initWithHourlyForecast:hourlyForecast];
@@ -197,6 +199,7 @@
 			[self setDayForecasts:[decoder decodeObjectOfClasses:dayForecastClasses forKey:@"dayForecasts"]];
 		} else {
 			self.temperature = [decoder decodeObjectOfClass:[NSString class] forKey:@"temperature"];
+			self.dataCelsius = [decoder decodeBoolForKey:@"dataCelsius"];
 
 			NSSet* hourlyForecastClasses = [NSSet setWithObjects:[NSArray class], [RSWeatherHourlyForecast class], nil];
 			[self setHourlyForecasts:[decoder decodeObjectOfClasses:hourlyForecastClasses forKey:@"hourlyForecasts"]];
@@ -217,6 +220,7 @@
 	[encoder encodeFloat:self.windSpeed forKey:@"windSpeed"];
 	[encoder encodeObject:self.hourlyForecasts forKey:@"hourlyForecasts"];
 	[encoder encodeObject:self.dayForecasts forKey:@"dayForecasts"];
+	[encoder encodeBool:self.dataCelsius forKey:@"dataCelsius"];
 }
 
 @end

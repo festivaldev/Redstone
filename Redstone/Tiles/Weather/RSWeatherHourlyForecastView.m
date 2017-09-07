@@ -32,8 +32,40 @@
 		
 		[cityName setText:[city name]];
 	} else {
-		// iOS older than iOS 10 is currently not supported
+		HourlyForecast* currentForecast = [[city hourlyForecasts] objectAtIndex:0];
+		HourlyForecast* nextForecast = [[city hourlyForecasts] objectAtIndex:1];
+		HourlyForecast* nextNextForecast = [[city hourlyForecasts] objectAtIndex:2];
+		
+		BOOL dataIsCelsius = [city isDataCelsius];
+		
+		NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"HH:mm"];
+		NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+		
+		NSDate* currentDate = [dateFormatter dateFromString:[currentForecast time]];
+		NSDate* nextDate = [dateFormatter dateFromString:[nextForecast time]];
+		NSDate* nextNextDate = [dateFormatter dateFromString:[nextNextForecast time]];
+		
+		[hour1Label setText:[NSString stringWithFormat:@"%lu", (long)[gregorian component:NSCalendarUnitHour fromDate:currentDate]]];
+		[hour1Image setImage:[self iconForCondition:(int)[currentForecast conditionCode] isDay:YES]];
+		[hour1Temperature setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [currentForecast detail] : [self celsiusToFahrenheit:[currentForecast detail]])]];
+		
+		[hour2Label setText:[NSString stringWithFormat:@"%lu", (long)[gregorian component:NSCalendarUnitHour fromDate:nextDate]]];
+		[hour2Image setImage:[self iconForCondition:(int)[nextForecast conditionCode] isDay:YES]];
+		[hour2Temperature setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextForecast detail] : [self celsiusToFahrenheit:[nextForecast detail]])]];
+		
+		[hour3Label setText:[NSString stringWithFormat:@"%lu", (long)[gregorian component:NSCalendarUnitHour fromDate:nextNextDate]]];
+		[hour3Image setImage:[self iconForCondition:(int)[nextNextForecast conditionCode] isDay:YES]];
+		[hour3Temperature setText:[NSString stringWithFormat:@"%@°", (dataIsCelsius ? [nextNextForecast detail] : [self celsiusToFahrenheit:[nextNextForecast detail]])]];
+		
+		[cityName setText:[city name]];
 	}
+}
+
+- (NSString*)celsiusToFahrenheit:(NSString*)degrees {
+	double temperature = (([degrees intValue]*9)/5) + 32;
+	
+	return [NSString stringWithFormat:@"%d", (unsigned int)temperature];
 }
 
 - (NSString*)dayNightStringForCurrentVersion:(BOOL)isDay {
