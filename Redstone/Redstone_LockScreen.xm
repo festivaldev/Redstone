@@ -15,7 +15,7 @@ SBPagedScrollView* dashboardScrollView;
 	return r;
 }
 
-%end // %hook SBDashBoardScrollGestureController
+%end	// %hook SBDashBoardScrollGestureController
 
 %hook SBPagedScrollView
 
@@ -29,7 +29,7 @@ SBPagedScrollView* dashboardScrollView;
 	}
 }
 
-%end // %hook SBDashBoardScrollGestureController
+%end	// %hook SBDashBoardScrollGestureController
 
 %hook SBDashBoardViewController
 
@@ -39,7 +39,7 @@ SBPagedScrollView* dashboardScrollView;
 	%orig(arg1);
 }
 
-%end // %hook SBDashBoardViewController
+%end	// %hook SBDashBoardViewController
 
 %hook SBDashBoardView
 
@@ -54,7 +54,7 @@ SBPagedScrollView* dashboardScrollView;
 	[self.superview bringSubviewToFront:[[[RSCore sharedInstance] lockScreenController] view]];
 }
 
-%end // %hook SBDashboardView
+%end	// %hook SBDashboardView
 
 %hook SBFLockScreenDateView
 
@@ -69,9 +69,9 @@ SBPagedScrollView* dashboardScrollView;
 	[[[[RSCore sharedInstance] lockScreenController] view] setDate:[MSHookIvar<SBUILegibilityLabel *>(self,"_dateSubtitleView") string]];
 }
 
-%end // %hook SBFLockScreenDateView
+%end	// %hook SBFLockScreenDateView
 
-%end // %group lockscreen_ios10
+%end	// %group lockscreen_ios10
 
 %group lockscreen_ios9
 
@@ -88,7 +88,7 @@ SBPagedScrollView* dashboardScrollView;
 	[self.superview bringSubviewToFront:[[[RSCore sharedInstance] lockScreenController] view]];
 }
 
-%end // %hook SBLockScreenView
+%end	// %hook SBLockScreenView
 
 %hook SBFLockScreenDateView
 
@@ -102,13 +102,16 @@ SBPagedScrollView* dashboardScrollView;
 	%orig;
 }
 
-%end // %hook SBFLockScreenDateView
+%end	// %hook SBFLockScreenDateView
 
-%end // %group lockscreen_ios9
+%end	// %group lockscreen_ios9
 
 
 
 %group lockscreen_general
+
+static SBUIPasscodeLockViewBase* storedPasscodeView;
+static SBPasscodeKeyboard* storedPasscodeKeyboard;
 
 %hook SBLockScreenManager
 
@@ -120,7 +123,7 @@ SBPagedScrollView* dashboardScrollView;
 	return %orig;
 }
 
-%end // %hook SBLockScreenManager
+%end	// %hook SBLockScreenManager
 
 %hook SBBacklightController
 
@@ -133,7 +136,111 @@ SBPagedScrollView* dashboardScrollView;
 	%orig(arg1);
 }
 
-%end // %hook SBBacklightController
+%end	// %hook SBBacklightController
+
+%hook SBUIPasscodeLockViewBase
+
+- (id)initWithFrame:(CGRect)arg1 {
+	id r = %orig;
+	storedPasscodeView = r;
+	return r;
+}
+
+- (void)layoutSubviews {
+	[[RSLockScreenSecurityController sharedInstance] setCurrentPasscodeLockView:self];
+	[[[[RSCore sharedInstance] lockScreenController] view] updatePasscodeKeyboard];
+	%orig;
+}
+
+%new
++ (id)currentPasscodeView {
+	return storedPasscodeView;
+}
+
+%end	// %hook SBUIPasscodeLockViewBase
+
+%hook SBPasscodeKeyboard
+
++ (id)alloc {
+	if (storedPasscodeKeyboard) {
+		return storedPasscodeKeyboard;
+	}
+	
+	return %orig;
+}
+
+- (id)init {
+	if (storedPasscodeKeyboard) {
+		return storedPasscodeKeyboard;
+	}
+	
+	return %orig;
+}
+
+- (id)initWithFrame:(CGRect)arg1 {
+	if (storedPasscodeKeyboard) {
+		return storedPasscodeKeyboard;
+	}
+	
+	id r = %orig;
+	storedPasscodeKeyboard = r;
+	return r;
+}
+
+- (void)layoutSubviews {
+	%orig;
+	
+	storedPasscodeKeyboard = self;
+	if (![self.superview isKindOfClass:[RSPasscodeLockViewAlphanumericKeyboard class]]) {
+		[self removeFromSuperview];
+	}
+}
+
+- (void)setFrame:(CGRect)arg1 {
+	%orig(CGRectMake(0, 60, arg1.size.width, arg1.size.height));
+}
+
+%new
++ (id)storedPasscodeKeyboard {
+	return storedPasscodeKeyboard;
+}
+
+%end	// %hook SBPasscodeKeyboard
+
+%hook SBUIPasscodeLockViewWithKeypad
+
+- (void)passcodeEntryFieldTextDidChange:(id)arg1 {
+	[[[[RSCore sharedInstance] lockScreenController] view] handlePasscodeTextChanged];
+	
+	%orig;
+}
+
+%end	// %hook SBUIPasscodeLockViewWithKeypad
+
+%hook SBUIPasscodeLockViewWithKeyboard
+
+- (void)passcodeEntryFieldTextDidChange:(id)arg1 {
+	%log;
+	[[[[RSCore sharedInstance] lockScreenController] view] handlePasscodeTextChanged];
+	
+	%orig;
+}
+
+%end	// %hook SBUIPasscodeLockViewWithKeyboard
+
+%hook SBFUserAuthenticationController
+
+-(void)_handleSuccessfulAuthentication:(id)arg1 responder:(id)arg2 {
+	//[[[RSLockScreenController sharedInstance] passcodeEntryController] handleSuccessfulAuthentication];
+	%orig;
+}
+
+- (void)_handleFailedAuthentication:(id)arg1 error:(id)arg2 responder:(id)arg3 {
+	[[[[[RSCore sharedInstance] lockScreenController] view] passcodeKeyboard] handleFailedAuthentication];
+	%orig;
+}
+
+%end	// %hook SBFUserAuthenticationController
 
 %hook SBApplication
 
@@ -143,7 +250,7 @@ SBPagedScrollView* dashboardScrollView;
 	[[[[[RSCore sharedInstance] lockScreenController] view] notificationArea] setBadgeForApp:[self bundleIdentifier] value:[arg1 intValue]];
 }
 
-%end // %hook SBApplication
+%end	// %hook SBApplication
 
 %hook BBServer
 
@@ -161,9 +268,9 @@ SBPagedScrollView* dashboardScrollView;
 	}
 }
 
-%end // %hook BBServer
+%end	// %hook BBServer
 
-%end // %group lockscreen_general
+%end	// %group lockscreen_general
 
 %ctor {
 	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue] && [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {

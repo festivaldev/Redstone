@@ -71,7 +71,7 @@
 }
 
 - (BOOL)isReadyForDisplay {
-	return YES;
+	return currentCity != nil;
 }
 
 @end

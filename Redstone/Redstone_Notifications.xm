@@ -3,48 +3,6 @@
 
 %group notifications
 
-// iOS 10
-%hook SBNotificationBannerWindow
-
-- (id)initWithFrame:(CGRect)arg1 {
-	self = %orig(CGRectZero);
-	return self;
-}
-
-- (void)setFrame:(CGRect)arg1 {
-	%orig(CGRectZero);
-}
-
-- (CGRect)frame {
-	return CGRectZero;
-}
-
-%end // %hook SBNotificationBannerWindow
-
-// iOS 9
-%hook SBBannerContainerView
-
-- (id)initWithFrame:(CGRect)arg1 {
-	self = %orig(CGRectZero);
-	//[self setHidden:YES];
-	return self;
-}
-
-- (void)setFrame:(CGRect)arg1 {
-	%orig(CGRectZero);
-	//[self setHidden:YES];
-}
-
-- (CGRect)frame {
-	return CGRectZero;
-}
-
-- (void)setHidden:(BOOL)arg1 {
-	%orig(YES);
-}
-
-%end // %hook SBBannerContainerView
-
 %hook BBServer
 
 - (void)_addBulletin:(BBBulletin*)arg1 {
@@ -104,9 +62,61 @@
 
 %end // %group notifications
 
+
+
+%group notifications_visuals
+
+// iOS 10
+%hook SBNotificationBannerWindow
+
+- (id)initWithFrame:(CGRect)arg1 {
+	self = %orig(CGRectZero);
+	return self;
+}
+
+- (void)setFrame:(CGRect)arg1 {
+	%orig(CGRectZero);
+}
+
+- (CGRect)frame {
+	return CGRectZero;
+}
+
+%end // %hook SBNotificationBannerWindow
+
+// iOS 9
+%hook SBBannerContainerView
+
+- (id)initWithFrame:(CGRect)arg1 {
+	self = %orig(CGRectZero);
+	[self setHidden:YES];
+	return self;
+}
+
+- (void)setFrame:(CGRect)arg1 {
+	%orig(CGRectZero);
+	[self setHidden:YES];
+}
+
+- (CGRect)frame {
+	return CGRectZero;
+}
+
+- (void)setHidden:(BOOL)arg1 {
+	%orig(YES);
+}
+
+%end // %hook SBBannerContainerView
+
+%end // %group notifications_visuals
+
 %ctor {
 	if ([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue] || [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 		
 		%init(notifications);
+	}
+	
+	if ([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue]) {
+		%init(notifications_visuals);
 	}
 }

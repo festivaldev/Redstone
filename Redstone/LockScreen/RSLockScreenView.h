@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "RSPasscodeLockViewKeypadDelegate.h"
 
-@class RSNowPlayingControls, RSLockScreenNotificationArea;
+@class RSNowPlayingControls, RSLockScreenNotificationArea, SBPasscodeKeyboard;
 
 @interface RSLockScreenView : UIView <UIScrollViewDelegate> {
 	UIImageView* wallpaperView;
@@ -15,13 +16,18 @@
 	
 	RSNowPlayingControls* nowPlayingControls;
 	RSLockScreenNotificationArea* notificationArea;
+	
+	UIView<RSPasscodeLockViewKeypadDelegate>* passcodeKeyboard;
 }
 
 @property (nonatomic, assign) BOOL isScrolling;
 @property (nonatomic, assign) BOOL isUnlocking;
+@property (nonatomic, strong) SBPasscodeKeyboard* stockPasscodeKeyboard;
 
 - (UIScrollView*)unlockScrollView;
 - (RSLockScreenNotificationArea*)notificationArea;
+- (UIView<RSPasscodeLockViewKeypadDelegate>*)passcodeKeyboard;
+
 - (void)setContentOffset:(CGPoint)contentOffset;
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 - (CGPoint)contentOffset;
@@ -31,5 +37,8 @@
 - (void)reset;
 
 - (void)notificationsUpdated;
+- (void)updatePasscodeKeyboard;
+
+- (void)handlePasscodeTextChanged;
 
 @end

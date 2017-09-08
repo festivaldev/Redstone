@@ -93,6 +93,56 @@
 		8D8E68491F5F41EB00270CC0 /* RSWeatherHourlyForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E68481F5F41EB00270CC0 /* RSWeatherHourlyForecastView.m */; };
 		8D8E684C1F5F429D00270CC0 /* RSWeatherDayForecastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E684B1F5F429D00270CC0 /* RSWeatherDayForecastView.m */; };
 		8DA4CC911F60A80C00006CF6 /* libWeatherManager.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */; };
+		8DA4CCA11F6124DB00006CF6 /* PFHeaderCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C54BB1F57F4B700780214 /* PFHeaderCell.mm */; };
+		8DA4CCA21F6124DB00006CF6 /* RDSRootListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C54AB1F57EB1100780214 /* RDSRootListController.m */; };
+		8DA4CCA31F6124DB00006CF6 /* RDSHomeScreenPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C54C01F57FD7400780214 /* RDSHomeScreenPreferences.m */; };
+		8DA4CCA41F6124DB00006CF6 /* RDSLockScreenPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C54C81F580EDF00780214 /* RDSLockScreenPreferences.m */; };
+		8DA4CCA51F6124DB00006CF6 /* RDSAccentColorList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C54C51F580A6E00780214 /* RDSAccentColorList.m */; };
+		8DA4CCA61F6124E000006CF6 /* CAKeyframeAnimation+AHEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */; };
+		8DA4CCA71F6124E000006CF6 /* UIFont+WDCustomLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E911F359E1500BFFB39 /* UIFont+WDCustomLoader.m */; };
+		8DA4CCA81F6124E000006CF6 /* UIImageAverageColorAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E931F359E1500BFFB39 /* UIImageAverageColorAddition.m */; };
+		8DA4CCA91F6124E000006CF6 /* UIView+Easing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E951F359E1500BFFB39 /* UIView+Easing.m */; };
+		8DA4CCAA1F6124E500006CF6 /* RSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB141F33BAB7003CC2B4 /* RSCore.m */; };
+		8DA4CCAB1F6124E500006CF6 /* RSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF61F345D4800F9A884 /* RSPreferences.m */; };
+		8DA4CCAC1F6124E500006CF6 /* RSMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0B6EC1F346515002E3CCF /* RSMetrics.m */; };
+		8DA4CCAD1F6124E500006CF6 /* RSAesthetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191371F3D8933009A8568 /* RSAesthetics.m */; };
+		8DA4CCAE1F6124E500006CF6 /* RSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191401F3D9D25009A8568 /* RSAnimation.m */; };
+		8DA4CCAF1F6124EA00006CF6 /* RSTiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191601F403FE3009A8568 /* RSTiltView.m */; };
+		8DA4CCB01F6124EA00006CF6 /* RSFlyoutMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191631F40568D009A8568 /* RSFlyoutMenu.m */; };
+		8DA4CCB11F6124EA00006CF6 /* RSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6B51F4AD00A00ADD69A /* RSTextField.m */; };
+		8DA4CCB21F6124EA00006CF6 /* RSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6B81F4AE00E00ADD69A /* RSAlertController.m */; };
+		8DA4CCB31F6124EA00006CF6 /* RSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6BB1F4AE11600ADD69A /* RSAlertAction.m */; };
+		8DA4CCB41F6124EA00006CF6 /* RSSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D6821F4E35950006A624 /* RSSlider.m */; };
+		8DA4CCB51F6124EA00006CF6 /* RSNowPlayingControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3920B11F52A7C7002A4C24 /* RSNowPlayingControls.m */; };
+		8DA4CCB61F6124F200006CF6 /* RSHomeScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB3D1F33C51A003CC2B4 /* RSHomeScreenController.m */; };
+		8DA4CCB71F6124F200006CF6 /* RSHomeScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5EB401F33CC43003CC2B4 /* RSHomeScreenScrollView.m */; };
+		8DA4CCB81F6124F200006CF6 /* RSHomeScreenWallpaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D11913D1F3D9799009A8568 /* RSHomeScreenWallpaperView.m */; };
+		8DA4CCB91F6124FC00006CF6 /* RSStartScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D37716A1F3456FA008056D1 /* RSStartScreenController.m */; };
+		8DA4CCBA1F6124FC00006CF6 /* RSStartScreenScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D259E9C1F35A51300BFFB39 /* RSStartScreenScrollView.m */; };
+		8DA4CCBB1F6124FC00006CF6 /* RSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEE1CF1F3529D000AD4827 /* RSTile.m */; };
+		8DA4CCBC1F6124FC00006CF6 /* RSTileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251A71F39B94F0007298A /* RSTileButton.m */; };
+		8DA4CCBD1F6124FC00006CF6 /* RSTileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6251AA1F39B95D0007298A /* RSTileInfo.m */; };
+		8DA4CCBE1F61250000006CF6 /* RSAppListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC70CF31F345BCB00F9A884 /* RSAppListController.m */; };
+		8DA4CCBF1F61250000006CF6 /* RSAppListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191511F3F8CAE009A8568 /* RSAppListScrollView.m */; };
+		8DA4CCC01F61250000006CF6 /* RSApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191541F3F912C009A8568 /* RSApp.m */; };
+		8DA4CCC11F61250000006CF6 /* RSAppListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191571F3F93B8009A8568 /* RSAppListSection.m */; };
+		8DA4CCC21F61250000006CF6 /* RSJumpList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE6A3F41F42656A009EDE86 /* RSJumpList.m */; };
+		8DA4CCC31F61250300006CF6 /* RSLaunchScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1191451F3E5495009A8568 /* RSLaunchScreenController.m */; };
+		8DA4CCC41F61250700006CF6 /* RSAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6BF1F4B88C400ADD69A /* RSAudioController.m */; };
+		8DA4CCC51F61250700006CF6 /* RSVolumeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14C6C91F4D5CA800ADD69A /* RSVolumeHUD.m */; };
+		8DA4CCC61F61250700006CF6 /* RSVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D96D67F1F4E2CF30006A624 /* RSVolumeView.m */; };
+		8DA4CCC71F61250B00006CF6 /* RSNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16601F5B50CD00B4DE3A /* RSNotificationController.m */; };
+		8DA4CCC81F61250B00006CF6 /* RSNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */; };
+		8DA4CCD11F61251500006CF6 /* RSLockScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */; };
+		8DA4CCD21F61251500006CF6 /* RSLockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE1C6A1F51658B00B2804E /* RSLockScreenView.m */; };
+		8DA4CCD31F61251500006CF6 /* RSLockScreenNotificationArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E41AB1F58B11100AE2694 /* RSLockScreenNotificationArea.m */; };
+		8DA4CCD41F61251500006CF6 /* RSLockScreenNotificationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E41AE1F5932BE00AE2694 /* RSLockScreenNotificationApp.m */; };
+		8DA4CCD51F61251500006CF6 /* RSLockScreenSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CC9C1F61221E00006CF6 /* RSLockScreenSecurityController.m */; };
+		8DA4CCD91F6130C200006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCD71F612EE400006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.m */; };
+		8DA4CCDD1F6133CF00006CF6 /* RSPasscodeLockViewLongNumericKeypad.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCDB1F61338600006CF6 /* RSPasscodeLockViewLongNumericKeypad.m */; };
+		8DA4CCE21F61FE7200006CF6 /* RSLockScreenPasscodeEntryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE01F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.m */; };
+		8DA4CCE61F62073100006CF6 /* RSLockScreenPasscodeEntryTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE41F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.m */; };
+		8DA4CCEA1F62883400006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE81F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -899,6 +949,20 @@
 		8DA4CC341F60A3E700006CF6 /* SBLockScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenView.h; sourceTree = "<group>"; };
 		8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libWeatherManager.dylib; path = libWeatherManager/.theos/obj/iphone_simulator/debug/libWeatherManager.dylib; sourceTree = "<group>"; };
 		8DA4CC921F60A80C00006CF6 /* Weather.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA4CC9B1F61221E00006CF6 /* RSLockScreenSecurityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenSecurityController.h; sourceTree = "<group>"; };
+		8DA4CC9C1F61221E00006CF6 /* RSLockScreenSecurityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenSecurityController.m; sourceTree = "<group>"; };
+		8DA4CC9E1F61228700006CF6 /* SBBannerContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBannerContainerView.h; sourceTree = "<group>"; };
+		8DA4CCD61F612EE400006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPasscodeLockViewSimpleFixedDigitKeypad.h; sourceTree = "<group>"; };
+		8DA4CCD71F612EE400006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPasscodeLockViewSimpleFixedDigitKeypad.m; sourceTree = "<group>"; };
+		8DA4CCDA1F61338600006CF6 /* RSPasscodeLockViewLongNumericKeypad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPasscodeLockViewLongNumericKeypad.h; sourceTree = "<group>"; };
+		8DA4CCDB1F61338600006CF6 /* RSPasscodeLockViewLongNumericKeypad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPasscodeLockViewLongNumericKeypad.m; sourceTree = "<group>"; };
+		8DA4CCDE1F61361900006CF6 /* RSPasscodeLockViewKeypadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSPasscodeLockViewKeypadDelegate.h; sourceTree = "<group>"; };
+		8DA4CCDF1F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenPasscodeEntryButton.h; sourceTree = "<group>"; };
+		8DA4CCE01F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenPasscodeEntryButton.m; sourceTree = "<group>"; };
+		8DA4CCE31F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenPasscodeEntryTextField.h; sourceTree = "<group>"; };
+		8DA4CCE41F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenPasscodeEntryTextField.m; sourceTree = "<group>"; };
+		8DA4CCE71F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPasscodeLockViewAlphanumericKeyboard.h; sourceTree = "<group>"; };
+		8DA4CCE81F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPasscodeLockViewAlphanumericKeyboard.m; sourceTree = "<group>"; };
 		8DB0B6E71F346356002E3CCF /* 2ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 2ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6E91F346361002E3CCF /* 3ColumnDefaultLayout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3ColumnDefaultLayout.plist; sourceTree = "<group>"; };
 		8DB0B6EB1F346515002E3CCF /* RSMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMetrics.h; sourceTree = "<group>"; };
@@ -2981,6 +3045,7 @@
 				8D11915C1F403F12009A8568 /* SBApplication.h */,
 				8DE6A3F21F425E6A009EDE86 /* SBApplicationController.h */,
 				8DCE1C711F516E8200B2804E /* SBBacklightController.h */,
+				8DA4CC9E1F61228700006CF6 /* SBBannerContainerView.h */,
 				8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */,
 				8DCE1C6E1F5166A400B2804E /* SBDashBoardView.h */,
 				8DBEE1D61F352BDC00AD4827 /* SBIconController.h */,
@@ -3029,6 +3094,19 @@
 				8D8E41AB1F58B11100AE2694 /* RSLockScreenNotificationArea.m */,
 				8D8E41AD1F5932BE00AE2694 /* RSLockScreenNotificationApp.h */,
 				8D8E41AE1F5932BE00AE2694 /* RSLockScreenNotificationApp.m */,
+				8DA4CC9B1F61221E00006CF6 /* RSLockScreenSecurityController.h */,
+				8DA4CC9C1F61221E00006CF6 /* RSLockScreenSecurityController.m */,
+				8DA4CCE31F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.h */,
+				8DA4CCE41F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.m */,
+				8DA4CCDF1F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.h */,
+				8DA4CCE01F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.m */,
+				8DA4CCDE1F61361900006CF6 /* RSPasscodeLockViewKeypadDelegate.h */,
+				8DA4CCD61F612EE400006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.h */,
+				8DA4CCD71F612EE400006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.m */,
+				8DA4CCDA1F61338600006CF6 /* RSPasscodeLockViewLongNumericKeypad.h */,
+				8DA4CCDB1F61338600006CF6 /* RSPasscodeLockViewLongNumericKeypad.m */,
+				8DA4CCE71F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.h */,
+				8DA4CCE81F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m */,
 			);
 			path = LockScreen;
 			sourceTree = "<group>";
@@ -3186,6 +3264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DF5EB2D1F33BAD8003CC2B4 /* Build configuration list for PBXNativeTarget "hiddenapp" */;
 			buildPhases = (
+				8DA4CC9F1F61248000006CF6 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -3391,6 +3470,63 @@
 				8D8E68491F5F41EB00270CC0 /* RSWeatherHourlyForecastView.m in Sources */,
 				8D8E67501F5F20D600270CC0 /* RSWeatherTile.m in Sources */,
 				8D8E67651F5F2E4300270CC0 /* RSWeatherConditionView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DA4CC9F1F61248000006CF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DA4CCC11F61250000006CF6 /* RSAppListSection.m in Sources */,
+				8DA4CCB51F6124EA00006CF6 /* RSNowPlayingControls.m in Sources */,
+				8DA4CCD41F61251500006CF6 /* RSLockScreenNotificationApp.m in Sources */,
+				8DA4CCA11F6124DB00006CF6 /* PFHeaderCell.mm in Sources */,
+				8DA4CCB31F6124EA00006CF6 /* RSAlertAction.m in Sources */,
+				8DA4CCA51F6124DB00006CF6 /* RDSAccentColorList.m in Sources */,
+				8DA4CCBD1F6124FC00006CF6 /* RSTileInfo.m in Sources */,
+				8DA4CCC51F61250700006CF6 /* RSVolumeHUD.m in Sources */,
+				8DA4CCBE1F61250000006CF6 /* RSAppListController.m in Sources */,
+				8DA4CCA31F6124DB00006CF6 /* RDSHomeScreenPreferences.m in Sources */,
+				8DA4CCAC1F6124E500006CF6 /* RSMetrics.m in Sources */,
+				8DA4CCB81F6124F200006CF6 /* RSHomeScreenWallpaperView.m in Sources */,
+				8DA4CCB21F6124EA00006CF6 /* RSAlertController.m in Sources */,
+				8DA4CCAF1F6124EA00006CF6 /* RSTiltView.m in Sources */,
+				8DA4CCC61F61250700006CF6 /* RSVolumeView.m in Sources */,
+				8DA4CCB01F6124EA00006CF6 /* RSFlyoutMenu.m in Sources */,
+				8DA4CCC31F61250300006CF6 /* RSLaunchScreenController.m in Sources */,
+				8DA4CCDD1F6133CF00006CF6 /* RSPasscodeLockViewLongNumericKeypad.m in Sources */,
+				8DA4CCA91F6124E000006CF6 /* UIView+Easing.m in Sources */,
+				8DA4CCBC1F6124FC00006CF6 /* RSTileButton.m in Sources */,
+				8DA4CCC01F61250000006CF6 /* RSApp.m in Sources */,
+				8DA4CCBA1F6124FC00006CF6 /* RSStartScreenScrollView.m in Sources */,
+				8DA4CCD31F61251500006CF6 /* RSLockScreenNotificationArea.m in Sources */,
+				8DA4CCB61F6124F200006CF6 /* RSHomeScreenController.m in Sources */,
+				8DA4CCBB1F6124FC00006CF6 /* RSTile.m in Sources */,
+				8DA4CCA21F6124DB00006CF6 /* RDSRootListController.m in Sources */,
+				8DA4CCA81F6124E000006CF6 /* UIImageAverageColorAddition.m in Sources */,
+				8DA4CCAA1F6124E500006CF6 /* RSCore.m in Sources */,
+				8DA4CCAE1F6124E500006CF6 /* RSAnimation.m in Sources */,
+				8DA4CCB91F6124FC00006CF6 /* RSStartScreenController.m in Sources */,
+				8DA4CCC41F61250700006CF6 /* RSAudioController.m in Sources */,
+				8DA4CCAD1F6124E500006CF6 /* RSAesthetics.m in Sources */,
+				8DA4CCA61F6124E000006CF6 /* CAKeyframeAnimation+AHEasing.m in Sources */,
+				8DA4CCD21F61251500006CF6 /* RSLockScreenView.m in Sources */,
+				8DA4CCB41F6124EA00006CF6 /* RSSlider.m in Sources */,
+				8DA4CCD11F61251500006CF6 /* RSLockScreenController.m in Sources */,
+				8DA4CCD91F6130C200006CF6 /* RSPasscodeLockViewSimpleFixedDigitKeypad.m in Sources */,
+				8DA4CCB71F6124F200006CF6 /* RSHomeScreenScrollView.m in Sources */,
+				8DA4CCD51F61251500006CF6 /* RSLockScreenSecurityController.m in Sources */,
+				8DA4CCE61F62073100006CF6 /* RSLockScreenPasscodeEntryTextField.m in Sources */,
+				8DA4CCEA1F62883400006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m in Sources */,
+				8DA4CCB11F6124EA00006CF6 /* RSTextField.m in Sources */,
+				8DA4CCBF1F61250000006CF6 /* RSAppListScrollView.m in Sources */,
+				8DA4CCC21F61250000006CF6 /* RSJumpList.m in Sources */,
+				8DA4CCAB1F6124E500006CF6 /* RSPreferences.m in Sources */,
+				8DA4CCC71F61250B00006CF6 /* RSNotificationController.m in Sources */,
+				8DA4CCC81F61250B00006CF6 /* RSNotificationView.m in Sources */,
+				8DA4CCA41F6124DB00006CF6 /* RDSLockScreenPreferences.m in Sources */,
+				8DA4CCE21F61FE7200006CF6 /* RSLockScreenPasscodeEntryButton.m in Sources */,
+				8DA4CCA71F6124E000006CF6 /* UIFont+WDCustomLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

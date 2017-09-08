@@ -62,6 +62,8 @@
 		
 		notificationArea = [[RSLockScreenNotificationArea alloc] initWithFrame:CGRectMake(20, screenHeight-180, screenWidth - 40, 180)];
 		[timeAndDateView addSubview:notificationArea];
+		
+		[self reset];
 	}
 	
 	return self;
@@ -81,16 +83,22 @@
 		[fakeHomeScreenWallpaperView setTransform:CGAffineTransformConcat(CGAffineTransformMakeScale(1.5, 1.5), CGAffineTransformMakeTranslation(parallaxPosition.x, parallaxPosition.y))];
 	}
 	
-	//[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
+	[wallpaperOverlay setHidden:![[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	self.isScrolling = NO;
 	
 	if (scrollView.contentOffset.y >= scrollView.frame.size.height) {
-		self.isUnlocking = YES;
-		
-		[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
+		if ([[[[RSCore sharedInstance] lockScreenController] securityController] deviceIsPasscodeLocked]) {
+			self.isUnlocking = YES;
+			
+			if ([[objc_getClass("SBLockScreenManager") sharedInstance] respondsToSelector:@selector(_setPasscodeVisible:animated:)]) {
+				[[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+			}
+		} else {
+			[(SBLockScreenManager*)[objc_getClass("SBLockScreenManager") sharedInstance] attemptUnlockWithPasscode:nil];
+		}
 	} else {
 		self.isUnlocking = NO;
 	}
@@ -102,6 +110,10 @@
 
 - (RSLockScreenNotificationArea*)notificationArea {
 	return notificationArea;
+}
+
+- (UIView<RSPasscodeLockViewKeypadDelegate>*)passcodeKeyboard {
+	return passcodeKeyboard;
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset {
@@ -141,11 +153,65 @@
 	[nowPlayingControls updateNowPlayingInfo];
 	[unlockScrollView setContentOffset:CGPointZero];
 	[wallpaperView setAlpha:1.0];
+	
+	if ([[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsPasscodeLocked]) {
+		if ([[objc_getClass("SBLockScreenManager") sharedInstance] respondsToSelector:@selector(_setPasscodeVisible:animated:)]) {
+			[[objc_getClass("SBLockScreenManager") sharedInstance] _setPasscodeVisible:YES animated:NO];
+		}
+	}
+	
+	[self updatePasscodeKeyboard];
 }
 
 - (void)notificationsUpdated {
 	[timeLabel setFrame:CGRectMake(21, screenHeight - timeLabel.frame.size.height - 115 - (notificationArea.isShowingDetailedStatus ? 100 : 0), timeLabel.frame.size.width, timeLabel.frame.size.height)];
 	[dateLabel setFrame:CGRectMake(21, screenHeight - dateLabel.frame.size.height - 80 - (notificationArea.isShowingDetailedStatus ? 100 : 0), dateLabel.frame.size.width, dateLabel.frame.size.height)];
+}
+
+//- (void)setStockPasscodeKeyboard:(SBPasscodeKeyboard *)stockPasscodeKeyboard {
+//	if (_stockPasscodeKeyboard) {
+//		[_stockPasscodeKeyboard removeFromSuperview];
+//	}
+//	
+//	_stockPasscodeKeyboard = stockPasscodeKeyboard;
+//	[passcodeKeyboard addSubview:stockPasscodeKeyboard];
+//}
+
+- (void)updatePasscodeKeyboard {
+	RSPasscodeLockViewType passcodeLockViewType = [[RSLockScreenSecurityController sharedInstance] passcodeLockViewType];
+	
+	if (passcodeLockViewType == RSPasscodeLockViewTypeNone || ![[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsPasscodeLocked]) {
+		[passcodeKeyboard removeFromSuperview];
+		passcodeKeyboard = nil;
+		return;
+	}
+	
+	//if (!passcodeKeyboard || [passcodeKeyboard passcodeLockViewType] != passcodeLockViewType) {
+		if (passcodeKeyboard) {
+			[passcodeKeyboard removeFromSuperview];
+		}
+	
+		if (passcodeLockViewType == RSPasscodeLockViewTypeFixedDigit) {
+			passcodeKeyboard = [[RSPasscodeLockViewSimpleFixedDigitKeypad alloc] initWithFrame:CGRectMake(0, screenHeight*2 - 415, screenWidth, 415)];
+		} else if (passcodeLockViewType == RSPasscodeLockViewTypeLongNumeric) {
+			passcodeKeyboard = [[RSPasscodeLockViewLongNumericKeypad alloc] initWithFrame:CGRectMake(0, screenHeight*2 - 415, screenWidth, 415)];
+		} else if (passcodeLockViewType == RSPasscodeLockViewTypeAlphanumeric) {
+			CGRect keyboardFrame = [[objc_getClass("SBPasscodeKeyboard") storedPasscodeKeyboard] frame];
+			
+			[[objc_getClass("SBPasscodeKeyboard") storedPasscodeKeyboard] removeFromSuperview];
+			passcodeKeyboard = [[RSPasscodeLockViewAlphanumericKeyboard alloc] initWithFrame:CGRectMake(0, screenHeight*2 - (keyboardFrame.size.height + 60), screenWidth, keyboardFrame.size.height + 60) passcodeKeyboard:[objc_getClass("SBPasscodeKeyboard") storedPasscodeKeyboard]];
+		}
+		
+		[unlockScrollView addSubview:passcodeKeyboard];
+	//}
+	
+	if ([passcodeKeyboard respondsToSelector:@selector(setPasscodeText:)]) {
+		[passcodeKeyboard setPasscodeText:@""];
+	}
+}
+
+- (void)handlePasscodeTextChanged {
+	[passcodeKeyboard setPasscodeText:[[objc_getClass("SBUIPasscodeLockViewBase") currentPasscodeView] passcode]];
 }
 
 @end

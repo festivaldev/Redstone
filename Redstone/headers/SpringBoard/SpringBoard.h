@@ -2,6 +2,7 @@
 #import "SBApplication.h"
 #import "SBApplicationController.h"
 #import "SBBacklightController.h"
+#import "SBBannerContainerView.h"
 #import "SBBulletinBannerController.h"
 #import "SBDashBoardView.h"
 #import "SBIconController.h"

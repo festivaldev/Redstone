@@ -4,4 +4,9 @@
 
 - (NSString*)passcode;
 
+-(id)_longNumericEntryField;
+
+// new
++ (id)currentPasscodeView;
+
 @end
