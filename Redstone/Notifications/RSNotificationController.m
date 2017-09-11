@@ -11,6 +11,7 @@
 		self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 130)];
 		[self.window setWindowLevel:1500];
 		[self.window _setSecure:YES];
+		[self.window setRootViewController:self];
 		
 		currentBulletins = [NSMutableDictionary new];
 		bulletinViews = [NSMutableDictionary new];
@@ -19,6 +20,15 @@
 	}
 	
 	return self;
+}
+
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+	[coordinator animateAlongsideTransition:nil completion:^(id context) {
+		[UIView setAnimationsEnabled:YES];
+	}];
+	[UIView setAnimationsEnabled:NO];
+	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 - (void)addBulletin:(BBBulletin*)bulletin {
@@ -31,6 +41,8 @@
 			// Add notification to Lock Screen
 			
 			[self.window makeKeyAndVisible];
+			[self setRotation];
+			[UIView setAnimationsEnabled:YES];
 			
 			RSNotificationView* notification = [[RSNotificationView alloc] initWithBulletin:bulletin];
 			[self.window addSubview:notification];
@@ -43,6 +55,8 @@
 			// Add notification globally, except Lock Screen
 			
 			[self.window makeKeyAndVisible];
+			[self setRotation];
+			[UIView setAnimationsEnabled:YES];
 			
 			RSNotificationView* notification = [[RSNotificationView alloc] initWithBulletin:bulletin];
 			[self.window addSubview:notification];
@@ -75,6 +89,26 @@
 		RSNotificationView* notification = [bulletinViews objectForKey:bulletinID];
 		[notification.layer removeAllAnimations];
 		[notification animateOut];
+	}
+}
+
+- (void)setRotation {
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (frontApp) {
+		[[UIDevice currentDevice] setValue:[NSNumber numberWithLongLong:[frontApp statusBarOrientation]] forKey:@"orientation"];
+		
+		if ([frontApp statusBarOrientation] == UIDeviceOrientationPortrait || [frontApp statusBarOrientation] == UIDeviceOrientationPortraitUpsideDown) {
+			[self.window setFrame:CGRectMake(0, 0, screenWidth, 130)];
+			[self.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+		} else {
+			[self.window setFrame:CGRectMake(0, 0, screenHeight, 130)];
+			[self.view setFrame:CGRectMake(0, 0, screenHeight, screenWidth)];
+		}
+	} else {
+		[[UIDevice currentDevice] setValue:[NSNumber numberWithInt:1] forKey:@"orientation"];
+		[self.window setFrame:CGRectMake(0, 0, screenWidth, 130)];
+		[self.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 	}
 }
 

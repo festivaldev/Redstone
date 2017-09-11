@@ -3,9 +3,20 @@
 @implementation RSNotificationView
 
 - (id)initWithBulletin:(BBBulletin*)bulletin {
-	if (self = [super initWithFrame:CGRectMake(0, 0, screenWidth, 130)]) {
+	if (self = [super initWithFrame:CGRectMake(0, 0, 0, 130)]) {
 		_bulletin = bulletin;
 		_application = [[objc_getClass("SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[bulletin section]];
+		
+		SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+		if (frontApp) {
+			if ([frontApp statusBarOrientation] == UIDeviceOrientationPortrait || [frontApp statusBarOrientation] == UIDeviceOrientationPortraitUpsideDown) {
+				[self setFrame:CGRectMake(0, 0, screenWidth, 130)];
+			} else {
+				[self setFrame:CGRectMake(0, 0, screenHeight, 130)];
+			}
+		} else {
+			[self setFrame:CGRectMake(0, 0, screenWidth, 130)];
+		}
 		
 		[self setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
 		
@@ -60,15 +71,15 @@
 		
 		CGFloat notificationTextHeight = 10 + titleLabel.frame.size.height + subtitleLabel.frame.size.height + messageLabel.frame.size.height + 10 + 20;
 		CGFloat notificationImageHeight = 15 + 32 + 15 + 20;
-		[self setFrame:CGRectMake(0, 0, screenWidth, MAX(notificationTextHeight, notificationImageHeight))];
+		[self setFrame:CGRectMake(0, 0, self.frame.size.width, MAX(notificationTextHeight, notificationImageHeight))];
 		
 		// Fake Grabber Thing
 		
-		grabberView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, screenWidth, 20)];
+		grabberView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-20, self.frame.size.width, 20)];
 		[grabberView setBackgroundColor:[RSAesthetics accentColor]];
 		[self addSubview:grabberView];
 		
-		grabberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 20)];
+		grabberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
 		[grabberLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:18]];
 		[grabberLabel setText:@"\uE76F"];
 		[grabberLabel setTextAlignment:NSTextAlignmentCenter];

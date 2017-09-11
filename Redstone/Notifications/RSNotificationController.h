@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <BulletinBoard/BBBulletin.h>
 
-@interface RSNotificationController : NSObject {
+@interface RSNotificationController : UIViewController {
 	NSMutableDictionary* currentBulletins;
 	NSMutableDictionary* bulletinViews;
 }
