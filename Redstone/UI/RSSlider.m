@@ -29,6 +29,12 @@
 	return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	[trackLayer setFrame:CGRectMake(0, frame.size.height/2 - 2/2, frame.size.width, 2)];
+}
+
 - (void)accentColorChanged {
 	[trackFillLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
 	[thumbLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];

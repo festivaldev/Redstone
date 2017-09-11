@@ -15,14 +15,26 @@
 			}
 			
 			self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
+			[self.window setRootViewController:self];
 			[self.window setWindowLevel:2200];
-			
-			volumeHUD = [[RSVolumeHUD alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-			[self.window addSubview:volumeHUD];
+			[self.window setClipsToBounds:YES];
 		}
 	}
 	
 	return self;
+}
+
+- (void)viewDidLoad {
+	volumeHUD = [[RSVolumeHUD alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
+	[self.view addSubview:volumeHUD];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+	[coordinator animateAlongsideTransition:nil completion:^(id context) {
+		[UIView setAnimationsEnabled:YES];
+	}];
+	[UIView setAnimationsEnabled:NO];
+	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 - (float)mediaVolume {
@@ -60,8 +72,30 @@
 
 - (void)displayHUDIfPossible {
 	if ([self canDisplayHUD]) {
-		
 		[self.window makeKeyAndVisible];
+		
+		SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+		
+		if (frontApp) {
+			[[UIDevice currentDevice] setValue:[NSNumber numberWithLongLong:[frontApp statusBarOrientation]] forKey:@"orientation"];
+			
+			if ([frontApp statusBarOrientation] == UIDeviceOrientationPortrait || [frontApp statusBarOrientation] == UIDeviceOrientationPortraitUpsideDown) {
+				[self.window setFrame:CGRectMake(0, 0, screenWidth, 100)];
+				[self.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+				[volumeHUD setFrame:CGRectMake(0, self.view.frame.origin.y, screenWidth, self.view.frame.size.height)];
+			} else {
+				[self.window setFrame:CGRectMake(0, 0, screenHeight, 100)];
+				[self.view setFrame:CGRectMake(0, 0, screenHeight, screenWidth)];
+				[volumeHUD setFrame:CGRectMake(0, self.view.frame.origin.y, screenHeight, self.view.frame.size.height)];
+			}
+		} else {
+			[[UIDevice currentDevice] setValue:[NSNumber numberWithInt:1] forKey:@"orientation"];
+			[self.window setFrame:CGRectMake(0, 0, screenWidth, 100)];
+			[self.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+			[volumeHUD setFrame:CGRectMake(0, self.view.frame.origin.y, screenWidth, self.view.frame.size.height)];
+		}
+		
+		[UIView setAnimationsEnabled:YES];
 		[volumeHUD appear];
 		[volumeHUD resetAnimationTimer];
 	} else if ([volumeHUD isVisible]) {
@@ -78,8 +112,6 @@
 }
 
 - (void)volumeIncreasedForCategory:(NSString*)category volumeValue:(float)volumeValue {
-	NSLog(@"[Redstone] volume increased for %@ (volume at %f)", category, volumeValue);
-	
 	if (![self isShowingVolumeHUD]) {
 		[volumeHUD updateVolumeValues];
 		[self displayHUDIfPossible];
@@ -108,8 +140,6 @@
 }
 
 - (void)volumeDecreasedForCategory:(NSString*)category volumeValue:(float)volumeValue {
-	NSLog(@"[Redstone] volume decreased for %@ (volume at %f)", category, volumeValue);
-	
 	if (![self isShowingVolumeHUD]) {
 		[self displayHUDIfPossible];
 		[volumeHUD updateVolumeValues];

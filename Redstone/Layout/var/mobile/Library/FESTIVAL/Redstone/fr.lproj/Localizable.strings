@@ -12,4 +12,11 @@
 	"VIBRATE_DISABLED" = "Vibreur désactivé";
 	"RINGER_ENABLED" = "Sonnerie activé";
 	"RINGER_DISABLED" = "Sonnerie désactivé";
+	
+	"MEDIA_UNKNOWN_TITLE" = "Titre inconnu";
+	"MEDIA_UNKNOWN_ARTIST" = "Artiste inconnu";
+	
+	"PASSCODE_ENTER_PIN" = "Entrer le code de déverrouillage";
+	"PASSCODE_INVALID_PIN" = "PIN incorrect";
+	"PASSCODE_INVALID_MESA" = "Réessayez";
 }

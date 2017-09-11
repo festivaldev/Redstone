@@ -4,7 +4,7 @@
 
 @class AVSystemController, RSVolumeHUD;
 
-@interface RSAudioController : NSObject <MPVolumeControllerDelegate> {
+@interface RSAudioController : UIViewController <MPVolumeControllerDelegate> {
 	AVSystemController* audioVideoController;
 	
 	float mediaVolume;

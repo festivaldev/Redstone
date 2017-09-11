@@ -16,7 +16,7 @@
 		[mediaSubtitleLabel setTextAlignment:NSTextAlignmentCenter];
 		[self addSubview:mediaSubtitleLabel];
 		
-		prevTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - 106, 60, 44, 44)];
+		prevTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 - 106, 60, 44, 44)];
 		[prevTitleButton setHighlightEnabled:YES];
 		[prevTitleButton.titleLabel setTextColor:[UIColor whiteColor]];
 		[prevTitleButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
@@ -24,7 +24,7 @@
 		[prevTitleButton addTarget:self action:@selector(previousTrack)];
 		[self addSubview:prevTitleButton];
 		
-		playPauseButton = [[RSTiltView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - 44/2, 60, 44, 44)];
+		playPauseButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 - 44/2, 60, 44, 44)];
 		[playPauseButton setHighlightEnabled:YES];
 		[playPauseButton.titleLabel setTextColor:[UIColor whiteColor]];
 		[playPauseButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
@@ -32,7 +32,7 @@
 		[playPauseButton addTarget:self action:@selector(togglePlayPause)];
 		[self addSubview:playPauseButton];
 		
-		nextTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(self.frame.size.width/2 + 106 - 44, 60, 44, 44)];
+		nextTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 + 106 - 44, 60, 44, 44)];
 		[nextTitleButton setHighlightEnabled:YES];
 		[nextTitleButton.titleLabel setTextColor:[UIColor whiteColor]];
 		[nextTitleButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
@@ -45,6 +45,16 @@
 	}
 	
 	return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	[mediaTitleLabel setFrame:CGRectMake(10, 0, frame.size.width-20, 30)];
+	[mediaSubtitleLabel setFrame:CGRectMake(10, 30, frame.size.width-20, 18)];
+	[prevTitleButton setFrame:CGRectMake(frame.size.width/2 - 106, 60, 44, 44)];
+	[playPauseButton setFrame:CGRectMake(frame.size.width/2 - 44/2, 60, 44, 44)];
+	[nextTitleButton setFrame:CGRectMake(frame.size.width/2 + 106 - 44, 60, 44, 44)];
 }
 
 - (void)updateNowPlayingInfo {

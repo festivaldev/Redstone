@@ -15,4 +15,8 @@
 	
 	"MEDIA_UNKNOWN_TITLE" = "Unknown Title";
 	"MEDIA_UNKNOWN_ARTIST" = "Unknown Artist";
+	
+	"PASSCODE_ENTER_PIN" = "Enter PIN";
+	"PASSCODE_INVALID_PIN" = "Invalid PIN";
+	"PASSCODE_INVALID_MESA" = "try again";
 }

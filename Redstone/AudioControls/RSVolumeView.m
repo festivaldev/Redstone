@@ -6,7 +6,7 @@
 	if (self = [super initWithFrame:frame]) {
 		category = _category;
 		
-		categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, screenWidth-20, 20)];
+		categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, frame.size.width-20, 20)];
 		[categoryLabel setFont:[UIFont fontWithName:@"SegoeUI" size:15]];
 		[categoryLabel setTextColor:[UIColor whiteColor]];
 		[self addSubview:categoryLabel];
@@ -14,7 +14,7 @@
 		self.slider = [[RSSlider alloc] initWithFrame:CGRectMake(56, 37, frame.size.width - 112, 24)];
 		[self addSubview:self.slider];
 		
-		volumeValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 46, 31, 36, 36)];
+		volumeValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width - 46, 31, 36, 36)];
 		[volumeValueLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:30]];
 		[volumeValueLabel setTextAlignment:NSTextAlignmentCenter];
 		[volumeValueLabel setTextColor:[UIColor whiteColor]];
@@ -25,6 +25,14 @@
 	}
 	
 	return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	[categoryLabel setFrame:CGRectMake(10, 10, frame.size.width-20, 20)];
+	[self.slider setFrame:CGRectMake(56, 37, frame.size.width - 112, 24)];
+	[volumeValueLabel setFrame:CGRectMake(frame.size.width - 46, 31, 36, 36)];
 }
 
 - (void)updateVolumeDisplay {

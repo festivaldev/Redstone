@@ -9,7 +9,7 @@
 		[self.layer setAnchorPoint:CGPointMake(0.5, 0)];
 		[self setFrame:frame];
 		
-		ringerVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100) forCategory:@"Ringtone"];
+		ringerVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 100) forCategory:@"Ringtone"];
 		[ringerVolumeView.slider addTarget:self action:@selector(ringerVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:ringerVolumeView];
 		
@@ -20,7 +20,7 @@
 		[ringerMuteButton addTarget:self action:@selector(toggleRingerMuted)];
 		[ringerVolumeView addSubview:ringerMuteButton];
 		
-		mediaVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, screenWidth, 100) forCategory:@"Audio/Video"];
+		mediaVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, frame.size.width, 100) forCategory:@"Audio/Video"];
 		[mediaVolumeView.slider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:mediaVolumeView];
 		
@@ -31,7 +31,7 @@
 		[mediaMuteButton addTarget:self action:@selector(toggleMediaMuted)];
 		[mediaVolumeView addSubview:mediaMuteButton];
 		
-		headphoneVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, screenWidth, 100) forCategory:@"Headphones"];
+		headphoneVolumeView = [[RSVolumeView alloc] initWithFrame:CGRectMake(0, 110, frame.size.width, 100) forCategory:@"Headphones"];
 		[headphoneVolumeView.slider addTarget:self action:@selector(mediaVolumeChanged) forControlEvents:UIControlEventValueChanged];
 		[self addSubview:headphoneVolumeView];
 		
@@ -42,7 +42,7 @@
 		[headphoneMuteButton setUserInteractionEnabled:NO];
 		[headphoneVolumeView addSubview:headphoneMuteButton];
 		
-		extendButton = [[RSTiltView alloc] initWithFrame:CGRectMake(self.frame.size.width - 46, 10, 36, 18)];
+		extendButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width - 46, 10, 36, 18)];
 		[extendButton setTiltEnabled:NO];
 		[extendButton.titleLabel setTextColor:[UIColor whiteColor]];
 		[extendButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:18]];
@@ -60,7 +60,7 @@
 		[self addSubview:ringerButton];
 		[self updateRingerButtonStatus];
 		
-		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(0, 100, screenWidth, 120)];
+		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(0, 100, frame.size.width, 120)];
 		[self addSubview:nowPlayingControls];
 		[nowPlayingControls setHidden:YES];
 		
@@ -70,6 +70,17 @@
 	}
 	
 	return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+	[super setFrame:frame];
+	
+	[ringerVolumeView setFrame:CGRectMake(0, ringerVolumeView.frame.origin.y, frame.size.width, 100)];
+	[mediaVolumeView setFrame:CGRectMake(0, mediaVolumeView.frame.origin.y, frame.size.width, 100)];
+	[headphoneVolumeView setFrame:CGRectMake(0, headphoneVolumeView.frame.origin.y, frame.size.width, 100)];
+	[extendButton setFrame:CGRectMake(frame.size.width - 46, extendButton.frame.origin.y, 36, 18)];
+	[ringerButton setFrame:CGRectMake(frame.size.width - ringerButton.frame.size.width - 10, ringerButton.frame.origin.y, ringerButton.frame.size.width, 18)];
+	[nowPlayingControls setFrame:CGRectMake(0, nowPlayingControls.frame.origin.y, frame.size.width, 120)];
 }
 
 - (void)accentColorChanged {
@@ -150,7 +161,7 @@
 	} completion:^(BOOL finished) {
 		[self removeEasingFunctionForKeyPath:@"frame"];
 		
-		[self.superview setHidden:YES];
+		[[[[RSCore sharedInstance] audioController] window] setHidden:YES];
 	}];
 }
 
@@ -221,19 +232,19 @@
 			
 			if (self.isShowingNowPlayingControls) {
 				if (self.isExtended) {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 190)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 190)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 190)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 190)];
 				} else {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 220)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 220)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 220)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 220)];
 				}
 			} else {
 				if (self.isExtended) {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 244)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 244)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 244)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 244)];
 				} else {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 100)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 100)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 100)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
 				}
 			}
 		} completion:^(BOOL finished){
@@ -242,19 +253,19 @@
 	} else {
 		if (self.isShowingNowPlayingControls) {
 			if (self.isExtended) {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 190)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 190)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 190)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 190)];
 			} else {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 220)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 220)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 220)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 220)];
 			}
 		} else {
 			if (self.isExtended) {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 244)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 244)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 244)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 244)];
 			} else {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 100)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 100)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 100)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
 			}
 		}
 	}
@@ -267,8 +278,8 @@
 		[ringerVolumeView setHidden:YES];
 		[nowPlayingControls setHidden:self.isExtended];
 		
-		[mediaVolumeView setFrame:CGRectMake(0, 0, screenWidth, 100)];
-		[headphoneVolumeView setFrame:CGRectMake(0, 0, screenWidth, 100)];
+		[mediaVolumeView setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
+		[headphoneVolumeView setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
 		
 		if (self.isShowingHeadphoneVolume) {
 			[mediaVolumeView setHidden:YES];
@@ -281,8 +292,8 @@
 		[ringerVolumeView setHidden:NO];
 		[nowPlayingControls setHidden:YES];
 		
-		[mediaVolumeView setFrame:CGRectMake(0, 110, screenWidth, 100)];
-		[headphoneVolumeView setFrame:CGRectMake(0, 110, screenWidth, 100)];
+		[mediaVolumeView setFrame:CGRectMake(0, 110, self.frame.size.width, 100)];
+		[headphoneVolumeView setFrame:CGRectMake(0, 110, self.frame.size.width, 100)];
 	}
 	
 	if (self.isVisible) {
@@ -291,19 +302,19 @@
 			
 			if (self.isShowingNowPlayingControls) {
 				if (self.isExtended) {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 190)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 190)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 190)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 190)];
 				} else {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 220)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 220)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 220)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 220)];
 				}
 			} else {
 				if (self.isExtended) {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 244)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 244)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 244)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 244)];
 				} else {
-					[self setBounds:CGRectMake(0, 0, screenWidth, 100)];
-					[self.superview setFrame:CGRectMake(0, 0, screenWidth, 100)];
+					[self setBounds:CGRectMake(0, 0, self.frame.size.width, 100)];
+					[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
 				}
 			}
 		} completion:^(BOOL finished) {
@@ -312,19 +323,19 @@
 	} else {
 		if (self.isShowingNowPlayingControls) {
 			if (self.isExtended) {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 190)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 190)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 190)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 190)];
 			} else {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 220)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 220)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 220)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 220)];
 			}
 		} else {
 			if (self.isExtended) {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 244)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 244)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 244)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 244)];
 			} else {
-				[self setBounds:CGRectMake(0, 0, screenWidth, 100)];
-				[self.superview setFrame:CGRectMake(0, 0, screenWidth, 100)];
+				[self setBounds:CGRectMake(0, 0, self.frame.size.width, 100)];
+				[self.window setFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
 			}
 		}
 	}

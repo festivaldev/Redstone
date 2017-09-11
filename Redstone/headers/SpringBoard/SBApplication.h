@@ -5,5 +5,7 @@
 - (id)bundleIdentifier;
 - (id)badgeNumberOrString;
 - (id)displayName;
+- (long long)currentInterfaceOrientation;
+- (long long)statusBarOrientation;
 
 @end
