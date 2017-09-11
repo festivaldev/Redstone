@@ -357,7 +357,6 @@
 		8D14C6CB1F4D5D8000ADD69A /* MPVolumeControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPVolumeControllerDelegate.h; sourceTree = "<group>"; };
 		8D14C6CC1F4D661100ADD69A /* VolumeControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VolumeControl.h; sourceTree = "<group>"; };
 		8D14C6CD1F4D666200ADD69A /* SpringBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoard.h; sourceTree = "<group>"; };
-		8D259E8A1F35302C00BFFB39 /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = hiddenapp.app; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/hiddenapp.app"; sourceTree = "<absolute>"; };
 		8D259E8C1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+AHEasing.h"; sourceTree = "<group>"; };
 		8D259E8D1F359E1500BFFB39 /* CAKeyframeAnimation+AHEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+AHEasing.m"; sourceTree = "<group>"; };
 		8D259E8E1F359E1500BFFB39 /* easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = easing.c; sourceTree = "<group>"; };
@@ -389,6 +388,9 @@
 		8D6251A71F39B94F0007298A /* RSTileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileButton.m; sourceTree = "<group>"; };
 		8D6251A91F39B95D0007298A /* RSTileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileInfo.h; sourceTree = "<group>"; };
 		8D6251AA1F39B95D0007298A /* RSTileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTileInfo.m; sourceTree = "<group>"; };
+		8D7080D21F65F8CA007BA7DC /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = People.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D7080D31F65F8CA007BA7DC /* hiddenapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hiddenapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D7080D41F668B5E007BA7DC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D7C549F1F55CBEF00780214 /* SBPasscodeKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBPasscodeKeyboard.h; sourceTree = "<group>"; };
 		8D7C54A01F55CC2400780214 /* SpringBoardUIServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringBoardUIServices.h; sourceTree = "<group>"; };
 		8D7C54A81F57EB1100780214 /* entry.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entry.plist; sourceTree = "<group>"; };
@@ -944,7 +946,6 @@
 		8D9C16651F5B5B2E00B4DE3A /* RSNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSNotificationView.m; sourceTree = "<group>"; };
 		8D9C16671F5B61EF00B4DE3A /* BBObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBObserver.h; sourceTree = "<group>"; };
 		8D9C16681F5B622800B4DE3A /* SBBulletinBannerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBulletinBannerController.h; sourceTree = "<group>"; };
-		8DA4CC311F608FF600006CF6 /* People.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = People.tile; path = "/Users/janikschmidt/Documents/Xcode/Redstone/build/Debug-iphoneos/People.tile"; sourceTree = "<absolute>"; };
 		8DA4CC331F60A2D500006CF6 /* Redstone_LockScreen.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Redstone_LockScreen.xm; sourceTree = "<group>"; };
 		8DA4CC341F60A3E700006CF6 /* SBLockScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBLockScreenView.h; sourceTree = "<group>"; };
 		8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libWeatherManager.dylib; path = libWeatherManager/.theos/obj/iphone_simulator/debug/libWeatherManager.dylib; sourceTree = "<group>"; };
@@ -1534,6 +1535,8 @@
 				8D90EEAF1F5E843D00303F23 /* libWeatherManager */,
 				8DA4CC8F1F60A80C00006CF6 /* Frameworks */,
 				8DA4CC921F60A80C00006CF6 /* Weather.tile */,
+				8D7080D21F65F8CA007BA7DC /* People.tile */,
+				8D7080D31F65F8CA007BA7DC /* hiddenapp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3239,7 +3242,7 @@
 			);
 			name = People;
 			productName = People;
-			productReference = 8DA4CC311F608FF600006CF6 /* People.tile */;
+			productReference = 8D7080D21F65F8CA007BA7DC /* People.tile */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D90EF651F5F1FD400303F23 /* Weather */ = {
@@ -3272,7 +3275,7 @@
 			);
 			name = hiddenapp;
 			productName = hiddenapp;
-			productReference = 8D259E8A1F35302C00BFFB39 /* hiddenapp.app */;
+			productReference = 8D7080D31F65F8CA007BA7DC /* hiddenapp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3570,6 +3573,7 @@
 			children = (
 				8D11904D1F3D0D10009A8568 /* de */,
 				8D11904E1F3D0D10009A8568 /* en */,
+				8D7080D41F668B5E007BA7DC /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4276,6 +4280,7 @@
 				8DA4CC961F611D2200006CF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8DF5EB0F1F337073003CC2B4 /* Build configuration list for PBXLegacyTarget "Install" */ = {
 			isa = XCConfigurationList;
