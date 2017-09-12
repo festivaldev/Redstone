@@ -14,20 +14,24 @@ NSBundle* redstoneBundle;
 }
 
 + (UIImage*)lockScreenWallpaper {
-	NSData* lockScreenWallpaper = [NSData dataWithContentsOfFile:LOCK_WALLPAPER_PATH];
-	
-	CFDataRef lockWallpaperDataRef = (__bridge CFDataRef)lockScreenWallpaper;
-	NSArray* imageArray = (__bridge NSArray*)CPBitmapCreateImagesFromData(lockWallpaperDataRef, NULL, 1, NULL);
-	UIImage* lockWallpaper = [UIImage imageWithCGImage:(CGImageRef)imageArray[0]];
-	
-	return lockWallpaper;
+	if (![[[RSPreferences preferences] objectForKey:@"showWallpaper"] boolValue]) {
+		return [self imageFromColor:[self colorForCurrentThemeByCategory:@"solidBackgroundColor"]];
+	} else{
+		NSData* lockScreenWallpaper = [NSData dataWithContentsOfFile:LOCK_WALLPAPER_PATH];
+		
+		CFDataRef lockWallpaperDataRef = (__bridge CFDataRef)lockScreenWallpaper;
+		NSArray* imageArray = (__bridge NSArray*)CPBitmapCreateImagesFromData(lockWallpaperDataRef, NULL, 1, NULL);
+		UIImage* lockWallpaper = [UIImage imageWithCGImage:(CGImageRef)imageArray[0]];
+		
+		return lockWallpaper;
+	}
 }
 
 + (UIImage*)homeScreenWallpaper {
 	NSData* homeScreenWallpaper = [NSData dataWithContentsOfFile:HOME_WALLPAPER_PATH];
 	
 	if (![[[RSPreferences preferences] objectForKey:@"showWallpaper"] boolValue]) {
-		return [self imageFromColor:[UIColor blackColor]];
+		return [self imageFromColor:[self colorForCurrentThemeByCategory:@"solidBackgroundColor"]];
 	} else if (homeScreenWallpaper) {
 		CFDataRef homeWallpaperDataRef = (__bridge CFDataRef)homeScreenWallpaper;
 		NSArray* imageArray = (__bridge NSArray*)CPBitmapCreateImagesFromData(homeWallpaperDataRef, NULL, 1, NULL);
@@ -51,6 +55,51 @@ NSBundle* redstoneBundle;
 	} else {
 		return [[self accentColor] colorWithAlphaComponent:[self tileOpacity]];
 	}
+}
+
++ (UIColor*)colorForCurrentThemeByCategory:(NSString*)colorCategory {
+	if ([[[RSPreferences preferences] objectForKey:@"themeColor"] isEqualToString:@"dark"]) {
+		NSDictionary* colors = @{
+								 @"foregroundColor": [UIColor whiteColor],
+								 @"backgroundColor": [UIColor colorWithWhite:0.22 alpha:1.0],
+								 @"invertedForegroundColor": [UIColor blackColor],
+								 @"invertedBackgroundColor": [UIColor whiteColor],
+								 @"opaqueBackgroundColor": [UIColor colorWithWhite:0.0 alpha:0.75],
+								 @"solidBackgroundColor": [UIColor blackColor],
+								 @"borderColor": [UIColor colorWithWhite:0.46 alpha:1.0],
+								 @"trackColor": [UIColor colorWithWhite:0.43 alpha:1.0],
+								 @"disabledColor": [UIColor colorWithWhite:0.3 alpha:1.0],
+								 @"buttonBackgroundColor": [UIColor colorWithWhite:0.38 alpha:1.0],
+								 @"textFieldBackgroundColor": [UIColor blackColor],
+								 @"textFieldPlaceholderColor": [UIColor colorWithWhite:0.6 alpha:1.0],
+								 };
+		
+		if ([colors objectForKey:colorCategory]) {
+			return [colors objectForKey:colorCategory];
+		}
+	} else if ([[[RSPreferences preferences] objectForKey:@"themeColor"] isEqualToString:@"light"]) {
+		NSDictionary* colors = @{
+								 @"foregroundColor": [UIColor blackColor],
+								 @"backgroundColor": [UIColor colorWithWhite:0.95 alpha:1.0],
+								 @"invertedForegroundColor": [UIColor whiteColor],
+								 @"invertedBackgroundColor": [UIColor colorWithWhite:0.22 alpha:1.0],
+								 @"opaqueBackgroundColor": [UIColor colorWithWhite:1.0 alpha:0.75],
+								 @"solidBackgroundColor": [UIColor whiteColor],
+								 @"borderColor": [UIColor colorWithWhite:0.50 alpha:1.0],
+								 @"trackColor": [UIColor colorWithWhite:0.66 alpha:1.0],
+								 @"disabledColor": [UIColor colorWithWhite:0.7 alpha:1.0],
+								 @"buttonColor": [UIColor colorWithWhite:0.72 alpha:1.0],
+								 @"textFieldBackgroundColor": [UIColor colorWithWhite:0.9 alpha:0.85],
+								 @"textFieldPlaceholderColor": [UIColor colorWithWhite:0.33 alpha:1.0],
+								 
+								 };
+		
+		if ([colors objectForKey:colorCategory]) {
+			return [colors objectForKey:colorCategory];
+		}
+	}
+	
+	return nil;
 }
 
 + (CGFloat)tileOpacity {
@@ -153,6 +202,24 @@ NSBundle* redstoneBundle;
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return image;
+}
+
++ (UIColor *)readableForegroundColorForBackgroundColor:(UIColor*)backgroundColor {
+	size_t count = CGColorGetNumberOfComponents(backgroundColor.CGColor);
+	const CGFloat *componentColors = CGColorGetComponents(backgroundColor.CGColor);
+	
+	CGFloat darknessScore = 0;
+	if (count == 2) {
+		darknessScore = (((componentColors[0]*255) * 299) + ((componentColors[0]*255) * 587) + ((componentColors[0]*255) * 114)) / 1000;
+	} else if (count == 4) {
+		darknessScore = (((componentColors[0]*255) * 299) + ((componentColors[1]*255) * 587) + ((componentColors[2]*255) * 114)) / 1000;
+	}
+	
+	if (darknessScore >= 180) {
+		return [UIColor blackColor];
+	}
+	
+	return [UIColor whiteColor];
 }
 
 @end

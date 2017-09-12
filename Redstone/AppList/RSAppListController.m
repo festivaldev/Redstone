@@ -12,7 +12,7 @@
 		[self.searchBar addTarget:self action:@selector(showAppsFittingQuery) forControlEvents:UIControlEventEditingChanged];
 		
 		noResultsLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, self.view.frame.size.width-10, 30)];
-		[noResultsLabel setTextColor:[UIColor colorWithWhite:0.5 alpha:1.0]];
+		[noResultsLabel setTextColor:[[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] colorWithAlphaComponent:0.5]];
 		[noResultsLabel setFont:[UIFont fontWithName:@"SegoeUI" size:17]];
 		[noResultsLabel setHidden:YES];
 		[self.view addSubview:noResultsLabel];
@@ -27,7 +27,7 @@
 		[sectionBackgroundContainer addSubview:sectionBackgroundImage];
 		
 		sectionBackgroundOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 60)];
-		[sectionBackgroundOverlay setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.75]];
+		[sectionBackgroundOverlay setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:0.75]];
 		[sectionBackgroundContainer addSubview:sectionBackgroundOverlay];
 		
 		self.pinMenu = [RSFlyoutMenu new];
@@ -132,7 +132,7 @@
 }
 
 - (void)setSectionOverlayAlpha:(CGFloat)alpha {
-	[sectionBackgroundOverlay setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+	[sectionBackgroundOverlay setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:alpha]];
 }
 
 #pragma mark App Management
@@ -487,7 +487,7 @@
 		NSString* baseString = [NSString stringWithFormat:[RSAesthetics localizedStringForKey:@"NO_RESULTS_FOUND"], query];
 		NSRange range = [baseString rangeOfString:query options:NSBackwardsSearch];
 		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:baseString];
-		[string addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:range];
+		[string addAttribute:NSForegroundColorAttributeName value:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] range:range];
 		[noResultsLabel setAttributedText:string];
 	}
 }

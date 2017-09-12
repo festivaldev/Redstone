@@ -6,19 +6,19 @@
 	if (self = [super initWithFrame:frame]) {
 		mediaTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, frame.size.width-20, 30)];
 		[mediaTitleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:24]];
-		[mediaTitleLabel setTextColor:[UIColor whiteColor]];
+		[mediaTitleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[mediaTitleLabel setTextAlignment:NSTextAlignmentCenter];
 		[self addSubview:mediaTitleLabel];
 		
 		mediaSubtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, frame.size.width-20, 18)];
 		[mediaSubtitleLabel setFont:[UIFont fontWithName:@"SegoeUI-Semibold" size:15]];
-		[mediaSubtitleLabel setTextColor:[UIColor whiteColor]];
+		[mediaSubtitleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[mediaSubtitleLabel setTextAlignment:NSTextAlignmentCenter];
 		[self addSubview:mediaSubtitleLabel];
 		
 		prevTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 - 106, 60, 44, 44)];
 		[prevTitleButton setHighlightEnabled:YES];
-		[prevTitleButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[prevTitleButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[prevTitleButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[prevTitleButton setTitle:@"\uE892"];
 		[prevTitleButton addTarget:self action:@selector(previousTrack)];
@@ -26,7 +26,7 @@
 		
 		playPauseButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 - 44/2, 60, 44, 44)];
 		[playPauseButton setHighlightEnabled:YES];
-		[playPauseButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[playPauseButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[playPauseButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[playPauseButton setTitle:@"\uE768"];
 		[playPauseButton addTarget:self action:@selector(togglePlayPause)];
@@ -34,7 +34,7 @@
 		
 		nextTitleButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width/2 + 106 - 44, 60, 44, 44)];
 		[nextTitleButton setHighlightEnabled:YES];
-		[nextTitleButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[nextTitleButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[nextTitleButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[nextTitleButton setTitle:@"\uE893"];
 		[nextTitleButton addTarget:self action:@selector(nextTrack)];

@@ -4,7 +4,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		[self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+		[self setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:0.75]];
 		
 		CGSize deviceOffset = CGSizeMake(MAX((screenWidth - 320) / 2, 0),
 										 MAX((screenHeight - 560) / 2, 0));
@@ -48,7 +48,7 @@
 			[alphabetScrollView addSubview:jumpListLetter];
 			
 			[jumpListLetter.titleLabel setFrame:CGRectMake(0, 0, 80, 80)];
-			[jumpListLetter.titleLabel setTextColor:[UIColor whiteColor]];
+			[jumpListLetter.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 			[jumpListLetter.titleLabel setTextAlignment:NSTextAlignmentCenter];
 			[jumpListLetter.titleLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:48]];
 			[jumpListLetter addSubview:jumpListLetter.titleLabel];
@@ -73,7 +73,7 @@
 				[jumpListLetter addGestureRecognizer:tapGestureRecognizer];
 			} else {
 				[jumpListLetter setUserInteractionEnabled:NO];
-				[jumpListLetter.titleLabel setTextColor:[UIColor colorWithWhite:0.3 alpha:1.0]];
+				[jumpListLetter.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"disabledColor"]];
 			}
 			
 			[alphabetScrollView addSubview:jumpListLetter];

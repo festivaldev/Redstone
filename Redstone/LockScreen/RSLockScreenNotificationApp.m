@@ -18,7 +18,7 @@
 		
 		appBadge = [[UILabel alloc] init];
 		[appBadge setFont:[UIFont fontWithName:@"SegoeUI" size:20]];
-		[appBadge setTextColor:[UIColor whiteColor]];
+		[appBadge setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[appBadge setTextAlignment:NSTextAlignmentCenter];
 		[appBadge setText:@"99"];
 		[self addSubview:appBadge];

@@ -7,7 +7,7 @@
 		[self setHighlightEnabled:YES];
 		[self setColoredHighlight:YES];
 		[self.titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:38]];
-		[self.titleLabel setTextColor:[UIColor whiteColor]];
+		[self.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		
 		[tiltGestureRecognizer setEnabled:NO];
 		

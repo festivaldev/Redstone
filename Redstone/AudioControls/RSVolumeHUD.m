@@ -4,7 +4,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		[self setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
 		[self setClipsToBounds:YES];
 		[self.layer setAnchorPoint:CGPointMake(0.5, 0)];
 		[self setFrame:frame];
@@ -14,7 +14,7 @@
 		[self addSubview:ringerVolumeView];
 		
 		ringerMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
-		[ringerMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[ringerMuteButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[ringerMuteButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[ringerMuteButton setHighlightEnabled:YES];
 		[ringerMuteButton addTarget:self action:@selector(toggleRingerMuted)];
@@ -25,7 +25,7 @@
 		[self addSubview:mediaVolumeView];
 		
 		mediaMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
-		[mediaMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[mediaMuteButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[mediaMuteButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[mediaMuteButton setHighlightEnabled:YES];
 		[mediaMuteButton addTarget:self action:@selector(toggleMediaMuted)];
@@ -36,7 +36,7 @@
 		[self addSubview:headphoneVolumeView];
 		
 		headphoneMuteButton = [[RSTiltView alloc] initWithFrame:CGRectMake(10, 31, 36, 36)];
-		[headphoneMuteButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[headphoneMuteButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[headphoneMuteButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];
 		[headphoneMuteButton setTitle:@"\uE7F6"];
 		[headphoneMuteButton setUserInteractionEnabled:NO];
@@ -44,7 +44,7 @@
 		
 		extendButton = [[RSTiltView alloc] initWithFrame:CGRectMake(frame.size.width - 46, 10, 36, 18)];
 		[extendButton setTiltEnabled:NO];
-		[extendButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[extendButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[extendButton.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:18]];
 		[extendButton setTitle:@"\uE70D"];
 		[extendButton addTarget:self action:@selector(toggleExtended)];
@@ -472,12 +472,12 @@
 			
 			[attributedString addAttributes:@{
 											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [UIColor whiteColor],
+											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
 											  NSBaselineOffsetAttributeName: @-3.0
 											  } range:[baseString rangeOfString:@"\uE877"]];
 			[attributedString addAttributes:@{
 											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [UIColor whiteColor]
+											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]
 											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"VIBRATE_DISABLED"]]];
 			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}
@@ -523,12 +523,12 @@
 			
 			[attributedString addAttributes:@{
 											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [UIColor whiteColor],
+											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
 											  NSBaselineOffsetAttributeName: @-3.0
 											  } range:[baseString rangeOfString:@"\uE7ED"]];
 			[attributedString addAttributes:@{
 											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [UIColor whiteColor]
+											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]
 											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]]];
 			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}

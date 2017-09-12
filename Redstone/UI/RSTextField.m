@@ -6,12 +6,12 @@
 	if (self = [super initWithFrame:frame]) {
 		[self setDelegate:self];
 		
-		[self setBackgroundColor:[UIColor blackColor]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldBackgroundColor"]];
 		[self setFont:[UIFont fontWithName:@"SegoeUI" size:17]];
-		[self setTextColor:[UIColor whiteColor]];
+		[self setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		
 		[self.layer setBorderWidth:2];
-		[self.layer setBorderColor:[UIColor colorWithWhite:0.46 alpha:1.0].CGColor];
+		[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
 		
 		[self setReturnKeyType:UIReturnKeySearch];
 		[self setKeyboardAppearance:UIKeyboardAppearanceDark];
@@ -23,7 +23,7 @@
 }
 
 - (void)setPlaceholder:(NSString *)placeholder {
-	[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName:[UIColor colorWithWhite:0.6 alpha:1.0] }]];
+	[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] }]];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -35,9 +35,9 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-	[self.layer setBorderColor:[UIColor colorWithWhite:0.46 alpha:1.0].CGColor];
-	[self setBackgroundColor:[UIColor blackColor]];
-	[self setTextColor:[UIColor whiteColor]];
+	[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldBackgroundColor"]];
+	[self setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+	[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
 	
 	//[clearButton.titleLabel setTextColor:[[RSAesthetics colorsForCurrentTheme][@"TextFieldPlaceholderColor"] colorWithAlphaComponent:0.4]];
 }

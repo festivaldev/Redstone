@@ -10,7 +10,7 @@
 		detailedStatusArea = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 100)];
 		[detailedStatusArea setNumberOfLines:3];
 		[detailedStatusArea setFont:[UIFont fontWithName:@"SegoeUI" size:24]];
-		[detailedStatusArea setTextColor:[UIColor whiteColor]];
+		[detailedStatusArea setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[self addSubview:detailedStatusArea];
 		
 		if (screenWidth < 375) {

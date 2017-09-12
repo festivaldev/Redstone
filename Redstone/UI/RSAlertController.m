@@ -12,19 +12,19 @@
 - (id)initWithTitle:(NSString*)title message:(NSString*)message {
 	if (self = [super init]) {
 		contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-		[contentView setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
+		[contentView setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
 		[contentView.layer setBorderWidth:2];
 		[contentView.layer setBorderColor:[RSAesthetics accentColor].CGColor];
 		
 		titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, screenWidth - 60, 30)];
 		[titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:22]];
-		[titleLabel setTextColor:[UIColor whiteColor]];
+		[titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[titleLabel setText:title];
 		[titleLabel sizeToFit];
 		
 		messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 30 + titleLabel.frame.size.height + 5, screenWidth - 60, 30)];
 		[messageLabel setFont:[UIFont fontWithName:@"SegoeUI" size:18]];
-		[messageLabel setTextColor:[UIColor whiteColor]];
+		[messageLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[messageLabel setLineBreakMode:NSLineBreakByWordWrapping];
 		[messageLabel setNumberOfLines:0];
 		[messageLabel setText:message];
@@ -36,7 +36,7 @@
 
 - (void)loadView {
 	self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-	[self.view setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+	[self.view setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"opaqueBackgroundColor"]];
 }
 
 - (void)viewDidLoad {

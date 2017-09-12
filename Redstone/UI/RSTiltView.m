@@ -54,7 +54,7 @@
 				if (self.coloredHighlight) {
 					[highlightLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
 				} else {
-					[highlightLayer setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2].CGColor];
+					[highlightLayer setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] colorWithAlphaComponent:0.2].CGColor];
 				}
 				[highlightLayer setOpacity:1.0];
 			
@@ -93,7 +93,7 @@
 		if (self.coloredHighlight) {
 			[highlightLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
 		} else {
-			[highlightLayer setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2].CGColor];
+			[highlightLayer setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] colorWithAlphaComponent:0.2].CGColor];
 		}
 		[highlightLayer setOpacity:1.0];
 		

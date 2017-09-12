@@ -9,7 +9,7 @@
 		
 		trackLayer = [CALayer new];
 		[trackLayer setFrame:CGRectMake(0, frame.size.height/2 - 2/2, frame.size.width, 2)];
-		[trackLayer setBackgroundColor:[UIColor colorWithWhite:0.43 alpha:1.0].CGColor];
+		[trackLayer setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"trackColor"].CGColor];
 		[self.layer addSublayer:trackLayer];
 		
 		trackFillLayer = [CALayer new];

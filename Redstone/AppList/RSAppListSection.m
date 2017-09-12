@@ -11,7 +11,7 @@
 		
 		sectionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 60, 60)];
 		[sectionLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:30]];
-		[sectionLabel setTextColor:[UIColor whiteColor]];
+		[sectionLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		
 		if ([letter isEqualToString:@"@"]) {
 			[sectionLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:24]];

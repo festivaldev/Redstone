@@ -18,7 +18,7 @@
 			[self setFrame:CGRectMake(0, 0, screenWidth, 130)];
 		}
 		
-		[self setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
 		
 		RSTileInfo* tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:[bulletin section]];
 		
@@ -34,7 +34,7 @@
 		
 		titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(54, 10, self.frame.size.width - 66, 20)];
 		[titleLabel setFont:[UIFont fontWithName:@"SegoeUI-Semibold" size:15]];
-		[titleLabel setTextColor:[UIColor whiteColor]];
+		[titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		if ([bulletin title] && ![[bulletin title] isEqualToString:@""]) {
 			[titleLabel setText:[bulletin title]];
 		} else if (tileInfo.localizedDisplayName) {
@@ -52,7 +52,7 @@
 		if ([bulletin subtitle] && ![[bulletin subtitle] isEqualToString:@""]) {
 			[subtitleLabel setFrame:CGRectMake(54, 30, self.frame.size.width - 66, 20)];
 			[subtitleLabel setFont:[UIFont fontWithName:@"SegoeUI-Semibold" size:15]];
-			[subtitleLabel setTextColor:[UIColor whiteColor]];
+			[subtitleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 			[subtitleLabel setText:[bulletin subtitle]];
 		}
 		
@@ -60,7 +60,7 @@
 		
 		messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(54, 30 + subtitleLabel.frame.size.height, self.frame.size.width - 66, 40)];
 		[messageLabel setFont:[UIFont fontWithName:@"SegoeUI" size:15]];
-		[messageLabel setTextColor:[UIColor whiteColor]];
+		[messageLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[messageLabel setText:[bulletin message]];
 		[messageLabel setNumberOfLines:2];
 		[messageLabel setLineBreakMode:NSLineBreakByTruncatingTail];

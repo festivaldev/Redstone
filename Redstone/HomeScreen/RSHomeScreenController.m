@@ -31,7 +31,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	CGFloat progress = scrollView.contentOffset.x / scrollView.bounds.size.width;
 	
-	[homeScreenScrollView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:MIN(progress, 0.75)]];
+	[homeScreenScrollView setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:MIN(progress, 0.75)]];
 	[wallpaperView calculateHorizontalParallax];
 	
 	[appListController setSectionOverlayAlpha:MIN(progress, 0.75)];

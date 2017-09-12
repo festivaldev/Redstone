@@ -5,7 +5,7 @@
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
 		[self setImage:[RSAesthetics homeScreenWallpaper]];
-		[self setBackgroundColor:[UIColor blackColor]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"]];
 		[self setContentMode:UIViewContentModeScaleAspectFill];
 		[self setTransform:CGAffineTransformMakeScale(1.5, 1.5)];
 	}

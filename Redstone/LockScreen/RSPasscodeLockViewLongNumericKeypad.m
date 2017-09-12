@@ -12,10 +12,10 @@
 		[self addSubview:passcodeTextField];
 		
 		passcodeConfirmButton = [[RSTiltView alloc] initWithFrame:CGRectMake(passcodeTextField.frame.origin.x + passcodeTextField.frame.size.width + [RSMetrics tileBorderSpacing], 0, buttonHeight, 60)];
-		[passcodeConfirmButton setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
+		[passcodeConfirmButton setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
 		[passcodeConfirmButton setHighlightEnabled:YES];
 		[passcodeConfirmButton.titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:18]];
-		[passcodeConfirmButton.titleLabel setTextColor:[UIColor whiteColor]];
+		[passcodeConfirmButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[passcodeConfirmButton setTitle:@"OK"];
 		[passcodeConfirmButton addTarget:[[objc_getClass("SBUIPasscodeLockViewBase") currentPasscodeView] _longNumericEntryField] action:@selector(_okButtonHit)];
 		[self addSubview:passcodeConfirmButton];

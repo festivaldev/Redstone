@@ -17,11 +17,11 @@
 		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:labelText];
 		
 		[string addAttributes:@{
-								NSForegroundColorAttributeName: [UIColor whiteColor],
+								NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
 								NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:18]
 								} range:[labelText rangeOfString:[RSAesthetics localizedStringForKey:@"ALL_APPS"]]];
 		[string addAttributes:@{
-								NSForegroundColorAttributeName: [UIColor whiteColor],
+								NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
 								NSFontAttributeName: [UIFont fontWithName:@"SegoeMDL2Assets" size:18],
 								NSBaselineOffsetAttributeName: @-3.0
 								}range:[labelText rangeOfString:@"\uE0AD"]];

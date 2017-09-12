@@ -4,7 +4,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
-		[self setBackgroundColor:[UIColor blackColor]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"]];
 		
 		if ([[RSCore sharedInstance] homeScreenController]) {
 			fakeHomeScreenWallpaperView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
@@ -22,7 +22,7 @@
 		[self addSubview:wallpaperView];
 		
 		wallpaperOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-		[wallpaperOverlay setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+		[wallpaperOverlay setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:0.75]];
 		[wallpaperOverlay setHidden:YES];
 		[wallpaperOverlay setAlpha:0];
 		[self addSubview:wallpaperOverlay];
@@ -42,13 +42,13 @@
 		
 		timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		[timeLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:90]];
-		[timeLabel setTextColor:[UIColor whiteColor]];
+		[timeLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[timeLabel sizeToFit];
 		[timeAndDateView addSubview:timeLabel];
 		
 		dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		[dateLabel setFont:[UIFont fontWithName:@"SegoeUI-Semilight" size:30]];
-		[dateLabel setTextColor:[UIColor whiteColor]];
+		[dateLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[dateLabel sizeToFit];
 		[timeAndDateView addSubview:dateLabel];
 		

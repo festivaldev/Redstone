@@ -29,7 +29,7 @@
 			tileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
 			[tileImageView setCenter:CGPointMake(frame.size.width/2, frame.size.height/2)];
 			[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
-			[tileImageView setTintColor:[UIColor whiteColor]];
+			[tileImageView setTintColor:[RSAesthetics readableForegroundColorForBackgroundColor:self.backgroundColor]];
 			[tileContainer addSubview:tileImageView];
 		}
 		
@@ -38,7 +38,7 @@
 		tileLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, frame.size.height-28, frame.size.width-16, 20)];
 		[tileLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
 		[tileLabel setTextAlignment:NSTextAlignmentLeft];
-		[tileLabel setTextColor:[UIColor whiteColor]];
+		[tileLabel setTextColor:[RSAesthetics readableForegroundColorForBackgroundColor:self.backgroundColor]];
 		
 		if (self.tileInfo.localizedDisplayName) {
 			[tileLabel setText:self.tileInfo.localizedDisplayName];
@@ -58,14 +58,14 @@
 		if (self.tileInfo.usesCornerBadge || [[self.tileInfo.cornerBadgeForSizes objectForKey:[[NSNumber numberWithInt:self.size] stringValue]] boolValue]) {
 			badgeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
-			[badgeLabel setTextColor:[UIColor whiteColor]];
+			[badgeLabel setTextColor:[RSAesthetics readableForegroundColorForBackgroundColor:self.backgroundColor]];
 			[badgeLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
 			[badgeLabel setLayoutMargins:UIEdgeInsetsZero];
 			[badgeLabel setHidden:YES];
 		} else {
 			badgeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
 			[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:36]];
-			[badgeLabel setTextColor:[UIColor whiteColor]];
+			[badgeLabel setTextColor:[RSAesthetics readableForegroundColorForBackgroundColor:self.backgroundColor]];
 			[badgeLabel setTextAlignment:NSTextAlignmentCenter];
 			[badgeLabel setAdjustsFontSizeToFitWidth:YES];
 			[badgeLabel setBaselineAdjustment:UIBaselineAdjustmentAlignCenters];
@@ -347,7 +347,7 @@
 		[tileImageView setFrame:CGRectMake(0, 0, tileImageSize.width, tileImageSize.height)];
 		[tileImageView setCenter:CGPointMake(newFrame.size.width/2, newFrame.size.height/2)];
 		[tileImageView setImage:[RSAesthetics imageForTileWithBundleIdentifier:[self.icon applicationBundleID] size:self.size colored:self.tileInfo.hasColoredIcon]];
-		[tileImageView setTintColor:[UIColor whiteColor]];
+		[tileImageView setTintColor:[RSAesthetics readableForegroundColorForBackgroundColor:self.backgroundColor]];
 	}
 	
 	[self setBadge:badgeValue];

@@ -5,9 +5,9 @@
 - (id)init {
 	if (self = [super init]) {
 		[self setFrame:CGRectMake(0, 0, MIN(screenWidth, 364), 28)];
-		[self setBackgroundColor:[UIColor colorWithWhite:0.22 alpha:1.0]];
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
 		[self.layer setBorderWidth:2];
-		[self.layer setBorderColor:[UIColor colorWithWhite:0.46 alpha:1.0].CGColor];
+		[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
 		
 		actions = [NSMutableArray new];
 	}
@@ -32,7 +32,7 @@
 	RSTiltView* actionView = [[RSTiltView alloc] initWithFrame:CGRectMake(2, (actions.count * 66) + 14, self.frame.size.width - 4, 66)];
 	[actionView setHighlightEnabled:YES];
 	[actionView.titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:18]];
-	[actionView.titleLabel setTextColor:[UIColor whiteColor]];
+	[actionView.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 	[actionView.titleLabel setTextAlignment:NSTextAlignmentLeft];
 	[actionView.titleLabel setFrame:CGRectMake(12, 0, actionView.frame.size.width - 24, actionView.frame.size.height)];
 	[actionView setTitle:title];
