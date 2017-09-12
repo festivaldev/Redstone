@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D0181E01F5F4AFE003FDA37 /* RSPeopleTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0181DE1F5F4AFE003FDA37 /* RSPeopleTile.m */; };
+		8D48596A1F67DC7D002E4A7B /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8D4859671F67DC7D002E4A7B /* Makefile */; };
 		8D8E674D1F5F20D600270CC0 /* ConditionView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67421F5F20A200270CC0 /* ConditionView.xib */; };
 		8D8E674E1F5F20D600270CC0 /* DayForecastView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67431F5F20A200270CC0 /* DayForecastView.xib */; };
 		8D8E674F1F5F20D600270CC0 /* HourlyForecastView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E67441F5F20A200270CC0 /* HourlyForecastView.xib */; };
@@ -382,6 +383,9 @@
 		8D452C0B1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0C1F43A0020046721F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D452C0D1F43A1100046721F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D4859671F67DC7D002E4A7B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8D4859681F67DC7D002E4A7B /* Redstone_CallService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone_CallService.plist; sourceTree = "<group>"; };
+		8D4859691F67DC7D002E4A7B /* Tweak.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tweak.xm; sourceTree = "<group>"; };
 		8D6239CE1F5D32E3004E71BE /* RSLiveTileInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLiveTileInterface.h; sourceTree = "<group>"; };
 		8D6239D01F5DB206004E71BE /* NCNotificationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCNotificationRequest.h; sourceTree = "<group>"; };
 		8D6251A61F39B94F0007298A /* RSTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileButton.h; sourceTree = "<group>"; };
@@ -1538,6 +1542,16 @@
 				8D7080D21F65F8CA007BA7DC /* People.tile */,
 				8D7080D31F65F8CA007BA7DC /* hiddenapp.app */,
 			);
+			sourceTree = "<group>";
+		};
+		8D4859661F67DC7D002E4A7B /* Redstone_CallService */ = {
+			isa = PBXGroup;
+			children = (
+				8D4859671F67DC7D002E4A7B /* Makefile */,
+				8D4859681F67DC7D002E4A7B /* Redstone_CallService.plist */,
+				8D4859691F67DC7D002E4A7B /* Tweak.xm */,
+			);
+			path = Redstone_CallService;
 			sourceTree = "<group>";
 		};
 		8D6239C01F5D2E1F004E71BE /* Tiles */ = {
@@ -3127,6 +3141,7 @@
 				8D9C16621F5B56F900B4DE3A /* Redstone_Notifications.xm */,
 				8DA4CC331F60A2D500006CF6 /* Redstone_LockScreen.xm */,
 				8D14C6AD1F498E0200ADD69A /* Redstone_UIKit */,
+				8D4859661F67DC7D002E4A7B /* Redstone_CallService */,
 				8D7C54A71F57EB1100780214 /* Redstone_Prefs */,
 				8DF5EB321F33BC5E003CC2B4 /* headers */,
 				8DB0B6E41F346326002E3CCF /* Layout */,
@@ -3498,6 +3513,7 @@
 				8DA4CCB01F6124EA00006CF6 /* RSFlyoutMenu.m in Sources */,
 				8DA4CCC31F61250300006CF6 /* RSLaunchScreenController.m in Sources */,
 				8DA4CCDD1F6133CF00006CF6 /* RSPasscodeLockViewLongNumericKeypad.m in Sources */,
+				8D48596A1F67DC7D002E4A7B /* Makefile in Sources */,
 				8DA4CCA91F6124E000006CF6 /* UIView+Easing.m in Sources */,
 				8DA4CCBC1F6124FC00006CF6 /* RSTileButton.m in Sources */,
 				8DA4CCC01F61250000006CF6 /* RSApp.m in Sources */,

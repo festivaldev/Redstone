@@ -22,6 +22,7 @@ static RSPreferences* sharedInstance;
 										@"lockScreenEnabled": @NO,
 										@"volumeControlsEnabled": @YES,
 										@"accentColor": @"#0078D7",
+										@"themeColor:": @"dark",
 										@"tileOpacity": @0.8f,
 										@"showWallpaper": @YES,
 										@"showMoreTiles": @YES,

@@ -211,6 +211,30 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>BACKGROUND_COLOR</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>defaults</key>
+			<string>ml.festival.redstone</string>
+			<key>key</key>
+			<string>themeColor</string>
+			<key>validTitles</key>
+			<array>
+				<string>BACKGROUND_COLOR_DARK</string>
+				<string>BACKGROUND_COLOR_LIGHT</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>dark</string>
+				<string>light</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>

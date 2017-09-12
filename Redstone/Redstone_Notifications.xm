@@ -17,7 +17,7 @@
 	}
 }
 
-%end // %hook BBServer
+%end	// %hook BBServer
 
 %hook SBLockScreenManager
 
@@ -29,7 +29,7 @@
 	return %orig;
 }
 
-%end // %hook SBLockScreenManager
+%end	// %hook SBLockScreenManager
 
 %hook SBBulletinBannerController
 
@@ -43,7 +43,7 @@
 	return MSHookIvar<BBObserver*>(self, "_observer");
 }
 
-%end // %hook SBBulletinBannerController
+%end	// %hook SBBulletinBannerController
 
 %hook NCNotificationDispatcher
 
@@ -58,9 +58,9 @@
 	}
 }
 
-%end // %hook NCNotificationDispatcher
+%end	// %hook NCNotificationDispatcher
 
-%end // %group notifications
+%end	// %group notifications
 
 
 
@@ -82,7 +82,7 @@
 	return CGRectZero;
 }
 
-%end // %hook SBNotificationBannerWindow
+%end	// %hook SBNotificationBannerWindow
 
 // iOS 9
 %hook SBBannerContainerView
@@ -106,17 +106,19 @@
 	%orig(YES);
 }
 
-%end // %hook SBBannerContainerView
+%end	// %hook SBBannerContainerView
 
-%end // %group notifications_visuals
+%end	// %group notifications_visuals
 
 %ctor {
-	if ([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue] || [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
+	if ([[[RSPreferences preferences] objectForKey:@"enabled"] boolValue]) {
+		if (([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue] || [[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue])) {
+			
+			%init(notifications);
+		}
 		
-		%init(notifications);
-	}
-	
-	if ([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue]) {
-		%init(notifications_visuals);
+		if ([[[RSPreferences preferences] objectForKey:@"notificationsEnabled"] boolValue]) {
+			%init(notifications_visuals);
+		}
 	}
 }

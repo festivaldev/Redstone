@@ -37,7 +37,6 @@ after-all::
 endif
 
 ifeq ($(THEOS_TARGET_NAME),iphone)
-SUBPROJECTS += Redstone_UIKit Redstone_Prefs
-endif
-
+SUBPROJECTS += Redstone_UIKit Redstone_CallService Redstone_Prefs
 include $(THEOS_MAKE_PATH)/aggregate.mk
+endif
