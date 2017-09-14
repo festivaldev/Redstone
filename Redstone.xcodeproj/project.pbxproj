@@ -386,6 +386,8 @@
 		8D4859671F67DC7D002E4A7B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8D4859681F67DC7D002E4A7B /* Redstone_CallService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Redstone_CallService.plist; sourceTree = "<group>"; };
 		8D4859691F67DC7D002E4A7B /* Tweak.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tweak.xm; sourceTree = "<group>"; };
+		8D48596B1F6B2255002E4A7B /* _UILegibilitySettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _UILegibilitySettings.h; sourceTree = "<group>"; };
+		8D48596C1F6B22B3002E4A7B /* SBWallpaperController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBWallpaperController.h; sourceTree = "<group>"; };
 		8D6239CE1F5D32E3004E71BE /* RSLiveTileInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSLiveTileInterface.h; sourceTree = "<group>"; };
 		8D6239D01F5DB206004E71BE /* NCNotificationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCNotificationRequest.h; sourceTree = "<group>"; };
 		8D6251A61F39B94F0007298A /* RSTileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTileButton.h; sourceTree = "<group>"; };
@@ -3078,6 +3080,7 @@
 				8DCE1C701F516BA200B2804E /* SBUILegibilityLabel.h */,
 				8D3920B71F52B32B002A4C24 /* SBUserAgent.h */,
 				8D96D6841F4EBA290006A624 /* SBVolumeHUDView.h */,
+				8D48596C1F6B22B3002E4A7B /* SBWallpaperController.h */,
 				8D14C6CC1F4D661100ADD69A /* VolumeControl.h */,
 			);
 			path = SpringBoard;
@@ -3187,6 +3190,7 @@
 				8D3920B81F52BA9F002A4C24 /* SpringBoardUIServices */,
 				8D6239CF1F5DB1F0004E71BE /* UserNotificationsKit */,
 				8D90EF5A1F5F1CEF00303F23 /* libWeatherManager */,
+				8D48596B1F6B2255002E4A7B /* _UILegibilitySettings.h */,
 			);
 			path = headers;
 			sourceTree = "<group>";

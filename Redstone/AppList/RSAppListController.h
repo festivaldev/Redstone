@@ -27,6 +27,7 @@
 - (void)setContentOffset:(CGPoint)contentOffset;
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 - (CGPoint)contentOffset;
+- (void)setAppsHidden:(BOOL)hidden;
 - (void)updateSectionsWithOffset:(CGFloat)offset;
 - (void)setSectionOverlayAlpha:(CGFloat)alpha;
 

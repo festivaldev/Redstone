@@ -7,10 +7,12 @@
 
 - (id)initWithFrame:(CGRect)frame {
 	if (self = [super initWithFrame:frame]) {
+		wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+		
 		detailedStatusArea = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 100)];
 		[detailedStatusArea setNumberOfLines:3];
 		[detailedStatusArea setFont:[UIFont fontWithName:@"SegoeUI" size:24]];
-		[detailedStatusArea setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+		[detailedStatusArea setTextColor:[wallpaperLegibilitySettings primaryColor]];
 		[self addSubview:detailedStatusArea];
 		
 		if (screenWidth < 375) {
@@ -25,6 +27,14 @@
 	}
 	
 	return self;
+}
+
+- (void)wallpaperChanged {
+	wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+	[detailedStatusArea setTextColor:[wallpaperLegibilitySettings primaryColor]];
+	for (RSLockScreenNotificationApp* app in notificationApps) {
+		[app wallpaperChanged];
+	}
 }
 
 - (void)prepareStatusAreas {

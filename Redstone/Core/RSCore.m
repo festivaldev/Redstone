@@ -91,8 +91,10 @@ static id currentApplication;
 	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
 	
 	if (frontApp) {
-		//[[homeScreenController startScreenController] setTilesVisible:NO];
 		[[homeScreenController startScreenController] setIsEditing:NO];
+		[[homeScreenController startScreenController] setTilesHidden:NO];
+		[[homeScreenController appListController] setAppsHidden:NO];
+		
 		[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 		
 		for (RSAlertController* alertController in [homeScreenController alertControllers]) {

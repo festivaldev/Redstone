@@ -21,6 +21,7 @@
 #import <SpringBoardUIServices/SpringBoardUIServices.h>
 #import <BulletinBoard/BBBulletin.h>
 #import <UserNotificationsKit/NCNotificationRequest.h>
+#import "_UILegibilitySettings.h"
 
 #pragma mark Libraries
 #import "Libraries/CAKeyframeAnimation+AHEasing.h"

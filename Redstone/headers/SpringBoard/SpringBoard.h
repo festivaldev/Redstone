@@ -18,4 +18,5 @@
 #import "SBUILegibilityLabel.h"
 #import "SBUserAgent.h"
 #import "SBVolumeHUDView.h"
+#import "SBWallpaperController.h"
 #import "VolumeControl.h"

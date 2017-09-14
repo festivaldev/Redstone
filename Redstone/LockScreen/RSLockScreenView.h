@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "RSPasscodeLockViewKeypadDelegate.h"
 
-@class RSNowPlayingControls, RSLockScreenNotificationArea, SBPasscodeKeyboard;
+@class RSNowPlayingControls, RSLockScreenNotificationArea, SBPasscodeKeyboard, _UILegibilitySettings;
 
 @interface RSLockScreenView : UIView <UIScrollViewDelegate> {
 	UIImageView* wallpaperView;
@@ -11,6 +11,7 @@
 	UIScrollView* unlockScrollView;
 	UIView* timeAndDateView;
 	
+	_UILegibilitySettings* wallpaperLegibilitySettings;
 	UILabel* timeLabel;
 	UILabel* dateLabel;
 	

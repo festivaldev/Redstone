@@ -39,6 +39,16 @@ BOOL isAllowedToPressHomeButton = YES;
 
 %end // %hook SBHomeHardwareButton
 
+%hook SBWallpaperController
+
+- (void)_handleWallpaperChangedForVariant:(int)arg1 {
+	%orig(arg1);
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneWallpaperChanged" object:nil];
+}
+
+%end // %hook SBWallpaperController
+
 static void DeviceLockedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneDeviceLocked" object:nil];
 }
@@ -49,6 +59,10 @@ static void SettingsChangedCallback(CFNotificationCenterRef center, void *observ
 
 static void AccentColorChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneAccentColorChanged" object:nil];
+}
+
+static void WallpaperChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneWallpaperChanged" object:nil];
 }
 
 %end // %group core
@@ -64,5 +78,7 @@ static void AccentColorChangedCallback(CFNotificationCenterRef center, void *obs
 		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, SettingsChangedCallback, CFSTR("ml.festival.redstone.PreferencesChanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 		
 		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, AccentColorChangedCallback, CFSTR("ml.festival.redstone.AccentColorChanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+		
+		CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, WallpaperChangedCallback, CFSTR("ml.festival.redstone.WallpaperChanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 	}
 }

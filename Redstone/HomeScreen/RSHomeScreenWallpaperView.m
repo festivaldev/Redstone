@@ -8,9 +8,15 @@
 		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"]];
 		[self setContentMode:UIViewContentModeScaleAspectFill];
 		[self setTransform:CGAffineTransformMakeScale(1.5, 1.5)];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wallpaperChanged) name:@"RedstoneWallpaperChanged" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)wallpaperChanged {
+	[self setImage:[RSAesthetics homeScreenWallpaper]];
 }
 
 - (void)calculateHorizontalParallax {

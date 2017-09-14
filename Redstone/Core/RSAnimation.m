@@ -393,18 +393,20 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(maxDelay + 0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		for (UIView* view in appList.subviews) {
 			if ([view isKindOfClass:[RSApp class]] || [view isKindOfClass:[RSAppListSection class]]) {
+				[view setHidden:NO];
 				[view.layer setOpacity:0];
 				[view.layer removeAllAnimations];
 				[view.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
-				
 				[view setCenter:[(RSApp*)view originalCenter]];
 			}
 		}
 		
-		[appList setUserInteractionEnabled:YES];
-		[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
+		[appListController.searchBar.layer setOpacity:0];
+		[appListController.searchBar.layer removeAllAnimations];
 		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[appList setUserInteractionEnabled:YES];
+			[[[[RSCore sharedInstance] homeScreenController] view] setUserInteractionEnabled:YES];
 			[appListController.searchBar setText:@""];
 			[appListController showAppsFittingQuery];
 			

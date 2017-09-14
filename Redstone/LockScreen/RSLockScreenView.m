@@ -37,18 +37,20 @@
 		[unlockScrollView setShowsHorizontalScrollIndicator:NO];
 		[self addSubview:unlockScrollView];
 		
+		wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+		
 		timeAndDateView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 		[unlockScrollView addSubview:timeAndDateView];
 		
 		timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		[timeLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:90]];
-		[timeLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+		[timeLabel setTextColor:[wallpaperLegibilitySettings primaryColor]];
 		[timeLabel sizeToFit];
 		[timeAndDateView addSubview:timeLabel];
 		
 		dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
 		[dateLabel setFont:[UIFont fontWithName:@"SegoeUI-Semilight" size:30]];
-		[dateLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+		[dateLabel setTextColor:[wallpaperLegibilitySettings primaryColor]];
 		[dateLabel sizeToFit];
 		[timeAndDateView addSubview:dateLabel];
 		
@@ -58,15 +60,29 @@
 		}
 		
 		nowPlayingControls = [[RSNowPlayingControls alloc] initWithFrame:CGRectMake(24, 40, screenWidth - 48, 120)];
+		[nowPlayingControls updateWithLegibilitySettings:wallpaperLegibilitySettings];
 		[timeAndDateView addSubview:nowPlayingControls];
 		
 		notificationArea = [[RSLockScreenNotificationArea alloc] initWithFrame:CGRectMake(20, screenHeight-180, screenWidth - 40, 180)];
 		[timeAndDateView addSubview:notificationArea];
 		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wallpaperChanged) name:@"RedstoneWallpaperChanged" object:nil];
+		
 		[self reset];
 	}
 	
 	return self;
+}
+
+- (void)wallpaperChanged {
+	[wallpaperView setImage:[RSAesthetics lockScreenWallpaper]];
+	
+	wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+	[timeLabel setTextColor:[wallpaperLegibilitySettings primaryColor]];
+	[dateLabel setTextColor:[wallpaperLegibilitySettings primaryColor]];
+	
+	[nowPlayingControls updateWithLegibilitySettings:wallpaperLegibilitySettings];
+	[notificationArea wallpaperChanged];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

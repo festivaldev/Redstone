@@ -8,19 +8,20 @@
 		tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:identifier];
 		[self setClipsToBounds:YES];
 		
+		wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+		
 		if (tileInfo.fullSizeArtwork) {
 			appIcon = [[UIImageView alloc] initWithImage:[RSAesthetics imageForTileWithBundleIdentifier:identifier size:5 colored:YES]];
 		} else {
 			appIcon = [[UIImageView alloc] initWithImage:[RSAesthetics imageForTileWithBundleIdentifier:identifier size:5 colored:tileInfo.hasColoredIcon]];
-			[appIcon setTintColor:[UIColor whiteColor]];
+			[appIcon setTintColor:[wallpaperLegibilitySettings primaryColor]];
 		}
 		[self addSubview:appIcon];
 		
 		appBadge = [[UILabel alloc] init];
 		[appBadge setFont:[UIFont fontWithName:@"SegoeUI" size:20]];
-		[appBadge setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+		[appBadge setTextColor:[wallpaperLegibilitySettings primaryColor]];
 		[appBadge setTextAlignment:NSTextAlignmentCenter];
-		[appBadge setText:@"99"];
 		[self addSubview:appBadge];
 	}
 	
@@ -45,6 +46,14 @@
 
 - (id)bundleIdentifier {
 	return bundleIdentifier;
+}
+
+- (void)wallpaperChanged {
+	wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:0];
+	if (!tileInfo.fullSizeArtwork) {
+		[appIcon setTintColor:[wallpaperLegibilitySettings primaryColor]];
+	}
+	[appBadge setTextColor:[wallpaperLegibilitySettings primaryColor]];
 }
 
 @end

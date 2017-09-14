@@ -92,6 +92,14 @@
 	}
 }
 
+- (void)updateWithLegibilitySettings:(_UILegibilitySettings*)settings {
+	[mediaTitleLabel setTextColor:[settings primaryColor]];
+	[mediaSubtitleLabel setTextColor:[settings primaryColor]];
+	[prevTitleButton.titleLabel setTextColor:[settings primaryColor]];
+	[playPauseButton.titleLabel setTextColor:[settings primaryColor]];
+	[nextTitleButton.titleLabel setTextColor:[settings primaryColor]];
+}
+
 - (void)previousTrack {
 	[(SBMediaController*)[objc_getClass("SBMediaController") sharedInstance] changeTrack:-1];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneNowPlayingUpdate" object:nil];

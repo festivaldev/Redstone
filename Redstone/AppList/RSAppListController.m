@@ -43,7 +43,9 @@
 		self.jumpList = [[RSJumpList alloc] initWithFrame:CGRectMake(screenWidth, 0, screenWidth, screenHeight)];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wallpaperChanged) name:@"RedstoneWallpaperChanged" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"RedstoneDeviceHasFinishedLock" object:nil];
+		
 	}
 	
 	return self;
@@ -53,6 +55,10 @@
 	for (RSApp* app in apps) {
 		[app setBackgroundColor:[RSAesthetics accentColorForTile:app.tileInfo]];
 	}
+}
+
+- (void)wallpaperChanged {
+	[sectionBackgroundImage setImage:[RSAesthetics homeScreenWallpaper]];
 }
 
 - (void)deviceFinishedLock {
@@ -90,6 +96,14 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[self updateSectionsWithOffset:self.view.contentOffset.y];
 }
+
+- (void)setAppsHidden:(BOOL)hidden {
+	for (UIView* view in self.view.subviews) {
+		[view.layer setOpacity:(hidden ? 0 : 1)];
+	}
+	[self.searchBar.layer setOpacity:(hidden ? 0 : 1)];
+}
+
 
 - (void)updateSectionsWithOffset:(CGFloat)offset {
 	for (int i=0; i<[sections count]; i++) {

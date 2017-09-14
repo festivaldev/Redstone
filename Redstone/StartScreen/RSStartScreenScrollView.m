@@ -10,6 +10,8 @@
 		[self setShowsVerticalScrollIndicator:NO];
 		[self setShowsHorizontalScrollIndicator:NO];
 		
+		wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:1];
+		
 		self.allAppsButton = [[RSTiltView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 60)];
 		[self.allAppsButton setHighlightEnabled:YES];
 		
@@ -17,11 +19,11 @@
 		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:labelText];
 		
 		[string addAttributes:@{
-								NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
+								NSForegroundColorAttributeName: [wallpaperLegibilitySettings primaryColor],
 								NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:18]
 								} range:[labelText rangeOfString:[RSAesthetics localizedStringForKey:@"ALL_APPS"]]];
 		[string addAttributes:@{
-								NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
+								NSForegroundColorAttributeName: [wallpaperLegibilitySettings primaryColor],
 								NSFontAttributeName: [UIFont fontWithName:@"SegoeMDL2Assets" size:18],
 								NSBaselineOffsetAttributeName: @-3.0
 								}range:[labelText rangeOfString:@"\uE0AD"]];
@@ -33,9 +35,29 @@
 		} copy] action:@selector(invoke)];
 		
 		[self addSubview:self.allAppsButton];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wallpaperChanged) name:@"RedstoneWallpaperChanged" object:nil];
 	}
 	
 	return self;
+}
+
+- (void)wallpaperChanged {
+	wallpaperLegibilitySettings = [[objc_getClass("SBWallpaperController") sharedInstance] legibilitySettingsForVariant:1];
+	
+	NSString* labelText = [NSString stringWithFormat:@"%@\t\uE0AD", [RSAesthetics localizedStringForKey:@"ALL_APPS"]];
+	NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:labelText];
+	
+	[string addAttributes:@{
+							NSForegroundColorAttributeName: [wallpaperLegibilitySettings primaryColor],
+							NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:18]
+							} range:[labelText rangeOfString:[RSAesthetics localizedStringForKey:@"ALL_APPS"]]];
+	[string addAttributes:@{
+							NSForegroundColorAttributeName: [wallpaperLegibilitySettings primaryColor],
+							NSFontAttributeName: [UIFont fontWithName:@"SegoeMDL2Assets" size:18],
+							NSBaselineOffsetAttributeName: @-3.0
+							}range:[labelText rangeOfString:@"\uE0AD"]];
+	[self.allAppsButton setAttributedTitle:string];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {

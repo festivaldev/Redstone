@@ -1,8 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class RSTiltView;
+@class _UILegibilitySettings, RSTiltView;
 
-@interface RSStartScreenScrollView : UIScrollView
+@interface RSStartScreenScrollView : UIScrollView {
+	_UILegibilitySettings* wallpaperLegibilitySettings;
+}
 
 @property (nonatomic, strong) RSTiltView* allAppsButton;
 
