@@ -250,6 +250,15 @@
 	[self.titleLabel setAttributedText:attributedTitle];
 }
 
+- (void)accentColorChanged {
+	if (self.coloredHighlight) {
+		[highlightLayer setBackgroundColor:[RSAesthetics accentColor].CGColor];
+	} else {
+		[highlightLayer setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] colorWithAlphaComponent:0.2].CGColor];
+	}
+	[self.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+}
+
 /*- (void)untilt {
 	if (!self.tiltEnabled && !self.highlightEnabled) {
 		return;

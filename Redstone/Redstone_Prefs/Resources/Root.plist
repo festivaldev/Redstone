@@ -221,15 +221,17 @@
 			<string>ml.festival.redstone</string>
 			<key>key</key>
 			<string>themeColor</string>
+			<key>PostNotification</key>
+			<string>ml.festival.redstone.AccentColorChanged</string>
 			<key>validTitles</key>
 			<array>
-				<string>BACKGROUND_COLOR_DARK</string>
 				<string>BACKGROUND_COLOR_LIGHT</string>
+				<string>BACKGROUND_COLOR_DARK</string>
 			</array>
 			<key>validValues</key>
 			<array>
-				<string>dark</string>
 				<string>light</string>
+				<string>dark</string>
 			</array>
 		</dict>
 		<dict>

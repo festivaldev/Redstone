@@ -6,7 +6,7 @@
 #import "RSWeatherHourlyForecastView.h"
 #import "RSWeatherDayForecastView.h"
 
-@class RSWeatherInfoManager, RSWeatherCity;
+@class RSWeatherInfoManager, RSWeatherCity, WeatherPreferences;
 
 @protocol RSWeatherInfoManagerDelegate <NSObject>
 @required
@@ -26,8 +26,11 @@
 @end
 
 @interface RSWeatherTile : UIView <RSLiveTileInterface, RSWeatherInfoManagerDelegate> {
-	RSWeatherInfoManager* infoManager;
+	WeatherPreferences* weatherPreferences;
+	RSWeatherInfoManager* weatherManager;
 	RSWeatherCity* currentCity;
+	RSWeatherCity* localCity;
+	City* currentSelectedCity;
 	
 	RSWeatherShortLookView* shortLookView;
 	RSWeatherConditionView* conditionView;

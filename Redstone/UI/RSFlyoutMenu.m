@@ -15,6 +15,15 @@
 	return self;
 }
 
+- (void)accentColorChanged {
+	[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"backgroundColor"]];
+	[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
+	
+	for (RSTiltView* action in actions) {
+		[action accentColorChanged];
+	}
+}
+
 - (void)updateFlyoutSize {
 	NSInteger visibleActions = 0;
 	for (RSTiltView* action in actions) {

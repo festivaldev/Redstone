@@ -26,6 +26,17 @@
 	[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] }]];
 }
 
+- (void)accentColorChanged {
+	if (!self.isFirstResponder) {
+		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldBackgroundColor"]];
+		[self setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+		[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
+		[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:self.placeholder attributes:@{ NSForegroundColorAttributeName:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] }]];
+
+
+	}
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[self.layer setBorderColor:[RSAesthetics accentColor].CGColor];
 	[self setBackgroundColor:[UIColor whiteColor]];

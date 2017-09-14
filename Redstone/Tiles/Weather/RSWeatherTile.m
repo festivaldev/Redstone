@@ -15,11 +15,38 @@
 		hourlyForecastView = [[tileBundle loadNibNamed:@"HourlyForecastView" owner:self options:nil] objectAtIndex:0];
 		dayForecastView = [[tileBundle loadNibNamed:@"DayForecastView" owner:self options:nil] objectAtIndex:0];
 		
-		infoManager = [[RSWeatherInfoManager alloc] initWithDelegate:self];
-		[infoManager startMonitoringCurrentLocationWeatherChanges];
+		weatherPreferences = [objc_getClass("WeatherPreferences") sharedPreferences];
+		weatherManager = [[RSWeatherInfoManager alloc] initWithDelegate:self];
 	}
 	
 	return self;
+}
+
+- (void)hasStarted {
+	if ([weatherPreferences isLocalWeatherEnabled]) {
+		currentSelectedCity = nil;
+		if (localCity != nil) {
+			currentCity = localCity;
+			
+			[shortLookView updateForCity:localCity];
+			[conditionView updateForCity:localCity];
+			[hourlyForecastView updateForCity:localCity];
+			[dayForecastView updateForCity:localCity];
+		}
+		
+		[weatherManager startMonitoringCurrentLocationWeatherChanges];
+	} else {
+		currentSelectedCity = [[weatherPreferences loadSavedCities] objectAtIndex:[weatherPreferences loadActiveCity]];
+		[weatherManager startMonitoringWeatherChangesForLocation:[currentSelectedCity location]];
+	}
+}
+
+- (void)hasStopped {
+	if (currentSelectedCity) {
+		[weatherManager stopMonitoringWeatherChangesForLocation:[currentSelectedCity location]];
+	}
+	
+	[weatherManager stopMonitoringCurrentLocationWeatherChanges];
 }
 
 - (void)weatherInfoManager:(RSWeatherInfoManager*)weatherInfoManager didUpdateWeather:(RSWeatherCity*)city {
@@ -71,6 +98,7 @@
 }
 
 - (BOOL)isReadyForDisplay {
+	NSLog(@"[RedstoneWeather] %@", currentCity);
 	return currentCity != nil;
 }
 

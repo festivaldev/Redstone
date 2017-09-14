@@ -8,5 +8,6 @@
 
 - (void)animateIn;
 - (void)animateOut;
+- (void)accentColorChanged;
 
 @end

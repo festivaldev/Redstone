@@ -28,6 +28,10 @@
 	return self;
 }
 
+- (void)updateTextColor {
+	[sectionLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+}
+
 - (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {
 	if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
 		[self untilt];

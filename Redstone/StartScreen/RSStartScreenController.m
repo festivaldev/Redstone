@@ -14,6 +14,7 @@
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accentColorChanged) name:@"RedstoneAccentColorChanged" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceFinishedLock) name:@"RedstoneDeviceHasFinishedLock" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startLiveTiles) name:@"RedstoneApplicationWillTerminate" object:nil];
 	}
 	
 	return self;

@@ -2,4 +2,6 @@
 
 @interface RSTextField : UITextField <UITextFieldDelegate>
 
+- (void)accentColorChanged;
+
 @end

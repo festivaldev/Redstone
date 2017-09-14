@@ -230,6 +230,12 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			
 			return nil;
 		}];
+		
+		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.WillTerminate"  handler:^NSDictionary *(NSDictionary *message) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneApplicationWillTerminate" object:nil];
+			
+			return nil;
+		}];
 #endif
 	}
 }

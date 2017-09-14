@@ -161,4 +161,8 @@
 	[self animateOut];
 }
 
+- (void)accentColorChanged {
+	[self setBackgroundColor:[[RSAesthetics colorForCurrentThemeByCategory:@"solidBackgroundColor"] colorWithAlphaComponent:0.75]];
+}
+
 @end

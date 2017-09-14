@@ -12,6 +12,9 @@
 	/* Design */
 	"ACCENT_COLOR" = "Accent Color";
 	"CHOOSE_FROM_WALLPAPER" = "Choose from Background";
+	"BACKGROUND_COLOR" = "Choose your mode";
+	"BACKGROUND_COLOR_LIGHT" = "Light";
+	"BACKGROUND_COLOR_DARK" = "Dark";
 	
 	/* Buttons */
 	"RESET_START_SCREEN_LAYOUT_TITLE" = "Reset Start Screen";

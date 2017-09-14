@@ -10,6 +10,7 @@
 @property (nonatomic, assign) CGPoint originalCenter;
 
 - (id)initWithFrame:(CGRect)frame letter:(NSString*)letter;
+- (void)updateTextColor;
 - (NSString*)displayName;
 
 @end

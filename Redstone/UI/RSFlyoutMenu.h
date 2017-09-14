@@ -6,6 +6,7 @@
 
 @property (nonatomic, assign) BOOL isOpen;
 
+- (void)accentColorChanged;
 - (void)updateFlyoutSize;
 - (void)addActionWithTitle:(NSString*)title target:(id)target action:(SEL)action;
 - (void)setActionHidden:(BOOL)hidden atIndex:(NSInteger)index;

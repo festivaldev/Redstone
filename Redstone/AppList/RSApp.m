@@ -70,6 +70,10 @@
 	[appImageBackground setBackgroundColor:backgroundColor];
 }
 
+- (void)updateTextColor {
+	[appLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
+}
+
 #pragma mark Gesture Recognizers
 
 - (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {

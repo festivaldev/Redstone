@@ -54,7 +54,16 @@
 - (void)accentColorChanged {
 	for (RSApp* app in apps) {
 		[app setBackgroundColor:[RSAesthetics accentColorForTile:app.tileInfo]];
+		[app updateTextColor];
 	}
+	
+	for (RSAppListSection* section in sections) {
+		[section updateTextColor];
+	}
+	
+	[self.searchBar accentColorChanged];
+	[self.pinMenu accentColorChanged];
+	[self.jumpList accentColorChanged];
 }
 
 - (void)wallpaperChanged {

@@ -82,7 +82,7 @@
 		if ([[[RSPreferences preferences] objectForKey:@"liveTilesEnabled"] boolValue]) {
 			liveTileBundle = [NSBundle bundleWithPath:[NSString stringWithFormat:@"%@/Live Tiles/%@.tile", RESOURCES_PATH, bundleIdentifier]];
 			if (liveTileBundle) {
-				liveTile = [[[liveTileBundle principalClass] alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) tile:self];
+				liveTile = [[[liveTileBundle principalClass] alloc] initWithFrame:CGRectMake(0, frame.size.height, frame.size.width, frame.size.height) tile:self];
 			}
 			if (liveTile) {
 				[liveTile setClipsToBounds:YES];

@@ -34,7 +34,6 @@
 %hook SBBulletinBannerController
 
 -(void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 {
-	%log;
 	%orig;
 }
 
@@ -48,7 +47,6 @@
 %hook NCNotificationDispatcher
 
 - (void)postNotificationWithRequest:(NCNotificationRequest*)arg1 {
-	%log;
 	%orig;
 	
 	NSArray* bulletinDestinations = [[arg1 requestDestinations] allObjects];

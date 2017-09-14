@@ -12,6 +12,9 @@
 	/* Design */
 	"ACCENT_COLOR" = "Akzentfarbe";
 	"CHOOSE_FROM_WALLPAPER" = "Aus Hintergrund auswählen";
+	"BACKGROUND_COLOR" = "App-Modus auswählen";
+	"BACKGROUND_COLOR_LIGHT" = "Hell";
+	"BACKGROUND_COLOR_DARK" = "Dunkel";
 	
 	/* Buttons */
 	"RESET_START_SCREEN_LAYOUT_TITLE" = "Startbildschirm zurücksetzen";

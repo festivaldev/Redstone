@@ -18,5 +18,6 @@
 - (void)addTarget:(id)target action:(SEL)action;
 - (void)setTitle:(NSString*)title;
 - (void)setAttributedTitle:(NSAttributedString*)attributedTitle;
+- (void)accentColorChanged;
 
 @end
