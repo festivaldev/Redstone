@@ -20,6 +20,7 @@
 		NSString* labelText = [NSString stringWithFormat:@"%@\t\uE0AD", [RSAesthetics localizedStringForKey:@"ALL_APPS"]];
 		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:labelText];
 		
+		[string addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeMDL2Assets" size:18] range:[labelText rangeOfString:@"\uE0AD"]];
 		[string addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[labelText rangeOfString:@"\uE0AD"]];
 		[self.allAppsButton setAttributedTitle:string];
 		

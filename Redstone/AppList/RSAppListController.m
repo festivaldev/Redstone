@@ -507,11 +507,14 @@
 	[noResultsLabel setHidden:!visible];
 	
 	if (query != nil && ![query isEqualToString:@""]) {
-		NSString* baseString = [NSString stringWithFormat:[RSAesthetics localizedStringForKey:@"NO_RESULTS_FOUND"], query];
-		NSRange range = [baseString rangeOfString:query options:NSBackwardsSearch];
-		NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:baseString];
-		[string addAttribute:NSForegroundColorAttributeName value:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] range:range];
-		[noResultsLabel setAttributedText:string];
+		NSString* baseString = [RSAesthetics localizedStringForKey:@"NO_RESULTS_FOUND"];
+		NSRange queryRange = [baseString rangeOfString:@"%@"];
+		
+		NSString* queryString = [NSString stringWithFormat:baseString, query];
+		
+		NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:queryString];
+		[attributedString addAttribute:NSForegroundColorAttributeName value:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"] range:NSMakeRange(queryRange.location, query.length)];
+		[noResultsLabel setAttributedText:attributedString];
 	}
 }
 
