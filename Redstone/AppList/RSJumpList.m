@@ -57,12 +57,10 @@
 				letter = @"\uE12B";
 				
 				NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:letter];
-				[attributedString addAttributes:@{
-												  NSBaselineOffsetAttributeName: @-2.0,
-												  NSFontAttributeName: [UIFont fontWithName:@"SegoeMDL2Assets" size:40]
-												  }range:[letter rangeOfString:@"\uE12B"]];
+				[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-2.0] range:NSMakeRange(0, 1)];
 				
 				[jumpListLetter.titleLabel setAttributedText:attributedString];
+				[jumpListLetter.titleLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:40]];
 			} else {
 				[jumpListLetter.titleLabel setText:letter];
 			}

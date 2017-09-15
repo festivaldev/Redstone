@@ -52,11 +52,13 @@
 		
 		vibrationButton = [UIButton buttonWithType:UIButtonTypeSystem];
 		[vibrationButton addTarget:self action:@selector(toggleVibrationEnabled) forControlEvents:UIControlEventTouchUpInside];
+		[vibrationButton.titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
 		[self addSubview:vibrationButton];
 		[self updateVibrateButtonStatus];
 		
 		ringerButton = [UIButton buttonWithType:UIButtonTypeSystem];
 		[ringerButton addTarget:self action:@selector(toggleRingerMuted) forControlEvents:UIControlEventTouchUpInside];
+		[ringerButton.titleLabel setFont:[UIFont fontWithName:@"SegoeUI" size:14]];
 		[self addSubview:ringerButton];
 		[self updateRingerButtonStatus];
 		
@@ -453,32 +455,18 @@
 	
 	[UIView performWithoutAnimation:^{
 		if ([self getVibrationEnabled]) {
+			[vibrationButton.titleLabel setTextColor:[RSAesthetics accentColor]];
 			NSString* baseString = [NSString stringWithFormat:@"\uE877 %@", [RSAesthetics localizedStringForKey:@"VIBRATE_ENABLED"]];
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics accentColor],
-											  NSBaselineOffsetAttributeName: @-3.0
-											  } range:[baseString rangeOfString:@"\uE877"]];
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics accentColor]
-											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"VIBRATE_ENABLED"]]];
+			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE877"]];
 			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		} else {
+			[vibrationButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 			NSString* baseString = [NSString stringWithFormat:@"\uE877 %@", [RSAesthetics localizedStringForKey:@"VIBRATE_DISABLED"]];
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
-											  NSBaselineOffsetAttributeName: @-3.0
-											  } range:[baseString rangeOfString:@"\uE877"]];
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]
-											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"VIBRATE_DISABLED"]]];
+			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE877"]];
 			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}
 		
@@ -504,32 +492,17 @@
 	
 	[UIView performWithoutAnimation:^{
 		if (![mediaController isRingerMuted]) {
+			[ringerButton.titleLabel setTextColor:[RSAesthetics accentColor]];
 			NSString* baseString = [NSString stringWithFormat:@"\uEA8F %@", [RSAesthetics localizedStringForKey:@"RINGER_ENABLED"]];
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics accentColor],
-											  NSBaselineOffsetAttributeName: @-3.0
-											  } range:[baseString rangeOfString:@"\uEA8F"]];
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics accentColor]
-											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"RINGER_ENABLED"]]];
+			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uEA8F"]];
 			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		} else {
 			NSString* baseString = [NSString stringWithFormat:@"\uE7ED %@", [RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]];
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeMDL2Assets" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"],
-											  NSBaselineOffsetAttributeName: @-3.0
-											  } range:[baseString rangeOfString:@"\uE7ED"]];
-			[attributedString addAttributes:@{
-											  NSFontAttributeName:[UIFont fontWithName:@"SegoeUI" size:14],
-											  NSForegroundColorAttributeName: [RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]
-											  } range:[baseString rangeOfString:[RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]]];
+			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE7ED"]];
 			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}
 		

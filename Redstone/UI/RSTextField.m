@@ -23,7 +23,9 @@
 }
 
 - (void)setPlaceholder:(NSString *)placeholder {
-	[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] }]];
+	NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:placeholder];
+	[attributedString addAttribute:NSForegroundColorAttributeName value:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] range:NSMakeRange(0, placeholder.length)];
+	[self setAttributedPlaceholder:attributedString];
 }
 
 - (void)accentColorChanged {
@@ -31,7 +33,10 @@
 		[self setBackgroundColor:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldBackgroundColor"]];
 		[self setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
 		[self.layer setBorderColor:[RSAesthetics colorForCurrentThemeByCategory:@"borderColor"].CGColor];
-		[self setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:self.placeholder attributes:@{ NSForegroundColorAttributeName:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] }]];
+		
+		NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:self.placeholder];
+		[attributedString addAttribute:NSForegroundColorAttributeName value:[RSAesthetics colorForCurrentThemeByCategory:@"textFieldPlaceholderColor"] range:NSMakeRange(0, self.placeholder.length)];
+		[self setAttributedPlaceholder:attributedString];
 
 
 	}

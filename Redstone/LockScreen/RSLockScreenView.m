@@ -147,9 +147,7 @@
 - (void)setTime:(NSString *)time {
 	
 	NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:time];
-	[attributedString addAttributes:@{
-									  NSBaselineOffsetAttributeName: @8.0
-									  }range:[time rangeOfString:@":"]];
+	[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:8.0] range:[time rangeOfString:@":"]];
 	
 	[timeLabel setAttributedText:attributedString];
 	[timeLabel sizeToFit];

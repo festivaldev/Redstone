@@ -398,9 +398,7 @@
 			NSString* badgeString = @"99+";
 			
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:badgeString];
-			[attributedString addAttributes:@{
-											  NSBaselineOffsetAttributeName: @4.0
-											  } range:[badgeString rangeOfString:@"+"]];
+			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:4.0] range:[badgeString rangeOfString:@"+"]];
 			[badgeLabel setAttributedText:attributedString];
 			[badgeLabel setHidden:NO];
 		} else {
@@ -428,15 +426,11 @@
 			if (self.size < 2) {
 				[badgeLabel setFont:[UIFont fontWithName:@"SegoeUI" size:16]];
 				
-				[attributedString addAttributes:@{
-												  NSBaselineOffsetAttributeName: @4.5,
-												  NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:14]
-												  } range:[badgeString rangeOfString:@"+"]];
+				[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:4.5] range:[badgeString rangeOfString:@"+"]];
+				[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeUI" size:14] range:[badgeString rangeOfString:@"+"]];
 			} else {
-				[attributedString addAttributes:@{
-												  NSBaselineOffsetAttributeName: @10.0,
-												  NSFontAttributeName: [UIFont fontWithName:@"SegoeUI" size:30]
-												  } range:[badgeString rangeOfString:@"+"]];
+				[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:10.0] range:[badgeString rangeOfString:@"+"]];
+				[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeUI" size:30] range:[badgeString rangeOfString:@"+"]];
 			}
 			
 			[badgeLabel setAttributedText:attributedString];
