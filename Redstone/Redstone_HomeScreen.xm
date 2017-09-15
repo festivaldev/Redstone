@@ -51,9 +51,16 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 				callback();
 			});
 		} else {
+			NSLog(@"[Redstone] device has been unlocked to home screen");
+			
 			if (hasBeenUnlockedBefore) {
+				NSLog(@"[Redstone] device has been unlocked before");
 				[homeScreenController deviceHasBeenUnlocked];
 			} else {
+				[homeScreenController setContentOffset:CGPointZero];
+				[startScreenController setContentOffset:CGPointMake(0, -24)];
+				[appListController setContentOffset:CGPointMake(0, 0)];
+			
 				hasBeenUnlockedBefore = YES;
 				
 				[RSAnimation startScreenAnimateIn];
@@ -76,7 +83,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	});
 }
 
-%end // %hook SBUIAnimationZoomApp
+%end	// %hook SBUIAnimationZoomApp
 
 %hook SBUIAnimationLockScreenToAppZoomIn
 
@@ -85,7 +92,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	%orig;
 }
 
-%end // %hook SBUIAnimationLockScreenToAppZoomIn
+%end	// %hook SBUIAnimationLockScreenToAppZoomIn
 
 // iOS 9
 %hook SBUIAnimationZoomUpApp
@@ -97,7 +104,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	});
 }
 
-%end // %hook SBUIAnimationZoomUpApp
+%end	// %hook SBUIAnimationZoomUpApp
 
 // iOS 9
 %hook SBUIAnimationZoomDownApp
@@ -109,26 +116,8 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	});
 }
 
-%end // %hook SBUIAnimationZoomDownApp
+%end	// %hook SBUIAnimationZoomDownApp
 
-%hook SBLockScreenManager
-
--(BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
-	//[[RSStartScreenController sharedInstance] setTilesVisible:NO];
-	
-	id frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
-	
-	if (frontApp == nil) {
-		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:YES];
-	} else {
-		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
-		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
-	}
-	
-	return %orig;
-}
-
-%end // %hook SBLockScreenManager
 
 %hook SBApplication
 
@@ -142,7 +131,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	}
 }
 
-%end // %hook SBApplication
+%end	// %hook SBApplication
 
 %hook SpringBoard
 
@@ -156,7 +145,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	[[RSCore sharedInstance] frontDisplayDidChange:arg1];
 }
 
-%end // %hook SpringBoard
+%end	// %hook SpringBoard
 
 %hook SBHomeScreenViewController
 
@@ -168,7 +157,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	return YES;
 }
 
-%end // %hook SBHomeScreenViewController
+%end	// %hook SBHomeScreenViewController
 
 %hook SBMainDisplaySceneLayoutViewController
 
@@ -194,7 +183,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	}
 }
 
-%end // %hook SBMainDisplaySceneLayoutViewController
+%end	// %hook SBMainDisplaySceneLayoutViewController
 
 %hook SBDeckSwitcherViewController
 
@@ -216,7 +205,7 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 	%orig;
 }
 
-%end // %hook SBDeckSwitcherViewController
+%end	// %hook SBDeckSwitcherViewController
 
 %end // %group homescreen
 
@@ -233,6 +222,12 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 		
 		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.WillTerminate"  handler:^NSDictionary *(NSDictionary *message) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneApplicationWillTerminate" object:nil];
+			
+			return nil;
+		}];
+		
+		[OBJCIPC registerIncomingMessageFromAppHandlerForMessageName:@"Redstone.Application.WillEnterForeground"  handler:^NSDictionary *(NSDictionary *message) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"RedstoneApplicationWillEnterForeground" object:nil];
 			
 			return nil;
 		}];

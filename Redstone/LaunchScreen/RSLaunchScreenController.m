@@ -19,13 +19,24 @@ UIImage* _UICreateScreenUIImage();
 		[self.window addSubview:applicationSnapshot];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateOut) name:@"RedstoneApplicationDidBecomeActive" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:@"RedstoneApplicationWillEnterForeground" object:nil];
 	}
 	
 	return self;
 }
 
+- (void)applicationWillEnterForeground {
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (frontApp) {
+		[self setIsUnlocking:NO];
+		[self setLaunchIdentifier:[frontApp bundleIdentifier]];
+	}
+}
+
 - (void)setLaunchIdentifier:(NSString *)launchIdentifier {
 	_launchIdentifier = launchIdentifier;
+	NSLog(@"[Redstone] LaunchScreenController setLaunchIdentifier: %@", launchIdentifier);
 	
 	RSTileInfo* tileInfo = [[RSTileInfo alloc] initWithBundleIdentifier:launchIdentifier];
 	
@@ -46,8 +57,19 @@ UIImage* _UICreateScreenUIImage();
 	}
 }
 
+- (void)setIsUnlocking:(BOOL)isUnlocking {
+	_isUnlocking = isUnlocking;
+	NSLog(@"[Redstone] LaunchScreenController setIsUnlocking: %d", isUnlocking);
+}
+
+- (void)setIsLaunchingApp:(BOOL)isLaunchingApp {
+	_isLaunchingApp = isLaunchingApp;
+	NSLog(@"[Redstone] LaunchScreenController setIsLaunchingApp: %d", isLaunchingApp);
+}
+
 - (void)animateIn {
-	_isLaunchingApp = YES;
+	NSLog(@"[Redstone] LaunchScreenController animateIn");
+	[self setIsLaunchingApp:YES];
 	
 	[rootTimeout invalidate];
 	
@@ -84,6 +106,7 @@ UIImage* _UICreateScreenUIImage();
 }
 
 - (void)animateOut {
+	NSLog(@"[Redstone] LaunchScreenController animateOut");
 	[self.window setAlpha:1];
 	[self.window.layer removeAllAnimations];
 	[launchImageView.layer removeAllAnimations];
@@ -95,7 +118,7 @@ UIImage* _UICreateScreenUIImage();
 			[self.window setEasingFunction:easeInOutCubic forKeyPath:@"frame"];
 			[self.window setAlpha:0.0];
 		} completion:^(BOOL finished) {
-			_isLaunchingApp = NO;
+			[self setIsLaunchingApp:NO];
 			[self.window removeEasingFunctionForKeyPath:@"frame"];
 			[self.window setHidden:YES];
 		}];
@@ -103,11 +126,14 @@ UIImage* _UICreateScreenUIImage();
 }
 
 - (void)animateCurrentApplicationSnapshot {
-	if (_isLaunchingApp) {
+	NSLog(@"[Redstone] LaunchScreenController animateCurrentApplicationSnapshot");
+	if (self.isLaunchingApp) {
+		NSLog(@"[Redstone] LaunchScreenController animateCurrentApplicationSnapshot isLaunchingApp");
 		return;
 	}
 	
-	_isLaunchingApp = YES;
+	
+	[self setIsLaunchingApp:YES];
 	
 	[applicationSnapshot.layer removeAllAnimations];
 	[applicationSnapshot setImage:_UICreateScreenUIImage()];
@@ -142,7 +168,7 @@ UIImage* _UICreateScreenUIImage();
 	
 	//hideTimeout = [NSTimer timerWithTimeInterval:0.2 target:^{
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		_isLaunchingApp = NO;
+		[self setIsLaunchingApp:NO];
 		
 		[self.window setHidden:YES];
 		[applicationSnapshot setImage:nil];

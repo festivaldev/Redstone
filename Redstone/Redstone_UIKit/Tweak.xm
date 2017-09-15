@@ -28,6 +28,7 @@
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
 		if(![[notification.object class] isSubclassOfClass:[%c(SpringBoard) class]]) {
 			NSLog(@"[Redstone] application will enter foreground");
+			[OBJCIPC sendMessageToSpringBoardWithMessageName:@"Redstone.Application.WillEnterForeground" dictionary:nil];
 		}
 	}];
 }
