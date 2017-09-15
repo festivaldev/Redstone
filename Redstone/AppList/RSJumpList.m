@@ -60,7 +60,7 @@
 				[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-2.0] range:NSMakeRange(0, 1)];
 				
 				[jumpListLetter.titleLabel setAttributedText:attributedString];
-				[jumpListLetter.titleLabel setFont:[UIFont fontWithName:@"SegoeUI-Light" size:40]];
+				[jumpListLetter.titleLabel setFont:[UIFont fontWithName:@"SegoeMDL2Assets" size:28]];
 			} else {
 				[jumpListLetter.titleLabel setText:letter];
 			}

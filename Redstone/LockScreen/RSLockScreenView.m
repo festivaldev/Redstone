@@ -167,6 +167,7 @@
 	[nowPlayingControls updateNowPlayingInfo];
 	[unlockScrollView setContentOffset:CGPointZero];
 	[wallpaperView setAlpha:1.0];
+	[notificationArea prepareStatusAreas];
 	
 	if ([[objc_getClass("SBUserAgent") sharedUserAgent] deviceIsPasscodeLocked]) {
 		if ([[objc_getClass("SBLockScreenManager") sharedInstance] respondsToSelector:@selector(_setPasscodeVisible:animated:)]) {

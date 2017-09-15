@@ -16,6 +16,7 @@
 @property (nonatomic, assign) BOOL isShowingQuickStatus;
 
 - (void)wallpaperChanged;
+- (void)prepareStatusAreas;
 - (void)setBadgeForApp:(NSString*)identifier value:(int)badgeValue;
 - (BBBulletin*)currentBulletin;
 - (void)setCurrentBulletin:(BBBulletin*)bulletin;

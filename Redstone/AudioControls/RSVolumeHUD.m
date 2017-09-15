@@ -460,6 +460,7 @@
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
 			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE877"]];
+			[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeMDL2Assets" size:14] range:[baseString rangeOfString:@"\uE877"]];
 			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		} else {
 			[vibrationButton.titleLabel setTextColor:[RSAesthetics colorForCurrentThemeByCategory:@"foregroundColor"]];
@@ -467,6 +468,7 @@
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
 			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE877"]];
+			[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeMDL2Assets" size:14] range:[baseString rangeOfString:@"\uE877"]];
 			[vibrationButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}
 		
@@ -497,12 +499,14 @@
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
 			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uEA8F"]];
+			[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeMDL2Assets" size:14] range:[baseString rangeOfString:@"\uEA8F"]];
 			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		} else {
 			NSString* baseString = [NSString stringWithFormat:@"\uE7ED %@", [RSAesthetics localizedStringForKey:@"RINGER_DISABLED"]];
 			NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:baseString];
 			
 			[attributedString addAttribute:NSBaselineOffsetAttributeName value:[NSNumber numberWithFloat:-3.0] range:[baseString rangeOfString:@"\uE7ED"]];
+			[attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SegoeMDL2Assets" size:14] range:[baseString rangeOfString:@"\uE7ED"]];
 			[ringerButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 		}
 		
