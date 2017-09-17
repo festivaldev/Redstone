@@ -98,7 +98,6 @@
 }
 
 - (BOOL)isReadyForDisplay {
-	NSLog(@"[RedstoneWeather] %@", currentCity);
 	return currentCity != nil;
 }
 

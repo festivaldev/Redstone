@@ -63,7 +63,7 @@
 	
 	[startScreenController startLiveTiles];
 	
-	[UIView animateWithDuration:0.3 animations:^{
+	[UIView animateWithDuration:0.3 delay:0 options:0 animations:^{
 		[homeScreenScrollView setEasingFunction:easeOutCubic forKeyPath:@"opacity"];
 		[homeScreenScrollView setAlpha:1.0];
 	} completion:^(BOOL finished) {

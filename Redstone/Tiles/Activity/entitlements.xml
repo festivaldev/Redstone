@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>com.apple.developer.healthkit</key>
-        <true/>
-        <key>com.apple.private.healthkit</key>
-        <true/>
-        <key>com.apple.private.healthkit.authorization_bypass</key>
-        <true/>
-        <key>com.apple.private.healthkit.os_version</key>
-        <true/>
-    </dict>
+<dict>
+	<key>com.apple.developer.healthkit</key>
+	<true/>
+	<key>com.apple.private.healthkit</key>
+	<true/>
+	<key>com.apple.private.healthkit.authorization_bypass</key>
+	<true/>
+	<key>com.apple.private.healthkit.authorization_manager</key>
+	<true/>
+	<key>com.apple.private.healthkit.local-device-source</key>
+	<true/>
+	<key>com.apple.private.healthkit.medicaliddata</key>
+	<true/>
+	<key>com.apple.private.healthkit.obliteration</key>
+	<true/>
+	<key>com.apple.private.healthkit.os_version</key>
+	<true/>
+	<key>com.apple.private.healthkit.preferred_source</key>
+	<true/>
+	<key>com.apple.private.healthkit.read_authorization_override</key>
+	<true/>
+	<key>com.apple.private.healthkit.source_override</key>
+	<true/>
+	<key>com.apple.private.healthkit.write_authorization_override</key>
+	<true/>
+	<key>com.apple.private.healthkit.zeppelin</key>
+	<true/>
+</dict>
 </plist>

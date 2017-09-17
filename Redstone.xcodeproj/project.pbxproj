@@ -181,13 +181,6 @@
 			remoteGlobalIDString = 8D0181D11F5F4A7A003FDA37;
 			remoteInfo = People;
 		};
-		8DC83DD61F6DC0B10009DE57 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC83DC71F6D6AF50009DE57;
-			remoteInfo = Activity;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -3286,7 +3279,6 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
-				8DC83DD71F6DC0B10009DE57 /* PBXTargetDependency */,
 				8DC83DC11F6D6AAB0009DE57 /* PBXTargetDependency */,
 				8DC83DC31F6D6AAB0009DE57 /* PBXTargetDependency */,
 			);
@@ -3562,7 +3554,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Fix that code signing\ncodesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n#ldid -S$PROJECT_DIR/$PROJECT_NAME/Tiles/Activity/entitlements.xml $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/";
+			shellScript = "# Fix that code signing\ncodesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\nldid -S$PROJECT_DIR/$PROJECT_NAME/Tiles/Activity/entitlements.xml $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3680,11 +3672,6 @@
 			isa = PBXTargetDependency;
 			target = 8D0181D11F5F4A7A003FDA37 /* People */;
 			targetProxy = 8DC83DC21F6D6AAB0009DE57 /* PBXContainerItemProxy */;
-		};
-		8DC83DD71F6DC0B10009DE57 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DC83DC71F6D6AF50009DE57 /* Activity */;
-			targetProxy = 8DC83DD61F6DC0B10009DE57 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

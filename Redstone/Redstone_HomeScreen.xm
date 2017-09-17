@@ -17,7 +17,6 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 		// Home Screen to App
 		
 		CGFloat delay = [homeScreenController launchApplication];
-		
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay+0.31 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			[launchScreenController animateIn];
 			
@@ -30,15 +29,13 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			callback();
 		});
 	} else if (direction == 1) {
-		// App to Home Screeen
+		// App to Home Screen
 		
+		NSLog(@"[Redstone] launchIdentifier: %@, isUnlocking: %i", [launchScreenController launchIdentifier], [launchScreenController isUnlocking]);
 		if ([launchScreenController launchIdentifier] != nil && ![launchScreenController isUnlocking]) {
 			[launchScreenController animateCurrentApplicationSnapshot];
 			[startScreenController setTilesHidden:YES];
-			
-			[homeScreenController setContentOffset:CGPointZero];
-			[startScreenController setContentOffset:CGPointMake(0, -24)];
-			[appListController setContentOffset:CGPointMake(0, 0)];
+			[appListController setAppsHidden:YES];
 			
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 				[RSAnimation startScreenAnimateIn];
@@ -51,16 +48,13 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 				callback();
 			});
 		} else {
-			NSLog(@"[Redstone] device has been unlocked to home screen");
-			
 			if (hasBeenUnlockedBefore) {
-				NSLog(@"[Redstone] device has been unlocked before");
 				[homeScreenController deviceHasBeenUnlocked];
 			} else {
 				[homeScreenController setContentOffset:CGPointZero];
 				[startScreenController setContentOffset:CGPointMake(0, -24)];
 				[appListController setContentOffset:CGPointMake(0, 0)];
-			
+				
 				hasBeenUnlockedBefore = YES;
 				
 				[RSAnimation startScreenAnimateIn];
@@ -69,10 +63,29 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 			
 			callback();
 		}
-	
+		
 		[launchScreenController setIsUnlocking:NO];
 	}
 }
+
+%hook SBLockScreenManager
+
+-(BOOL)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2 {
+	RSLaunchScreenController* launchScreenController = [[[RSCore sharedInstance] homeScreenController] launchScreenController];
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (frontApp) {
+		[launchScreenController setIsUnlocking:NO];
+		[launchScreenController setLaunchIdentifier:[frontApp bundleIdentifier]];
+	} else {
+		[launchScreenController setIsUnlocking:YES];
+		[launchScreenController setLaunchIdentifier:nil];
+	}
+	
+	return %orig;
+}
+
+%end	// %hook SBLockScreenManager
 
 // iOS 10
 %hook SBUIAnimationZoomApp
@@ -84,15 +97,6 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 }
 
 %end	// %hook SBUIAnimationZoomApp
-
-%hook SBUIAnimationLockScreenToAppZoomIn
-
-- (void)_startAnimation {
-	[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
-	%orig;
-}
-
-%end	// %hook SBUIAnimationLockScreenToAppZoomIn
 
 // iOS 9
 %hook SBUIAnimationZoomUpApp
@@ -118,7 +122,6 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 
 %end	// %hook SBUIAnimationZoomDownApp
 
-
 %hook SBApplication
 
 - (void)setBadge:(id)arg1 {
@@ -137,12 +140,6 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 
 - (long long) homeScreenRotationStyle {
 	return 0;
-}
-
-- (void)frontDisplayDidChange:(id)arg1 {
-	%orig(arg1);
-	
-	[[RSCore sharedInstance] frontDisplayDidChange:arg1];
 }
 
 %end	// %hook SpringBoard
@@ -197,7 +194,11 @@ void playApplicationZoomAnimation(int direction, void (^callback)()) {
 }
 
 - (void)viewWillDisappear:(BOOL)arg1 {
-	%log;
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	
+	if (!frontApp) {
+		[[[[RSCore sharedInstance] homeScreenController] startScreenController] startLiveTiles];
+	}
 	
 	switcherIsOpen = NO;
 	[mainDisplaySceneLayoutView setUserInteractionEnabled:NO];

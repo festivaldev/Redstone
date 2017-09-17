@@ -77,10 +77,13 @@
 #pragma mark Gesture Recognizers
 
 - (void)tapped:(UITapGestureRecognizer*)gestureRecognizer {
-		self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:[self.icon applicationBundleID]];
+	self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:[self.icon applicationBundleID]];
 	
-		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
-		[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
+	[self setTransform:CGAffineTransformIdentity];
+	[self.layer removeAllAnimations];
+	
+	[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
+	[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
 }
 
 - (void)pressed:(UILongPressGestureRecognizer*)gestureRecognizer {

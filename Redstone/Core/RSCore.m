@@ -61,6 +61,8 @@ static id currentApplication;
 		if ([[[RSPreferences preferences] objectForKey:@"lockScreenEnabled"] boolValue]) {
 			lockScreenController = [RSLockScreenController new];
 		}
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:@"RedstoneApplicationDidBecomeActive" object:nil];
 	}
 	
 	return self;
@@ -82,20 +84,21 @@ static id currentApplication;
 	return lockScreenController;
 }
 
-- (void)frontDisplayDidChange:(id)application {
+- (void)applicationDidBecomeActive {
 	if (homeScreenController == nil) {
 		return;
 	}
 	
-	currentApplication = application;
 	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
 	
 	if (frontApp) {
+		[[homeScreenController launchScreenController] setIsUnlocking:NO];
+		[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
+		
 		[[homeScreenController startScreenController] setIsEditing:NO];
+		[[homeScreenController startScreenController] stopLiveTiles];
 		[[homeScreenController startScreenController] setTilesHidden:NO];
 		[[homeScreenController appListController] setAppsHidden:NO];
-		
-		[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 		
 		for (RSAlertController* alertController in [homeScreenController alertControllers]) {
 			[alertController dismiss];
@@ -108,8 +111,6 @@ static id currentApplication;
 		[[[homeScreenController appListController] searchBar] setText:@""];
 		[[homeScreenController appListController] showAppsFittingQuery];
 		[[[homeScreenController appListController] searchBar] resignFirstResponder];
-	} else {
-		//[[homeScreenController startScreenController] setTilesVisible:YES];
 	}
 }
 
@@ -125,8 +126,6 @@ static id currentApplication;
 	
 	if (homeScreenController != nil) {
 		if ([currentApplication isKindOfClass:NSClassFromString(@"SBDashBoardViewController")] || frontApp != nil) {
-			
-			[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 			return YES;
 		}
 		

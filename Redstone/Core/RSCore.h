@@ -21,7 +21,6 @@
 - (RSNotificationController*)notificationController;
 - (RSLockScreenController*)lockScreenController;
 
-- (void)frontDisplayDidChange:(id)application;
 - (BOOL)homeButtonPressed;
 
 @end
