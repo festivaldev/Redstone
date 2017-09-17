@@ -221,6 +221,38 @@ Description: A Tweak to bring the Windows 10 Mobile experience to iOS
 Author: Sniper_GER <sniperger@festival.ml>
 Name: Redstone
 
+Package: ml.festival.redstone
+Version: 17w37a.rs-internal.170916
+Architecture: iphoneos-arm
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Installed-Size: 6344
+Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common, ml.festival.libweathermanager
+Filename: ./Redstone/packages/ml.festival.redstone_17w37a.rs-internal.170916_iphoneos-arm.deb
+Size: 2333142
+MD5sum: db4ce0c85a0b596a427abd198dd3e64b
+SHA1: 0fe625709fd791e4d26ef5bed7d209cdfe5b7eec
+SHA256: b3f89d823984a7dcc0beed993d61c6c9d9110928773eb5e6ec496eed92c46af5
+Section: Tweaks
+Description: A Tweak to bring the Windows 10 Mobile experience to iOS
+Author: Sniper_GER <sniperger@festival.ml>
+Name: Redstone
+
+Package: ml.festival.redstone
+Version: 17w37a.rs-internal.170917
+Architecture: iphoneos-arm
+Maintainer: Sniper_GER <sniperger@festival.ml>
+Installed-Size: 6240
+Depends: mobilesubstrate, cc.tweak.libobjcipc, applist, ws.hbang.common, ml.festival.libweathermanager
+Filename: ./Redstone/packages/ml.festival.redstone_17w37a.rs-internal.170917_iphoneos-arm.deb
+Size: 2322652
+MD5sum: 92a90bf0c047ba23b504f917830895d6
+SHA1: 7aeafb901c1e7108e139b9c911c855ad18e62288
+SHA256: 213c14a36863ab7f338054b02dd6b169f8fe68dfaf6d75ddc107c4c67c23d274
+Section: Tweaks
+Description: A Tweak to bring the Windows 10 Mobile experience to iOS
+Author: Sniper_GER <sniperger@festival.ml>
+Name: Redstone
+
 Package: ml.festival.redstoneicons
 Version: 1.0
 Architecture: iphoneos-arm

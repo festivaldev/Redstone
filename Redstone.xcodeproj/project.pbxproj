@@ -144,23 +144,15 @@
 		8DA4CCE21F61FE7200006CF6 /* RSLockScreenPasscodeEntryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE01F61FDF400006CF6 /* RSLockScreenPasscodeEntryButton.m */; };
 		8DA4CCE61F62073100006CF6 /* RSLockScreenPasscodeEntryTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE41F6206EE00006CF6 /* RSLockScreenPasscodeEntryTextField.m */; };
 		8DA4CCEA1F62883400006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4CCE81F62880000006CF6 /* RSPasscodeLockViewAlphanumericKeyboard.m */; };
+		8DC83DD01F6D6BAC0009DE57 /* RSActivityTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC83DCF1F6D6BAC0009DE57 /* RSActivityTile.m */; };
+		8DC83DD31F6D6BD30009DE57 /* HealthKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83DD11F6D6BD30009DE57 /* HealthKitUI.framework */; };
+		8DC83DD41F6D6BD30009DE57 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC83DD21F6D6BD30009DE57 /* HealthKit.framework */; };
+		8DC83DDA1F6DCBC50009DE57 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC83DD91F6DCBC50009DE57 /* ActivityView.xib */; };
+		8DC83DE11F6DD1EE0009DE57 /* RSActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC83DE01F6DD1EE0009DE57 /* RSActivityView.m */; };
+		8DC83DE21F6DD3430009DE57 /* ActivityView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8DC83DD91F6DCBC50009DE57 /* ActivityView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8D0181D91F5F4ADE003FDA37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D0181D11F5F4A7A003FDA37;
-			remoteInfo = People;
-		};
-		8D8E67601F5F2C1200270CC0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D90EF651F5F1FD400303F23;
-			remoteInfo = Weather;
-		};
 		8DA4CC971F611FFA00006CF6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
@@ -174,6 +166,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D0181D11F5F4A7A003FDA37;
 			remoteInfo = People;
+		};
+		8DC83DC01F6D6AAB0009DE57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D90EF651F5F1FD400303F23;
+			remoteInfo = Weather;
+		};
+		8DC83DC21F6D6AAB0009DE57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D0181D11F5F4A7A003FDA37;
+			remoteInfo = People;
+		};
+		8DC83DD61F6DC0B10009DE57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D4474891F2F2E9500DA9CEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC83DC71F6D6AF50009DE57;
+			remoteInfo = Activity;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -983,6 +996,16 @@
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
+		8DC83DC81F6D6AF50009DE57 /* Activity.tile */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Activity.tile; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC83DCA1F6D6AF50009DE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DC83DCE1F6D6BAC0009DE57 /* RSActivityTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSActivityTile.h; sourceTree = "<group>"; };
+		8DC83DCF1F6D6BAC0009DE57 /* RSActivityTile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSActivityTile.m; sourceTree = "<group>"; };
+		8DC83DD11F6D6BD30009DE57 /* HealthKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/HealthKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		8DC83DD21F6D6BD30009DE57 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		8DC83DD81F6DC3990009DE57 /* entitlements.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = entitlements.xml; sourceTree = "<group>"; };
+		8DC83DD91F6DCBC50009DE57 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
+		8DC83DDF1F6DD1EE0009DE57 /* RSActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSActivityView.h; sourceTree = "<group>"; };
+		8DC83DE01F6DD1EE0009DE57 /* RSActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSActivityView.m; sourceTree = "<group>"; };
 		8DCE1C661F5164BE00B2804E /* RSLockScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenController.h; sourceTree = "<group>"; };
 		8DCE1C671F5164BE00B2804E /* RSLockScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLockScreenController.m; sourceTree = "<group>"; };
 		8DCE1C691F51658B00B2804E /* RSLockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLockScreenView.h; sourceTree = "<group>"; };
@@ -1020,6 +1043,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DA4CC911F60A80C00006CF6 /* libWeatherManager.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC83DC51F6D6AF50009DE57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC83DD31F6D6BD30009DE57 /* HealthKitUI.framework in Frameworks */,
+				8DC83DD41F6D6BD30009DE57 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1543,6 +1575,7 @@
 				8DA4CC921F60A80C00006CF6 /* Weather.tile */,
 				8D7080D21F65F8CA007BA7DC /* People.tile */,
 				8D7080D31F65F8CA007BA7DC /* hiddenapp.app */,
+				8DC83DC81F6D6AF50009DE57 /* Activity.tile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1561,6 +1594,7 @@
 			children = (
 				8D8E67411F5F20A200270CC0 /* Weather */,
 				8D0181DB1F5F4AFE003FDA37 /* People */,
+				8DC83DC91F6D6AF50009DE57 /* Activity */,
 			);
 			path = Tiles;
 			sourceTree = "<group>";
@@ -3039,6 +3073,8 @@
 		8DA4CC8F1F60A80C00006CF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DC83DD21F6D6BD30009DE57 /* HealthKit.framework */,
+				8DC83DD11F6D6BD30009DE57 /* HealthKitUI.framework */,
 				8DA4CC901F60A80C00006CF6 /* libWeatherManager.dylib */,
 			);
 			name = Frameworks;
@@ -3101,6 +3137,20 @@
 				8DE6A3F41F42656A009EDE86 /* RSJumpList.m */,
 			);
 			path = AppList;
+			sourceTree = "<group>";
+		};
+		8DC83DC91F6D6AF50009DE57 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				8DC83DCA1F6D6AF50009DE57 /* Info.plist */,
+				8DC83DD81F6DC3990009DE57 /* entitlements.xml */,
+				8DC83DCE1F6D6BAC0009DE57 /* RSActivityTile.h */,
+				8DC83DCF1F6D6BAC0009DE57 /* RSActivityTile.m */,
+				8DC83DDF1F6DD1EE0009DE57 /* RSActivityView.h */,
+				8DC83DE01F6DD1EE0009DE57 /* RSActivityView.m */,
+				8DC83DD91F6DCBC50009DE57 /* ActivityView.xib */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		8DCE1C651F51646400B2804E /* LockScreen */ = {
@@ -3236,8 +3286,9 @@
 			buildToolPath = /usr/bin/make;
 			buildWorkingDirectory = "$(PROJECT_DIR)/$(PROJECT_NAME)";
 			dependencies = (
-				8D0181DA1F5F4ADE003FDA37 /* PBXTargetDependency */,
-				8D8E67611F5F2C1200270CC0 /* PBXTargetDependency */,
+				8DC83DD71F6DC0B10009DE57 /* PBXTargetDependency */,
+				8DC83DC11F6D6AAB0009DE57 /* PBXTargetDependency */,
+				8DC83DC31F6D6AAB0009DE57 /* PBXTargetDependency */,
 			);
 			name = Install;
 			passBuildSettingsInEnvironment = 1;
@@ -3282,6 +3333,24 @@
 			productReference = 8DA4CC921F60A80C00006CF6 /* Weather.tile */;
 			productType = "com.apple.product-type.bundle";
 		};
+		8DC83DC71F6D6AF50009DE57 /* Activity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC83DCB1F6D6AF50009DE57 /* Build configuration list for PBXNativeTarget "Activity" */;
+			buildPhases = (
+				8DC83DC41F6D6AF50009DE57 /* Sources */,
+				8DC83DC51F6D6AF50009DE57 /* Frameworks */,
+				8DC83DC61F6D6AF50009DE57 /* Resources */,
+				8DC83DD51F6D6BEE0009DE57 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Activity;
+			productName = Activity;
+			productReference = 8DC83DC81F6D6AF50009DE57 /* Activity.tile */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8DF5EB181F33BAD8003CC2B4 /* hiddenapp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DF5EB2D1F33BAD8003CC2B4 /* Build configuration list for PBXNativeTarget "hiddenapp" */;
@@ -3317,6 +3386,10 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
+					8DC83DC71F6D6AF50009DE57 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					8DF5EB0E1F337073003CC2B4 = {
 						CreatedOnToolsVersion = 9.0;
 					};
@@ -3345,6 +3418,7 @@
 				8DF5EB181F33BAD8003CC2B4 /* hiddenapp */,
 				8D90EF651F5F1FD400303F23 /* Weather */,
 				8D0181D11F5F4A7A003FDA37 /* People */,
+				8DC83DC71F6D6AF50009DE57 /* Activity */,
 			);
 		};
 /* End PBXProject section */
@@ -3440,6 +3514,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DC83DC61F6D6AF50009DE57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC83DDA1F6DCBC50009DE57 /* ActivityView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -3468,6 +3550,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Fix that code signing\ncodesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/";
+		};
+		8DC83DD51F6D6BEE0009DE57 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Fix that code signing\ncodesign --force --sign - --timestamp=none $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n#ldid -S$PROJECT_DIR/$PROJECT_NAME/Tiles/Activity/entitlements.xml $CODESIGNING_FOLDER_PATH/$PRODUCT_NAME\n\nrm -rf $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/\n\ncp -R $CODESIGNING_FOLDER_PATH/. $PROJECT_DIR/$PROJECT_NAME/Layout/var/mobile/Library/FESTIVAL/Redstone/Live\\ Tiles/$PRODUCT_BUNDLE_IDENTIFIER.$WRAPPER_EXTENSION/";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3553,19 +3648,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DC83DC41F6D6AF50009DE57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC83DE21F6DD3430009DE57 /* ActivityView.xib in Sources */,
+				8DC83DE11F6DD1EE0009DE57 /* RSActivityView.m in Sources */,
+				8DC83DD01F6D6BAC0009DE57 /* RSActivityTile.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8D0181DA1F5F4ADE003FDA37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D0181D11F5F4A7A003FDA37 /* People */;
-			targetProxy = 8D0181D91F5F4ADE003FDA37 /* PBXContainerItemProxy */;
-		};
-		8D8E67611F5F2C1200270CC0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D90EF651F5F1FD400303F23 /* Weather */;
-			targetProxy = 8D8E67601F5F2C1200270CC0 /* PBXContainerItemProxy */;
-		};
 		8DA4CC981F611FFA00006CF6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D90EF651F5F1FD400303F23 /* Weather */;
@@ -3575,6 +3670,21 @@
 			isa = PBXTargetDependency;
 			target = 8D0181D11F5F4A7A003FDA37 /* People */;
 			targetProxy = 8DA4CC991F611FFC00006CF6 /* PBXContainerItemProxy */;
+		};
+		8DC83DC11F6D6AAB0009DE57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D90EF651F5F1FD400303F23 /* Weather */;
+			targetProxy = 8DC83DC01F6D6AAB0009DE57 /* PBXContainerItemProxy */;
+		};
+		8DC83DC31F6D6AAB0009DE57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D0181D11F5F4A7A003FDA37 /* People */;
+			targetProxy = 8DC83DC21F6D6AAB0009DE57 /* PBXContainerItemProxy */;
+		};
+		8DC83DD71F6DC0B10009DE57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC83DC71F6D6AF50009DE57 /* Activity */;
+			targetProxy = 8DC83DD61F6DC0B10009DE57 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4013,6 +4123,137 @@
 			};
 			name = Release;
 		};
+		8DC83DCC1F6D6AF50009DE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/$(PROJECT_NAME)/Tiles/Activity/entitlements.xml";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(PROJECT_NAME)/headers",
+					"$(PROJECT_DIR)/$(PROJECT_NAME)",
+				);
+				INFOPLIST_FILE = "$(PROJECT_DIR)/$(PROJECT_NAME)/Tiles/Activity/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.Fitness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = tile;
+			};
+			name = Debug;
+		};
+		8DC83DCD1F6D6AF50009DE57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/$(PROJECT_NAME)/Tiles/Activity/entitlements.xml";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(PROJECT_NAME)/headers",
+					"$(PROJECT_DIR)/$(PROJECT_NAME)",
+				);
+				INFOPLIST_FILE = "$(PROJECT_DIR)/$(PROJECT_NAME)/Tiles/Activity/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.Fitness;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = tile;
+			};
+			name = Release;
+		};
 		8DF5EB101F337073003CC2B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4298,6 +4539,15 @@
 			buildConfigurations = (
 				8DA4CC951F611D2200006CF6 /* Debug */,
 				8DA4CC961F611D2200006CF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC83DCB1F6D6AF50009DE57 /* Build configuration list for PBXNativeTarget "Activity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC83DCC1F6D6AF50009DE57 /* Debug */,
+				8DC83DCD1F6D6AF50009DE57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
