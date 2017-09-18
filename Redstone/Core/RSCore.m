@@ -63,6 +63,7 @@ static id currentApplication;
 		}
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:@"RedstoneApplicationDidBecomeActive" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:@"RedstoneApplicationWillEnterForeground" object:nil];
 	}
 	
 	return self;
@@ -112,6 +113,16 @@ static id currentApplication;
 		[[homeScreenController appListController] showAppsFittingQuery];
 		[[[homeScreenController appListController] searchBar] resignFirstResponder];
 	}
+}
+
+- (void)applicationWillEnterForeground {
+	if (homeScreenController == nil) {
+		return;
+	}
+	
+	SBApplication* frontApp = [(SpringBoard*)[UIApplication sharedApplication] _accessibilityFrontMostApplication];
+	[[homeScreenController launchScreenController] setIsUnlocking:NO];
+	[[homeScreenController launchScreenController] setLaunchIdentifier:[frontApp bundleIdentifier]];
 }
 
 - (BOOL)homeButtonPressed {

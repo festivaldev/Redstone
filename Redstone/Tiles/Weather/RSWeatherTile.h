@@ -32,6 +32,8 @@
 	RSWeatherCity* localCity;
 	City* currentSelectedCity;
 	
+	NSDate* lastUpdateTime;
+	
 	RSWeatherShortLookView* shortLookView;
 	RSWeatherConditionView* conditionView;
 	RSWeatherHourlyForecastView* hourlyForecastView;

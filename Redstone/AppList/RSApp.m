@@ -83,6 +83,7 @@
 	[self.layer removeAllAnimations];
 	
 	[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
+	[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
 	[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
 }
 

@@ -23,15 +23,22 @@
 }
 
 - (void)hasStarted {
+	if (currentCity != nil) {
+		
+		[shortLookView updateForCity:currentCity];
+		[conditionView updateForCity:currentCity];
+		[hourlyForecastView updateForCity:currentCity];
+		[dayForecastView updateForCity:currentCity];
+	}
+	
+	if (lastUpdateTime && [[NSDate date] compare:[lastUpdateTime dateByAddingTimeInterval:900]] != NSOrderedDescending) {
+		return;
+	}
+	
 	if ([weatherPreferences isLocalWeatherEnabled]) {
 		currentSelectedCity = nil;
 		if (localCity != nil) {
 			currentCity = localCity;
-			
-			[shortLookView updateForCity:localCity];
-			[conditionView updateForCity:localCity];
-			[hourlyForecastView updateForCity:localCity];
-			[dayForecastView updateForCity:localCity];
 		}
 		
 		[weatherManager startMonitoringCurrentLocationWeatherChanges];
@@ -70,6 +77,8 @@
 			}
 			
 			currentCity = city;
+			
+			lastUpdateTime = [NSDate date];
 		}
 	}];
 }

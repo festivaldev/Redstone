@@ -204,6 +204,7 @@
 	} else {
 		self.icon = [[(SBIconController*)[objc_getClass("SBIconController") sharedInstance] model] leafIconForIdentifier:self.icon.applicationBundleID];
 		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setLaunchIdentifier:self.icon.applicationBundleID];
+		[[[[RSCore sharedInstance] homeScreenController] launchScreenController] setIsUnlocking:NO];
 		[[objc_getClass("SBIconController") sharedInstance] _launchIcon:self.icon];
 	}
 }
