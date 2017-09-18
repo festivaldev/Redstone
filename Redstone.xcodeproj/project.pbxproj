@@ -986,6 +986,11 @@
 		8DBEE1D41F352B7800AD4827 /* SBUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUIController.h; sourceTree = "<group>"; };
 		8DBEE1D61F352BDC00AD4827 /* SBIconController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconController.h; sourceTree = "<group>"; };
 		8DBEE1D71F352C1600AD4827 /* SBIconModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBIconModel.h; sourceTree = "<group>"; };
+		8DC220991F6FC2E40079E43C /* tile-AppList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-AppList@2x.png"; sourceTree = "<group>"; };
+		8DC2209A1F6FC2E40079E43C /* tile-AppList@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-AppList@3x.png"; sourceTree = "<group>"; };
+		8DC2209B1F6FC2E40079E43C /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
+		8DC2209C1F6FC2E40079E43C /* tile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@3x.png"; sourceTree = "<group>"; };
+		8DC2209D1F6FC3050079E43C /* tile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tile.plist; sourceTree = "<group>"; };
 		8DC70CF31F345BCB00F9A884 /* RSAppListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAppListController.m; sourceTree = "<group>"; };
 		8DC70CF51F345D4800F9A884 /* RSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPreferences.h; sourceTree = "<group>"; };
 		8DC70CF61F345D4800F9A884 /* RSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPreferences.m; sourceTree = "<group>"; };
@@ -1075,6 +1080,7 @@
 				8D1190241F3D0D10009A8568 /* com.apple.camera */,
 				8D1190291F3D0D10009A8568 /* com.apple.compass */,
 				8D11902E1F3D0D10009A8568 /* com.apple.facetime */,
+				8DC220981F6FC2E40079E43C /* com.apple.Fitness */,
 				8D1190331F3D0D10009A8568 /* com.apple.Health */,
 				8D1190381F3D0D10009A8568 /* com.apple.iCloudDriveApp */,
 				8D11903D1F3D0D10009A8568 /* com.apple.Maps */,
@@ -3113,6 +3119,18 @@
 				8D14C6CC1F4D661100ADD69A /* VolumeControl.h */,
 			);
 			path = SpringBoard;
+			sourceTree = "<group>";
+		};
+		8DC220981F6FC2E40079E43C /* com.apple.Fitness */ = {
+			isa = PBXGroup;
+			children = (
+				8DC220991F6FC2E40079E43C /* tile-AppList@2x.png */,
+				8DC2209A1F6FC2E40079E43C /* tile-AppList@3x.png */,
+				8DC2209B1F6FC2E40079E43C /* tile@2x.png */,
+				8DC2209C1F6FC2E40079E43C /* tile@3x.png */,
+				8DC2209D1F6FC3050079E43C /* tile.plist */,
+			);
+			path = com.apple.Fitness;
 			sourceTree = "<group>";
 		};
 		8DC70CF11F345BB700F9A884 /* AppList */ = {
